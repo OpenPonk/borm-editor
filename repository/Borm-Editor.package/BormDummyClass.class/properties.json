@@ -1,0 +1,14 @@
+{
+	"category" : "Borm-Editor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "BormDummyClass",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
