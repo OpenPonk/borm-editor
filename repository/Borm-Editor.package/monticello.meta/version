@@ -1,1 +1,2 @@
-(name 'Borm-Editor-PeterUhnak.1' message 'Added dummy package.' id 'c34497df-7d1f-4814-a7a8-6d1610263bc1' date '21 March 2015' time '1:10:17.880123 pm' author 'PeterUhnak' ancestors () stepChildren ())
+(name 'Borm-Editor-PeterUhnak.2' message 'Added empty-ish controller classes.' id '1cd185ee-457b-4962-97b8-ed1626c39c5a' date '23 March 2015' time '10:05:08.763421 pm' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnÃk.1' message 'Added dummy package.
+' id 'f5de095d-4891-5d19-8ae3-1df635ca2cb6' date '21 March 2015' time '1:10:18 pm' author 'PeterUhnÃk' ancestors () stepChildren ())) stepChildren ())

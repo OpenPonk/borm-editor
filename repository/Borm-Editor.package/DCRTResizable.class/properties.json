@@ -1,0 +1,14 @@
+{
+	"category" : "Borm-Editor-Roassal-Interactions",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "PeterUhnak 3/23/2015 20:15",
+	"instvars" : [
+		 ],
+	"name" : "DCRTResizable",
+	"pools" : [
+		 ],
+	"super" : "RTResizeable",
+	"type" : "normal" }

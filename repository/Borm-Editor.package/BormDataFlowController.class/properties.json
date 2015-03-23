@@ -1,0 +1,14 @@
+{
+	"category" : "Borm-Editor-Controllers",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "BormDataFlowController",
+	"pools" : [
+		 ],
+	"super" : "DCElementController",
+	"type" : "normal" }

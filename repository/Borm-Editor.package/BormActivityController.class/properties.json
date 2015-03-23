@@ -1,0 +1,14 @@
+{
+	"category" : "Borm-Editor-Controllers",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "BormActivityController",
+	"pools" : [
+		 ],
+	"super" : "BormProcessNodeController",
+	"type" : "normal" }
