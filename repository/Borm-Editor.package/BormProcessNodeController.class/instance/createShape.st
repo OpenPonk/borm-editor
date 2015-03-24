@@ -1,3 +1,3 @@
-defaults
-shapeClass
+hooks
+createShape
 	^ self subclassResponsibility
