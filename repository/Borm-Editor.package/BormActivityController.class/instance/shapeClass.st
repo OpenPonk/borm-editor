@@ -1,0 +1,3 @@
+defaults
+shapeClass
+	^ RTEllipse

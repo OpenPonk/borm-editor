@@ -1,10 +1,13 @@
 hooks
 createFigure
-	| element shape |
-	shape := RTBox new
-		size: 50;
-		color: Color paleBlue;
-		borderColor: Color gray.
-	element := shape element.
-	element @ RTDraggable @ DCRTResizable @ DCRTFocusable.
-	^ element
+	| container |
+	container := self createContainerFigure.
+	container @ RTDraggable @ DCRTResizable.
+
+	elements := RTGroup new.
+	elements @ RTDraggable.
+
+	container trachelShape
+		addCallback: (TRTranslationCallback block: [ :shape :step | elements do: [ :e | e translateBy: step ] ]).
+
+	^ container
