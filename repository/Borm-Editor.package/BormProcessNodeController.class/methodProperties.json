@@ -2,5 +2,10 @@
 	"class" : {
 		 },
 	"instance" : {
+		"addAsSourceFor:" : "PeterUhnak 3/24/2015 01:24",
+		"addAsTargetFor:" : "PeterUhnak 3/25/2015 07:02",
+		"addConnection:" : "PeterUhnak 3/25/2015 07:02",
+		"canBeSourceFor:" : "PeterUhnak 3/24/2015 01:22",
+		"canBeTargetFor:" : "PeterUhnak 3/24/2015 01:19",
 		"createFigure" : "PeterUhnak 3/24/2015 01:12",
 		"createShape" : "PeterUhnak 3/24/2015 01:13" } }

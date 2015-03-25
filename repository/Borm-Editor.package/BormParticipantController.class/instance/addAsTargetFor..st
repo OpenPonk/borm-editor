@@ -10,4 +10,4 @@ addAsTargetFor: aNodeController
 	newFigure := aNodeController figure.
 	elements add: newFigure.
 	newFigure view ifNil: [ self parent view add: newFigure ].
-	self parent figureAdded: newFigure.
+	self parent figureAdded: newFigure
