@@ -4,6 +4,7 @@ createEdgeFrom: fromElement to: toElement
 	^ DCRTCallbackBuilder
 		block: [ :view | 
 			builder := DCRTEdgeBuilder new.
+			builder arrowHead.
 			edge := builder createEdgeFrom: fromElement to: toElement.
 			view add: edge.
 			edge ]
