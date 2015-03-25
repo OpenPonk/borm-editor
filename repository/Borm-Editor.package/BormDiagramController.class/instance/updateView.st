@@ -1,6 +1,6 @@
 as yet unclassified
 updateView
-	"self controllers do: [ :each | each figure update ]."	"does not work with DCUmliteClassController view"
+	self controllers do: [ :each | each refreshFigure ].
 	self view edges
 		do: [ :each | 
 			each pushBack.
