@@ -1,7 +1,6 @@
 public
 build
 	diagramController ifNil: [ diagramController := self newDiagramControllerFor: diagram ].
-	diagramController := self newDiagramControllerFor: diagram.
 	diagramController view: view.
 	self addParticipants: diagram participants.
 	self addNodes: (self collectNodes: diagram participants).

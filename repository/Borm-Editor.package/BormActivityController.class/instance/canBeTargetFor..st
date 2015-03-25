@@ -1,4 +1,4 @@
 testing
 canBeTargetFor: aController
-	^ (aController isKindOf: BormTransitionController) & (aController source isKindOf: BormStateController)
-		| ((aController isKindOf: BormCommunicationController) & (aController source model owner ~= self model owner))
+	^ ((aController isKindOf: BormTransitionController) and: [ aController source isKindOf: BormStateController ])
+		| ((aController isKindOf: BormCommunicationController) and: [ aController source model owner ~= self model owner ])

@@ -1,3 +1,3 @@
 testing
 canBeTargetFor: aController
-	^ (aController isKindOf: BormTransitionController) & (aController source isKindOf: BormActivityController)
+	^ (aController isKindOf: BormTransitionController) and: [ aController source isKindOf: BormActivityController ]
