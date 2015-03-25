@@ -1,0 +1,19 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"addEdge:" : "PeterUhnak 3/25/2015 22:44",
+		"addEdges:" : "PeterUhnak 3/25/2015 21:19",
+		"addNodes:" : "PeterUhnak 3/25/2015 18:33",
+		"addParticipants:" : "PeterUhnak 3/25/2015 18:34",
+		"build" : "PeterUhnak 3/25/2015 22:52",
+		"collectCommunications:" : "PeterUhnak 3/25/2015 21:20",
+		"collectNodes:" : "PeterUhnak 3/25/2015 18:29",
+		"collectTransitions:" : "PeterUhnak 3/25/2015 18:38",
+		"controllerFor:" : "PeterUhnak 3/25/2015 18:31",
+		"diagram:" : "PeterUhnak 3/25/2015 22:53",
+		"diagramController:" : "PeterUhnak 3/25/2015 22:53",
+		"newControllerFor:" : "PeterUhnak 3/25/2015 18:31",
+		"newDiagramControllerFor:" : "PeterUhnak 3/25/2015 21:12",
+		"selectActivities:" : "PeterUhnak 3/25/2015 18:28",
+		"view:" : "PeterUhnak 3/25/2015 22:53" } }
