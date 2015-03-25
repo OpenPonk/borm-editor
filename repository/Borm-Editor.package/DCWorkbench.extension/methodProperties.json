@@ -1,7 +1,8 @@
 {
 	"class" : {
-		"addDiagramFor:" : "PeterUhnak 3/25/2015 07:15:01",
-		"exampleBorm" : "PeterUhnak 3/25/2015 07:15:01",
-		"transitionFrom:to:" : "PeterUhnak 3/25/2015 07:15:01" },
+		"addCommunicationsBetween:and:" : "PeterUhnak 3/25/2015 23:12",
+		"addDiagramFor:" : "PeterUhnak 3/25/2015 23:11",
+		"bormEdgeFrom:to:with:" : "PeterUhnak 3/25/2015 23:11",
+		"exampleBorm" : "PeterUhnak 3/25/2015 23:08" },
 	"instance" : {
 		 } }

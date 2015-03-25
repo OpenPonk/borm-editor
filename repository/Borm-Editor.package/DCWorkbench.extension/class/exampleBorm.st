@@ -11,4 +11,5 @@ exampleBorm
 	diagram add: user; add: system.
 	self addDiagramFor: user.
 	self addDiagramFor: system.
+	self addCommunicationsBetween: user and: system.
 	^ self openProject: project
