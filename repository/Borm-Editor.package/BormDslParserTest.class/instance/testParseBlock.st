@@ -1,18 +1,17 @@
 tests
 testParseBlock
-	self assertBlock: 'a1 -> a2' equals: #(#('a1' '->' 'a2')).
-	self assertBlock: 'abc(param1)' equals: #(#('abc' #('param1'))).
-
 	self
 		assertBlock:
-			'p1(''my participant'')
+			'p1(''my participant''){
 s1(s1, p1, initial)
 s1 -> a1
 s2(s2, final)
-a1 -> s2'
+a1 -> s2
+}'
 		equals:
-			{#('p1' #('my participant')).
-			#('s1' #('s1' 'p1' #initial)).
+			{'p1'.
+			#('my participant').
+			{#('s1' #('s1' 'p1' #initial)).
 			#('s1' '->' 'a1').
 			#('s2' #('s2' 'final')).
-			#('a1' '->' 's2')}
+			#('a1' '->' 's2')}}

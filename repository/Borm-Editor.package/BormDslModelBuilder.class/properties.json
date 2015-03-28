@@ -7,7 +7,10 @@
 	"commentStamp" : "PeterUhnak 3/28/2015 03:59",
 	"instvars" : [
 		"participant",
-		"dictionary" ],
+		"diagram",
+		"participants",
+		"nodes",
+		"participantNodes" ],
 	"name" : "BormDslModelBuilder",
 	"pools" : [
 		 ],

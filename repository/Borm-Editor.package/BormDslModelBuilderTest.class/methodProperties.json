@@ -4,9 +4,12 @@
 	"instance" : {
 		"setUp" : "PeterUhnak 3/28/2015 04:00",
 		"testActivity" : "PeterUhnak 3/28/2015 04:54",
-		"testBlock" : "PeterUhnak 3/28/2015 04:55",
+		"testBlock" : "PeterUhnak 3/28/2015 11:45",
+		"testCommunicationDiagram" : "PeterUhnak 3/28/2015 12:30",
+		"testDiagram" : "PeterUhnak 3/28/2015 12:04",
 		"testParticipant" : "PeterUhnak 3/28/2015 04:33",
 		"testParticipant2" : "PeterUhnak 3/28/2015 04:33",
+		"testSpecification" : "PeterUhnak 3/28/2015 12:20",
 		"testState" : "PeterUhnak 3/28/2015 04:31",
 		"testState2" : "PeterUhnak 3/28/2015 04:32",
 		"testTransition" : "PeterUhnak 3/28/2015 04:41" } }

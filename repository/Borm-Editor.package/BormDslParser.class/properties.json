@@ -11,7 +11,9 @@
 		"specification",
 		"edge",
 		"line",
-		"block" ],
+		"block",
+		"diagram",
+		"id" ],
 	"name" : "BormDslParser",
 	"pools" : [
 		 ],

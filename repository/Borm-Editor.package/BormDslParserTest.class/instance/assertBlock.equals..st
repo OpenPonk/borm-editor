@@ -1,3 +1,3 @@
 asserting
 assertBlock: aString equals: anArray
-	self assert: (parser parse: aString) equals: anArray
+	self assert: (parser parseBlock: aString) equals: anArray

@@ -1,3 +1,3 @@
 parsing
 parse: aString
-	^ block parse: aString
+	^ diagram parse: aString

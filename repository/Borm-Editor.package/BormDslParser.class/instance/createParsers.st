@@ -1,7 +1,9 @@
 private
 createParsers
-	| quotedParam param anyParam optionalParams params id |
-	id := #word asParser plus ==> [ :str | String newFrom: str ].
+	| quotedParam param anyParam optionalParams params innerBlock part |
+	part := #word asParser star ==> [ :str | String newFrom: str ].
+	id := ((part , $. asParser) flatten optional , part)
+		==> [ :arr | (arr first ifNil: [ '' ] ifNotNil: [ arr first ]) , arr second ].
 
 	transition := id , (' -> ' asParser ==> [ :str | str trim ]) , id.
 	communication := id , (' ->> ' asParser ==> [ :str | str trim ]) , id.
@@ -16,5 +18,9 @@ createParsers
 	specification := id , params.
 
 	line := edge / specification.
-	block := (line , ((Character cr asParser , line) ==> [ :arr | arr second ]) star , Character lf asParser star)
-		==> [ :arr | (Array with: arr first) , arr second ]
+	innerBlock := ((line , Character cr asParser) ==> [ :arr | arr first ]) star.
+
+	block := (specification , ${ asParser , Character cr asParser , innerBlock , $} asParser
+		, Character cr asParser optional) ==> [ :arr | Array with: arr first with: arr second with: arr fifth ].
+
+	diagram := block star

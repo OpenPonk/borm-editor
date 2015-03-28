@@ -1,4 +1,4 @@
 parsing
 parse: aString
-	self processBlock: (BormDslParser new parse: aString).
-	^ participant
+	self processDiagram: (BormDslParser new parse: aString).
+	^ diagram

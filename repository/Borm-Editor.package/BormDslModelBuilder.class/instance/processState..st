@@ -8,5 +8,5 @@ processState: anArray
 		ifTrue: [ state beInitial ].
 	(params includes: 'final')
 		ifTrue: [ state beFinal ].
-	dictionary at: anArray first put: state.
+	nodes at: anArray first put: state.
 	^ state

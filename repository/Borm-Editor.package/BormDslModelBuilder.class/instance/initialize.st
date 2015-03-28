@@ -1,4 +1,7 @@
 initialization
 initialize
 	super initialize.
-	dictionary := Dictionary new
+	nodes := Dictionary new.
+	participants := Dictionary new.
+	diagram := BormDiagram new.
+	participantNodes := Dictionary new

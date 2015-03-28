@@ -1,6 +1,7 @@
 private - processing
 processSpecification: anArray
-	dictionary at: anArray first ifPresent: [ :item | ^ item ].
+	(anArray first includes: $.)
+		ifTrue: [ ^ self processSubActivity: anArray ].
 	anArray first first = $p
 		ifTrue: [ ^ self processParticipant: anArray ].
 	anArray first first = $a
