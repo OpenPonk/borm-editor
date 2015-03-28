@@ -1,6 +1,8 @@
 I parse simple BORM DSL.
 This is currently primarily for testing purposes (i.e. quick bootstrapping).
 
+Look to DSLParser/DSLModelBuilder tests/examples for more examples.
+
 Each identifier (participant, state, activity) must be prefixed with corresponding letter (i.e. p for participant, s for state, a for activity).
 
 Diagram is composed of multiple participants: 
