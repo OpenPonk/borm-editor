@@ -1,3 +1,3 @@
 accessing - icons
 systemIcon
-	^ self current systemIcon
+	^ self current settingsIcon

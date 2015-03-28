@@ -4,4 +4,4 @@ createContainerFigure
 		width: 200;
 		height: 300;
 		color: Color paleBlue;
-		borderColor: Color gray) element
+		borderColor: Color gray) elementOn: ''

@@ -7,5 +7,5 @@ layoutParticipant: aParticipant
 		verticalGap: 30;
 		on: ctrl nodeFigures.
 	bounds := ctrl nodeFigures asGroup encompassingRectangle.
-	bounds := bounds expandBy: 20 @ 10.
+	bounds := bounds expandBy: 40 @ 30.
 	RTNest new resizeWithoutRecursion: ctrl figure bounds: bounds
