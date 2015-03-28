@@ -1,0 +1,14 @@
+{
+	"category" : "Borm-Editor-Icons",
+	"classinstvars" : [
+		"current" ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"icons" ],
+	"name" : "BormEditorIcons",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

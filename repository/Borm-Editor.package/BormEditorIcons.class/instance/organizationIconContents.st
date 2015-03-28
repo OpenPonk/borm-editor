@@ -1,0 +1,8 @@
+private - contents
+organizationIconContents
+	"Private - Method generated with the content of the file /home/peter/prog/dynacase/git/borm-editor/icons/organization.png"
+	^ 'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlw
+SFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoA
+AABpSURBVEiJ7ZXBCsAwCEOXsf//5beTUATRsVVWaE7NpTGJtAKOmTin3t4hcNlBUikrQE8E
++iMCNE7p+WuBryFb02oHVZjrvi3yyuYo4hF8Ev0O/AQRrzr7fwdZJ7uDFOt3sP5bpP3pZ7gB
+ECRgJU8WKWkAAAAASUVORK5CYII='

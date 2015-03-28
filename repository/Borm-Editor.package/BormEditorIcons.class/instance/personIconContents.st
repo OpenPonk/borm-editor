@@ -1,0 +1,9 @@
+private - contents
+personIconContents
+	"Private - Method generated with the content of the file /home/peter/prog/dynacase/git/borm-editor/icons/person.png"
+	^ 'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlw
+SFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoA
+AAC+SURBVEiJ5ZRBDoIwEEXfN17CVTfcQLectxfgALiXa9QtW1bjgpIQIrSiRImTvLTNZP5P
+OtPKzNgyDpuq/4+BJCfJSwoRL8llOZjZIoADWsAmtIBL1mcY+CfiA/4TBmHBIKTqf6LJ15W5
+Pr7e5JGJp+9HiPukuJmh3f9Fx6WkpBNwjlziCtBEbkBjZvdZkZk7L4CK+fmfUgFFVpOBEuhe
+EB/ogDLHoF4hPlAnp0jSW2NlZhqfN5+i/b+D/Rs8ALopp9x1YQj4AAAAAElFTkSuQmCC'
