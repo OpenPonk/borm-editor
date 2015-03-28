@@ -10,7 +10,13 @@ baseline: spec
 			baseline: 'DynaCASE' with: [ 
 				spec
 					repository: 'github://dynacase/dynacase/repository' ].
+		spec
+			baseline: 'PetitParser' with: [ 
+				spec
+					className: #ConfigurationOfPetitParser;
+					versionString: #'minimal';
+					repository: 'http://smalltalkhub.com/mc/Moose/PetitParser/main/' ].
 		spec 
 			package: 'Borm-Editor' with: [
-				spec requires: #('BormModel' 'DynaCASE' ). ].
+				spec requires: #('BormModel' 'DynaCASE' 'PetitParser' ). ].
 		spec group: 'default' with: #('Borm-Editor' ). ]
