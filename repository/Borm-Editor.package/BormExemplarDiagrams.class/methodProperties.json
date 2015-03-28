@@ -1,11 +1,10 @@
 {
 	"class" : {
 		"addCommunicationsBetween:and:" : "PeterUhnak 3/28/2015 01:21",
-		"addComplexDiagramFor:" : "PeterUhnak 3/28/2015 02:03",
 		"addDiagramFor:" : "PeterUhnak 3/28/2015 01:21",
 		"bormEdgeFrom:to:with:" : "PeterUhnak 3/28/2015 01:21",
-		"openComplexParticipant" : "PeterUhnak 3/28/2015 02:03",
-		"openSingleParticipant" : "PeterUhnak 3/28/2015 01:23",
+		"openProject:diagram:dsl:" : "PeterUhnak 3/28/2015 13:32",
+		"openSingleParticipant" : "PeterUhnak 3/28/2015 13:33",
 		"openTwoParticipants" : "PeterUhnak 3/28/2015 01:46" },
 	"instance" : {
 		 } }
