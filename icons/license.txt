@@ -1,0 +1,4 @@
+Material Design Icons by Google is licensed under an Attribution 4.0 International license (https://creativecommons.org/licenses/by/4.0/)
+https://github.com/google/material-design-icons/blob/master/LICENSE
+
+Modification? "Converted to PNG"
