@@ -8,9 +8,11 @@ testCommunicationDiagram
 
 	self assert: participants first name equals: 'pSource'.
 	self assert: participants first nodes size equals: 1.
+	self assert: participants first nodes anyOne name equals: 'a1'.
 
 	self assert: participants second name equals: 'pTarget'.
 	self assert: participants second nodes size equals: 1.
+	self assert: participants second nodes anyOne name equals: 'a2'.
 
 	communication := participants first nodes anyOne sent anyOne.
 	self assert: communication class equals: BormCommunication.
