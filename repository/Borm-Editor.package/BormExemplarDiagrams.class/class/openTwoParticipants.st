@@ -1,15 +1,25 @@
-as yet unclassified
+examples
 openTwoParticipants
 	<example>
-	| diagram project user system |
-	project := DCProject new projectName: 'Example BORM'.
-	diagram := BormDiagram new name: 'BORM diagram'.
-	project addDiagram: diagram.	
-	user := BormParticipant new name: 'User'.
-	system := BormParticipant new name: 'System'.
-	system type: BormParticipantType System.
-	diagram add: user; add: system.
-	self addDiagramFor: user.
-	self addDiagramFor: system.
-	self addCommunicationsBetween: user and: system.
-	DCWorkbench openProject: project
+	^ self
+		openProject: 'Example BORM'
+		diagram: 'Two Participants'
+		dsl:
+			'pUU(User){
+s1(initial)
+s1 -> a1
+a1 -> sMid
+sMid -> a2
+s2(final)
+a2 -> s2
+a1 ->> pSS.a1
+}
+pSS(System, System){
+s1(initial)
+s1 -> a1
+a1 -> sMid
+sMid -> a2
+s2(final)
+a2 -> s2
+a2 ->> pUU.a2
+}'

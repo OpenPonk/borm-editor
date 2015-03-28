@@ -1,4 +1,4 @@
-as yet unclassified
+instance creation
 openProject: aProjectName diagram: aDiagramName dsl: dslSpec
 	DCWorkbench
 		openProject:
