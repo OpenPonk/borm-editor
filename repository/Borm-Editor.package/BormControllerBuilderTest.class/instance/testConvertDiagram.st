@@ -11,6 +11,9 @@ testConvertDiagram
 	a addTransition: tr.
 	s addTransition: tr.
 	builder := BormControllerBuilder new.
-	ctrl := builder createControllersFor: diagram.
+	builder
+		view: RTView new;
+		diagram: diagram.
+	ctrl := builder build.
 
 	self assert: ctrl model equals: diagram
