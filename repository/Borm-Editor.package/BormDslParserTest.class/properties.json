@@ -1,0 +1,14 @@
+{
+	"category" : "Borm-Editor-Tests",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"parser" ],
+	"name" : "BormDslParserTest",
+	"pools" : [
+		 ],
+	"super" : "DCTestCase",
+	"type" : "normal" }

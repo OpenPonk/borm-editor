@@ -1,0 +1,15 @@
+{
+	"category" : "Borm-Editor-DslParser",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "PeterUhnak 3/28/2015 03:59",
+	"instvars" : [
+		"participant",
+		"dictionary" ],
+	"name" : "BormDslModelBuilder",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

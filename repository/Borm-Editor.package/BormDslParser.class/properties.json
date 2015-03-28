@@ -1,0 +1,19 @@
+{
+	"category" : "Borm-Editor-DslParser",
+	"classinstvars" : [
+		"id" ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"transition",
+		"communication",
+		"specification",
+		"edge",
+		"line",
+		"block" ],
+	"name" : "BormDslParser",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
