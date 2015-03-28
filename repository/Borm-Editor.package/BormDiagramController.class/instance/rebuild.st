@@ -1,6 +1,6 @@
 as yet unclassified
 rebuild
-	| builder |
+	| builder bb |
 	controllers := nil.
 	self view cleanAll.
 	builder := BormControllerBuilder new.
@@ -8,4 +8,7 @@ rebuild
 		diagramController: self;
 		view: self view;
 		diagram: self model;
-		build
+		build.
+	bb := BormBasicLayout new.
+	bb diagramController: self.
+	bb applyLayout

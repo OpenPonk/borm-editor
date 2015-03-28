@@ -1,5 +1,6 @@
 SystemOrganization addCategory: #'Borm-Editor'!
 SystemOrganization addCategory: 'Borm-Editor-Controllers'!
+SystemOrganization addCategory: 'Borm-Editor-Layouting'!
 SystemOrganization addCategory: 'Borm-Editor-Roassal-Interactions'!
 SystemOrganization addCategory: 'Borm-Editor-Tests'!
 SystemOrganization addCategory: 'Borm-Editor-Utility'!
