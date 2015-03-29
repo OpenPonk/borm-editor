@@ -1,8 +1,9 @@
 hooks
 createShape
 	| shape |
-	shape := RTEllipse new
+	shape := DCRTBox new
 		width: 100;
 		height: 50;
-		borderColor: Color gray.
+		borderColor: Color gray;
+		borderRadius: 20.
 	^ shape
