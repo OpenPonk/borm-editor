@@ -15,6 +15,7 @@ createFigure
 			iconElement := (RTBitmap new form: self typeIconForModel) element.
 			view add: iconElement.
 			DCTRConstraint stick: iconElement trachelShape onTheTopRightOf: container trachelShape.
+			container addCallback: (TRRemoveCallback block: [ iconElement remove ]).
 
 			elements := RTGroup new.
 			elements @ RTDraggable.

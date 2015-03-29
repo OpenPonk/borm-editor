@@ -1,4 +1,4 @@
 *Borm-Editor
 exampleBorm
-	<example: 'DynaCASE example BORM'>
-	BormExemplarDiagrams openTwoParticipants
+	<example: 'DynaCASE BORM'>
+	BormExemplarDiagrams openEmpty

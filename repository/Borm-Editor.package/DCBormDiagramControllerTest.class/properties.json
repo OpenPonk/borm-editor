@@ -1,0 +1,18 @@
+{
+	"category" : "Borm-Editor-Tests",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"parser",
+		"diagramController",
+		"participantController",
+		"diagram",
+		"participant" ],
+	"name" : "DCBormDiagramControllerTest",
+	"pools" : [
+		 ],
+	"super" : "DCControllerTest",
+	"type" : "normal" }
