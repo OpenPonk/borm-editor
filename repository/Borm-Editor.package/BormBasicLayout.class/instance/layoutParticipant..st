@@ -2,7 +2,8 @@ layouting
 layoutParticipant: aParticipant
 	| ctrl bounds |
 	ctrl := diagramController controllerForModel: aParticipant.
-	RTSugiyamaLayout new
+"	RTSugiyamaLayout new"
+	RTDominanceTreeLayout new
 		horizontalGap: 30;
 		verticalGap: 30;
 		on: ctrl nodeFigures.
