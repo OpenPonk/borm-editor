@@ -15,7 +15,7 @@ Metacello new
 
 ```
 Gofer new
-	url: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo30/main';
+	url: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo40/main';
 	configurationOf: 'GitFileTree';
 	loadDevelopment.
 ```
