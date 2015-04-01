@@ -2,14 +2,14 @@
 	"class" : {
 		 },
 	"instance" : {
-		"addAsTargetFor:" : "PeterUhnak 3/25/2015 07:15:01",
+		"addAsTargetFor:" : "PeterUhnak 4/1/2015 20:54",
 		"buildEditorForm:" : "PeterUhnak 3/28/2015 16:08",
 		"canBeTargetFor:" : "PeterUhnak 3/25/2015 07:15:01",
 		"createContainerFigure" : "PeterUhnak 3/29/2015 22:47",
-		"createFigure" : "PeterUhnak 3/28/2015 19:46",
+		"createFigure" : "PeterUhnak 3/31/2015 19:14",
 		"modelClass" : "PeterUhnak 3/25/2015 07:15:01",
 		"nodeFigures" : "PeterUhnak 3/28/2015 01:31",
-		"refreshFigure" : "PeterUhnak 3/28/2015 16:07",
-		"removeModelElement:" : "PeterUhnak 3/28/2015 21:33",
+		"refreshFigure" : "PeterUhnak 4/1/2015 17:59",
+		"removeModelElement:" : "PeterUhnak 4/1/2015 19:20",
 		"typeIconFor:" : "PeterUhnak 3/28/2015 15:59",
 		"typeIconForModel" : "PeterUhnak 3/28/2015 15:59" } }

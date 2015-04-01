@@ -1,4 +1,3 @@
-as yet unclassified
+removing
 removeModelElement: aModelElement
-	self model remove: aModelElement.
-	self parent removeControllerOf: aModelElement
+	self model remove: aModelElement
