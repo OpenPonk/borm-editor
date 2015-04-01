@@ -1,4 +1,4 @@
-# BORM model
+# BORM editor
 
 ## For non-development
 
