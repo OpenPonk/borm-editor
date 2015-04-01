@@ -1,4 +1,4 @@
-# BORM editor
+# BORM Editor
 
 ## For non-development
 
