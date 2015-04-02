@@ -1,25 +1,32 @@
-# BORM model
+# BORM Editor
 
-## load GitFileTree
+## For non-development
+
+```
+Metacello new
+	baseline: 'BormEditor';
+	repository: 'github://dynacase/borm-editor/repository';
+	load.
+```
+
+## For development
+
+1. load GitFileTree
 
 ```
 Gofer new
-	url: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo30/main';
+	url: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo40/main';
 	configurationOf: 'GitFileTree';
 	loadDevelopment.
 ```
 
-## load repo
-
-### READ/WRITE
-
-clone git repo
+2. clone git repo
 
 ```
 git clone git@github.com:dynacase/borm-editor.git my_path_to_wherever
 ```
 
-load project (in Playground); **Do not forget to point to /repository subfolder.**
+3. load project (in Playground); **Do not forget to point to /repository subfolder.**
 
 ```
 Metacello new
@@ -28,11 +35,4 @@ Metacello new
 	load.
 ```
 
-### READ-only
-
-```
-Metacello new
-	baseline: 'BormEditor';
-	repository: 'github://dynacase/borm-editor/repository';
-	load.
-```
+0. if you need to make changes to DynaCASE itself, you will need to make use of locks. (https://github.com/dynacase/dynacase/blob/master/README.md)
