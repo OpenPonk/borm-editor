@@ -4,9 +4,10 @@
 	"instance" : {
 		"addAsSourceFor:" : "PeterUhnak 3/25/2015 07:15:01",
 		"addAsTargetFor:" : "PeterUhnak 3/25/2015 07:15:01",
-		"addConnection:" : "PeterUhnak 4/1/2015 20:49",
+		"addConnection:" : "PeterUhnak 4/2/2015 06:34",
 		"canBeSourceFor:" : "PeterUhnak 3/25/2015 07:15:01",
 		"canBeTargetFor:" : "PeterUhnak 3/25/2015 07:15:01",
 		"createFigure" : "PeterUhnak 3/25/2015 23:21",
 		"createShape" : "PeterUhnak 3/25/2015 07:15:01",
-		"refreshFigure" : "PeterUhnak 3/25/2015 23:26" } }
+		"refreshFigure" : "PeterUhnak 3/25/2015 23:26",
+		"removeModelElement:" : "PeterUhnak 4/2/2015 06:37" } }
