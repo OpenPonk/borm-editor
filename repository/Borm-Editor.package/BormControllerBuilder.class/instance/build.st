@@ -6,4 +6,5 @@ build
 	self addNodes: (self collectNodes: diagram participants).
 	self addEdges: (self collectTransitions: diagram participants).
 	self addEdges: (self collectCommunications: diagram participants).
+	self addDataFlows: (self collectDataFlows: diagram participants).
 	^ diagramController

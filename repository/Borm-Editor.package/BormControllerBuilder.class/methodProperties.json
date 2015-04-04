@@ -2,12 +2,14 @@
 	"class" : {
 		 },
 	"instance" : {
+		"addDataFlows:" : "PeterUhnak 4/3/2015 22:01",
 		"addEdge:" : "PeterUhnak 3/25/2015 22:44",
 		"addEdges:" : "PeterUhnak 3/25/2015 21:19",
 		"addNodes:" : "PeterUhnak 3/25/2015 18:33",
 		"addParticipants:" : "PeterUhnak 3/25/2015 18:34",
-		"build" : "PeterUhnak 3/25/2015 23:33",
+		"build" : "PeterUhnak 4/3/2015 22:10",
 		"collectCommunications:" : "PeterUhnak 3/25/2015 21:20",
+		"collectDataFlows:" : "PeterUhnak 4/3/2015 22:10",
 		"collectNodes:" : "PeterUhnak 3/25/2015 18:29",
 		"collectTransitions:" : "PeterUhnak 3/25/2015 18:38",
 		"controllerFor:" : "PeterUhnak 3/25/2015 18:31",

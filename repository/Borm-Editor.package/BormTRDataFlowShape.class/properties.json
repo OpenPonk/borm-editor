@@ -1,14 +1,14 @@
 {
-	"category" : "Borm-Editor-Controllers",
+	"category" : "Borm-Editor-Trachel-Shapes",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"labelFigure" ],
-	"name" : "BormDataFlowController",
+		 ],
+	"name" : "BormTRDataFlowShape",
 	"pools" : [
 		 ],
-	"super" : "DCElementController",
+	"super" : "Object",
 	"type" : "normal" }
