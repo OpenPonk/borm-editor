@@ -12,5 +12,6 @@ processEdge: anArray
 		ifTrue: [ 
 			edge := BormCommunication from: source to: target.
 			source send: edge.
-			target receive: edge ].
+			target receive: edge.
+			self processDataFlows: anArray fourth in: edge ].
 	^ edge

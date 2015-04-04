@@ -1,9 +1,10 @@
 tests
 testActivity
-	| transition |
-	transition := builder processLine: #('a1' '->>' 'a2').
-	self assert: transition class equals: BormCommunication.
-	self assert: transition source class equals: BormActivity.
-	self assert: transition source name equals: 'a1'.
-	self assert: transition target class equals: BormActivity.
-	self assert: transition target name equals: 'a2'
+	| communication |
+	communication := builder processLine: #('a1' '->>' 'a2' #()).
+	self assert: communication class equals: BormCommunication.
+	self assert: communication source class equals: BormActivity.
+	self assert: communication source name equals: 'a1'.
+	self assert: communication target class equals: BormActivity.
+	self assert: communication target name equals: 'a2'.
+	self assert: communication dataFlows isEmpty.

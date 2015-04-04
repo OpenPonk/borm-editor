@@ -1,7 +1,7 @@
 tests
-testCommunicationDiagram
+testDiagramWithDataFlows
 	| arr participants communication |
-	arr := {#('p1' #('pSource') #(#('a1' '->>' 'p2.a2' #()))).
+	arr := {#('p1' #('pSource') #(#('a1' '->>' 'p2.a2' #(#('output') #('input'))))).
 	#('p2' #('pTarget') #(#('a2' #('a2'))))}.
 	participants := (builder processDiagram: arr) participants asSortedCollection: [ :a :b | a name < b name ].
 	self assert: participants size equals: 2.
@@ -17,4 +17,5 @@ testCommunicationDiagram
 	communication := participants first nodes anyOne sent anyOne.
 	self assert: communication class equals: BormCommunication.
 	self assert: communication sender equals: participants first nodes anyOne.
-	self assert: communication receiver equals: participants second nodes anyOne
+	self assert: communication receiver equals: participants second nodes anyOne.
+	self assert: communication dataFlows size equals: 2

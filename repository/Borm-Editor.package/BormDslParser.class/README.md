@@ -12,7 +12,7 @@ stateNode(stateParams)
 activityNode(activityParams)
 stateSource -> activityTarget
 activitySource ->> participantOther.activityTarget
-}
+anotherActivity ->> ppOther.activityTarget [(dataFlowName), ('another data flow', output)]
 ]]]
 
 For all items (participant, state, activity) the first parameter (if provided) is used as its name; otherwise the identifer is used.
@@ -27,3 +27,5 @@ Activity can only have name.
 ->> denotes commuinication
 
 Since communcation ends in different participant, the activity identifier must be prefixed with the participants identifier (i.e. aMyActivity ->> pRemoteParticipant.aRemoteActivity)
+
+Optionally activity can have data flows; they are enclosed in {  } starting at the same line as the activity.
