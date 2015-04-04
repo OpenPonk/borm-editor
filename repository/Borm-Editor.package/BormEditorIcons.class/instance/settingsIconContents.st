@@ -1,6 +1,6 @@
 private - contents
 settingsIconContents
-	"Private - Method generated with the content of the file /home/peter/prog/dynacase/git/borm-editor/icons/settings.png"
+	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/settings.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlw
 SFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoA
 AAEdSURBVEiJ1ZYxbgJBDEWfUYQo6KgokSjpKSK6HCASNTkBHQXnoCVVDpAiDRVtKq4QQYO4

@@ -6,7 +6,8 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"labelFigure" ],
+		"labelFigure",
+		"iconFigure" ],
 	"name" : "BormDataFlowController",
 	"pools" : [
 		 ],

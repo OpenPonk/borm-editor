@@ -1,19 +1,21 @@
 private
 createFigureInView: aView
-	| container icon |
+	| container |
 	container := self createContainerShape element.
 	container @ RTDraggable.
 
-	labelFigure := (RTLabel new color: Color black) elementOn: 'Data Flow Change Me'.
+	labelFigure := (RTLabel new color: Color black) elementOn: ''.
 	DCTRConstraint stick: labelFigure onTheTopCenterOf: container trachelShape.
-	icon := (RTBitmap new form: BormEditorIcons current dataFlowIcon) element.
-	DCTRConstraint stick: icon onTheBottomCenterOf: container trachelShape.
+	iconFigure := (RTBitmap new form: BormEditorIcons current dataFlowRightIcon) element.
+	DCTRConstraint stick: iconFigure onTheBottomCenterOf: container trachelShape.
 
-	container addCallback: (TRRemoveCallback with: icon with: labelFigure).
+	container addCallback: (TRRemoveCallback with: iconFigure with: labelFigure).
+	
+	self constraintOnEdge: container.
 
 	aView
 		add: container;
-		add: icon;
+		add: iconFigure;
 		add: labelFigure.
 
 	^ container

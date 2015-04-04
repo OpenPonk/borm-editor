@@ -7,4 +7,5 @@ createEdgeFrom: fromElement to: toElement
 			builder arrowHead.
 			edge := builder createEdgeFrom: fromElement to: toElement.
 			view add: edge.
+			edge trachelShape pushBack.
 			edge ]

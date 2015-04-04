@@ -1,4 +1,4 @@
-hooks
+as yet unclassified
 createShape
 	| shape |
 	shape := RTBox new

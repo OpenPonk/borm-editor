@@ -3,8 +3,8 @@
 	"classinstvars" : [
 		"current" ],
 	"classvars" : [
-		 ],
-	"commentStamp" : "",
+		"Current" ],
+	"commentStamp" : "PeterUhnak 4/4/2015 13:16",
 	"instvars" : [
 		"icons" ],
 	"name" : "BormEditorIcons",

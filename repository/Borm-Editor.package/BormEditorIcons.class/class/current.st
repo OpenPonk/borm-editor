@@ -1,3 +1,3 @@
-accessing
+instance creation
 current
-	^ current ifNil: [ current := self new ]
+	^ Current ifNil: [ Current := self new ]
