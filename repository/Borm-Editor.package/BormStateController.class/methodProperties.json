@@ -2,11 +2,11 @@
 	"class" : {
 		 },
 	"instance" : {
-		"buildEditorForm:" : "PeterUhnak 4/4/2015 20:23",
+		"buildEditorForm:" : "PeterUhnak 4/4/2015 20:24:12",
 		"canBeSourceFor:" : "PeterUhnak 3/25/2015 07:15:01",
 		"canBeTargetFor:" : "PeterUhnak 3/25/2015 23:35",
-		"createFigure" : "PeterUhnak 4/4/2015 19:45",
-		"createFigureInView:" : "PeterUhnak 4/4/2015 20:18",
-		"createShape" : "PeterUhnak 4/4/2015 20:15",
+		"createFigure" : "PeterUhnak 4/4/2015 20:24:12",
+		"createFigureInView:" : "PeterUhnak 4/4/2015 20:24:12",
+		"createShape" : "PeterUhnak 4/4/2015 20:24:12",
 		"modelClass" : "PeterUhnak 3/25/2015 07:15:01",
-		"refreshFigure" : "PeterUhnak 4/4/2015 20:21" } }
+		"refreshFigure" : "PeterUhnak 4/4/2015 20:24:12" } }
