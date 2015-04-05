@@ -9,4 +9,4 @@ initializePalette: aPalette
 		newConnectionCreationTool: 'Transition' factory: [ BormTransitionController new ];
 		newConnectionCreationTool: 'Communication' factory: [ BormCommunicationController new ];
 		newSeparator;
-		newCreationTool: 'Data Flow' factory: [ BormDataFlow new ]
+		newCreationTool: 'Data Flow' factory: [ BormDataFlowController new ]

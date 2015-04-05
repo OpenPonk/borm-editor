@@ -7,7 +7,7 @@ constraintOnEdge: anElement
 		alongEdge: edge
 		balance: 0.5
 		offset: 0.
-	cb := TRTranslationCallback
+"	cb := TRTranslationCallback
 		block: [ 
 			| right |
 			right := edge from position x < edge to position x.
@@ -17,4 +17,4 @@ constraintOnEdge: anElement
 				ifTrue: [ iconFigure trachelShape form: BormEditorIcons current dataFlowRightIcon ]
 				ifFalse: [ iconFigure trachelShape form: BormEditorIcons current dataFlowLeftIcon ] ].
 	edge from addCallback: cb.
-	edge to addCallback: cb
+	edge to addCallback: cb"

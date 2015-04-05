@@ -3,8 +3,10 @@
 		 },
 	"instance" : {
 		"applyLayout" : "PeterUhnak 3/28/2015 01:43",
+		"collectCommunications:" : "PeterUhnak 4/4/2015 23:25",
 		"diagramController:" : "PeterUhnak 3/28/2015 01:30",
-		"layoutDiagram:" : "PeterUhnak 3/28/2015 01:47",
+		"layoutCommunications:" : "PeterUhnak 4/4/2015 20:38",
+		"layoutDiagram:" : "PeterUhnak 4/4/2015 23:27",
 		"layoutParticipant:" : "PeterUhnak 3/30/2015 20:01",
 		"layoutParticipants:" : "PeterUhnak 3/28/2015 01:59",
 		"updateView" : "PeterUhnak 3/28/2015 01:45" } }
