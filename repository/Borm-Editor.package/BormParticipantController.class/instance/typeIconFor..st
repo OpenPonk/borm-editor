@@ -1,8 +1,8 @@
 hooks
 typeIconFor: aType
 	aType = BormParticipantType Person
-		ifTrue: [ ^ BormEditorIcons personIcon ].
+		ifTrue: [ ^ BormEditorIcons current personIcon ].
 	aType = BormParticipantType System
-		ifTrue: [ ^ BormEditorIcons systemIcon ].
+		ifTrue: [ ^ BormEditorIcons current systemIcon ].
 	aType = BormParticipantType Organization
-		ifTrue: [ ^ BormEditorIcons organizationIcon ]
+		ifTrue: [ ^ BormEditorIcons current organizationIcon ]

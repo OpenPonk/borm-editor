@@ -3,6 +3,7 @@ createFigureInView: aView
 	| element shape |
 	shape := self createShape.
 	element := shape elementOn: ''.
+	aView add: element.
 	element
 		@
 			(RTLabelled new
@@ -11,12 +12,10 @@ createFigureInView: aView
 				color: Color black;
 				yourself).
 
-	playBox := RTSVGPath new
-		color: Color green;
-		borderColor: Color black;
-		path: 'M 0 0 L 15 7 L 0 15 Z';
+	playBox := RTBitmap new
+		form: BormEditorIcons current initialIcon;
 		element.
-	aView add: playBox.
+
 	DCTRConstraint stick: playBox trachelShape onTheCenterRightOf: element trachelShape.
 	element addCallback: (TRRemoveCallback with: playBox).
 

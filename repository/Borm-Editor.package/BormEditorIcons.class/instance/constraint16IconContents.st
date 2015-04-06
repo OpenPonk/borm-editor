@@ -1,0 +1,12 @@
+private - contents
+constraint16IconContents
+	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/16/constraint16.png"
+	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA
+CXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wQGADMhR1WIKAAAABl0RVh0Q29tbWVudABD
+cmVhdGVkIHdpdGggR0lNUFeBDhcAAAE1SURBVDjLpVMxq4JgFD3fQ9HNta2tqUWem5OLtNVW
+kzWKOAo69ivSv+DUD2gxaGh40NjUJjoIgk2CyH3De0plg9KFC/ceznfu5TtcRkT4JLi+xPv9
+DtM0Kc/zFttsNmC73Y6Konj7yPM81tRRFJGmaXBdFwBwOp3AcRzYYrGgNE07067XK4ioI9Bg
+2+2WoigCt9/v2evkhtwnvvBhPAnEcUyvrpRliSzLfnoJXC4XyLJMQRAAACzLoslkQnVdf/cS
+mM1mLEkShGEIAPB9H9PpFKPRiPUS4Hkeq9XqibBer4d9omEYbS1JEubzORskoCgKG4/HAIDl
+cglRFIfbqOt6Z5tBt+A4Dg6HA1RV7ax/Pp/p3/I/gIje5vF4pMf+druRJEkEoE3btokNOeeq
+qlDXddsLgoBfctCfQrEb8q0AAAAASUVORK5CYII='

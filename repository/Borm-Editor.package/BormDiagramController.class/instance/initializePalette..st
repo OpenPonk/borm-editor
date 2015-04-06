@@ -1,12 +1,18 @@
 initialization
 initializePalette: aPalette
 	aPalette
-		newCreationTool: 'Participant' factory: [ BormParticipantController new ];
+		newCreationTool: 'Participant'
+			factory: [ BormParticipantController new ]
+			icon: BormEditorIcons current participant16Icon;
 		newSeparator;
-		newCreationTool: 'State' factory: [ BormStateController new ];
-		newCreationTool: 'Activity' factory: [ BormActivityController new ];
+		newCreationTool: 'State' factory: [ BormStateController new ] icon: BormEditorIcons current state16Icon;
+		newCreationTool: 'Activity' factory: [ BormActivityController new ] icon: BormEditorIcons current activity16Icon;
 		newSeparator;
-		newConnectionCreationTool: 'Transition' factory: [ BormTransitionController new ];
-		newConnectionCreationTool: 'Communication' factory: [ BormCommunicationController new ];
+		newConnectionCreationTool: 'Transition'
+			factory: [ BormTransitionController new ]
+			icon: BormEditorIcons current transition16Icon;
+		newConnectionCreationTool: 'Communication'
+			factory: [ BormCommunicationController new ]
+			icon: BormEditorIcons current communication16Icon;
 		newSeparator;
-		newCreationTool: 'Data Flow' factory: [ BormDataFlowController new ]
+		newCreationTool: 'Data Flow' factory: [ BormDataFlowController new ] icon: BormEditorIcons current dataFlow16Icon

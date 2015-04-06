@@ -3,7 +3,8 @@ createShape
 	| shape |
 	shape := DCRTBox new
 		width: 100;
-		height: 50;
-		borderColor: Color gray;
+		height: 40;
+		color: (Color fromHexString: 'f2f2f2');
+		borderColor: Color black;
 		borderRadius: 20.
 	^ shape

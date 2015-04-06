@@ -3,6 +3,6 @@ createContainerFigure
 	^ (DCRTBox new
 		width: 200;
 		height: 300;
-		color: Color paleBlue;
+		color: (Color fromHexString: 'bce2fe');
 		borderRadius: 5;
-		borderColor: Color gray) elementOn: ''
+		borderColor: Color black) elementOn: ''
