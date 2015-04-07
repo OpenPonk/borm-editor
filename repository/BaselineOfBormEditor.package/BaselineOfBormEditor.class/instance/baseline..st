@@ -11,10 +11,10 @@ baseline: spec
 				spec
 					repository: 'github://dynacase/dynacase/repository' ].
 		spec
-			baseline: 'PetitParser' with: [ 
+			project: 'PetitParser' with: [ 
 				spec
 					className: #ConfigurationOfPetitParser;
-					versionString: #'minimal';
+					versionString: #'petitParser';
 					repository: 'http://smalltalkhub.com/mc/Moose/PetitParser/main/' ].
 		spec 
 			package: 'Borm-Editor' with: [
