@@ -14,7 +14,8 @@ baseline: spec
 			project: 'PetitParser' with: [ 
 				spec
 					className: #ConfigurationOfPetitParser;
-					versionString: #'petitParser';
+					versionString: #development;
+					loads: #('Parser');
 					repository: 'http://smalltalkhub.com/mc/Moose/PetitParser/main/' ].
 		spec 
 			package: 'Borm-Editor' with: [
