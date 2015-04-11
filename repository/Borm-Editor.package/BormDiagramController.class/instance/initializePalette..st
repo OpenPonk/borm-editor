@@ -15,4 +15,7 @@ initializePalette: aPalette
 			factory: [ BormCommunicationController new ]
 			icon: BormEditorIcons current communication16Icon;
 		newSeparator;
-		newCreationTool: 'Data Flow' factory: [ BormDataFlowController new ] icon: BormEditorIcons current dataFlow16Icon
+		newCreationTool: 'Data Flow' factory: [ BormDataFlowController new ] icon: BormEditorIcons current dataFlow16Icon;
+		newCreationTool: 'Constraint'
+			factory: [ BormConstraintController new ]
+			icon: BormEditorIcons current constraint16Icon

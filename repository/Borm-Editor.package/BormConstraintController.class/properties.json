@@ -1,0 +1,14 @@
+{
+	"category" : "Borm-Editor-Controllers",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "BormConstraintController",
+	"pools" : [
+		 ],
+	"super" : "DCElementController",
+	"type" : "normal" }

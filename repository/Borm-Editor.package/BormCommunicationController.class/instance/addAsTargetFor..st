@@ -1,10 +1,7 @@
 adding
-addAsTargetFor: aDataFlowController
-	| newDataFlow |
-	self assert: (self canBeTargetFor: aDataFlowController).
-	aDataFlowController diagramController: self diagramController.
-	newDataFlow := aDataFlowController createModel.
-	self model addDataFlow: newDataFlow.
-	aDataFlowController model: newDataFlow.
-	self diagramController controllers add: aDataFlowController.
-	aDataFlowController attach
+addAsTargetFor: aController
+	self assert: (self canBeTargetFor: aController).
+	(self canBeTargetForDataFlow: aController)
+		ifTrue: [ self addAsTargetForDataFlow: aController ].
+	(self canBeTargetForConstraint: aController)
+		ifTrue: [ self addAsTargetForConstraint: aController ]
