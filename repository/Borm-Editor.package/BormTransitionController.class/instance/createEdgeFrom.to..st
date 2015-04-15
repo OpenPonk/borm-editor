@@ -1,12 +1,17 @@
 hooks
 createEdgeFrom: fromElement to: toElement
-	| builder edge |
+	| edge shape |
 	^ DCRTCallbackBuilder
 		block: [ :view | 
-			builder := DCRTEdgeBuilder new.
+			shape := DCRTNewMultiLine new
+				withContinuousRectangleAttachPoint;
+				color: Color black;
+				width: 2.
 			(self model target isKindOf: BormState)
-				ifTrue: [ builder filledNarrowArrowHead ].
-			builder lineWidth: 2.
-			edge := builder createEdgeFrom: fromElement to: toElement.
+				ifTrue: [ shape filledNarrowArrowHead ].
+			edge := shape edgeFrom: fromElement to: toElement.
+			edge @ DCRTLineHandles.
+			(self diagramController controllerForModel: self model source owner) figure trachelShape
+				addCallback: (TRTranslationCallback block: [ :sh :step | shape translateBy: step for: edge ]).
 			view add: edge.
 			edge ]
