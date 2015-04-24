@@ -1,11 +1,14 @@
 hooks
 createEdgeFrom: fromElement to: toElement
-	| builder edge |
+	| edge |
 	^ DCRTCallbackBuilder
 		block: [ :view | 
-			builder := DCRTEdgeBuilder new.
-			builder arrowHead.
-			edge := builder createEdgeFrom: fromElement to: toElement.
+			edge := DCRTNewMultiLine new
+				withContinuousRectangleAttachPoint;
+				color: Color black;
+				arrowHead;
+				edgeFrom: fromElement to: toElement.
+			edge @ DCRTLineHandles.
 			view add: edge.
 			edge trachelShape pushBack.
 			edge ]
