@@ -1,7 +1,7 @@
-initialization
+as yet unclassified
 initialize
 	super initialize.
-	modelToControllerMapping
+	ModelToControllerMapping
 		at: BormCommunication put: BormCommunicationController;
 		at: BormDataFlow put: BormDataFlowController;
 		at: BormParticipant put: BormParticipantController;

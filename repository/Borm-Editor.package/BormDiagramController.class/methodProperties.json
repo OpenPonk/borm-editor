@@ -1,9 +1,9 @@
 {
 	"class" : {
+		"initialize" : "PeterUhnak 4/25/2015 19:57",
 		"modelClass" : "PeterUhnak 4/14/2015 23:40:19" },
 	"instance" : {
 		"canBeTargetFor:" : "PeterUhnak 4/14/2015 23:40:19",
-		"initialize" : "PeterUhnak 4/14/2015 23:40:19",
 		"initializePalette:" : "PeterUhnak 4/14/2015 23:40:19",
 		"rebuild" : "PeterUhnak 4/14/2015 23:40:19",
 		"updateView" : "PeterUhnak 4/14/2015 23:40:19" } }
