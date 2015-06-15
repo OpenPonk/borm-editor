@@ -1,4 +1,4 @@
-as yet unclassified
+userinterface
 updateView
 	self controllers do: [ :each | each refreshFigure ].
 	self view edges

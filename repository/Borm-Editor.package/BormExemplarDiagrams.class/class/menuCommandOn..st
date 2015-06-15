@@ -13,8 +13,8 @@ menuCommandOn: aBuilder
 						icon: BormEditorIcons current diagram16Icon;
 						action: [ self openTwoParticipants ].
 
-					(aBuilder item: #BORMExamples)
+					"(aBuilder item: #BORMExamples)
 						parent: #BORMEditor;
 						label: 'BORM With Data Flows';
 						icon: BormEditorIcons current diagram16Icon;
-						action: [ self openWithDataFlows ] ]
+						action: [ self openWithDataFlows ] "]
