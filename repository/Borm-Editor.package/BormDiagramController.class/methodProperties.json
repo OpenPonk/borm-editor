@@ -1,9 +1,9 @@
 {
 	"class" : {
-		"modelClass" : "PeterUhnak 4/14/2015 23:40:19" },
+		"modelClass" : "PeterUhnak 6/15/2015 21:02:29" },
 	"instance" : {
-		"canBeTargetFor:" : "PeterUhnak 4/14/2015 23:40:19",
-		"initializePalette:" : "PeterUhnak 4/14/2015 23:40:19",
-		"modelToControllerMapping" : "PeterUhnak 6/15/2015 21:01",
-		"rebuild" : "PeterUhnak 4/14/2015 23:40:19",
-		"updateView" : "PeterUhnak 4/14/2015 23:40:19" } }
+		"canBeTargetFor:" : "PeterUhnak 6/15/2015 21:02:29",
+		"initializePalette:" : "PeterUhnak 6/15/2015 21:02:29",
+		"modelToControllerMapping" : "PeterUhnak 6/15/2015 21:02:29",
+		"rebuild" : "PeterUhnak 6/15/2015 21:02:29",
+		"updateView" : "PeterUhnak 6/15/2015 21:02:29" } }

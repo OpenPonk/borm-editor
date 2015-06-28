@@ -1,0 +1,14 @@
+{
+	"category" : "Borm-Editor-Adapters",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "PeterUhnak 6/28/2015 00:56",
+	"instvars" : [
+		 ],
+	"name" : "BormNavigatorAdapter",
+	"pools" : [
+		 ],
+	"super" : "DCNavigatorAdapter",
+	"type" : "normal" }
