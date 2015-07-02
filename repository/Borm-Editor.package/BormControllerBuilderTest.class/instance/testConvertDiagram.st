@@ -1,6 +1,7 @@
 tests
 testConvertDiagram
 	| diagram user ctrl builder tr a s |
+	true ifTrue: [ ^ self skip: 'Missing cairo.'. ].
 	diagram := BormDiagram new name: 'BORM diagram'.
 	user := BormParticipant new name: 'User'.
 	diagram add: user.
