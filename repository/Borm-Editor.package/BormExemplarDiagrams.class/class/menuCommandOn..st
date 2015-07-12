@@ -4,17 +4,18 @@ menuCommandOn: aBuilder
 	((aBuilder item: #BORMEditor) icon: BormEditorIcons current diagram16Icon)
 		label: 'BORM Editor';
 		parent: #MostUsedTools;
-"		withSeparatorAfter;"
-		action: [ self openEmpty ];
+		action: [ 
+					"		withSeparatorAfter;"
+					self openEmpty ];
 		with: [ 
 					(aBuilder item: #BORMExamples)
 						parent: #BORMEditor;
-						label: 'BORM Two Participants';
+						label: 'BORM Example';
 						icon: BormEditorIcons current diagram16Icon;
-						action: [ self openTwoParticipants ].
+						action: [ self examplePizzaDelivery ].
 
-					"(aBuilder item: #BORMExamples)
+					(aBuilder item: #BORMExamples)
 						parent: #BORMEditor;
-						label: 'BORM With Data Flows';
+						label: 'BORM Simple';
 						icon: BormEditorIcons current diagram16Icon;
-						action: [ self openWithDataFlows ] "]
+						action: [ self openTwoParticipants ] ]
