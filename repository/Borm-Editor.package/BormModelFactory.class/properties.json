@@ -1,0 +1,14 @@
+{
+	"category" : "Borm-Editor-Utility",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"diagram" ],
+	"name" : "BormModelFactory",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

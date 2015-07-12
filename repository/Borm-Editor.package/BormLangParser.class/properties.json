@@ -1,0 +1,32 @@
+{
+	"category" : "Borm-Editor-DslParser",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "PeterUhnak 7/11/2015 18:16",
+	"instvars" : [
+		"participants",
+		"participant",
+		"participantType",
+		"nameExpression",
+		"quotedString",
+		"string",
+		"space",
+		"stateType",
+		"state",
+		"activity",
+		"transition",
+		"transitions",
+		"dataFlow",
+		"sendDataFlow",
+		"receiveDataFlow",
+		"dataFlows",
+		"vertex",
+		"vertices",
+		"newLine" ],
+	"name" : "BormLangParser",
+	"pools" : [
+		 ],
+	"super" : "PPCompositeParser",
+	"type" : "normal" }

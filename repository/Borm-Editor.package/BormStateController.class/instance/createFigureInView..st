@@ -9,6 +9,7 @@ createFigureInView: aView
 			(RTLabelled new
 				view: aView;
 				center;
+				fontSize: 10;
 				color: Color black;
 				yourself).
 

@@ -10,6 +10,7 @@ createFigure
 					(RTLabelled new
 						view: view;
 						center;
+						fontSize: 10;
 						color: Color black;
 						yourself).
 			element @ RTDraggable @ DCRTResizable.
