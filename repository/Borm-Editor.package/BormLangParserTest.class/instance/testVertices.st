@@ -3,15 +3,15 @@ testVertices
 	self parse: '' rule: #vertices.
 	self assert: result equals: #().
 
-	self parse: self emptyActivity rule: #vertices.
-	self assert: result equals: {(self activityVertexParsed)}.
+	self parse: self  resource emptyActivity rule: #vertices.
+	self assert: result equals: {(self resource activityParsed)}.
 
-	self parse: self fullActivity rule: #vertices.
-	self assert: result equals: {(self fullActivityParsed)}.
+	self parse: self resource fullActivity rule: #vertices.
+	self assert: result equals: {(self resource fullActivityParsed)}.
 
-	self parse: self emptyActivity , Character cr asString , self emptyActivity rule: #vertices.
+	self parse: self resource emptyActivity , Character cr asString , self resource emptyActivity rule: #vertices.
 	self
 		assert: result
 		equals:
-			{(self activityVertexParsed).
-			(self activityVertexParsed)}
+			{(self resource activityParsed).
+			(self resource activityParsed)}

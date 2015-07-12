@@ -1,12 +1,11 @@
-!! Example
-
-'
-User "Customer" {
+strings
+participant
+	^ 'Person "Customer" {
 	initial state "wants pizza"
 		go to "order"
 	
 	activity "order"
-		send "pizza choice" to "Operator::accepts order" and receive "whatever"
+		send "pizza choice" to "Operator::accepts order"
 		go to "wait"
 	
 	state "wait for pizza" as "wait"

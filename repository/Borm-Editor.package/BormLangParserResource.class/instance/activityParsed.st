@@ -1,5 +1,5 @@
-data
-activityVertexParsed
+strings
+activityParsed
 	^ {{'activity'.
 	('name' -> 'alias')}.
 	#().

@@ -2,6 +2,7 @@ layouting
 layoutParticipant: aParticipant
 	| ctrl bounds |
 	ctrl := diagramController controllerForModel: aParticipant.
+	aParticipant nodes do: [ :each | self layoutNode: each ].
 "	RTSugiyamaLayout new"
 	RTDominanceTreeLayout new
 		horizontalGap: 30;

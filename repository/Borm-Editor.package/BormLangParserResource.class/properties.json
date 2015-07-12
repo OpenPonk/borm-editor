@@ -1,0 +1,14 @@
+{
+	"category" : "Borm-Editor-DslParser",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "PeterUhnak 7/12/2015 18:51",
+	"instvars" : [
+		 ],
+	"name" : "BormLangParserResource",
+	"pools" : [
+		 ],
+	"super" : "TestResource",
+	"type" : "normal" }

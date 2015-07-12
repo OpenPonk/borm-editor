@@ -1,7 +1,7 @@
 accessing
 vertex
-	^ (activity / state , newLine optional, dataFlows , newLine optional, transitions)
+	^ (activity / state , communications , transitions)
 		==> [ :arr | 
-			{(arr first).
-			(arr last).
-			(arr third)} ]
+			{(#node -> arr first).
+			(#comm -> arr second).
+			(#trans -> arr third)} asDictionary ]

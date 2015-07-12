@@ -1,7 +1,7 @@
-data
+strings
 fullActivity
 	^ 'activity "name" as "alias"
-send "out df" to "some1"
-receive "in df" from "some2"
+send "df" to "some2"
+send "out df" to "some1" and receive "in df"
 go to "place"
 go to "place" if "condition"'

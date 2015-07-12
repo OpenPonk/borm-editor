@@ -1,4 +1,4 @@
-data
-activityParsed
+strings
+activityHeaderParsed
 	^ {'activity'.
 	('name' -> 'alias')}

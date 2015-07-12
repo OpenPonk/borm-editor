@@ -1,3 +1,3 @@
 accessing
 participantType
-	^ 'User' asParser / 'Organization' asParser / 'System' asParser
+	^ 'Person' asParser / 'Organization' asParser / 'System' asParser

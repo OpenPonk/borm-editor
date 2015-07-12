@@ -1,6 +1,6 @@
 tests
 testVertex
-	self parse: self emptyActivity rule: #vertex.
-	self assert: result equals: self activityVertexParsed.
-	self parse: self fullActivity rule: #vertex.
-	self assert: result equals: self fullActivityParsed
+	self parse: self resource emptyActivity rule: #vertex.
+	self assert: result equals: self resource activityParsed.
+	self parse: self resource fullActivity rule: #vertex.
+	self assert: result equals: self resource fullActivityParsed
