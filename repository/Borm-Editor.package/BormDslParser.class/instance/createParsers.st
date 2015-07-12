@@ -24,7 +24,7 @@ createParsers
 
 	edge := transition / communication.
 
-	line := (#tab asParser, (edge / specification)) ==> [:arr | arr second ].
+	line := (#tab asParser optional, (edge / specification)) ==> [:arr | arr second ].
 	innerBlock := ((line , Character cr asParser) ==> [ :arr | arr first ]) star.
 
 	block := (specification , ${ asParser , Character cr asParser , innerBlock , $} asParser
