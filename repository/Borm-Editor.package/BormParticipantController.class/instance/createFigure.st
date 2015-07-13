@@ -10,11 +10,19 @@ createFigure
 				top;
 				color: Color black.
 			container @ labelled.
-			TRConstraint stick: labelled lbl onTheTopLeftOf: container trachelShape.
+			(DCRTConstraint child: labelled lbl parent: container)
+				topLeft;
+				padding: 5;
+				stick.
 
 			iconElement := (RTBitmap new form: self typeIconForModel) element.
 			view add: iconElement.
-			DCTRConstraint stick: iconElement trachelShape onTheTopRightOf: container trachelShape.
+
+			(DCRTConstraint child: iconElement parent: container)
+				topRight;
+				padding: 5;
+				stick.
+
 			container addCallback: (TRRemoveCallback with: iconElement).
 
 			elements := RTGroup new.

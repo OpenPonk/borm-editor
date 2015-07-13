@@ -17,7 +17,11 @@ createFigureInView: aView
 		form: BormEditorIcons current initialIcon;
 		element.
 
-	DCTRConstraint stick: playBox trachelShape onTheCenterRightOf: element trachelShape.
+	(DCRTConstraint child: playBox parent: element)
+		right;
+		padding: 5;
+		stick.
+
 	element addCallback: (TRRemoveCallback with: playBox).
 
 	innerBox := RTBox new
