@@ -5,5 +5,6 @@ childrenMapping
 	BormParticipant -> #nodes.	
 	BormState -> #outgoing.
 	BormActivity -> [ :o | o outgoing, o sent ].
-	BormCommunication -> #dataFlows.
+	BormCommunication -> [ :o | o dataFlows, { o constraint } ].
+	BormTransition -> [ :o | {o constraint} ]
 	}
