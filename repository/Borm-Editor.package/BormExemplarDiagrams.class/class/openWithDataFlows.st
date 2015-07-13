@@ -1,7 +1,6 @@
 examples
 openWithDataFlows
 	<example>
-	self error: 'Data Flows are not yet fully implemented'.
 	^ ('pUU(User){
 s1(initial)
 s1 -> a1

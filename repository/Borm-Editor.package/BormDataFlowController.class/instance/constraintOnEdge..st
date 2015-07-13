@@ -9,4 +9,10 @@ constraintOnEdge: anElement
 		offset: 0.
 	cb := TRTranslationCallback block: [ self refreshIcon ].
 	edge from addCallback: cb.
-	edge to addCallback: cb
+	edge to addCallback: cb.
+	anElement
+		addCallback:
+			(TRRemoveCallback
+				block: [ 
+					edge from trachelShape removeCallback: cb ifAbsent: [ self error ].
+					edge to trachelShape removeCallback: cb ifAbsent: [ self error ] ])
