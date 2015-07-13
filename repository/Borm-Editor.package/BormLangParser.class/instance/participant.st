@@ -1,6 +1,6 @@
 accessing
 participant
-	^ (participantType , space , nameExpression , space , ${ asParser , #newline asParser , vertices
+	^ (participantType , space , nameExpression , space , ${ asParser , #newline asParser , nodes
 		, #newline asParser optional , $} asParser)
 		==> [ :arr | 
 			{(#type -> arr first).

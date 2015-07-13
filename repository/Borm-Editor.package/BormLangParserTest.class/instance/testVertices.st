@@ -1,16 +1,16 @@
 tests
 testVertices
 	self skip.
-	self parse: '' rule: #vertices.
+	self parse: '' rule: #nodes.
 	self assert: result equals: #().
 
-	self parse: self  resource emptyActivity rule: #vertices.
+	self parse: self  resource emptyActivity rule: #nodes.
 	self assert: result equals: {(self resource activityParsed)}.
 
-	self parse: self resource fullActivity rule: #vertices.
+	self parse: self resource fullActivity rule: #nodes.
 	self assert: result equals: {(self resource fullActivityParsed)}.
 
-	self parse: self resource emptyActivity , Character cr asString , self resource emptyActivity rule: #vertices.
+	self parse: self resource emptyActivity , Character cr asString , self resource emptyActivity rule: #nodes.
 	self
 		assert: result
 		equals:

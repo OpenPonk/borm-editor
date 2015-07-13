@@ -1,5 +1,5 @@
 accessing
-vertex
+node
 	^ (activity / state , communications , transitions)
 		==> [ :arr | 
 			{(#node -> arr first).
