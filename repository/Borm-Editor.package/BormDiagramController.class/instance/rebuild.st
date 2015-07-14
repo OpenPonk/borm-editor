@@ -1,8 +1,8 @@
 userinterface
 rebuild
 	| builder bb |
+	self controllers do: #remove.
 	controllers := nil.
-	self view cleanAll.
 	builder := BormControllerBuilder new.
 	builder
 		diagramController: self;
