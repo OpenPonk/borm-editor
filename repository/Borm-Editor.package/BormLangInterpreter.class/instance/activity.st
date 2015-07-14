@@ -1,3 +1,3 @@
 accessing
 activity
-	^ super activity ==> [ :arr | BormActivity named: arr second key ]
+	^ super activity ==> [ :pair | nodesLookup at: pair value put: (BormActivity named: pair key) ]

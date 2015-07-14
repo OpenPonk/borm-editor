@@ -1,3 +1,3 @@
 accessing
 stateType
-	^ ('initial' asParser / 'final' asParser) flatten
+	^ ('final' asParser / 'initial and final' asParser / 'initial' asParser) flatten

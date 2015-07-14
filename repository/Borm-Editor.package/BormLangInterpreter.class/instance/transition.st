@@ -1,4 +1,9 @@
 accessing
 transition
 	^ super transition
-		==> [ :arr | [ :from :aParticipant | BormFactory fqnTransitionFrom: from to: arr first in: aParticipant ] ]
+		==> [ :arr | 
+			| t |
+			t := BormTransition new.
+			arr second ifNotNil: [ t constraint: arr second ].
+			t target: arr first.
+			t ]

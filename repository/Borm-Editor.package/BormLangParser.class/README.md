@@ -1,9 +1,11 @@
+I parse BORM DSL.
+
 !! Example
 
 '
 User "Customer" {
 	initial state "wants pizza"
-		go to "order"
+		go to "order" if "hungry"
 	
 	activity "order"
 		send "pizza choice" to "Operator::accepts order" and receive "whatever"

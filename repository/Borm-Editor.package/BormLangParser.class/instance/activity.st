@@ -1,3 +1,3 @@
 accessing
 activity
-	^ ('activity' asParser , space , nameExpression) ==> [ :arr | { arr first . arr last } ]
+	^ ('activity' asParser , space , namePair) ==> [ :arr | arr last ]

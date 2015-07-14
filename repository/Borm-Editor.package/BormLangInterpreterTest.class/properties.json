@@ -1,0 +1,14 @@
+{
+	"category" : "Borm-Editor-DslParser",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "BormLangInterpreterTest",
+	"pools" : [
+		 ],
+	"super" : "BormLangParserTest",
+	"type" : "normal" }

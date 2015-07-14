@@ -4,12 +4,19 @@ participant
 		==> [ :arr | 
 			| p |
 			p := BormParticipant new
-				name: (arr at: #name) key;
-				type: (arr at: #type);
+				name: arr second key;
+				type: arr first;
 				yourself.
 			"insert all nodes"
-			(arr at: #nodes) do: [ :nodeArr | p add: (nodeArr at: #node) ].
-			"and transitions between them"
-			(arr at: #nodes)
-				do: [ :nodeArr | (nodeArr at: #trans) do: [ :transBlock | transBlock value: (nodeArr at: #node) name value: p ] ].
-			1 halt ]
+			arr third do: [ :each | p add: each ].
+			"finish transitions"
+			incompleteTransitions
+				do: [ :each | 
+					| n |
+					n := nodesLookup at: each target.
+					n addTransition: each.
+					each target: n ].
+			incompleteTransitions removeAll.
+			participantsLookup at: arr second value put: nodesLookup.
+			nodesLookup := Dictionary new.
+			p ]

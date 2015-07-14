@@ -1,8 +1,6 @@
 accessing
 participant
-	^ (participantType , space , nameExpression , space , ${ asParser , #newline asParser , nodes
-		, #newline asParser optional , $} asParser)
-		==> [ :arr | 
-			{(#type -> arr first).
-			(#name -> arr third).
-			(#nodes -> arr seventh)} asDictionary ]
+	^ (participantType , space , namePair , space , ${ asParser , #newline asParser , nodes
+		, #newline asParser optional , $} asParser) map: [ :type :sp :pair :sp2 :bra :nl :vertices :nl2 :ket
+ | { type . pair . vertices }
+			  ]

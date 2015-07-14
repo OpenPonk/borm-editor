@@ -1,13 +1,20 @@
 accessing
 state
 	^ super state
-		==> [ :arr | 
-			| s |
-			s := BormState named: arr third key.
-			arr second
+		map: [ :arr | 
+			| s t |
+			t := arr first.
+			s := BormState named: arr second key.
+			nodesLookup at: arr second value put: s.
+			t
 				ifNotNil: [ 
-					arr second = 'final'
+					t = 'initial'
+						ifTrue: [ s beInitial ].
+					t = 'final'
 						ifTrue: [ s beFinal ].
-					arr second = 'initial'
-						ifTrue: [ s beInitial ] ].
+					t = 'initial and final'
+						ifTrue: [ 
+							s
+								beInitial;
+								beFinal ] ].
 			s ]

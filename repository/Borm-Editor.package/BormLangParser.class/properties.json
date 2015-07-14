@@ -4,13 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "PeterUhnak 7/12/2015 19:31",
+	"commentStamp" : "PeterUhnak 7/14/2015 19:08",
 	"instvars" : [
 		"participants",
 		"participant",
 		"participantType",
-		"nameExpression",
-		"quotedString",
 		"string",
 		"space",
 		"stateType",
@@ -22,7 +20,11 @@
 		"communication",
 		"communications",
 		"node",
-		"nodes" ],
+		"nodes",
+		"namePair",
+		"name",
+		"constraint",
+		"diagram" ],
 	"name" : "BormLangParser",
 	"pools" : [
 		 ],

@@ -1,4 +1,6 @@
 accessing
 state
-	^ ((stateType , space) optional ==> [ :arr | arr ifNotNil: [ arr first ] ] , 'state' asParser , space , nameExpression)
-		==> [ :arr | { arr second . arr first . arr last } ]
+	^ (stateType , space) optional , 'state' asParser , space , namePair
+		map: [ :type :smb :sp :pair | 
+			{(type ifNotNil: [ type first ]).
+			pair} ]

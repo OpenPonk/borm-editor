@@ -1,4 +1,3 @@
 tests
 testActivity
-	self parse: self resource emptyActivity rule: #activity.
-	self assert: result equals: self resource activityHeaderParsed
+	self parse: 'activity "name"' rule: #activity

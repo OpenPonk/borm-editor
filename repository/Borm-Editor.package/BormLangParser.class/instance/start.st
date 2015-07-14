@@ -1,3 +1,3 @@
 accessing
 start
-	^ participants end
+	^ diagram end
