@@ -1,5 +1,5 @@
 *Borm-Editor-DslParser
 asBorm: aDiagramName
-	^ (BormDslModelBuilder new parse: self)
+	^ (BormLangInterpreter new parse: self)
 		name: aDiagramName;
 		yourself
