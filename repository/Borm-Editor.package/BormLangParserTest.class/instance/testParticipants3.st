@@ -1,15 +1,8 @@
 tests
 testParticipants3
-	self
-		parse:
-			'System "Sys" {
-	activity "a1"
-		go to "s1"
-	state "s1"
-}
-Organization "Org" {
-	activity "a2"
-		go to "s2"
-	state "s2"
-}'
-		rule: #participants
+	super testParticipants3.
+	self assert: result size equals: 2.
+	self assert: result first nodes size equals: 2.
+	self assert: result first nodes first outgoing first target equals: result first nodes second.
+	self assert: result second nodes size equals: 2.
+	self assert: result second nodes first outgoing first target equals: result second nodes second

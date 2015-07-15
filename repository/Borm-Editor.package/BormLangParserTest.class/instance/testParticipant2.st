@@ -1,6 +1,6 @@
 tests
 testParticipant2
-	self parse: 'Organization "Org" {
-	state "x"
-	activity "y"
-}' rule: #participant
+	super testParticipant2.
+	self assert: result type equals: BormParticipantType Organization.
+	self assert: result name equals: 'Org'.
+	self assert: result nodes size equals: 2

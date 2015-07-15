@@ -1,3 +1,4 @@
 tests
 testParticipants
-	self parse: '' rule: #participants
+	super testParticipants.
+	self assert: result isEmpty

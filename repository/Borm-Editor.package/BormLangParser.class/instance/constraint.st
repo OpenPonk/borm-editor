@@ -1,3 +1,3 @@
 accessing
 constraint
-	^ (space , 'if' asParser , space , name) optional ==> [ :arr | arr ifNotNil: [ arr fourth ] ]
+	^ super constraint ==> [ :condition | condition ifNotNil: [ BormConstraint named: condition ] ]

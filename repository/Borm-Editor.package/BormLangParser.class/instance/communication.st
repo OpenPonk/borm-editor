@@ -1,4 +1,10 @@
 accessing
 communication
-	^ (('talk to ' asParser , name) ==> [ :arr | { arr second . nil . nil } ])
-		/ (('send ' asParser , name , ' to ' asParser , name , (' and receive ' asParser , name) optional) ==> [ :arr | { arr fourth . arr second . arr fifth ifNotNil: [ arr fifth second ] } ])
+	^ super communication
+		==> [ :arr | 
+			| comm |
+			comm := BormCommunication new.
+			comm receiver: arr first.
+			arr second ifNotNil: [ comm addDataFlowNamed: arr second ].
+			arr third ifNotNil: [ (comm addDataFlowNamed: arr third) beOutput ].
+			comm ]

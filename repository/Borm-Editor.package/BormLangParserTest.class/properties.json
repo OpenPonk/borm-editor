@@ -10,5 +10,5 @@
 	"name" : "BormLangParserTest",
 	"pools" : [
 		 ],
-	"super" : "PPCompositeParserTest",
+	"super" : "BormLangGrammarTest",
 	"type" : "normal" }

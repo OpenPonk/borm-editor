@@ -1,11 +1,8 @@
 tests
 testParticipants2
-	self
-		parse:
-			'System "Sys" {
-	activity "x"
-}
-Organization "Org" {
-	activity "x"
-}'
-		rule: #participants
+	super testParticipants2.
+	self assert: result size equals: 2.
+	self assert: result first name equals: 'Sys'.
+	self assert: result first nodes size equals: 1.
+	self assert: result second name equals: 'Org'.
+	self assert: result second nodes size equals: 1

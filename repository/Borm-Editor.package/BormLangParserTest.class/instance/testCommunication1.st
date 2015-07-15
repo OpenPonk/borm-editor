@@ -1,3 +1,7 @@
 tests
 testCommunication1
-	self parse: 'send "x" to "Org::a"' rule: #communication
+	super testCommunication1.
+	self assert: result receiver equals: 'Org::a'.
+	self assert: result dataFlows size equals: 1.
+	self assert: result dataFlows first name equals: 'x'.
+	self assert: result dataFlows first isInput

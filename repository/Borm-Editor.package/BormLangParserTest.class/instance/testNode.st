@@ -1,3 +1,4 @@
 tests
 testNode
-	self parse: 'state "hello"' rule: #node
+	super testNode.
+	self assert: result outgoing size equals: 0

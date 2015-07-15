@@ -1,8 +1,6 @@
 tests
 testParticipants1
-	self
-		parse:
-			'System "Sys" {
-	state "x"
-}'
-		rule: #participants
+	super testParticipants1.
+	self assert: result size equals: 1.
+	self assert: result first name equals: 'Sys'.
+	self assert: result first nodes size equals: 1

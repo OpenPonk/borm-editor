@@ -1,3 +1,4 @@
 tests
 testParticipantType1
-	self parse: 'Organization' rule: #participantType
+	super testParticipantType1.
+	self assert: result equals: BormParticipantType Organization

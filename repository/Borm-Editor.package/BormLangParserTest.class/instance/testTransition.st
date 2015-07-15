@@ -1,3 +1,4 @@
 tests
 testTransition
-	self parse: 'go to "vertex"' rule: #transition
+	super testTransition.
+	self assert: result target equals: 'vertex'

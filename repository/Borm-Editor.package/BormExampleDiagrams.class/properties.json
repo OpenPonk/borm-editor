@@ -1,0 +1,14 @@
+{
+	"category" : "Borm-Editor-Examples",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "PeterUhnak 7/15/2015 12:27",
+	"instvars" : [
+		 ],
+	"name" : "BormExampleDiagrams",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

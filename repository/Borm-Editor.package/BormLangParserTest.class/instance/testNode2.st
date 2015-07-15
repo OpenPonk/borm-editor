@@ -1,8 +1,5 @@
 tests
 testNode2
-	self
-		parse:
-			'state "hello"
-	go to "x"
-	go to "y"'
-		rule: #node
+	super testNode2.
+	self assert: result outgoing size equals: 2.
+	result outgoing do: [ :each | self assert: each source equals: result ]

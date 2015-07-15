@@ -1,3 +1,6 @@
 tests
 testState
-	self parse: 'state "hello"' rule: #state
+	super testState.
+	self assert: result name equals: 'hello'.
+	self deny: result isInitial.
+	self deny: result isFinal

@@ -1,7 +1,5 @@
 tests
 testNode1
-	self
-		parse:
-			'state "hello"
-	go to "x"'
-		rule: #node
+	super testNode1.
+	self assert: result outgoing size equals: 1.
+	self assert: result outgoing first source equals: result

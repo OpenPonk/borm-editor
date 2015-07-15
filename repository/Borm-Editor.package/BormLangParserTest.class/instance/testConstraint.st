@@ -1,3 +1,4 @@
 tests
 testConstraint
-	self parse: '' rule: #constraint
+	super testConstraint.
+	self assert: result equals: nil

@@ -1,3 +1,4 @@
 tests
 testActivity
-	self parse: 'activity "name"' rule: #activity
+	super testActivity.
+	self assert: result name equals: 'name'

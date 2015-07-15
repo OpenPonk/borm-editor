@@ -1,3 +1,4 @@
 tests
 testConstraint1
-	self parse: ' if "condition"' rule: #constraint
+	super testConstraint1.
+	self assert: result name equals: 'condition'

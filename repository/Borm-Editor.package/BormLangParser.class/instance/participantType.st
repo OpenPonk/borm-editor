@@ -1,3 +1,3 @@
 accessing
 participantType
-	^ 'Person' asParser / 'Organization' asParser / 'System' asParser
+	^ super participantType ==> [ :str | BormParticipantType perform: str asSymbol ]
