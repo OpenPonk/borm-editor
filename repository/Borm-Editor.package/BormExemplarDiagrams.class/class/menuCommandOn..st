@@ -6,16 +6,16 @@ menuCommandOn: aBuilder
 		parent: #MostUsedTools;
 		action: [ 
 					"		withSeparatorAfter;"
-					self openEmpty ];
+					self exampleEmpty ];
 		with: [ 
 					(aBuilder item: #BORMExamples)
 						parent: #BORMEditor;
-						label: 'BORM Example';
+						label: 'BORM Example Pizza Delivery';
 						icon: BormEditorIcons current diagram16Icon;
 						action: [ self examplePizzaDelivery ].
 
 					(aBuilder item: #BORMExamples)
 						parent: #BORMEditor;
-						label: 'BORM Simple';
+						label: 'BORM Simple Diagram';
 						icon: BormEditorIcons current diagram16Icon;
-						action: [ self openTwoParticipants ] ]
+						action: [ self exampleDataFlows ] ]

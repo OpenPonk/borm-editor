@@ -1,4 +1,4 @@
 examples
 examplePizzaDelivery
 	<example>
-	self samplePizzaDelivery openAs: 'Pizza Delivery'
+	^ self samplePizzaDelivery openAs: 'Pizza Delivery'

@@ -1,15 +1,12 @@
 {
 	"class" : {
-		"examplePizzaDelivery" : "PeterUhnak 7/11/2015 09:07",
-		"examplePizzaDelivery2" : "PeterUhnak 7/14/2015 21:08",
-		"exampleWithDataFlows" : "PeterUhnak 7/13/2015 14:28",
-		"menuCommandOn:" : "PeterUhnak 7/13/2015 00:50",
-		"openEmpty" : "PeterUhnak 6/15/2015 21:02:29",
-		"openProject:diagram:dsl:" : "PeterUhnak 6/15/2015 21:02:29",
-		"openSingleParticipant" : "PeterUhnak 6/15/2015 21:02:29",
-		"openTwoParticipants" : "PeterUhnak 6/15/2015 21:02:29",
-		"openWithDataFlows" : "PeterUhnak 7/13/2015 14:28",
-		"samplePizzaDelivery" : "PeterUhnak 7/12/2015 15:40",
-		"samplePizzaDeliveryBase" : "PeterUhnak 7/12/2015 22:03" },
+		"exampleDataFlows" : "PeterUhnak 7/15/2015 12:17",
+		"exampleEmpty" : "PeterUhnak 7/15/2015 12:21",
+		"examplePizzaDelivery" : "PeterUhnak 7/15/2015 12:00",
+		"menuCommandOn:" : "PeterUhnak 7/15/2015 12:22",
+		"sampleDataFlows" : "PeterUhnak 7/15/2015 12:19",
+		"sampleEmpty" : "PeterUhnak 7/15/2015 12:20",
+		"sampleOldPizzaDelivery" : "PeterUhnak 7/15/2015 11:59",
+		"samplePizzaDelivery" : "PeterUhnak 7/15/2015 12:06" },
 	"instance" : {
 		 } }
