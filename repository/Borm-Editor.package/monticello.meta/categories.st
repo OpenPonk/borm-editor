@@ -1,7 +1,7 @@
 SystemOrganization addCategory: #'Borm-Editor'!
 SystemOrganization addCategory: 'Borm-Editor-Adapters'!
 SystemOrganization addCategory: 'Borm-Editor-Controllers'!
-SystemOrganization addCategory: 'Borm-Editor-DslParser'!
+SystemOrganization addCategory: 'Borm-Editor-Dsl'!
 SystemOrganization addCategory: 'Borm-Editor-Examples'!
 SystemOrganization addCategory: 'Borm-Editor-Icons'!
 SystemOrganization addCategory: 'Borm-Editor-Layouting'!

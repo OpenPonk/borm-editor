@@ -4,11 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "",
+	"commentStamp" : "PeterUhnak 7/15/2015 12:37",
 	"instvars" : [
-		 ],
-	"name" : "BormLangParserTest",
+		"diagram" ],
+	"name" : "BormLangExporter",
 	"pools" : [
 		 ],
-	"super" : "BormLangGrammarTest",
+	"super" : "Object",
 	"type" : "normal" }

@@ -1,10 +1,10 @@
 {
-	"category" : "Borm-Editor-DslParser",
+	"category" : "Borm-Editor-Dsl",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "PeterUhnak 7/15/2015 12:27",
+	"commentStamp" : "PeterUhnak 7/15/2015 12:37",
 	"instvars" : [
 		"incompleteTransitions",
 		"nodesLookup",

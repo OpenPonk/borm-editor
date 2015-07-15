@@ -1,5 +1,8 @@
 I define and parse grammar of BORM Lang.
 
+!! Synchronization
+The inverse operation (taking model and producing DSL) is provided by BormLangExporter
+
 !! Example
 
 Also see BormDiagramExamples for some examples.
