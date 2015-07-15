@@ -4,7 +4,7 @@ gtBormInspectorPresentation: composite
 	(self className beginsWith: 'Borm')
 		ifTrue: [ 
 			| m e |
-			e := BormLangExporter new.
+			e := BormLangSerializer new.
 			m := ((self className splitOn: 'Borm') last asLowercase, ':') asSymbol.
 			(e respondsTo: m)
 				ifTrue: [ 

@@ -3,6 +3,7 @@ SystemOrganization addCategory: 'Borm-Editor-Adapters'!
 SystemOrganization addCategory: 'Borm-Editor-Controllers'!
 SystemOrganization addCategory: 'Borm-Editor-Dsl'!
 SystemOrganization addCategory: 'Borm-Editor-Examples'!
+SystemOrganization addCategory: 'Borm-Editor-Extensions'!
 SystemOrganization addCategory: 'Borm-Editor-Icons'!
 SystemOrganization addCategory: 'Borm-Editor-Layouting'!
 SystemOrganization addCategory: 'Borm-Editor-Tests'!

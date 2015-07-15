@@ -1,0 +1,14 @@
+{
+	"category" : "Borm-Editor-Extensions",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"rubText" ],
+	"name" : "BormText",
+	"pools" : [
+		 ],
+	"super" : "ComposableModel",
+	"type" : "normal" }

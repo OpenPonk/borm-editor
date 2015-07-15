@@ -1,0 +1,17 @@
+{
+	"category" : "Borm-Editor-Extensions",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"textModel",
+		"bormDiagram",
+		"serializer",
+		"locked" ],
+	"name" : "BormLangEditor",
+	"pools" : [
+		 ],
+	"super" : "ComposableModel",
+	"type" : "normal" }
