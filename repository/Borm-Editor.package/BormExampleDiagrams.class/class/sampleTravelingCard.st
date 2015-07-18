@@ -60,4 +60,4 @@ System "Card Distributor" {
 		go to "final"
 	
 	final state "card delivered" as "final"
-}' asBorm
+}' asBorm: 'Traveling Card'
