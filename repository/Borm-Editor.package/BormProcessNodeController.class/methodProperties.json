@@ -2,12 +2,12 @@
 	"class" : {
 		 },
 	"instance" : {
-		"addAsSourceFor:" : "PeterUhnak 6/15/2015 21:02:29",
-		"addAsTargetFor:" : "PeterUhnak 6/15/2015 21:02:29",
-		"addConnection:" : "PeterUhnak 6/15/2015 21:02:29",
-		"canBeSourceFor:" : "PeterUhnak 6/15/2015 21:02:29",
-		"canBeTargetFor:" : "PeterUhnak 6/15/2015 21:02:29",
-		"createFigure" : "PeterUhnak 7/10/2015 02:25",
-		"createShape" : "PeterUhnak 6/15/2015 21:02:29",
-		"refreshFigure" : "PeterUhnak 6/15/2015 21:02:29",
-		"removeModelElement:" : "PeterUhnak 6/15/2015 21:02:29" } }
+		"addAsSourceFor:" : "PeterUhnak 7/18/2015 22:16:21",
+		"addAsTargetFor:" : "PeterUhnak 7/18/2015 22:16:21",
+		"addConnection:" : "PeterUhnak 7/18/2015 22:16:21",
+		"canBeSourceFor:" : "PeterUhnak 7/18/2015 22:16:21",
+		"canBeTargetFor:" : "PeterUhnak 7/18/2015 22:16:21",
+		"createFigure" : "PeterUhnak 7/18/2015 22:16:21",
+		"createShape" : "PeterUhnak 7/18/2015 22:16:21",
+		"refreshFigure" : "PeterUhnak 7/18/2015 22:16:21",
+		"removeModelElement:" : "PeterUhnak 7/18/2015 22:16:21" } }
