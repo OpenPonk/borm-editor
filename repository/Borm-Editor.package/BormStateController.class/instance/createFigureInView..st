@@ -17,7 +17,7 @@ createFigureInView: aView
 		form: BormEditorIcons current initialIcon;
 		element.
 
-	(DCRTConstraint child: playBox parent: element)
+	(RTConstraint child: playBox parent: element)
 		right;
 		padding: 5;
 		stick.
