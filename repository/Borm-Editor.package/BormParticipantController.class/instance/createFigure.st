@@ -10,7 +10,7 @@ createFigure
 				top;
 				color: Color black.
 			container @ labelled.
-			(DCRTConstraint child: labelled lbl parent: container)
+			(RTConstraint child: labelled lbl parent: container)
 				topLeft;
 				padding: 5;
 				stick.
@@ -18,7 +18,7 @@ createFigure
 			iconElement := (RTBitmap new form: self typeIconForModel) element.
 			view add: iconElement.
 
-			(DCRTConstraint child: iconElement parent: container)
+			(RTConstraint child: iconElement parent: container)
 				topRight;
 				padding: 5;
 				stick.

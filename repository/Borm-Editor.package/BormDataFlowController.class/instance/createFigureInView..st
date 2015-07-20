@@ -7,13 +7,13 @@ createFigureInView: aView
 	labelFigure := (RTLabel new
 		height: 10;
 		color: Color black) elementOn: ''.
-	(DCRTConstraint child: labelFigure parent: container)
+	(RTConstraint child: labelFigure parent: container)
 		top;
 		stick.
 
 	iconFigure := (RTBitmap new form: BormEditorIcons current dataFlowLeftIcon) element.
 	iconFigure trachelShape computeRectangle.	"This is a must, otherwise the view gets corrupted for unknown reason. This is not needed for Participant's icon for some reason."
-	(DCRTConstraint child: iconFigure parent: container trachelShape)
+	(RTConstraint child: iconFigure parent: container trachelShape)
 		bottom;
 		padding: 5;
 		stick.
