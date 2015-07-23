@@ -31,7 +31,7 @@ createFigureInView: aView
 	element addCallback: (TRRemoveCallback with: innerBox).
 	"		aView add: innerBox."
 
-	element @ RTDraggable @ DCRTResizable.
+	element @ RTDraggable @ DCRTOldResizable.
 
 	element trachelShape
 		addCallback:

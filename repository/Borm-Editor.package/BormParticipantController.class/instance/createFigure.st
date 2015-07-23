@@ -4,7 +4,7 @@ createFigure
 		block: [ :view | 
 			| container labelled |
 			container := self createContainerFigure.
-			container @ RTDraggable @ DCRTResizable.
+			container @ RTDraggable @ DCRTOldResizable.
 			(labelled := RTLabelled new)
 				view: view;
 				top;
