@@ -2,11 +2,11 @@
 	"class" : {
 		 },
 	"instance" : {
-		"addAsTargetFor:" : "PeterUhnak 7/23/2015 21:52:34",
-		"addAsTargetForConstraint:" : "PeterUhnak 7/23/2015 21:52:34",
-		"canBeTargetFor:" : "PeterUhnak 7/23/2015 21:52:34",
-		"canBeTargetForConstraint:" : "PeterUhnak 7/23/2015 21:52:34",
-		"connectionFeedback" : "PeterUhnak 7/23/2015 21:52:34",
-		"createEdgeFrom:to:" : "PeterUhnak 7/23/2015 21:52:34",
-		"createModel" : "PeterUhnak 7/23/2015 21:52:34",
-		"modelClass" : "PeterUhnak 7/23/2015 21:52:34" } }
+		"addAsTargetFor:" : "PeterUhnak 7/25/2015 16:05:09",
+		"addAsTargetForConstraint:" : "PeterUhnak 7/25/2015 16:05:09",
+		"canBeTargetFor:" : "PeterUhnak 7/25/2015 16:05:09",
+		"canBeTargetForConstraint:" : "PeterUhnak 7/25/2015 16:05:09",
+		"connectionFeedback" : "PeterUhnak 7/25/2015 16:05:09",
+		"createEdgeFrom:to:" : "PeterUhnak 7/25/2015 16:05:09",
+		"createModel" : "PeterUhnak 7/25/2015 16:05:09",
+		"modelClass" : "PeterUhnak 7/25/2015 16:05:09" } }

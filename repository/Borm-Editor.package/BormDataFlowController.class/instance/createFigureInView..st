@@ -7,7 +7,7 @@ createFigureInView: aView
 	labelFigure := (RTLabel new
 		height: 10;
 		color: Color black) elementOn: ''.
-	(RTConstraint child: labelFigure parent: container)
+	(RTConstraint on: labelFigure background: container)
 		top;
 		stick.
 
