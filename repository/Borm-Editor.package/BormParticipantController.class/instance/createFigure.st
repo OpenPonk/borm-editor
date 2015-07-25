@@ -18,7 +18,7 @@ createFigure
 			iconElement := (RTBitmap new form: self typeIconForModel) element.
 			view add: iconElement.
 
-			(RTConstraint on: iconElement parent: container)
+			(RTConstraint on: iconElement background: container)
 				topRight;
 				padding: 5;
 				stick.
