@@ -13,5 +13,5 @@ createFigure
 						fontSize: 10;
 						color: Color black;
 						yourself).
-			element @ RTDraggable @ DCRTOldResizable.
+			element @ RTDraggable @ (DCRTResizable new view: view).
 			element ]
