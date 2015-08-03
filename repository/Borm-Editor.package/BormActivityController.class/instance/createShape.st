@@ -1,7 +1,7 @@
 hooks
 createShape
 	| shape |
-	shape := DCRTBox new
+	shape := RTRoundedBox new
 		width: 100;
 		height: 40;
 		color: (Color fromHexString: 'f2f2f2');

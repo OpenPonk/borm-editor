@@ -1,6 +1,6 @@
 private
 createContainerShape
-	^ DCRTBox new
+	^ RTRoundedBox new
 		width: 40;
 		height: 35;
 		color: Color transparent;
