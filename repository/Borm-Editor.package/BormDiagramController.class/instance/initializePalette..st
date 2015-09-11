@@ -3,7 +3,7 @@ initializePalette: aPalette
 	(aPalette newCreationTool: [ BormParticipantController new ])
 		label: 'Participant';
 		icon: BormEditorIcons current participant16Icon;
-		shortcut: $p asShortcut.
+		shortcut: $q asShortcut.
 	aPalette newSeparator.
 	(aPalette newCreationTool: [ BormStateController new ])
 		label: 'State';
