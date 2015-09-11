@@ -1,21 +1,33 @@
 initialization
 initializePalette: aPalette
-	aPalette
-		newCreationTool: 'Participant'
-			factory: [ BormParticipantController new ]
-			icon: BormEditorIcons current participant16Icon;
-		newSeparator;
-		newCreationTool: 'State' factory: [ BormStateController new ] icon: BormEditorIcons current state16Icon;
-		newCreationTool: 'Activity' factory: [ BormActivityController new ] icon: BormEditorIcons current activity16Icon;
-		newSeparator;
-		newConnectionCreationTool: 'Transition'
-			factory: [ BormTransitionController new ]
-			icon: BormEditorIcons current transition16Icon;
-		newConnectionCreationTool: 'Communication'
-			factory: [ BormCommunicationController new ]
-			icon: BormEditorIcons current communication16Icon;
-		newSeparator;
-		newCreationTool: 'Data Flow' factory: [ BormDataFlowController new ] icon: BormEditorIcons current dataFlow16Icon;
-		newCreationTool: 'Constraint'
-			factory: [ BormConstraintController new ]
-			icon: BormEditorIcons current constraint16Icon
+	(aPalette newCreationTool: [ BormParticipantController new ])
+		label: 'Participant';
+		icon: BormEditorIcons current participant16Icon;
+		shortcut: $p asShortcut.
+	aPalette newSeparator.
+	(aPalette newCreationTool: [ BormStateController new ])
+		label: 'State';
+		icon: BormEditorIcons current state16Icon;
+		shortcut: $s asShortcut.
+	(aPalette newCreationTool: [ BormActivityController new ])
+		label: 'Activity';
+		icon: BormEditorIcons current activity16Icon;
+		shortcut: $a asShortcut.
+	aPalette newSeparator.
+	(aPalette newConnectionCreationTool: [ BormTransitionController new ])
+		label: 'Transition';
+		icon: BormEditorIcons current transition16Icon;
+		shortcut: $t asShortcut.
+	(aPalette newConnectionCreationTool: [ BormCommunicationController new ])
+		label: 'Communication';
+		icon: BormEditorIcons current communication16Icon;
+		shortcut: $c asShortcut.
+	aPalette newSeparator.
+	(aPalette newCreationTool: [ BormDataFlowController new ])
+		label: 'Data Flow';
+		icon: BormEditorIcons current dataFlow16Icon;
+		shortcut: $f asShortcut.
+	(aPalette newCreationTool: [ BormConstraintController new ])
+		label: 'Constraint';
+		icon: BormEditorIcons current constraint16Icon;
+		shortcut: $r asShortcut

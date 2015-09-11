@@ -1,17 +1,17 @@
 {
 	"class" : {
-		"defaultSpec" : "PeterUhnak 7/25/2015 16:05:09" },
+		"defaultSpec" : "PeterUhnak 8/3/2015 15:22:17" },
 	"instance" : {
-		"bormDiagram" : "PeterUhnak 7/25/2015 16:05:09",
-		"bormDiagram:" : "PeterUhnak 7/25/2015 16:05:09",
-		"initialize" : "PeterUhnak 7/25/2015 16:05:09",
-		"initializePresenter" : "PeterUhnak 7/25/2015 16:05:09",
-		"initializeWidgets" : "PeterUhnak 7/25/2015 16:05:09",
-		"lock" : "PeterUhnak 7/25/2015 16:05:09",
-		"locked:" : "PeterUhnak 7/25/2015 16:05:09",
-		"modelChanged" : "PeterUhnak 7/25/2015 16:05:09",
-		"newRubScrolledText" : "PeterUhnak 7/25/2015 16:05:09",
-		"newStartText" : "PeterUhnak 7/25/2015 16:05:09",
-		"textModel" : "PeterUhnak 7/25/2015 16:05:09",
-		"textModelChanged" : "PeterUhnak 7/25/2015 16:05:09",
-		"unlock" : "PeterUhnak 7/25/2015 16:05:09" } }
+		"bormDiagram" : "PeterUhnak 8/3/2015 15:22:17",
+		"bormDiagram:" : "PeterUhnak 8/3/2015 15:22:17",
+		"initialize" : "PeterUhnak 8/3/2015 15:22:17",
+		"initializePresenter" : "PeterUhnak 8/3/2015 15:22:17",
+		"initializeWidgets" : "PeterUhnak 8/3/2015 15:22:17",
+		"lock" : "PeterUhnak 8/3/2015 15:22:17",
+		"locked:" : "PeterUhnak 8/3/2015 15:22:17",
+		"modelChanged" : "PeterUhnak 8/3/2015 15:22:17",
+		"newRubScrolledText" : "PeterUhnak 8/3/2015 15:22:17",
+		"newStartText" : "PeterUhnak 8/3/2015 15:22:17",
+		"textModel" : "PeterUhnak 8/3/2015 15:22:17",
+		"textModelChanged" : "PeterUhnak 8/3/2015 15:22:17",
+		"unlock" : "PeterUhnak 8/3/2015 15:22:17" } }
