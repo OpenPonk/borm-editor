@@ -1,9 +1,12 @@
 as yet unclassified
 constraintOnEdge: anElement
-	| edge |
+	| edge const |
 	edge := (self diagramController controllerForModel: model owner) figure.
-	DCRTEdgeAlongConstraint
-		stick: anElement
-		alongEdge: edge
-		balance: 0.5
-		offset: 0
+	anElement
+		withViewDo:
+			[ :view | 
+			const := DCRTRailConstraint new.
+			const
+				initialPosition: 0.5;
+				distance: 10.
+			const element: anElement connection: edge ]

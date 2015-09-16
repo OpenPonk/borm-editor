@@ -1,3 +1,5 @@
 removing
-removeModelElement: aDataFlow
-	self model removeDataFlow: aDataFlow
+removeModelElement: anElement
+	anElement class = BormDataFlow
+		ifTrue: [ self model removeDataFlow: anElement ]
+		ifFalse: [ self model removeConstraint ]

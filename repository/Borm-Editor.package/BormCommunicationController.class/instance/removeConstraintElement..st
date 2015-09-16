@@ -1,3 +1,0 @@
-removing
-removeConstraintElement: aConstraint
-	self model removeConstraint
