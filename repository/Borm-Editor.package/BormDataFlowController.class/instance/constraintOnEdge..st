@@ -1,18 +1,20 @@
 private
 constraintOnEdge: anElement
-	| edge cb |
+	| edge cb const |
 	edge := (self diagramController controllerForModel: model owner) figure.
-	DCRTEdgeAlongConstraint
-		stick: anElement
-		alongEdge: edge
-		balance: 0.5
-		offset: 0.
+	const := DCRTRailConstraint new.
+	const
+		initialPosition: 0.5;
+		distance: 10.
+	const element: anElement connection: edge.
+
 	cb := TRTranslationCallback block: [ self refreshIcon ].
 	edge from addCallback: cb.
 	edge to addCallback: cb.
 	anElement
 		addCallback:
 			(TRRemoveCallback
-				block: [ 
+				block:
+					[ 
 					edge from trachelShape removeCallback: cb ifAbsent: [ self error ].
 					edge to trachelShape removeCallback: cb ifAbsent: [ self error ] ])

@@ -3,7 +3,7 @@ connectionFeedback
 	^ DCInteractiveLine new
 		lineBuilder:
 				[ :fromFigure :toFigure | 
-			DCRTNewMultiLine new
+			DCRTStyledConnection new
 				arrowHead;
 				withContinuousRectangleAttachPoint;
 				color: Color darkGray muchDarker;

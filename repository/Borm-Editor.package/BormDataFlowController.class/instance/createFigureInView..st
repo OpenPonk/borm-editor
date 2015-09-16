@@ -20,11 +20,11 @@ createFigureInView: aView
 
 	container addCallback: (TRRemoveCallback with: iconFigure with: labelFigure).
 
-	self constraintOnEdge: container.
-
 	aView
 		add: container;
 		add: iconFigure;
 		add: labelFigure.
+
+	self constraintOnEdge: container.
 
 	^ container

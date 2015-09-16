@@ -3,12 +3,12 @@ createEdgeFrom: fromElement to: toElement
 	| edge |
 	^ DCRTCallbackBuilder
 		block: [ :view | 
-			edge := DCRTNewMultiLine new
+			edge := DCRTStyledConnection new
 				withContinuousRectangleAttachPoint;
 				color: Color black;
 				arrowHead;
 				edgeFrom: fromElement to: toElement.
-			edge @ DCRTLineHandles.
+			edge @ DCRTConnectionHandles.
 			view add: edge.
-			edge trachelShape pushBack.
+			edge trachelShape pushFront.
 			edge ]
