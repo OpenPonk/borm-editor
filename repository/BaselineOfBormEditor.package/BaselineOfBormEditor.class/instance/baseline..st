@@ -11,6 +11,24 @@ baseline: spec
 				spec
 					repository: 'github://dynacase/dynacase/repository' ].
 		spec
+			project: 'XMLParser' with: [ 
+				spec
+					className: #ConfigurationOfXMLParser;
+					versionString: #stable;
+					repository: 'http://smalltalkhub.com/mc/PharoExtras/XMLParser/main/' ].
+		spec
+			project: 'XPath' with: [ 
+				spec
+					className: #ConfigurationOfXPath;
+					versionString: #stable;
+					repository: 'http://smalltalkhub.com/mc/PharoExtras/XPath/main/' ].
+		spec
+			project: 'XPath' with: [ 
+				spec
+					className: #ConfigurationOfXPath;
+					versionString: #stable;
+					repository: 'http://smalltalkhub.com/mc/Moose/PetitParser/main/' ].
+		spec
 			project: 'PetitParser' with: [ 
 				spec
 					className: #ConfigurationOfPetitParser;
