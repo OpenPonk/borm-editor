@@ -1,3 +1,3 @@
 converting
 constraint: aConstraint
-	^ aConstraint ifNil: [ '' ] ifNotNil: [ ' if ' , aConstraint name ]
+	^ aConstraint ifNil: [ '' ] ifNotNil: [ ' if ' , (self name: aConstraint name) ]

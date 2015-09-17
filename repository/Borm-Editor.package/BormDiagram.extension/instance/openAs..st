@@ -1,8 +1,6 @@
 *Borm-Editor
 openAs: aProjectName
-	DCWorkbench
-		openProject:
-			(DCProject new
-				projectName: aProjectName;
-				addDiagram: self;
-				yourself)
+	DCProject new
+		projectName: aProjectName;
+		addDiagram: self;
+		open
