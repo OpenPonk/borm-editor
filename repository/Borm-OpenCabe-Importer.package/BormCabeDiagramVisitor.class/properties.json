@@ -1,0 +1,17 @@
+{
+	"category" : "Borm-OpenCabe-Importer-Importer",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"entityNames",
+		"entities",
+		"diagram",
+		"document" ],
+	"name" : "BormCabeDiagramVisitor",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
