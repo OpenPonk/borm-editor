@@ -6,8 +6,8 @@ createEdgeFrom: fromElement to: toElement
 			edge := DCRTStyledConnection new
 				withContinuousRectangleAttachPoint;
 				color: Color black;
-				arrowHead;
 				edgeFrom: fromElement to: toElement.
+			edge shape decorations arrowHead.
 			edge @ DCRTConnectionHandles.
 			view add: edge.
 			edge trachelShape pushFront.

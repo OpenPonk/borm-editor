@@ -13,5 +13,5 @@ createFigure
 						fontSize: 10;
 						color: Color black;
 						yourself).
-			element @ RTDraggable @ RTResizable.
+			element @ RTDraggableSnapToGrid @ RTResizable.
 			element ]

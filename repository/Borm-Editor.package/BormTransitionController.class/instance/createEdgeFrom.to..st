@@ -8,7 +8,7 @@ createEdgeFrom: fromElement to: toElement
 				color: Color black;
 				width: 2.
 			(self model target isKindOf: BormState)
-				ifTrue: [ shape filledNarrowArrowHead ].
+				ifTrue: [ shape decorations filledNarrowArrowHead ].
 			edge := shape edgeFrom: fromElement to: toElement.
 			edge @ DCRTConnectionHandles.
 			(self diagramController controllerForModel: self model source owner) figure trachelShape
