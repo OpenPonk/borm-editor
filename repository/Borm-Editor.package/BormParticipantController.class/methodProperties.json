@@ -2,14 +2,14 @@
 	"class" : {
 		 },
 	"instance" : {
-		"addAsTargetFor:" : "PeterUhnak 9/18/2015 02:02:15",
-		"buildEditorForm:" : "PeterUhnak 9/18/2015 02:02:15",
-		"canBeTargetFor:" : "PeterUhnak 9/18/2015 02:02:15",
-		"createContainerFigure" : "PeterUhnak 9/18/2015 02:02:15",
-		"createFigure" : "PeterUhnak 12/4/2015 21:03",
-		"modelClass" : "PeterUhnak 9/18/2015 02:02:15",
-		"nodeFigures" : "PeterUhnak 9/18/2015 02:02:15",
-		"refreshFigure" : "PeterUhnak 9/18/2015 02:02:15",
-		"removeModelElement:" : "PeterUhnak 9/18/2015 02:02:15",
-		"typeIconFor:" : "PeterUhnak 9/18/2015 02:02:15",
-		"typeIconForModel" : "PeterUhnak 9/18/2015 02:02:15" } }
+		"addAsTargetFor:" : "PeterUhnak 12/4/2015 21:04:33",
+		"buildEditorForm:" : "PeterUhnak 12/4/2015 21:04:33",
+		"canBeTargetFor:" : "PeterUhnak 12/4/2015 21:04:33",
+		"createContainerFigure" : "PeterUhnak 12/4/2015 21:04:33",
+		"createFigure" : "PeterUhnak 12/4/2015 21:04:33",
+		"modelClass" : "PeterUhnak 12/4/2015 21:04:33",
+		"nodeFigures" : "PeterUhnak 12/4/2015 21:04:33",
+		"refreshFigure" : "PeterUhnak 12/4/2015 21:04:33",
+		"removeModelElement:" : "PeterUhnak 12/4/2015 21:04:33",
+		"typeIconFor:" : "PeterUhnak 12/4/2015 21:04:33",
+		"typeIconForModel" : "PeterUhnak 12/4/2015 21:04:33" } }

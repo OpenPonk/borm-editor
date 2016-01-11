@@ -1,15 +1,15 @@
 {
 	"class" : {
-		"ignoredNames" : "PeterUhnak 9/18/2015 02:02:15" },
+		"ignoredNames" : "PeterUhnak 12/4/2015 21:04:33" },
 	"instance" : {
-		"activity" : "PeterUhnak 9/18/2015 02:02:15",
-		"communication" : "PeterUhnak 9/18/2015 02:02:15",
-		"constraint" : "PeterUhnak 9/18/2015 02:02:15",
-		"diagram" : "PeterUhnak 9/18/2015 02:02:15",
-		"initialize" : "PeterUhnak 9/18/2015 02:02:15",
-		"node" : "PeterUhnak 9/18/2015 02:02:15",
-		"participant" : "PeterUhnak 9/18/2015 02:02:15",
-		"participantType" : "PeterUhnak 9/18/2015 02:02:15",
-		"resetCache" : "PeterUhnak 9/18/2015 02:02:15",
-		"state" : "PeterUhnak 9/18/2015 02:02:15",
-		"transition" : "PeterUhnak 9/18/2015 02:02:15" } }
+		"activity" : "PeterUhnak 12/4/2015 21:04:33",
+		"communication" : "PeterUhnak 12/4/2015 21:04:33",
+		"constraint" : "PeterUhnak 12/4/2015 21:04:33",
+		"diagram" : "PeterUhnak 12/4/2015 21:04:33",
+		"initialize" : "PeterUhnak 12/4/2015 21:04:33",
+		"node" : "PeterUhnak 12/4/2015 21:04:33",
+		"participant" : "PeterUhnak 12/4/2015 21:04:33",
+		"participantType" : "PeterUhnak 12/4/2015 21:04:33",
+		"resetCache" : "PeterUhnak 12/4/2015 21:04:33",
+		"state" : "PeterUhnak 12/4/2015 21:04:33",
+		"transition" : "PeterUhnak 12/4/2015 21:04:33" } }
