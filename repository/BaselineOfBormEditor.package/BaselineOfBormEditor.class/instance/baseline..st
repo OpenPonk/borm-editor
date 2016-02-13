@@ -41,4 +41,4 @@ baseline: spec
 						repository: 'http://smalltalkhub.com/mc/Moose/PetitParser/main/' ].
 			spec package: 'Borm-Editor' with: [ spec requires: #('BormModel' 'PetitParser') ].
 			spec group: 'plugin' with: #('Borm-Editor').
-			spec group: 'default' with: #('Borm-Editor' 'DynaCASE') ]
+			spec group: 'default' with: #('plugin' 'DynaCASE') ]
