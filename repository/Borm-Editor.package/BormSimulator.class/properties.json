@@ -1,0 +1,15 @@
+{
+	"category" : "Borm-Editor-Simulator",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"diagramController",
+		"states" ],
+	"name" : "BormSimulator",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

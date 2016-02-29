@@ -6,6 +6,7 @@ SystemOrganization addCategory: 'Borm-Editor-Examples'!
 SystemOrganization addCategory: 'Borm-Editor-Extensions'!
 SystemOrganization addCategory: 'Borm-Editor-Icons'!
 SystemOrganization addCategory: 'Borm-Editor-Layouting'!
+SystemOrganization addCategory: 'Borm-Editor-Simulator'!
 SystemOrganization addCategory: 'Borm-Editor-Tests'!
 SystemOrganization addCategory: 'Borm-Editor-Trachel-Shapes'!
 SystemOrganization addCategory: 'Borm-Editor-Utility'!
