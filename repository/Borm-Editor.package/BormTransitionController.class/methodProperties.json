@@ -2,12 +2,12 @@
 	"class" : {
 		 },
 	"instance" : {
-		"addAsTargetFor:" : "PeterUhnak 1/11/2016 23:00:47",
-		"addAsTargetForConstraint:" : "PeterUhnak 1/11/2016 23:00:47",
-		"canBeTargetFor:" : "PeterUhnak 1/11/2016 23:00:47",
-		"canBeTargetForConstraint:" : "PeterUhnak 1/11/2016 23:00:47",
-		"connectionFeedback" : "PeterUhnak 1/11/2016 23:00:47",
-		"createEdgeFrom:to:" : "PeterUhnak 1/11/2016 23:00:47",
-		"createModel" : "PeterUhnak 1/11/2016 23:00:47",
-		"modelClass" : "PeterUhnak 1/11/2016 23:00:47",
-		"removeModelElement:" : "PeterUhnak 1/11/2016 23:00:47" } }
+		"addAsTargetFor:" : "PeterUhnak 2/29/2016 08:10:06",
+		"addAsTargetForConstraint:" : "PeterUhnak 2/29/2016 08:10:06",
+		"canBeTargetFor:" : "PeterUhnak 2/29/2016 08:10:06",
+		"canBeTargetForConstraint:" : "PeterUhnak 2/29/2016 08:10:06",
+		"connectionFeedback" : "PeterUhnak 3/5/2016 12:21",
+		"createEdgeFrom:to:" : "PeterUhnak 2/29/2016 08:10:06",
+		"createModel" : "PeterUhnak 2/29/2016 08:10:06",
+		"modelClass" : "PeterUhnak 2/29/2016 08:10:06",
+		"removeModelElement:" : "PeterUhnak 2/29/2016 08:10:06" } }

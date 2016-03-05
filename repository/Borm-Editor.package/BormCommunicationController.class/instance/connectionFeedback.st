@@ -1,10 +1,9 @@
 hooks
 connectionFeedback
 	^ DCInteractiveLine new
-		lineBuilder:
-				[ :fromFigure :toFigure | 
+		lineBuilder: [ :fromFigure :toFigure | 
 			DCRTStyledConnection new
-				arrowHead;
+				decorate: [ :deco | deco arrowHead ];
 				withContinuousRectangleAttachPoint;
 				color: Color darkGray muchDarker;
 				edgeFrom: fromFigure to: toFigure ];

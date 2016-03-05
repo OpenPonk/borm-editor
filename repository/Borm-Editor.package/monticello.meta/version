@@ -1,2 +1,2 @@
-(name 'Borm-Editor-PeterUhnak.91' message 'Added POC of simulator.' id 'efd593cd-90e0-48dd-b980-351a97d6e063' date '29 February 2016' time '8:10:00.083202 am' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.90' message 'State should also use grid snapping.
-' id '7b282713-10c5-566f-8455-c1345c341d0d' date '11 January 2016' time '11:00:47 pm' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
+(name 'Borm-Editor-PeterUhnak.92' message 'Fixed InteractiveLine for the umth time.' id 'fb987975-908f-446a-b213-784d31980c48' date '5 March 2016' time '12:22:59.961989 pm' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.91' message 'Added POC of simulator.
+' id 'a1a14d3e-0d94-57eb-b7c0-ff0df3fc1295' date '29 February 2016' time '8:10:06 am' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
