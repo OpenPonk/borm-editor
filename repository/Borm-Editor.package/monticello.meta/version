@@ -1,2 +1,2 @@
-(name 'Borm-Editor-PeterUhnak.92' message 'Fixed InteractiveLine for the umth time.' id 'fb987975-908f-446a-b213-784d31980c48' date '5 March 2016' time '12:22:59.961989 pm' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.91' message 'Added POC of simulator.
-' id 'a1a14d3e-0d94-57eb-b7c0-ff0df3fc1295' date '29 February 2016' time '8:10:06 am' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
+(name 'Borm-Editor-PeterUhnak.93' message 'Use Ghost Draggable.' id 'cd9179f0-cb18-4d7b-ac8d-c2fb4799af1d' date '8 March 2016' time '1:22:16.218523 pm' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.92' message 'Fixed InteractiveLine for the umth time.
+' id '526a3b50-0b2e-523f-8e21-8be94131ae7a' date '5 March 2016' time '12:23:04 pm' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
