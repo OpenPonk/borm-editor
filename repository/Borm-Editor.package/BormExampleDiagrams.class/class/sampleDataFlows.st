@@ -2,7 +2,7 @@ samples
 sampleDataFlows
 	<sample>
 	| diagram user sys |
-	diagram := BormDiagram named: 'Two Participants'.
+	diagram := BormORModel named: 'Two Participants'.
 	user := BormParticipant named: 'User'.
 	(sys := BormParticipant named: 'System') type: BormParticipantType System.
 	

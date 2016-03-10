@@ -1,6 +1,6 @@
 widget API
 childrenMapping
-	^ {(BormDiagram -> #participants).
+	^ {(BormORModel -> #participants).
 	(BormParticipant -> #nodes).
 	(BormState -> #outgoing).
 	(BormActivity -> [ :o | o outgoing , o sent ]).

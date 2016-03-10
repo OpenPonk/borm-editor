@@ -3,7 +3,7 @@ diagram
 	^ super diagram
 		==> [ :arr | 
 			| d |
-			d := BormDiagram new.
+			d := BormORModel new.
 			d addAll: arr.
 
 			incompleteCommunications

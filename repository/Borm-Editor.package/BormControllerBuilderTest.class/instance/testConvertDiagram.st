@@ -1,7 +1,7 @@
 tests
 testConvertDiagram
 	| diagram user ctrl builder tr a s |
-	diagram := BormDiagram new name: 'BORM diagram'.
+	diagram := BormORModel new name: 'BORM diagram'.
 	user := BormParticipant new name: 'User'.
 	diagram add: user.
 	user

@@ -1,2 +1,2 @@
-(name 'Borm-Editor-PeterUhnak.93' message 'Use Ghost Draggable.' id 'cd9179f0-cb18-4d7b-ac8d-c2fb4799af1d' date '8 March 2016' time '1:22:16.218523 pm' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.92' message 'Fixed InteractiveLine for the umth time.
-' id '526a3b50-0b2e-523f-8e21-8be94131ae7a' date '5 March 2016' time '12:23:04 pm' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
+(name 'Borm-Editor-PeterUhnak.94' message 'BormDiagram -> BormORModel' id '2824e013-64b9-4a34-9f75-aa4daa0f9d9f' date '10 March 2016' time '12:03:56.199715 pm' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.93' message 'Use Ghost Draggable.
+' id 'c0248b57-9929-5494-8eae-0597d3c23d49' date '8 March 2016' time '1:22:17 pm' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
