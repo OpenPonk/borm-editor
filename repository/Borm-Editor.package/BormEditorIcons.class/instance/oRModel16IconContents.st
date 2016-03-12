@@ -1,5 +1,5 @@
 private - contents
-diagram16IconContents
+oRModel16IconContents
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/16/diagram16.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA
 CXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wQGARcHZXKGRAAAABl0RVh0Q29tbWVudABD

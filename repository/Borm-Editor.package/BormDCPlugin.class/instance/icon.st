@@ -1,3 +1,3 @@
 accessing
 icon
-	^ BormEditorIcons current diagram16Icon
+	^ BormEditorIcons current oRModel16Icon

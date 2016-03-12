@@ -1,2 +1,2 @@
-(name 'Borm-Editor-PeterUhnak.94' message 'BormDiagram -> BormORModel' id '2824e013-64b9-4a34-9f75-aa4daa0f9d9f' date '10 March 2016' time '12:03:56.199715 pm' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.93' message 'Use Ghost Draggable.
-' id 'c0248b57-9929-5494-8eae-0597d3c23d49' date '8 March 2016' time '1:22:17 pm' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
+(name 'Borm-Editor-PeterUhnak.95' message 'Fixed borm model icon.' id '528029e7-1524-4eea-b388-239cfff4fb5d' date '13 March 2016' time '12:38:24.681473 am' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.94' message 'BormDiagram -> BormORModel
+' id 'e6c0f9ef-c2e7-54ed-9486-52cc8659ba90' date '10 March 2016' time '12:03:57 pm' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
