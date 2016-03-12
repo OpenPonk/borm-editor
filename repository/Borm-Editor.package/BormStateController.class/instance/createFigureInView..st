@@ -6,7 +6,7 @@ createFigureInView: aView
 	aView add: element.
 	element
 		@
-			(RTLabelled new
+			(RTLabeled new
 				view: aView;
 				center;
 				fontSize: 10;

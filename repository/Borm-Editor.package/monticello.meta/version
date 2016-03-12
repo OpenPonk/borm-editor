@@ -1,2 +1,2 @@
-(name 'Borm-Editor-PeterUhnak.95' message 'Fixed borm model icon.' id '528029e7-1524-4eea-b388-239cfff4fb5d' date '13 March 2016' time '12:38:24.681473 am' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.94' message 'BormDiagram -> BormORModel
-' id 'e6c0f9ef-c2e7-54ed-9486-52cc8659ba90' date '10 March 2016' time '12:03:57 pm' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
+(name 'Borm-Editor-PeterUhnak.96' message 'RTLabel{l,}ed' id 'bd6b9271-3471-4985-ad24-e5d7f91221de' date '13 March 2016' time '12:52:59.243581 am' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.95' message 'Fixed borm model icon.
+' id 'dc88be9f-efc0-545a-b9ad-0257ab4361d0' date '13 March 2016' time '12:38:27 am' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())

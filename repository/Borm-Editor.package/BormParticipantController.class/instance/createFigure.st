@@ -5,7 +5,7 @@ createFigure
 			| container labelled |
 			container := self createContainerFigure.
 			container @ RTGhostDraggable @ RTResizable.
-			(labelled := RTLabelled new)
+			(labelled := RTLabeled new)
 				view: view;
 				top;
 				color: Color black.

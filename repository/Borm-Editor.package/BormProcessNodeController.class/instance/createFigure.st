@@ -7,7 +7,7 @@ createFigure
 			element := shape elementOn: ''.
 			element
 				@
-					(RTLabelled new
+					(RTLabeled new
 						view: view;
 						center;
 						fontSize: 10;
