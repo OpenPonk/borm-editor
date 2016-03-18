@@ -1,11 +1,11 @@
 {
 	"class" : {
-		"modelClass" : "PeterUhnak 3/13/2016 00:38:27" },
+		"modelClass" : "PeterUhnak 3/13/2016 00:53:00" },
 	"instance" : {
-		"addAsTargetFor:" : "PeterUhnak 3/13/2016 00:38:27",
-		"canBeTargetFor:" : "PeterUhnak 3/13/2016 00:38:27",
-		"initializePalette:" : "PeterUhnak 3/13/2016 00:38:27",
-		"initializePaletteWithShortcuts:" : "PeterUhnak 3/13/2016 00:38:27",
-		"modelToControllerMapping" : "PeterUhnak 3/13/2016 00:38:27",
-		"rebuild" : "PeterUhnak 3/13/2016 00:38:27",
-		"updateView" : "PeterUhnak 3/13/2016 00:38:27" } }
+		"addAsTargetFor:" : "PeterUhnak 3/13/2016 00:53:00",
+		"canBeTargetFor:" : "PeterUhnak 3/13/2016 00:53:00",
+		"initializePalette:" : "PeterUhnak 3/13/2016 00:53:00",
+		"initializePaletteWithShortcuts:" : "PeterUhnak 3/13/2016 00:53:00",
+		"modelToControllerMapping" : "PeterUhnak 3/13/2016 00:53:00",
+		"rebuild" : "PeterUhnak 3/13/2016 00:53:00",
+		"updateView" : "PeterUhnak 3/13/2016 00:53:00" } }
