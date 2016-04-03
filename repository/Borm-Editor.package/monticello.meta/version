@@ -1,2 +1,2 @@
-(name 'Borm-Editor-PeterUhnak.98' message 'diagramClass -> modelClass' id '6afd6cda-fbda-4ce6-9d5a-1b0c6e788d0d' date '2 April 2016' time '5:48:19.838922 pm' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.97' message 'Rename.
-' id '9e1b851c-5603-50f8-9b36-0c25af216bb1' date '18 March 2016' time '1:41:17 pm' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
+(name 'Borm-Editor-PeterUhnak.99' message 'Borm WIP undo/redo.' id '3d822271-cfbe-4bc3-a48e-f14c3166af4b' date '3 April 2016' time '3:58:59.130068 pm' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.98' message 'diagramClass -> modelClass
+' id '1853319d-3b85-5406-a01e-4e3b69fe09ad' date '2 April 2016' time '5:48:21 pm' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())

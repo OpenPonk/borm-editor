@@ -8,6 +8,6 @@ gtBormInspectorPresentation: composite
 			m := ((self className splitOn: 'Borm') last asLowercase, ':') asSymbol.
 			(e respondsTo: m)
 				ifTrue: [ 
-					composite rubricText
+					composite text
 						title: 'Lang';
 						display: [ e perform: m with: self ] ] ]
