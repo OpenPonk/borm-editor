@@ -14,4 +14,5 @@ createFigure
 						color: Color black;
 						yourself).
 			element @ RTDraggableSnapToGrid @ RTResizable.
+			self saveStateOnDragEndFor: element.
 			element ]

@@ -29,7 +29,6 @@ createFigureInView: aView
 		borderColor: Color black;
 		element.
 	element addCallback: (TRRemoveCallback with: innerBox).
-	"		aView add: innerBox."
 
 	element @ RTDraggableSnapToGrid @ RTResizable.
 

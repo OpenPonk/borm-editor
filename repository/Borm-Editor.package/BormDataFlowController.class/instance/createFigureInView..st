@@ -12,7 +12,6 @@ createFigureInView: aView
 		stick.
 
 	iconFigure := (RTBitmap new form: BormEditorIcons current dataFlowLeftIcon) element.
-	iconFigure trachelShape computeRectangle.	"This is a must, otherwise the view gets corrupted for unknown reason. This is not needed for Participant's icon for some reason."
 	(RTConstraint on: iconFigure background: container trachelShape)
 		bottom;
 		padding: 5;
@@ -26,5 +25,7 @@ createFigureInView: aView
 		add: labelFigure.
 
 	self constraintOnEdge: container.
+	
+	self saveStateOnDragEndFor: container.
 
 	^ container

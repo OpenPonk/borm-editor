@@ -14,21 +14,18 @@ createFigure
 				topLeft;
 				padding: 5;
 				stick.
-
 			iconElement := (RTBitmap new form: self typeIconForModel) element.
 			view add: iconElement.
-
 			(RTConstraint on: iconElement background: container)
 				topRight;
 				padding: 5;
 				stick.
-
 			container addCallback: (TRRemoveCallback with: iconElement).
-
 			elements := RTGroup new.
 			elements @ RTDraggable.
-
 			container trachelShape
-				addCallback: (TRTranslationCallback block: [ :shape :step | elements do: [ :e | e translateBy: step ] ]).
-
+				addCallback:
+					(TRTranslationCallback
+						block: [ :shape :step | elements do: [ :e | e translateBy: step ] ]).
+			self saveStateOnDragEndFor: container.
 			container ]

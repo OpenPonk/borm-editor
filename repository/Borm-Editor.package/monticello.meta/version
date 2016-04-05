@@ -1,2 +1,2 @@
-(name 'Borm-Editor-PeterUhnak.99' message 'Borm WIP undo/redo.' id '3d822271-cfbe-4bc3-a48e-f14c3166af4b' date '3 April 2016' time '3:58:59.130068 pm' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.98' message 'diagramClass -> modelClass
-' id '1853319d-3b85-5406-a01e-4e3b69fe09ad' date '2 April 2016' time '5:48:21 pm' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
+(name 'Borm-Editor-PeterUhnak.100' message 'Finally fixed issue with bitmap crashing canvas.' id 'a4f2af55-d0da-4dee-b8bd-ab5660b2cc99' date '5 April 2016' time '12:50:28.943713 pm' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.99' message 'Borm WIP undo/redo.
+' id 'ddfb970e-3c1b-5fb5-96c2-7f1fb8a74f2c' date '3 April 2016' time '3:59 pm' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())

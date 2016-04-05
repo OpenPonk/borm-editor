@@ -1,6 +1,6 @@
 userinterface
 rebuild
-	| builder bb |
+	| builder |
 	self controllers do: #remove.
 	controllers := nil.
 	builder := BormControllerBuilder new.
@@ -8,7 +8,4 @@ rebuild
 		diagramController: self;
 		view: self view;
 		diagram: self model;
-		build.
-	bb := BormBasicLayout new.
-	bb diagramController: self.
-	bb applyLayout
+		build
