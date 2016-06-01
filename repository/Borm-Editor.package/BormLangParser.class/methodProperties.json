@@ -1,17 +1,17 @@
 {
 	"class" : {
-		"ignoredNames" : "PeterUhnak 3/18/2016 13:41:17" },
+		"ignoredNames" : "PeterUhnak 4/5/2016 12:50:30" },
 	"instance" : {
-		"activity" : "PeterUhnak 3/18/2016 13:41:17",
-		"communication" : "PeterUhnak 3/18/2016 13:41:17",
-		"constraint" : "PeterUhnak 3/18/2016 13:41:17",
-		"diagram" : "PeterUhnak 3/18/2016 13:41:17",
-		"initialize" : "PeterUhnak 3/18/2016 13:41:17",
-		"node" : "PeterUhnak 3/18/2016 13:41:17",
-		"parseStatements:" : "PeterUhnak 4/3/2016 15:42",
-		"participant" : "PeterUhnak 3/18/2016 13:41:17",
-		"participantType" : "PeterUhnak 3/18/2016 13:41:17",
-		"replaceModel:withStatements:" : "PeterUhnak 4/3/2016 15:49",
-		"resetCache" : "PeterUhnak 3/18/2016 13:41:17",
-		"state" : "PeterUhnak 3/18/2016 13:41:17",
-		"transition" : "PeterUhnak 3/18/2016 13:41:17" } }
+		"activity" : "PeterUhnak 4/5/2016 12:50:30",
+		"communication" : "PeterUhnak 4/5/2016 12:50:30",
+		"constraint" : "PeterUhnak 4/5/2016 12:50:30",
+		"diagram" : "PeterUhnak 4/5/2016 12:50:30",
+		"initialize" : "PeterUhnak 4/5/2016 12:50:30",
+		"node" : "PeterUhnak 4/5/2016 12:50:30",
+		"parseStatements:" : "PeterUhnak 4/5/2016 12:50:30",
+		"participant" : "PeterUhnak 4/5/2016 12:50:30",
+		"participantType" : "PeterUhnak 4/5/2016 12:50:30",
+		"replaceModel:withStatements:" : "PeterUhnak 4/5/2016 12:50:30",
+		"resetCache" : "PeterUhnak 4/5/2016 12:50:30",
+		"state" : "PeterUhnak 4/5/2016 12:50:30",
+		"transition" : "PeterUhnak 4/5/2016 12:50:30" } }
