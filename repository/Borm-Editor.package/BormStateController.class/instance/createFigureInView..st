@@ -12,26 +12,26 @@ createFigureInView: aView
 				fontSize: 10;
 				color: Color black;
 				yourself).
-
 	playBox := RTBitmap new
 		form: BormEditorIcons current initialIcon;
 		element.
-
 	(RTConstraint on: playBox background: element)
 		right;
 		padding: 5;
 		stick.
-
 	element addCallback: (TRRemoveCallback with: playBox).
-
 	innerBox := RTBox new
 		color: Color transparent;
 		borderColor: Color black;
 		element.
 	element addCallback: (TRRemoveCallback with: innerBox).
-
+	(RTConstraint on: plusBox background: element)
+		right;
+		bottom;
+		padding: 5;
+		stick.
+	element addCallback: (TRRemoveCallback with: plusBox).
 	element @ RTDraggableSnapToGrid @ RTResizable.
-
 	element trachelShape
 		addCallback:
 			(TRTranslationCallback
@@ -40,6 +40,4 @@ createFigureInView: aView
 						width: aShape width - 10;
 						height: element height - 10.
 					innerBox translateTo: element position + (0 @ 0) ]).
-
-
 	^ element

@@ -1,2 +1,2 @@
-(name 'Borm-Editor-PeterUhnak.101' message 'Update view on model change.' id '037b7238-9c7e-45d9-bc8a-85c44e4dae54' date '1 June 2016' time '9:39:28.908577 am' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.100' message 'Finally fixed issue with bitmap crashing canvas.
-' id '27c48a27-5aa8-59f0-aab1-2222de532448' date '5 April 2016' time '12:50:30 pm' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
+(name 'Borm-Editor-PeterUhnak.102' message 'It is now possible to link a process node with another model and click-through to it.' id 'b8d72174-2084-4cbe-839f-0d257ce68451' date '13 July 2016' time '5:09:31.164702 pm' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.101' message 'Update view on model change.
+' id '0ce0291b-21b5-544b-bdac-a39bb329b99b' date '1 June 2016' time '9:40:15 am' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())

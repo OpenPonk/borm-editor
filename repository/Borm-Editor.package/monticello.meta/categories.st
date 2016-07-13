@@ -10,3 +10,4 @@ SystemOrganization addCategory: 'Borm-Editor-Simulator'!
 SystemOrganization addCategory: 'Borm-Editor-Tests'!
 SystemOrganization addCategory: 'Borm-Editor-Trachel-Shapes'!
 SystemOrganization addCategory: 'Borm-Editor-Utility'!
+SystemOrganization addCategory: 'Borm-Editor-Visuals'!
