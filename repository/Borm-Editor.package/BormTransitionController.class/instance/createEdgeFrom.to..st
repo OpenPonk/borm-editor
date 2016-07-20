@@ -4,7 +4,7 @@ createEdgeFrom: fromElement to: toElement
 	^ DCRTCallbackBuilder
 		block: [ :view | 
 			shape := DCRTStyledConnection new
-				withContinuousRectangleAttachPoint;
+				withBorderAttachPoint;
 				color: Color black;
 				width: 2.
 			(self model target isKindOf: BormState)

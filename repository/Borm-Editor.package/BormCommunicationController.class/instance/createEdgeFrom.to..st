@@ -4,7 +4,7 @@ createEdgeFrom: fromElement to: toElement
 	^ DCRTCallbackBuilder
 		block: [ :view | 
 			edge := DCRTStyledConnection new
-				withContinuousRectangleAttachPoint;
+				withBorderAttachPoint;
 				color: Color black;
 				edgeFrom: fromElement to: toElement.
 			edge shape decorations arrowHead.

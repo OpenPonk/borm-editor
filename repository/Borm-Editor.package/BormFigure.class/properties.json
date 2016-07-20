@@ -1,14 +1,14 @@
 {
-	"category" : "Borm-Editor-Controllers",
+	"category" : "Borm-Editor-Visuals",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		 ],
-	"name" : "BormProcessNodeController",
+		"figuresFactory" ],
+	"name" : "BormFigure",
 	"pools" : [
 		 ],
-	"super" : "DCElementController",
+	"super" : "RTAbstractMultiElement",
 	"type" : "normal" }

@@ -1,6 +1,8 @@
 ui hooks
 buildEditorForm: aForm
-	super buildEditorForm: aForm.
+	(aForm addText: 'Name')
+		text: self model name;
+		whenTextIsAccepted: [ :newValue | self model name: newValue ].
 	(aForm addDroplist: 'Submodel')
 		items: {nil} , self bormModels;
 		displayBlock: [ :m | m name asString ];

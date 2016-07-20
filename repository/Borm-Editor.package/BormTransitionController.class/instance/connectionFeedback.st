@@ -4,7 +4,7 @@ connectionFeedback
 		lineBuilder: [ :fromFigure :toFigure | 
 			DCRTStyledConnection new
 				decorate: [ :deco | deco arrowHead ];
-				withContinuousRectangleAttachPoint;
+				withBorderAttachPoint;
 				color: Color darkGray muchDarker;
 				edgeFrom: fromFigure to: toFigure ];
 		from: source figure

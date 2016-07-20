@@ -1,2 +1,2 @@
-(name 'Borm-Editor-PeterUhnak.102' message 'It is now possible to link a process node with another model and click-through to it.' id 'b8d72174-2084-4cbe-839f-0d257ce68451' date '13 July 2016' time '5:09:31.164702 pm' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.101' message 'Update view on model change.
-' id '0ce0291b-21b5-544b-bdac-a39bb329b99b' date '1 June 2016' time '9:40:15 am' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
+(name 'Borm-Editor-PeterUhnak.103' message 'Better figures & wrapping text.' id '65b64acb-5a13-4f56-8e87-ce3b92c070eb' date '20 July 2016' time '10:12:53.756947 am' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.102' message 'It is now possible to link a process node with another model and click-through to it.
+' id '84ec71e3-8609-50ea-bc3b-0c2d261f16e0' date '13 July 2016' time '5:09:51 pm' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())

@@ -1,14 +1,15 @@
 {
-	"category" : "Borm-Editor-Controllers",
+	"category" : "Borm-Editor-Visuals",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		 ],
-	"name" : "BormProcessNodeController",
+		"text",
+		"plusIcon" ],
+	"name" : "BormNodeFigure",
 	"pools" : [
 		 ],
-	"super" : "DCElementController",
+	"super" : "BormFigure",
 	"type" : "normal" }

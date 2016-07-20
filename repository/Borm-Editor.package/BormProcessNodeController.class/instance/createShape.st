@@ -1,3 +1,0 @@
-hooks
-createShape
-	^ self subclassResponsibility
