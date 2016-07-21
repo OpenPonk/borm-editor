@@ -1,4 +1,4 @@
-as yet unclassified
+wrapping
 wrap: aText to: maxWidth
 	| string font words lineWidth lines line ww |
 	string := aText copyReplaceAll: String cr with: ' '.
