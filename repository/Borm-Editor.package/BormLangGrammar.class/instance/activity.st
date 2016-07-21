@@ -1,3 +1,3 @@
 accessing
 activity
-	^ ('activity' asParser , space , namePair) ==> [ :arr | arr last ]
+	^ (activityStart , space , namePair) ==> [ :arr | arr last ]

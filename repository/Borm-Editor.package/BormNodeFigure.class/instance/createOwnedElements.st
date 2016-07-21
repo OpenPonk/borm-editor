@@ -3,6 +3,7 @@ createOwnedElements
 	| block |
 	text := self figuresFactory newText
 		text: [ :m | m model name ];
+		wrapText;
 		elementOn: self.
 	self add: text.
 	(RTConstraint on: text background: self) stick.

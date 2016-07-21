@@ -5,6 +5,7 @@ toolbarMenu: aBuilder
 		action: [ DCDslEditor new
 				parser: BormLangParser new;
 				exporter: BormLangSerializer new;
+				highlighter: BormLangHighlighter new;
 				modelClass: BormORModel;
 				model: aBuilder model diagramController model;
 				openWithSpec ]

@@ -24,7 +24,8 @@
 		"namePair",
 		"name",
 		"constraint",
-		"diagram" ],
+		"diagram",
+		"activityStart" ],
 	"name" : "BormLangGrammar",
 	"pools" : [
 		 ],

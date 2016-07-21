@@ -1,0 +1,14 @@
+{
+	"category" : "Borm-Editor-Dsl",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "BormLangHighlighter",
+	"pools" : [
+		 ],
+	"super" : "BormLangGrammar",
+	"type" : "normal" }
