@@ -1,2 +1,2 @@
-(name 'Borm-Editor-PeterUhnak.108' message 'Properly align participant''s label.' id '81708993-2021-4250-a787-072a2833899b' date '22 July 2016' time '10:21:02.086676 am' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.107' message 'Couple more tests.
-' id '2ca73236-3f5a-51ff-9a9b-067681e7a81b' date '22 July 2016' time '10:11:01 am' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
+(name 'Borm-Editor-PeterUhnak.109' message 'Fixed navigator listing.' id '636bf4d7-38cf-4ee8-adeb-51e85a0670af' date '22 July 2016' time '10:38:40.046575 am' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.108' message 'Properly align participant''s label.
+' id 'cae0d7af-3412-5872-ba72-d1ee007c6c52' date '22 July 2016' time '10:21:05 am' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
