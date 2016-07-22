@@ -1,2 +1,2 @@
-(name 'Borm-Editor-PeterUhnak.109' message 'Fixed navigator listing.' id '636bf4d7-38cf-4ee8-adeb-51e85a0670af' date '22 July 2016' time '10:38:40.046575 am' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.108' message 'Properly align participant''s label.
-' id 'cae0d7af-3412-5872-ba72-d1ee007c6c52' date '22 July 2016' time '10:21:05 am' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
+(name 'Borm-Editor-PeterUhnak.110' message 'Participant no longer reacts to negative feedback because it''s annoying.' id 'a90c631f-1e4f-49b1-810a-b4655f28a911' date '22 July 2016' time '10:49:16.553478 am' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.109' message 'Fixed navigator listing.
+' id '487f8625-76a5-5d27-bc8a-a2c74c3c48f9' date '22 July 2016' time '10:38:44 am' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
