@@ -1,0 +1,3 @@
+accessing
+figureClass
+	^ self subclassResponsibility
