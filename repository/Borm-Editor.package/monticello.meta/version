@@ -1,2 +1,2 @@
-(name 'Borm-Editor-PeterUhnak.105' message 'Added experimental DSL highlighter.' id '7f8e2c82-7881-4ba1-8e73-48777d944af1' date '21 July 2016' time '10:42:49.790946 am' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.104' message 'Minor visual adjustments.
-' id 'd76c9f1e-d46f-5d77-8f00-a8effeb004b2' date '21 July 2016' time '7:29:30 am' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
+(name 'Borm-Editor-PeterUhnak.106' message 'Minor participant position readjustment.' id 'ee454196-102f-4741-9660-9d4a336d8285' date '22 July 2016' time '10:00:09.269522 am' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.105' message 'Added experimental DSL highlighter.
+' id '54ed8720-1630-5382-bdf3-db435ab25b67' date '21 July 2016' time '10:42:53 am' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
