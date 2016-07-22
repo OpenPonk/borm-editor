@@ -7,7 +7,8 @@
 	"commentStamp" : "",
 	"instvars" : [
 		"elements",
-		"iconElement" ],
+		"iconElement",
+		"labelConstraint" ],
 	"name" : "BormParticipantController",
 	"pools" : [
 		 ],

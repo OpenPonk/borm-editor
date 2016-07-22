@@ -10,7 +10,7 @@ createFigure
 				top;
 				color: Color black.
 			container @ labelled.
-			(RTConstraint on: labelled lbl background: container)
+			labelConstraint := (RTConstraint on: labelled lbl background: container)
 				topLeft;
 				padding: 5;
 				stick.
