@@ -6,10 +6,9 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"labelFigure",
-		"iconFigure" ],
-	"name" : "BormDataFlowController",
+		 ],
+	"name" : "BormElementController",
 	"pools" : [
 		 ],
-	"super" : "BormElementController",
+	"super" : "DCElementController",
 	"type" : "normal" }

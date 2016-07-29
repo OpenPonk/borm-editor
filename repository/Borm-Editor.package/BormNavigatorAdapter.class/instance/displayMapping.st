@@ -1,3 +1,4 @@
 widget API
 displayMapping
-	^ {(DCModelObject -> [ :o | self bormNameFor: o ])}
+	^ {BormNavigatorNode -> [ :o | (o className splitOn: 'BormNavigator') last  ].
+	DCModelObject -> [ :o | self bormNameFor: o ]}

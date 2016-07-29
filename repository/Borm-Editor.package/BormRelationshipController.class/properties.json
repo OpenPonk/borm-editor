@@ -6,10 +6,9 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"labelFigure",
-		"iconFigure" ],
-	"name" : "BormDataFlowController",
+		 ],
+	"name" : "BormRelationshipController",
 	"pools" : [
 		 ],
-	"super" : "BormElementController",
+	"super" : "DCRelationshipController",
 	"type" : "normal" }

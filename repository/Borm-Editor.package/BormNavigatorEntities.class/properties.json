@@ -1,5 +1,5 @@
 {
-	"category" : "Borm-Editor-Controllers",
+	"category" : "Borm-Editor-Adapters",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
@@ -7,8 +7,8 @@
 	"commentStamp" : "",
 	"instvars" : [
 		 ],
-	"name" : "BormProcessNodeController",
+	"name" : "BormNavigatorEntities",
 	"pools" : [
 		 ],
-	"super" : "BormElementController",
+	"super" : "BormNavigatorNode",
 	"type" : "normal" }

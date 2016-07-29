@@ -10,5 +10,5 @@
 	"name" : "BormConstraintController",
 	"pools" : [
 		 ],
-	"super" : "DCElementController",
+	"super" : "BormElementController",
 	"type" : "normal" }

@@ -1,6 +1,8 @@
 widget API
 childrenMapping
-	^ {BormORModel -> #participants.
+	^ {BormORModel -> [ :m | self childrenForModel: m ].
+	BormEntity -> #representations.
+	BormNavigatorNode -> #children.
 	BormParticipant -> #nodes.
 	BormState -> #outgoing.
 	BormActivity -> [ :o | o outgoing , o sent ].

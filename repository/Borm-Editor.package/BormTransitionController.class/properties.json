@@ -10,5 +10,5 @@
 	"name" : "BormTransitionController",
 	"pools" : [
 		 ],
-	"super" : "DCRelationshipController",
+	"super" : "BormRelationshipController",
 	"type" : "normal" }

@@ -1,2 +1,2 @@
-(name 'Borm-Editor-PeterUhnak.110' message 'Participant no longer reacts to negative feedback because it''s annoying.' id 'a90c631f-1e4f-49b1-810a-b4655f28a911' date '22 July 2016' time '10:49:16.553478 am' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.109' message 'Fixed navigator listing.
-' id '487f8625-76a5-5d27-bc8a-a2c74c3c48f9' date '22 July 2016' time '10:38:44 am' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
+(name 'Borm-Editor-PeterUhnak.111' message 'Added WIP entities support.' id '191bba25-7960-4d6a-9d4c-aa42e57791ff' date '29 July 2016' time '1:15:03.478515 pm' author 'PeterUhnak' ancestors ((name 'Borm-Editor-PeterUhnak.110' message 'Participant no longer reacts to negative feedback because it''s annoying.
+' id '9e867a59-bcaf-5f1e-a536-623f129f6a85' date '22 July 2016' time '10:49:19 am' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
