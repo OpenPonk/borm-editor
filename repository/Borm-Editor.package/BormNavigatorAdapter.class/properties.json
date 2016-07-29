@@ -6,7 +6,7 @@
 		 ],
 	"commentStamp" : "PeterUhnak 6/28/2015 00:56",
 	"instvars" : [
-		 ],
+		"modelChildren" ],
 	"name" : "BormNavigatorAdapter",
 	"pools" : [
 		 ],

@@ -1,8 +1,8 @@
 widget API
 iconMapping
 	^ Array
+		with: BormNavigatorEntities -> BormEditorIcons current entity16Icon
 		with: BormNavigatorNode -> [ :o | Smalltalk ui icons addIcon ]
-		with: BormEntity -> [ :o | Smalltalk ui icons blankIcon ]
 		with:
 			DCModelObject
 				->
