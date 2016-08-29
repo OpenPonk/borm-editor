@@ -6,10 +6,10 @@ baseline: spec
 		do:
 			[ spec
 				baseline: 'BormModel'
-				with: [ spec repository: 'github://dynacase/borm-model/repository' ].
+				with: [ spec repository: 'github://openponk/borm-model/repository' ].
 			spec
 				baseline: 'DynaCASE'
-				with: [ spec repository: 'github://dynacase/dynacase/repository' ].
+				with: [ spec repository: 'github://openponk/openponk/repository' ].
 			spec
 				project: 'XMLParser'
 				with:
