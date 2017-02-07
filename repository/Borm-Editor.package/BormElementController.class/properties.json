@@ -10,5 +10,5 @@
 	"name" : "BormElementController",
 	"pools" : [
 		 ],
-	"super" : "DCElementController",
+	"super" : "OPElementController",
 	"type" : "normal" }

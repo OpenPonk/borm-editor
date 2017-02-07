@@ -2,7 +2,7 @@ toolbar
 toolbarMenu: aBuilder
 	<dcEditorToolbarMenu: #BormDCPlugin>
 	(aBuilder item: 'DSL Editor')
-		action: [ DCDslEditor new
+		action: [ OPDslEditor new
 				parser: BormLangParser new;
 				exporter: BormLangSerializer new;
 				highlighter: BormLangHighlighter new;

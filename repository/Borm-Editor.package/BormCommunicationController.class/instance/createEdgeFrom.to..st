@@ -1,14 +1,14 @@
 hooks
 createEdgeFrom: fromElement to: toElement
 	| edge |
-	^ DCRTCallbackBuilder
+	^ OPRTCallbackBuilder
 		block: [ :view | 
-			edge := DCRTStyledConnection new
+			edge := OPRTStyledConnection new
 				withBorderAttachPoint;
 				color: Color black;
 				edgeFrom: fromElement to: toElement.
 			edge shape decorations arrowHead.
-			edge @ DCRTConnectionHandles.
+			edge @ OPRTConnectionHandles.
 			view add: edge.
 			edge trachelShape pushFront.
 			edge ]

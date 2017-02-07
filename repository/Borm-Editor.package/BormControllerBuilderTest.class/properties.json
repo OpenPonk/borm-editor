@@ -10,5 +10,5 @@
 	"name" : "BormControllerBuilderTest",
 	"pools" : [
 		 ],
-	"super" : "DCTestCase",
+	"super" : "OPTestCase",
 	"type" : "normal" }

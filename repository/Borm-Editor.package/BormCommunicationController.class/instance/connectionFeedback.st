@@ -1,8 +1,8 @@
 hooks
 connectionFeedback
-	^ DCInteractiveLine new
+	^ OPInteractiveLine new
 		lineBuilder: [ :fromFigure :toFigure | 
-			DCRTStyledConnection new
+			OPRTStyledConnection new
 				decorate: [ :deco | deco arrowHead ];
 				withBorderAttachPoint;
 				color: Color darkGray muchDarker;

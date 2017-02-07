@@ -10,5 +10,5 @@
 	"name" : "BormDCPlugin",
 	"pools" : [
 		 ],
-	"super" : "DCPlugin",
+	"super" : "OPPlugin",
 	"type" : "normal" }

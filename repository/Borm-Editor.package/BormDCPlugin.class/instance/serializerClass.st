@@ -1,3 +1,3 @@
 accessing
 serializerClass
-	^ DCStonSerializer
+	^ OPStonSerializer

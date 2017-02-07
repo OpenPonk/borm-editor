@@ -4,6 +4,6 @@ iconMapping
 		with: BormNavigatorEntities -> BormEditorIcons current entity16Icon
 		with: BormNavigatorNode -> [ :o | Smalltalk ui icons addIcon ]
 		with:
-			DCModelObject
+			OPModelObject
 				->
 					[ :o | BormEditorIcons current perform: ((self bormNameFor: o) uncapitalized , '16Icon') asSymbol ]

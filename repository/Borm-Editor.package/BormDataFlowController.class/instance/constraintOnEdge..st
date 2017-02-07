@@ -2,7 +2,7 @@ private
 constraintOnEdge: anElement
 	| edge cb const |
 	edge := (self diagramController controllerForModel: model owner) figure.
-	const := DCRTRailConstraint new.
+	const := OPRTRailConstraint new.
 	const
 		initialPosition: 0.5;
 		distance: 10.

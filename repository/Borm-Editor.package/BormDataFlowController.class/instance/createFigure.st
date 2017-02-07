@@ -1,3 +1,3 @@
 hooks
 createFigure
-	^ DCRTCallbackBuilder block: [ :view | self createFigureInView: view ]
+	^ OPRTCallbackBuilder block: [ :view | self createFigureInView: view ]

@@ -5,7 +5,7 @@ constraintOnEdge: anElement
 	anElement
 		withViewDo:
 			[ :view | 
-			const := DCRTRailConstraint new.
+			const := OPRTRailConstraint new.
 			const
 				initialPosition: 0.5;
 				distance: 10.
