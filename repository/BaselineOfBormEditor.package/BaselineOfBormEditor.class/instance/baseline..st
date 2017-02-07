@@ -8,7 +8,7 @@ baseline: spec
 				baseline: 'BormModel'
 				with: [ spec repository: 'github://openponk/borm-model/repository' ].
 			spec
-				baseline: 'DynaCASE'
+				baseline: 'OpenPonk'
 				with: [ spec repository: 'github://openponk/openponk/repository' ].
 			spec
 				project: 'XMLParser'
@@ -41,4 +41,4 @@ baseline: spec
 						repository: 'http://smalltalkhub.com/mc/Moose/PetitParser/main/' ].
 			spec package: 'Borm-Editor' with: [ spec requires: #('BormModel' 'PetitParser') ].
 			spec group: 'plugin' with: #('Borm-Editor').
-			spec group: 'default' with: #('plugin' 'DynaCASE') ]
+			spec group: 'default' with: #('plugin' 'OpenPonk') ]
