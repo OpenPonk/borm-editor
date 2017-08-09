@@ -1,14 +1,11 @@
 {
-	"category" : "Borm-Editor-Tests",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "BormStateFigureTest",
-	"pools" : [
-		 ],
 	"super" : "BormFigureTest",
-	"type" : "normal" }
+	"category" : "Borm-Editor-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "BormStateFigureTest",
+	"type" : "normal"
+}

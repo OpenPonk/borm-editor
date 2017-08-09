@@ -1,19 +1,18 @@
 {
-	"category" : "Borm-Editor-UI",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
+	"super" : "ComposableModel",
+	"category" : "Borm-Editor-UI",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"searchInput",
 		"addEntryButton",
 		"entriesList",
 		"itemsBlock",
 		"displayNameBlock",
-		"orphanedItems" ],
+		"orphanedItems"
+	],
 	"name" : "BormEntityListPresenter",
-	"pools" : [
-		 ],
-	"super" : "ComposableModel",
-	"type" : "normal" }
+	"type" : "normal"
+}

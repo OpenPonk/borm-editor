@@ -1,10 +1,10 @@
 {
-	"category" : "Borm-Editor-Dsl",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "PeterUhnak 7/15/2015 12:37",
+	"super" : "PPCompositeParser",
+	"category" : "Borm-Editor-Dsl",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"participants",
 		"participant",
@@ -25,9 +25,8 @@
 		"name",
 		"constraint",
 		"diagram",
-		"activityStart" ],
+		"activityStart"
+	],
 	"name" : "BormLangGrammar",
-	"pools" : [
-		 ],
-	"super" : "PPCompositeParser",
-	"type" : "normal" }
+	"type" : "normal"
+}

@@ -1,15 +1,14 @@
 {
-	"category" : "Borm-Editor-Visuals",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
+	"super" : "BormNodeFigure",
+	"category" : "Borm-Editor-Visuals",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"playIcon",
-		"innerBox" ],
+		"innerBox"
+	],
 	"name" : "BormStateFigure",
-	"pools" : [
-		 ],
-	"super" : "BormNodeFigure",
-	"type" : "normal" }
+	"type" : "normal"
+}

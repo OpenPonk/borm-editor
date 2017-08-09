@@ -1,17 +1,16 @@
 {
-	"category" : "Borm-Editor-Dsl",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "PeterUhnak 7/15/2015 12:37",
+	"super" : "BormLangGrammar",
+	"category" : "Borm-Editor-Dsl",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"incompleteTransitions",
 		"nodesLookup",
 		"participantsLookup",
-		"incompleteCommunications" ],
+		"incompleteCommunications"
+	],
 	"name" : "BormLangParser",
-	"pools" : [
-		 ],
-	"super" : "BormLangGrammar",
-	"type" : "normal" }
+	"type" : "normal"
+}

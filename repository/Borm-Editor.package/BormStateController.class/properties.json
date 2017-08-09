@@ -1,14 +1,11 @@
 {
-	"category" : "Borm-Editor-Controllers",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "BormStateController",
-	"pools" : [
-		 ],
 	"super" : "BormProcessNodeController",
-	"type" : "normal" }
+	"category" : "Borm-Editor-Controllers",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "BormStateController",
+	"type" : "normal"
+}

@@ -1,16 +1,15 @@
 {
-	"category" : "Borm-Editor-Controllers",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
+	"super" : "BormElementController",
+	"category" : "Borm-Editor-Controllers",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"elements",
 		"iconElement",
-		"labelConstraint" ],
+		"labelConstraint"
+	],
 	"name" : "BormParticipantController",
-	"pools" : [
-		 ],
-	"super" : "BormElementController",
-	"type" : "normal" }
+	"type" : "normal"
+}

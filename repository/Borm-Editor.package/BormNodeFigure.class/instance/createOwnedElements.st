@@ -1,8 +1,8 @@
-as yet unclassified
+creating - subelements
 createOwnedElements
 	| block |
 	text := self figuresFactory newText
-		text: [ :m | m model name ];
+		text: [ :m | m model ifNil: '' ifNotNil: #name ];
 		wrapText;
 		elementOn: self.
 	self add: text.

@@ -1,14 +1,11 @@
 {
-	"category" : "Borm-Editor-Adapters",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "PeterUhnak 7/2/2015 00:34",
-	"instvars" : [
-		 ],
-	"name" : "BormDCPlugin",
-	"pools" : [
-		 ],
 	"super" : "OPPlugin",
-	"type" : "normal" }
+	"category" : "Borm-Editor-Adapters",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "BormDCPlugin",
+	"type" : "normal"
+}

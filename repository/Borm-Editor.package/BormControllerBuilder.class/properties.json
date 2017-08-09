@@ -1,16 +1,15 @@
 {
-	"category" : "Borm-Editor-Utility",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Borm-Editor-Utility",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"diagramController",
 		"diagram",
-		"view" ],
+		"view"
+	],
 	"name" : "BormControllerBuilder",
-	"pools" : [
-		 ],
-	"super" : "Object",
-	"type" : "normal" }
+	"type" : "normal"
+}

@@ -1,15 +1,14 @@
 {
-	"category" : "Borm-Editor-Controllers",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
+	"super" : "BormElementController",
+	"category" : "Borm-Editor-Controllers",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"labelFigure",
-		"iconFigure" ],
+		"iconFigure"
+	],
 	"name" : "BormDataFlowController",
-	"pools" : [
-		 ],
-	"super" : "BormElementController",
-	"type" : "normal" }
+	"type" : "normal"
+}

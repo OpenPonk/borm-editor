@@ -1,14 +1,11 @@
 {
-	"category" : "Borm-Editor-Trachel-Shapes",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "BormTRDataFlowShape",
-	"pools" : [
-		 ],
 	"super" : "Object",
-	"type" : "normal" }
+	"category" : "Borm-Editor-Trachel-Shapes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "BormTRDataFlowShape",
+	"type" : "normal"
+}

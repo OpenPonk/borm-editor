@@ -1,14 +1,13 @@
 {
-	"category" : "Borm-Editor-Adapters",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "PeterUhnak 6/28/2015 00:56",
-	"instvars" : [
-		"modelChildren" ],
-	"name" : "BormNavigatorAdapter",
-	"pools" : [
-		 ],
 	"super" : "OPNavigatorAdapter",
-	"type" : "normal" }
+	"category" : "Borm-Editor-Adapters",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"modelChildren"
+	],
+	"name" : "BormNavigatorAdapter",
+	"type" : "normal"
+}

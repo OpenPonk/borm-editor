@@ -1,14 +1,11 @@
 {
-	"category" : "Borm-Editor-Adapters",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "BormNavigatorElements",
-	"pools" : [
-		 ],
 	"super" : "BormNavigatorNode",
-	"type" : "normal" }
+	"category" : "Borm-Editor-Adapters",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "BormNavigatorElements",
+	"type" : "normal"
+}

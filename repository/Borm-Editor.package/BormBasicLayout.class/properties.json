@@ -1,14 +1,13 @@
 {
-	"category" : "Borm-Editor-Layouting",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "PeterUhnak 3/28/2015 01:27",
-	"instvars" : [
-		"diagramController" ],
-	"name" : "BormBasicLayout",
-	"pools" : [
-		 ],
 	"super" : "Object",
-	"type" : "normal" }
+	"category" : "Borm-Editor-Layouting",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"diagramController"
+	],
+	"name" : "BormBasicLayout",
+	"type" : "normal"
+}

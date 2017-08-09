@@ -1,14 +1,13 @@
 {
-	"category" : "Borm-Editor-Visuals",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		"figuresFactory" ],
-	"name" : "BormFigure",
-	"pools" : [
-		 ],
 	"super" : "RTAbstractMultiElement",
-	"type" : "normal" }
+	"category" : "Borm-Editor-Visuals",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"figuresFactory"
+	],
+	"name" : "BormFigure",
+	"type" : "normal"
+}

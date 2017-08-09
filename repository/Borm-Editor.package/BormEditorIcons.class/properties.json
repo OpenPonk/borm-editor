@@ -1,14 +1,17 @@
 {
+	"commentStamp" : "PeterUhnak 4/6/2015 03:30",
+	"super" : "Object",
 	"category" : "Borm-Editor-Icons",
 	"classinstvars" : [
-		"current" ],
+		"current"
+	],
+	"pools" : [ ],
 	"classvars" : [
-		"Current" ],
-	"commentStamp" : "PeterUhnak 4/6/2015 03:30",
+		"Current"
+	],
 	"instvars" : [
-		"icons" ],
+		"icons"
+	],
 	"name" : "BormEditorIcons",
-	"pools" : [
-		 ],
-	"super" : "Object",
-	"type" : "normal" }
+	"type" : "normal"
+}

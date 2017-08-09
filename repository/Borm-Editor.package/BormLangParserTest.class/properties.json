@@ -1,14 +1,11 @@
 {
-	"category" : "Borm-Editor-Dsl",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "BormLangParserTest",
-	"pools" : [
-		 ],
 	"super" : "BormLangGrammarTest",
-	"type" : "normal" }
+	"category" : "Borm-Editor-Dsl",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "BormLangParserTest",
+	"type" : "normal"
+}

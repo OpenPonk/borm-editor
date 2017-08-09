@@ -1,6 +1,6 @@
 *Borm-Editor
 openAs: aProjectName
 	OPProject new
-		projectName: aProjectName;
+		name: aProjectName;
 		addModel: self;
 		open

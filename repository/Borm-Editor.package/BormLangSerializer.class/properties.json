@@ -1,14 +1,13 @@
 {
-	"category" : "Borm-Editor-Dsl",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "PeterUhnak 7/15/2015 12:37",
-	"instvars" : [
-		"diagram" ],
-	"name" : "BormLangSerializer",
-	"pools" : [
-		 ],
 	"super" : "Object",
-	"type" : "normal" }
+	"category" : "Borm-Editor-Dsl",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"diagram"
+	],
+	"name" : "BormLangSerializer",
+	"type" : "normal"
+}
