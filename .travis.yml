@@ -20,3 +20,6 @@ cache:
 
 before_install:
   - source ./scripts/ssh.sh
+
+after_success:
+  - scp -p ${SMALLTALK_CI_BUILD}/coveralls_results.json "openponk@ccmi.fit.cvut.cz:~/www/metrics/borm-editor/coveralls/${TRAVIS_BUILD_NUMBER}.json"
