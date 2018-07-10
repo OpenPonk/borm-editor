@@ -12,4 +12,4 @@ Metacello new
 	load.
 ```
 
-This is a part of [OpenPonk framework](https://openponk.github.io)
+This is a part of [OpenPonk platform](https://openponk.org)
