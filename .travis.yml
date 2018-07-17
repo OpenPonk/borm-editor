@@ -23,3 +23,15 @@ before_install:
 
 after_success:
   - scp -p ${SMALLTALK_CI_BUILD}/coveralls_results.json "openponk@ccmi.fit.cvut.cz:~/www/metrics/borm-editor/coveralls/${TRAVIS_BUILD_NUMBER}.json"
+  - ./scripts/copy-image.sh $SMALLTALK_CI_IMAGE $ARTIFACT_DIR/openponk
+  - ./scripts/mark-image.sh $ARTIFACT_DIR/openponk
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: scripts/deploy.sh
+  - provider: script
+    on:
+      tags: true
+    skip_cleanup: true
+    script: scripts/deploy.sh
