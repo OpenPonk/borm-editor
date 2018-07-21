@@ -9,7 +9,7 @@ baseline: spec
 				with: [ spec repository: 'github://openponk/borm-model/repository' ].
 			spec
 				baseline: 'OpenPonk'
-				with: [ spec repository: 'github://openponk/openponk:0.1.0-depfix/repository' ].
+				with: [ spec repository: 'github://openponk/openponk/repository' ].
 			spec
 				project: 'XMLParser'
 				with:
