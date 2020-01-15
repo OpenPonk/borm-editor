@@ -12,7 +12,9 @@ env:
     - ARTIFACT_DIR=openponk-borm-image-$TRAVIS_BUILD_NUMBER
 
 smalltalk:
-  - Pharo-6.1
+  - Pharo32-7.0
+  - Pharo64-7.0
+  - Pharo64-8.0
 
 cache:
   directories:
