@@ -11,34 +11,14 @@ baseline: spec
 				baseline: 'OpenPonk'
 				with: [ spec repository: 'github://openponk/openponk/repository' ].
 			spec
-				project: 'XMLParser'
-				with:
-					[ spec
-						className: #ConfigurationOfXMLParser;
-						versionString: #stable;
-						repository: 'http://smalltalkhub.com/mc/PharoExtras/XMLParser/main/' ].
+				baseline: 'XMLParser'
+				with: [ spec repository: 'github://pharo-contributions/XML-XMLParser/src' ].
 			spec
-				project: 'XPath'
-				with:
-					[ spec
-						className: #ConfigurationOfXPath;
-						versionString: #stable;
-						repository: 'http://smalltalkhub.com/mc/PharoExtras/XPath/main/' ].
+				baseline: 'XPath'
+				with: [ spec repository: 'github://pharo-contributions/XML-XPath/src' ].
 			spec
-				project: 'XPath'
-				with:
-					[ spec
-						className: #ConfigurationOfXPath;
-						versionString: #stable;
-						repository: 'http://smalltalkhub.com/mc/Moose/PetitParser/main/' ].
-			spec
-				project: 'PetitParser'
-				with:
-					[ spec
-						className: #ConfigurationOfPetitParser;
-						versionString: #development;
-						loads: #('Parser');
-						repository: 'http://smalltalkhub.com/mc/Moose/PetitParser/main/' ].
+				baseline: 'PetitParser'
+				with: [ spec repository: 'github://moosetechnology/PetitParser/src' ].
 			spec package: 'Borm-Editor' with: [ spec requires: #('BormModel' 'PetitParser') ].
 			spec group: 'plugin' with: #('Borm-Editor').
 			spec group: 'default' with: #('plugin' 'OpenPonk') ]
