@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "OPTestCase",
+	"super" : "TestCase",
 	"category" : "Borm-Editor-Tests",
 	"classinstvars" : [ ],
 	"pools" : [ ],
