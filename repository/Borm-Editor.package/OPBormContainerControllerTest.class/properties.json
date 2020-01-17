@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "OPBormControllerTest",
+	"category" : "Borm-Editor-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "OPBormContainerControllerTest",
+	"type" : "normal"
+}
