@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "OPRelationshipController",
+	"super" : "OPDirectionalRelationshipController",
 	"category" : "Borm-Editor-Controllers",
 	"classinstvars" : [ ],
 	"pools" : [ ],

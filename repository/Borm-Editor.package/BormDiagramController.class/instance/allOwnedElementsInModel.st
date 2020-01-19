@@ -1,0 +1,3 @@
+rebuilding
+allOwnedElementsInModel
+	^ model elements

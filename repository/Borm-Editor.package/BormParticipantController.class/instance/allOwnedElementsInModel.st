@@ -1,0 +1,3 @@
+accessing
+allOwnedElementsInModel
+	^ model nodes

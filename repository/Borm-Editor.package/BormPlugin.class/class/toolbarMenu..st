@@ -1,6 +1,6 @@
 toolbar
 toolbarMenu: aBuilder
-	<opEditorToolbarMenu: #BormDCPlugin>
+	<opEditorToolbarMenu: #BormPlugin>
 	(aBuilder item: 'DSL Editor')
 		action: [ OPDslEditor new
 				parser: BormLangParser new;

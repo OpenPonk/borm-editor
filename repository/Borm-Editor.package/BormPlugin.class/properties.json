@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "BormDCPlugin",
+	"name" : "BormPlugin",
 	"type" : "normal"
 }

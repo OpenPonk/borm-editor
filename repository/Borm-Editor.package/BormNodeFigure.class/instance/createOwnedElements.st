@@ -13,7 +13,7 @@ createOwnedElements
 	self addCallback: (TRTranslationCallback block: block).
 	self addCallback: (TRExtentCallback block: block).
 	plusIcon := RTBitmap new
-		form: Smalltalk ui icons smallAddIcon;
+		form: (self iconNamed: #add);
 		element.
 	(RTConstraint on: plusIcon background: self)
 		right;
