@@ -1,3 +1,3 @@
 accessing
 allOwnedElementsInModel
-	^ {}
+	^ model transitions

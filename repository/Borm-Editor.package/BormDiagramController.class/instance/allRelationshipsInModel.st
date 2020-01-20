@@ -1,6 +1,11 @@
 rebuilding
 allRelationshipsInModel
-	^ self allOwnedElementsInModel
-		flatCollect: [ :each | 
-			(self diagramController controllerForModel: each)
-				allRelationshipsInModel ]
+	^ self model elements
+		flatCollect: [ :eachParticipant | 
+			eachParticipant nodes
+				flatCollect: [ :eachNode | 
+					eachNode outgoing
+						,
+							((eachNode respondsTo: #sent)
+								ifTrue: [ eachNode sent ]
+								ifFalse: [ #() ]) ] ]
