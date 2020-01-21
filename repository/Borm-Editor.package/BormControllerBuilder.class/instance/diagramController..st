@@ -1,3 +1,0 @@
-accessing
-diagramController: aBormDiagramController
-	diagramController := aBormDiagramController

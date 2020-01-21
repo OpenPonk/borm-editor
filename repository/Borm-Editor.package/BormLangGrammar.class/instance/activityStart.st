@@ -1,3 +1,0 @@
-accessing
-activityStart
-	^ 'activity' asParser

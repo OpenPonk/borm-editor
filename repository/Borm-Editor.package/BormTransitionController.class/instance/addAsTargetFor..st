@@ -1,3 +1,0 @@
-adding
-addAsTargetFor: aConstraintController
-	self addAsTargetForConstraint: aConstraintController

@@ -1,3 +1,0 @@
-locking
-lock
-	locked := true

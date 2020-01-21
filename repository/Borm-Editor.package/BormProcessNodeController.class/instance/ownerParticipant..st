@@ -1,3 +1,0 @@
-accessing
-ownerParticipant: aParticipantController
-	ownerParticipant := aParticipantController

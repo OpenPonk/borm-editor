@@ -1,1 +1,0 @@
-I am a descriptior class for Borm plugin.

@@ -1,3 +1,0 @@
-rebuilding
-allOwnedElementsInModel
-	^ model elements

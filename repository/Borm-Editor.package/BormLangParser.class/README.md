@@ -1,1 +1,0 @@
-I take parsed Borm DSL and produce instances of Borm Model.

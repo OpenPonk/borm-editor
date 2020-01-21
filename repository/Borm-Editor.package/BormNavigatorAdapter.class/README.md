@@ -1,1 +1,0 @@
-I implement specific mappings for BORM model
