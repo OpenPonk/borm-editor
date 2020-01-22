@@ -1,6 +1,6 @@
 Class {
-	#name : #BormProcessNodeController,
-	#superclass : #BormElementController,
+	#name : #OPBormProcessNodeController,
+	#superclass : #OPBormElementController,
 	#instVars : [
 		'ownerParticipant'
 	],
@@ -8,13 +8,13 @@ Class {
 }
 
 { #category : #adding }
-BormProcessNodeController >> addAsSourceFor: aController [
+OPBormProcessNodeController >> addAsSourceFor: aController [
 	self assert: (self canBeSourceFor: aController).
 	aController source: self
 ]
 
 { #category : #adding }
-BormProcessNodeController >> addAsTargetFor: aController [
+OPBormProcessNodeController >> addAsTargetFor: aController [
 	self assert: (self canBeTargetFor: aController).
 	aController target: self.
 	aController
@@ -23,18 +23,18 @@ BormProcessNodeController >> addAsTargetFor: aController [
 ]
 
 { #category : #accessing }
-BormProcessNodeController >> allOwnedElementsInModel [
+OPBormProcessNodeController >> allOwnedElementsInModel [
 	^ model transitions
 ]
 
 { #category : #adding }
-BormProcessNodeController >> bormModels [
+OPBormProcessNodeController >> bormModels [
 	^ self diagramController editor workbench projectController project models
 		select: [ :each | each isKindOf: self diagramController modelClass ]
 ]
 
 { #category : #'ui hooks' }
-BormProcessNodeController >> buildEditorForm: aForm [
+OPBormProcessNodeController >> buildEditorForm: aForm [
 	(aForm addText: 'Name')
 		text: self model name;
 		whenTextIsAccepted: [ :newValue | self model name: newValue asString ].
@@ -46,43 +46,43 @@ BormProcessNodeController >> buildEditorForm: aForm [
 ]
 
 { #category : #testing }
-BormProcessNodeController >> canBeSourceFor: aController [
+OPBormProcessNodeController >> canBeSourceFor: aController [
 	^ self subclassResponsibility
 ]
 
 { #category : #testing }
-BormProcessNodeController >> canBeTargetFor: aController [
+OPBormProcessNodeController >> canBeTargetFor: aController [
 	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
-BormProcessNodeController >> ownerParticipant [
+OPBormProcessNodeController >> ownerParticipant [
 	^ ownerParticipant
 ]
 
 { #category : #accessing }
-BormProcessNodeController >> ownerParticipant: aParticipantController [
+OPBormProcessNodeController >> ownerParticipant: aParticipantController [
 	ownerParticipant := aParticipantController
 ]
 
 { #category : #hooks }
-BormProcessNodeController >> refreshFigure [
+OPBormProcessNodeController >> refreshFigure [
 	figure update
 ]
 
 { #category : #destruction }
-BormProcessNodeController >> removeFigure [
+OPBormProcessNodeController >> removeFigure [
 	super removeFigure.
 	self ownerParticipant removedNodeFigure: figure
 ]
 
 { #category : #destruction }
-BormProcessNodeController >> removeModel [
+OPBormProcessNodeController >> removeModel [
 	self model owner remove: self model
 ]
 
 { #category : #removing }
-BormProcessNodeController >> removeModelElement: aTransition [
+OPBormProcessNodeController >> removeModelElement: aTransition [
 	self model removeTransition: aTransition.
 	aTransition target removeTransition: aTransition
 ]

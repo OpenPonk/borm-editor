@@ -1,17 +1,17 @@
 Class {
-	#name : #BormElementController,
+	#name : #OPBormElementController,
 	#superclass : #OPElementController,
 	#category : #'OpenPonk-BormEditor-Controllers'
 }
 
 { #category : #'ui hooks' }
-BormElementController >> buildEditorForm: aForm [
+OPBormElementController >> buildEditorForm: aForm [
 	super buildEditorForm: aForm.
 	self buildEntityForm: aForm
 ]
 
 { #category : #'ui hooks' }
-BormElementController >> buildEntityForm: aForm [
+OPBormElementController >> buildEntityForm: aForm [
 	(aForm addEntity: 'Entity')
 		displaySymbol: #name;
 		entity: self model entity;

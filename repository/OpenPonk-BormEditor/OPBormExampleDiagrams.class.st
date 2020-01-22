@@ -3,40 +3,40 @@ I provide couple of examples for BORM.
 See class-side.
 "
 Class {
-	#name : #BormExampleDiagrams,
+	#name : #OPBormExampleDiagrams,
 	#superclass : #Object,
 	#category : #'OpenPonk-BormEditor-Examples'
 }
 
 { #category : #examples }
-BormExampleDiagrams class >> exampleDataFlows [
+OPBormExampleDiagrams class >> exampleDataFlows [
 	<example>
 	self sampleDataFlows openAs: 'Example Data Flows'
 ]
 
 { #category : #examples }
-BormExampleDiagrams class >> exampleEmpty [
+OPBormExampleDiagrams class >> exampleEmpty [
 	<example>
 	^ self sampleEmpty openAs: 'BORM'
 ]
 
 { #category : #examples }
-BormExampleDiagrams class >> examplePizzaDelivery [
+OPBormExampleDiagrams class >> examplePizzaDelivery [
 	<example>
 	^ self samplePizzaDelivery openAs: 'Pizza Delivery'
 ]
 
 { #category : #examples }
-BormExampleDiagrams class >> exampleTravelingCard [
+OPBormExampleDiagrams class >> exampleTravelingCard [
 	<example>
 	^ self sampleTravelingCard openAs: 'Traveling Card'
 ]
 
 { #category : #menu }
-BormExampleDiagrams class >> menuCommandOn: aBuilder [
+OPBormExampleDiagrams class >> menuCommandOn: aBuilder [
 	<worldMenu>
 	((aBuilder item: #BORMEditor)
-		icon: BormEditorIcons current oRModel16Icon)
+		icon: OPBormEditorIcons current oRModel16Icon)
 		label: 'BORM Editor';
 		order: 25.725;
 		parent: #MostUsedTools;
@@ -44,17 +44,17 @@ BormExampleDiagrams class >> menuCommandOn: aBuilder [
 		with: [ (aBuilder item: #BORMExamples)
 				parent: #BORMEditor;
 				label: 'BORM Example Pizza Delivery';
-				icon: BormEditorIcons current oRModel16Icon;
+				icon: OPBormEditorIcons current oRModel16Icon;
 				action: [ self examplePizzaDelivery ].
 			(aBuilder item: #BORMExamples)
 				parent: #BORMEditor;
 				label: 'BORM Simple Diagram';
-				icon: BormEditorIcons current oRModel16Icon;
+				icon: OPBormEditorIcons current oRModel16Icon;
 				action: [ self exampleDataFlows ] ]
 ]
 
 { #category : #samples }
-BormExampleDiagrams class >> sampleDataFlows [
+OPBormExampleDiagrams class >> sampleDataFlows [
 	<sample>
 	| diagram user sys |
 	diagram := BormORModel named: 'Two Participants'.
@@ -103,13 +103,13 @@ BormExampleDiagrams class >> sampleDataFlows [
 ]
 
 { #category : #samples }
-BormExampleDiagrams class >> sampleEmpty [
+OPBormExampleDiagrams class >> sampleEmpty [
 	<sample>
 	^ BormORModel named: 'ORD'
 ]
 
 { #category : #samples }
-BormExampleDiagrams class >> samplePizzaDelivery [
+OPBormExampleDiagrams class >> samplePizzaDelivery [
 	<sample>
 	^ 'Person "Customer" {
 	initial state "wants pizza"
@@ -181,7 +181,7 @@ Person "Cashier" {
 ]
 
 { #category : #samples }
-BormExampleDiagrams class >> sampleTravelingCard [
+OPBormExampleDiagrams class >> sampleTravelingCard [
 	^ 'Person "Customer" {
 	initial state "wants a travel card"
 		go to "request"

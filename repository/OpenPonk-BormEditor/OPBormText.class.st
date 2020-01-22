@@ -1,6 +1,6 @@
 Class {
-	#name : #BormText,
-	#superclass : #ComposableModel,
+	#name : #OPBormText,
+	#superclass : #ComposablePresenter,
 	#instVars : [
 		'rubText'
 	],

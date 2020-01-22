@@ -1,6 +1,6 @@
 Class {
-	#name : #BormDataFlowController,
-	#superclass : #BormElementController,
+	#name : #OPBormDataFlowController,
+	#superclass : #OPBormElementController,
 	#instVars : [
 		'labelFigure',
 		'iconFigure'
@@ -9,7 +9,7 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-BormDataFlowController >> buildEditorForm: aForm [
+OPBormDataFlowController >> buildEditorForm: aForm [
 	super buildEditorForm: aForm.
 
 	(aForm addDroplist: 'Type')
@@ -19,8 +19,13 @@ BormDataFlowController >> buildEditorForm: aForm [
 		whenSelectedItemChanged: [ :newValue | self model type: newValue ]
 ]
 
+{ #category : #testing }
+OPBormDataFlowController >> canVisitTarget: aController [
+	^ aController canBeTargetForDataFlow: self
+]
+
 { #category : #private }
-BormDataFlowController >> constraintOnEdge: anElement [
+OPBormDataFlowController >> constraintOnEdge: anElement [
 	| edge cb const |
 	edge := (self diagramController controllerForModel: model owner) figure.
 	const := OPRTRailConstraint new.
@@ -42,7 +47,7 @@ BormDataFlowController >> constraintOnEdge: anElement [
 ]
 
 { #category : #private }
-BormDataFlowController >> createContainerShape [
+OPBormDataFlowController >> createContainerShape [
 	^ RTRoundedBox new
 		width: 40;
 		height: 35;
@@ -52,12 +57,12 @@ BormDataFlowController >> createContainerShape [
 ]
 
 { #category : #hooks }
-BormDataFlowController >> createFigure [
+OPBormDataFlowController >> createFigure [
 	^ OPRTCallbackBuilder block: [ :view | self createFigureInView: view ]
 ]
 
 { #category : #private }
-BormDataFlowController >> createFigureInView: aView [
+OPBormDataFlowController >> createFigureInView: aView [
 	| container |
 	container := self createContainerShape element.
 	container @ RTDraggable.
@@ -69,7 +74,7 @@ BormDataFlowController >> createFigureInView: aView [
 		top;
 		stick.
 
-	iconFigure := (RTBitmap new form: BormEditorIcons current dataFlowLeftIcon) element.
+	iconFigure := (RTBitmap new form: OPBormEditorIcons current dataFlowLeftIcon) element.
 	(RTConstraint on: iconFigure background: container trachelShape)
 		bottom;
 		padding: 5;
@@ -90,12 +95,12 @@ BormDataFlowController >> createFigureInView: aView [
 ]
 
 { #category : #accessing }
-BormDataFlowController >> modelClass [
+OPBormDataFlowController >> modelClass [
 	^ BormDataFlow
 ]
 
 { #category : #hooks }
-BormDataFlowController >> refreshFigure [
+OPBormDataFlowController >> refreshFigure [
 	labelFigure trachelShape text: self model name.
 	figure width: (labelFigure width max: 40).
 	self refreshIcon.
@@ -103,19 +108,19 @@ BormDataFlowController >> refreshFigure [
 ]
 
 { #category : #'as yet unclassified' }
-BormDataFlowController >> refreshIcon [
+OPBormDataFlowController >> refreshIcon [
 	| edge right |
 	edge := (self diagramController controllerForModel: model owner) figure.
 	right := edge from position x < edge to position x.
 	self model isOutput
 		ifTrue: [ right := right not ].
 	right
-		ifTrue: [ iconFigure trachelShape form: BormEditorIcons current dataFlowRightIcon ]
-		ifFalse: [ iconFigure trachelShape form: BormEditorIcons current dataFlowLeftIcon ]
+		ifTrue: [ iconFigure trachelShape form: OPBormEditorIcons current dataFlowRightIcon ]
+		ifFalse: [ iconFigure trachelShape form: OPBormEditorIcons current dataFlowLeftIcon ]
 ]
 
 { #category : #private }
-BormDataFlowController >> renderFigureIn: aView [
+OPBormDataFlowController >> renderFigureIn: aView [
 	figure := self createContainerShape element.
 	figure @ RTDraggable.
 	labelFigure := (RTLabel new
@@ -125,7 +130,7 @@ BormDataFlowController >> renderFigureIn: aView [
 		top;
 		stick.
 	iconFigure := (RTBitmap new
-		form: BormEditorIcons current dataFlowLeftIcon) element.
+		form: OPBormEditorIcons current dataFlowLeftIcon) element.
 	(RTConstraint on: iconFigure background: figure trachelShape)
 		bottom;
 		padding: 5;
@@ -139,4 +144,9 @@ BormDataFlowController >> renderFigureIn: aView [
 	self constraintOnEdge: figure.
 	self saveStateOnDragEndFor: figure.
 	^ figure
+]
+
+{ #category : #visiting }
+OPBormDataFlowController >> visitTarget: aController [
+	^ aController addAsTargetForDataFlow: self
 ]

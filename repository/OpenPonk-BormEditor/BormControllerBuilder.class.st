@@ -95,7 +95,7 @@ BormControllerBuilder >> newControllerFor: anObject [
 
 { #category : #'private - factories' }
 BormControllerBuilder >> newDiagramControllerFor: aDiagram [
-	^ BormDiagramController new
+	^ OPBormDiagramController new
 		model: aDiagram;
 		yourself
 ]

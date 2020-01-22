@@ -1,11 +1,11 @@
 Class {
-	#name : #BormStateController,
-	#superclass : #BormProcessNodeController,
+	#name : #OPBormStateController,
+	#superclass : #OPBormProcessNodeController,
 	#category : #'OpenPonk-BormEditor-Controllers'
 }
 
 { #category : #hooks }
-BormStateController >> buildEditorForm: aForm [
+OPBormStateController >> buildEditorForm: aForm [
 	super buildEditorForm: aForm.
 
 	(aForm addCheckbox: 'Initial')
@@ -18,22 +18,22 @@ BormStateController >> buildEditorForm: aForm [
 ]
 
 { #category : #testing }
-BormStateController >> canBeSourceFor: aController [
-	^ aController isKindOf: BormTransitionController
+OPBormStateController >> canBeSourceFor: aController [
+	^ aController isKindOf: OPBormTransitionController
 ]
 
 { #category : #testing }
-BormStateController >> canBeTargetFor: aController [
-	^ (aController isKindOf: BormTransitionController) and: [ aController source isKindOf: BormActivityController ]
+OPBormStateController >> canBeTargetFor: aController [
+	^ (aController isKindOf: OPBormTransitionController) and: [ aController source isKindOf: OPBormActivityController ]
 ]
 
 { #category : #accessing }
-BormStateController >> modelClass [
+OPBormStateController >> modelClass [
 	^ BormState
 ]
 
 { #category : #hooks }
-BormStateController >> renderFigureIn: aView [
+OPBormStateController >> renderFigureIn: aView [
 	figure := BormStateFigure on: self model.
 	figure renderIn: aView.
 	figure plusIcon

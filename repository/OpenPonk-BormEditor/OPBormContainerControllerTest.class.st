@@ -13,24 +13,6 @@ OPBormContainerControllerTest class >> isAbstract [
 ]
 
 { #category : #accessing }
-OPBormContainerControllerTest >> testClassSideModelClass [
-	self assert: self controllerClass modelClass equals: self modelClass
-]
-
-{ #category : #accessing }
-OPBormContainerControllerTest >> testCreateFigure [
-	controller createModelIn: diagramController model.
-	diagramController addController: controller.
-	controller renderFigureIn: diagramController view.
-	self assert: controller figure class = RTElement
-]
-
-{ #category : #accessing }
-OPBormContainerControllerTest >> testCreateModel [
-	self assert: (controller createModelIn: diagramController model) class = self modelClass
-]
-
-{ #category : #accessing }
 OPBormContainerControllerTest >> testFigureRefresh [
 	| text |
 	controller createModelIn: diagramController model.

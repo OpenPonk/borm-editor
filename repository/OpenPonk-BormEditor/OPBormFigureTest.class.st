@@ -1,5 +1,5 @@
 Class {
-	#name : #BormFigureTest,
+	#name : #OPBormFigureTest,
 	#superclass : #TestCase,
 	#instVars : [
 		'view',
@@ -9,12 +9,12 @@ Class {
 }
 
 { #category : #accessing }
-BormFigureTest >> figureClass [
+OPBormFigureTest >> figureClass [
 	^ self subclassResponsibility
 ]
 
 { #category : #running }
-BormFigureTest >> setUp [
+OPBormFigureTest >> setUp [
 	super setUp.
 	view := RTView new.
 	figure := self figureClass new

@@ -7,7 +7,7 @@ BormBasicLayout provides elementary layouting for BORM ORDiagram.
 2. All participants are layouted with RTHorizontalLine.
 "
 Class {
-	#name : #BormBasicLayout,
+	#name : #OPBormBasicLayout,
 	#superclass : #Object,
 	#instVars : [
 		'diagramController'
@@ -16,12 +16,12 @@ Class {
 }
 
 { #category : #public }
-BormBasicLayout >> applyLayout [
+OPBormBasicLayout >> applyLayout [
 	self layoutDiagram: diagramController model
 ]
 
 { #category : #'as yet unclassified' }
-BormBasicLayout >> collectCommunications: participants [
+OPBormBasicLayout >> collectCommunications: participants [
 	| communications |
 	communications := OrderedCollection new.
 	participants do: [ :p | p nodes select: [ :n | n isKindOf: BormActivity ] thenDo: [ :n | communications addAll: n sent asOrderedCollection ] ].
@@ -29,12 +29,12 @@ BormBasicLayout >> collectCommunications: participants [
 ]
 
 { #category : #accessing }
-BormBasicLayout >> diagramController: aBormDiagramController [
+OPBormBasicLayout >> diagramController: aBormDiagramController [
 	diagramController := aBormDiagramController
 ]
 
 { #category : #'as yet unclassified' }
-BormBasicLayout >> layoutCommunications: communications [
+OPBormBasicLayout >> layoutCommunications: communications [
 	communications
 		do:
 			[ :c | 
@@ -58,7 +58,7 @@ BormBasicLayout >> layoutCommunications: communications [
 ]
 
 { #category : #layouting }
-BormBasicLayout >> layoutDiagram: aDiagram [
+OPBormBasicLayout >> layoutDiagram: aDiagram [
 	aDiagram participants do: [ :each | self layoutParticipant: each ].
 	self layoutParticipants: aDiagram participants.
 	self updateView.
@@ -67,7 +67,7 @@ BormBasicLayout >> layoutDiagram: aDiagram [
 ]
 
 { #category : #'as yet unclassified' }
-BormBasicLayout >> layoutNode: aNode [
+OPBormBasicLayout >> layoutNode: aNode [
 	| figure bounds |
 	figure := (diagramController controllerForModel: aNode) figure.
 	bounds := figure encompassingRectangle.
@@ -80,7 +80,7 @@ BormBasicLayout >> layoutNode: aNode [
 ]
 
 { #category : #layouting }
-BormBasicLayout >> layoutParticipant: aParticipant [
+OPBormBasicLayout >> layoutParticipant: aParticipant [
 	| ctrl bounds |
 	ctrl := diagramController controllerForModel: aParticipant.
 	aParticipant nodes do: [ :each | self layoutNode: each ].
@@ -94,14 +94,14 @@ BormBasicLayout >> layoutParticipant: aParticipant [
 ]
 
 { #category : #layouting }
-BormBasicLayout >> layoutParticipants: participants [
+OPBormBasicLayout >> layoutParticipants: participants [
 	| figures |
 	figures := participants collect: [ :each | (diagramController controllerForModel: each) figure ].
 	RTHorizontalLineLayout new gapSize: 50; on: figures
 ]
 
 { #category : #updating }
-BormBasicLayout >> updateView [
+OPBormBasicLayout >> updateView [
 	diagramController view signalUpdate.
 	diagramController view canvas camera focusOnCenter
 ]

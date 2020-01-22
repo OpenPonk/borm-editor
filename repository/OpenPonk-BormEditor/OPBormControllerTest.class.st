@@ -23,8 +23,18 @@ OPBormControllerTest >> diagramModelClass [
 ]
 
 { #category : #accessing }
+OPBormControllerTest >> figureClass [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
 OPBormControllerTest >> modelClass [
 	^ self subclassResponsibility
+]
+
+{ #category : #'as yet unclassified' }
+OPBormControllerTest >> modelOwner [
+	^ diagramController model
 ]
 
 { #category : #accessing }
@@ -35,6 +45,12 @@ OPBormControllerTest >> testClassSideModelClass [
 { #category : #accessing }
 OPBormControllerTest >> testCreateController [
 	self assert: controller class = self controllerClass
+]
+
+{ #category : #accessing }
+OPBormControllerTest >> testCreateModel [
+	controller createModelIn: diagramController model.
+	self assert: controller model class equals: self modelClass
 ]
 
 { #category : #accessing }

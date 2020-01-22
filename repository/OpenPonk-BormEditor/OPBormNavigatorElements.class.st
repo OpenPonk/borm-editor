@@ -1,10 +1,10 @@
 Class {
-	#name : #BormNavigatorElements,
-	#superclass : #BormNavigatorNode,
+	#name : #OPBormNavigatorElements,
+	#superclass : #OPBormNavigatorNode,
 	#category : #'OpenPonk-BormEditor-Adapters'
 }
 
 { #category : #'as yet unclassified' }
-BormNavigatorElements >> children [
+OPBormNavigatorElements >> children [
 	^ model participants
 ]

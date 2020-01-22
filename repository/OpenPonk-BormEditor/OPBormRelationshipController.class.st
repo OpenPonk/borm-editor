@@ -1,18 +1,18 @@
 Class {
-	#name : #BormRelationshipController,
+	#name : #OPBormRelationshipController,
 	#superclass : #OPDirectionalRelationshipController,
 	#category : #'OpenPonk-BormEditor-Controllers'
 }
 
 { #category : #accessing }
-BormRelationshipController >> allOwnedElementsInModel [
+OPBormRelationshipController >> allOwnedElementsInModel [
 	model hasConstraint
 		ifTrue: [ ^ {model constraint} ].
 	^ {}
 ]
 
 { #category : #construction }
-BormRelationshipController >> renderFigureIn: aView [
+OPBormRelationshipController >> renderFigureIn: aView [
 	figure := self
 		createEdgeFrom: self source figure
 		to: self target figure.
@@ -24,7 +24,7 @@ BormRelationshipController >> renderFigureIn: aView [
 ]
 
 { #category : #construction }
-BormRelationshipController >> showInDiagram: aDiagramController [
+OPBormRelationshipController >> showInDiagram: aDiagramController [
 	aDiagramController
 		controllerForModel: model target
 		ifNone: [ ^ aDiagramController

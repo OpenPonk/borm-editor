@@ -8,7 +8,7 @@ IconFactory new
 BormEditorIcons current initializeIcons
 "
 Class {
-	#name : #BormEditorIcons,
+	#name : #OPBormEditorIcons,
 	#superclass : #Object,
 	#instVars : [
 		'icons'
@@ -23,12 +23,12 @@ Class {
 }
 
 { #category : #'instance creation' }
-BormEditorIcons class >> current [
+OPBormEditorIcons class >> current [
 	^ Current ifNil: [ Current := self new ]
 ]
 
 { #category : #'accessing - icons' }
-BormEditorIcons >> activity16Icon [
+OPBormEditorIcons >> activity16Icon [
 	"Private - Generated method"
 
 	^ icons
@@ -38,7 +38,7 @@ BormEditorIcons >> activity16Icon [
 ]
 
 { #category : #'private - contents' }
-BormEditorIcons >> activity16IconContents [
+OPBormEditorIcons >> activity16IconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/16/activity16.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA
 CXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wQGADMMAorUXQAAABl0RVh0Q29tbWVudABD
@@ -61,7 +61,7 @@ GwAAAABJRU5ErkJggg=='
 ]
 
 { #category : #'accessing - icons' }
-BormEditorIcons >> communication16Icon [
+OPBormEditorIcons >> communication16Icon [
 	"Private - Generated method"
 
 	^ icons
@@ -72,7 +72,7 @@ BormEditorIcons >> communication16Icon [
 ]
 
 { #category : #'private - contents' }
-BormEditorIcons >> communication16IconContents [
+OPBormEditorIcons >> communication16IconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/16/communication16.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA
 CXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wQGADQr6MH38QAAABl0RVh0Q29tbWVudABD
@@ -87,7 +87,7 @@ nhcaAyKHwwHP80JhQH4B0XFwur8ipyMAAAAASUVORK5CYII='
 ]
 
 { #category : #'accessing - icons' }
-BormEditorIcons >> constraint16Icon [
+OPBormEditorIcons >> constraint16Icon [
 	"Private - Generated method"
 
 	^ icons
@@ -97,7 +97,7 @@ BormEditorIcons >> constraint16Icon [
 ]
 
 { #category : #'private - contents' }
-BormEditorIcons >> constraint16IconContents [
+OPBormEditorIcons >> constraint16IconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/16/constraint16.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA
 CXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wQGADMhR1WIKAAAABl0RVh0Q29tbWVudABD
@@ -111,7 +111,7 @@ qlDXddsLgoBfctCfQrEb8q0AAAAASUVORK5CYII='
 ]
 
 { #category : #'accessing - icons' }
-BormEditorIcons >> dataFlow16Icon [
+OPBormEditorIcons >> dataFlow16Icon [
 	"Private - Generated method"
 
 	^ icons
@@ -121,7 +121,7 @@ BormEditorIcons >> dataFlow16Icon [
 ]
 
 { #category : #'private - contents' }
-BormEditorIcons >> dataFlow16IconContents [
+OPBormEditorIcons >> dataFlow16IconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/16/dataFlow16.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA
 CXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wQGADM5VDkQfgAAABl0RVh0Q29tbWVudABD
@@ -140,7 +140,7 @@ Ka7r3jXR4/E8ansS8Jz8BhxTJrrtOHjNAAAAAElFTkSuQmCC'
 ]
 
 { #category : #'accessing - icons' }
-BormEditorIcons >> dataFlowLeftIcon [
+OPBormEditorIcons >> dataFlowLeftIcon [
 	"Private - Generated method"
 
 	^ icons
@@ -150,7 +150,7 @@ BormEditorIcons >> dataFlowLeftIcon [
 ]
 
 { #category : #'private - contents' }
-BormEditorIcons >> dataFlowLeftIconContents [
+OPBormEditorIcons >> dataFlowLeftIconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/shapes/dataFlowLeft.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAACMAAAALCAYAAAD1JjQCAAAABmJLR0QA/wD/AP+gvaeTAAAA
 CXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wQECDouojK3wwAAAoRJREFUOMu9VE9LYnEU
@@ -170,7 +170,7 @@ QmCC'
 ]
 
 { #category : #'accessing - icons' }
-BormEditorIcons >> dataFlowRightIcon [
+OPBormEditorIcons >> dataFlowRightIcon [
 	"Private - Generated method"
 
 	^ icons
@@ -180,7 +180,7 @@ BormEditorIcons >> dataFlowRightIcon [
 ]
 
 { #category : #'private - contents' }
-BormEditorIcons >> dataFlowRightIconContents [
+OPBormEditorIcons >> dataFlowRightIconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/shapes/dataFlowRight.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAACMAAAALCAYAAAD1JjQCAAAABmJLR0QA/wD/AP+gvaeTAAAA
 CXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wQECDof8+y3+QAAApBJREFUOMu9VDFLcgEU
@@ -200,7 +200,7 @@ VquFWq2GQqHADw8P+Pz8hMvlgqIocLvdNEgC39zccLFYhCzLmJmZIZvNBiLqK4H/AGLEf54Z
 ]
 
 { #category : #'accessing - icons' }
-BormEditorIcons >> entity16Icon [
+OPBormEditorIcons >> entity16Icon [
 	"Private - Generated method"
 
 	^ icons
@@ -210,7 +210,7 @@ BormEditorIcons >> entity16Icon [
 ]
 
 { #category : #'private - contents' }
-BormEditorIcons >> entity16IconContents [
+OPBormEditorIcons >> entity16IconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/16/entity16.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA
 CXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AcdDjUsULRhLwAAAddJREFUOMulk0FrE0EU
@@ -226,7 +226,7 @@ Gv0BEMLXlQxAAjdX13A9WEOW+W/nGRZ7rYFJ5vvmt1ZuNiMmieTJD8U0VUwSxX5fsftN8ehI
 ]
 
 { #category : #'gt-inspector' }
-BormEditorIcons >> gtInspectorIconsIn: composite [
+OPBormEditorIcons >> gtInspectorIconsIn: composite [
 	<gtInspectorPresentationOrder: 40>
 	composite list 
 		title: 'Icons';
@@ -238,12 +238,12 @@ BormEditorIcons >> gtInspectorIconsIn: composite [
 ]
 
 { #category : #initialization }
-BormEditorIcons >> iconSelectors [
+OPBormEditorIcons >> iconSelectors [
 	^ self class selectors select: [ :each | '*Icon' match: each asString ]
 ]
 
 { #category : #'accessing - icons' }
-BormEditorIcons >> initialIcon [
+OPBormEditorIcons >> initialIcon [
 	"Private - Generated method"
 
 	^ icons
@@ -253,7 +253,7 @@ BormEditorIcons >> initialIcon [
 ]
 
 { #category : #'private - contents' }
-BormEditorIcons >> initialIconContents [
+OPBormEditorIcons >> initialIconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/initial.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABmJLR0QA/wD/AP+gvaeTAAAA
 CXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wQGAR4Pumu1PwAAABl0RVh0Q29tbWVudABD
@@ -274,13 +274,13 @@ k1KpFCYnJ1FfX4+uri5UV1dfGcrnD/XhNjfKnXGJAAAAAElFTkSuQmCC'
 ]
 
 { #category : #initialization }
-BormEditorIcons >> initialize [
+OPBormEditorIcons >> initialize [
 	super initialize.
 	self initializeIcons
 ]
 
 { #category : #initialization }
-BormEditorIcons >> initializeIcons [
+OPBormEditorIcons >> initializeIcons [
 	icons := LRUCache new 
 		maximumWeight: 64;
 		factory: [ :key | self perform: key ];
@@ -288,7 +288,7 @@ BormEditorIcons >> initializeIcons [
 ]
 
 { #category : #'accessing - icons' }
-BormEditorIcons >> oRModel16Icon [
+OPBormEditorIcons >> oRModel16Icon [
 	"Private - Generated method"
 
 	^ icons
@@ -298,7 +298,7 @@ BormEditorIcons >> oRModel16Icon [
 ]
 
 { #category : #'private - contents' }
-BormEditorIcons >> oRModel16IconContents [
+OPBormEditorIcons >> oRModel16IconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/16/diagram16.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA
 CXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wQGARcHZXKGRAAAABl0RVh0Q29tbWVudABD
@@ -318,7 +318,7 @@ IO3A/Ow2eSfKEUKkdk6nk/r6emG32/kLTPUPZfrsIJ8AAAAASUVORK5CYII='
 ]
 
 { #category : #'accessing - icons' }
-BormEditorIcons >> organizationIcon [
+OPBormEditorIcons >> organizationIcon [
 	"Private - Generated method"
 
 	^ icons
@@ -328,7 +328,7 @@ BormEditorIcons >> organizationIcon [
 ]
 
 { #category : #'private - contents' }
-BormEditorIcons >> organizationIconContents [
+OPBormEditorIcons >> organizationIconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/organization.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA
 CXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wQGAR0UGyMvEAAAABl0RVh0Q29tbWVudABD
@@ -357,7 +357,7 @@ RU5ErkJggg=='
 ]
 
 { #category : #'accessing - icons' }
-BormEditorIcons >> participant16Icon [
+OPBormEditorIcons >> participant16Icon [
 	"Private - Generated method"
 
 	^ icons
@@ -367,7 +367,7 @@ BormEditorIcons >> participant16Icon [
 ]
 
 { #category : #'private - contents' }
-BormEditorIcons >> participant16IconContents [
+OPBormEditorIcons >> participant16IconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/16/participant16.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA
 CXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wQGADUDxG9uSgAAABl0RVh0Q29tbWVudABD
@@ -389,7 +389,7 @@ N0wymRTRaPRf5v/TPx/rS42dMRyqAAAAAElFTkSuQmCC'
 ]
 
 { #category : #'accessing - icons' }
-BormEditorIcons >> personIcon [
+OPBormEditorIcons >> personIcon [
 	"Private - Generated method"
 
 	^ icons
@@ -399,7 +399,7 @@ BormEditorIcons >> personIcon [
 ]
 
 { #category : #'private - contents' }
-BormEditorIcons >> personIconContents [
+OPBormEditorIcons >> personIconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/person.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA
 CXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wQGARwuxDTH4wAAABl0RVh0Q29tbWVudABD
@@ -431,7 +431,7 @@ on4LMDxxUbrMRGEAAAAASUVORK5CYII='
 ]
 
 { #category : #'accessing - icons' }
-BormEditorIcons >> settingsIcon [
+OPBormEditorIcons >> settingsIcon [
 	"Private - Generated method"
 
 	^ icons
@@ -441,7 +441,7 @@ BormEditorIcons >> settingsIcon [
 ]
 
 { #category : #'private - contents' }
-BormEditorIcons >> settingsIconContents [
+OPBormEditorIcons >> settingsIconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/settings.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlw
 SFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoA
@@ -454,7 +454,7 @@ lwY7t5jsq6K+FpFpyA9RMQOgmSj0BRiJyFqfn4BeAttUrvebFpHpoNW3KmpZdhX/+6ZEYOPJ
 ]
 
 { #category : #'accessing - icons' }
-BormEditorIcons >> state16Icon [
+OPBormEditorIcons >> state16Icon [
 	"Private - Generated method"
 
 	^ icons
@@ -464,7 +464,7 @@ BormEditorIcons >> state16Icon [
 ]
 
 { #category : #'private - contents' }
-BormEditorIcons >> state16IconContents [
+OPBormEditorIcons >> state16IconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/16/state16.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA
 CXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wQGADIy2vD4twAAABl0RVh0Q29tbWVudABD
@@ -486,7 +486,7 @@ RU5ErkJggg=='
 ]
 
 { #category : #'accessing - icons' }
-BormEditorIcons >> systemIcon [
+OPBormEditorIcons >> systemIcon [
 	"Private - Generated method"
 
 	^ icons
@@ -496,7 +496,7 @@ BormEditorIcons >> systemIcon [
 ]
 
 { #category : #'private - contents' }
-BormEditorIcons >> systemIconContents [
+OPBormEditorIcons >> systemIconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/system.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA
 CXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wQGARotC2cx3wAAABl0RVh0Q29tbWVudABD
@@ -531,7 +531,7 @@ TCJVRzSeXC/HdvFfK+HXOcgyrTIAAAAASUVORK5CYII='
 ]
 
 { #category : #'accessing - icons' }
-BormEditorIcons >> transition16Icon [
+OPBormEditorIcons >> transition16Icon [
 	"Private - Generated method"
 
 	^ icons
@@ -541,7 +541,7 @@ BormEditorIcons >> transition16Icon [
 ]
 
 { #category : #'private - contents' }
-BormEditorIcons >> transition16IconContents [
+OPBormEditorIcons >> transition16IconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/16/transition16.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA
 CXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wQGADQWsKm74AAAABl0RVh0Q29tbWVudABD

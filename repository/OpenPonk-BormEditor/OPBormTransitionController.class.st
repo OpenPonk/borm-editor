@@ -1,34 +1,39 @@
 Class {
-	#name : #BormTransitionController,
-	#superclass : #BormRelationshipController,
+	#name : #OPBormTransitionController,
+	#superclass : #OPBormRelationshipController,
 	#category : #'OpenPonk-BormEditor-Controllers'
 }
 
 { #category : #adding }
-BormTransitionController >> addAsTargetFor: aConstraintController [
-	self addAsTargetForConstraint: aConstraintController
+OPBormTransitionController >> addAsTargetFor: aController [
+	^ aController visitTarget: self
 ]
 
 { #category : #adding }
-BormTransitionController >> addAsTargetForConstraint: aConstraintController [
+OPBormTransitionController >> addAsTargetForConstraint: aConstraintController [
 	self assert: (self canBeTargetFor: aConstraintController).
-	self model constraint: aConstraintController loadModel.
-	aConstraintController attachTo: self diagramController
+	^ super addAsTargetFor: aConstraintController
+]
+
+{ #category : #connecting }
+OPBormTransitionController >> canBeTargetFor: aController [
+	^ (aController respondsTo: #canVisitTarget:)
+		and: [ aController canVisitTarget: self ]
 ]
 
 { #category : #testing }
-BormTransitionController >> canBeTargetFor: aController [
-	^ self canBeTargetForConstraint: aController
-]
-
-{ #category : #testing }
-BormTransitionController >> canBeTargetForConstraint: aController [
+OPBormTransitionController >> canBeTargetForConstraint: aController [
 	^ self model hasConstraint not
-		and: [ (aController isKindOf: BormConstraintController) and: [ self model source isKindOf: BormState ] ]
+		and: [ self model source isKindOf: BormState ]
+]
+
+{ #category : #adding }
+OPBormTransitionController >> canBeTargetForDataFlow: aDataFlow [
+	^ false
 ]
 
 { #category : #hooks }
-BormTransitionController >> connectionFeedback [
+OPBormTransitionController >> connectionFeedback [
 	^ OPInteractiveLine new
 		lineBuilder: [ :fromFigure :toFigure | 
 			OPRTStyledConnection new
@@ -40,7 +45,7 @@ BormTransitionController >> connectionFeedback [
 ]
 
 { #category : #hooks }
-BormTransitionController >> createEdgeFrom: fromElement to: toElement [
+OPBormTransitionController >> createEdgeFrom: fromElement to: toElement [
 	| edge shape |
 	shape := OPRTStyledConnection new
 		withBorderAttachPoint;
@@ -53,28 +58,28 @@ BormTransitionController >> createEdgeFrom: fromElement to: toElement [
 ]
 
 { #category : #hooks }
-BormTransitionController >> createModel [
-	| transition |
-	self model ifNotNil: [ ^ self model ].
-	transition := super createModel.
-	source model addTransition: transition.
-	target model addTransition: transition.
-	^ transition
+OPBormTransitionController >> createModelIn: aParentModel [
+	self model: self modelClass new.
+	model source: self source model.
+	model target: self target model.
+	source model addTransition: model.
+	target model addTransition: model.
+	^ model
 ]
 
 { #category : #accessing }
-BormTransitionController >> modelClass [
+OPBormTransitionController >> modelClass [
 	^ BormTransition
 ]
 
 { #category : #destruction }
-BormTransitionController >> removeModel [
+OPBormTransitionController >> removeModel [
 	self model target removeTransition: self model.
 	self model source removeTransition: self model
 ]
 
 { #category : #construction }
-BormTransitionController >> renderFigureIn: aView [
+OPBormTransitionController >> renderFigureIn: aView [
 	figure := super renderFigureIn: aView.
 	(self diagramController controllerForModel: self model source owner)
 		figure trachelShape

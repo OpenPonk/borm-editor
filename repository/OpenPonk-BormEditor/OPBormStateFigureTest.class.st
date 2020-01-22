@@ -1,23 +1,23 @@
 Class {
-	#name : #BormStateFigureTest,
-	#superclass : #BormFigureTest,
+	#name : #OPBormStateFigureTest,
+	#superclass : #OPBormFigureTest,
 	#category : #'OpenPonk-BormEditor-Tests'
 }
 
 { #category : #accessing }
-BormStateFigureTest >> figureClass [
+OPBormStateFigureTest >> figureClass [
 	^ BormStateFigure
 ]
 
 { #category : #'as yet unclassified' }
-BormStateFigureTest >> testAdd [
+OPBormStateFigureTest >> testAdd [
 	figure model: BormState new.
 	view add: figure.
 	self assert: view elements asSet equals: {figure} asSet , figure ownedElements
 ]
 
 { #category : #'as yet unclassified' }
-BormStateFigureTest >> testRemove [
+OPBormStateFigureTest >> testRemove [
 	figure model: BormState new.
 	view add: figure.
 	figure remove.
@@ -25,7 +25,7 @@ BormStateFigureTest >> testRemove [
 ]
 
 { #category : #'as yet unclassified' }
-BormStateFigureTest >> testRemove1 [
+OPBormStateFigureTest >> testRemove1 [
 	figure
 		model:
 			(BormState new

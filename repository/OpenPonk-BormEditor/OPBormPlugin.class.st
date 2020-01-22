@@ -2,21 +2,21 @@
 I am a descriptior class for Borm plugin.
 "
 Class {
-	#name : #BormPlugin,
+	#name : #OPBormPlugin,
 	#superclass : #OPPlugin,
 	#category : #'OpenPonk-BormEditor-Adapters'
 }
 
 { #category : #toolbar }
-BormPlugin class >> canvasToolbarFor: aBuilder [
-	<opCanvasToolbar: #BormPlugin>
+OPBormPlugin class >> canvasToolbarFor: aBuilder [
+	<opCanvasToolbar: #OPBormPlugin>
 	(aBuilder item: 'Layout')
 		action: [ aBuilder model diagramController applyDefaultLayout ]
 ]
 
 { #category : #toolbar }
-BormPlugin class >> toolbarMenu: aBuilder [
-	<opEditorToolbarMenu: #BormPlugin>
+OPBormPlugin class >> toolbarMenu: aBuilder [
+	<opEditorToolbarMenu: #OPBormPlugin>
 	(aBuilder item: 'DSL Editor')
 		action: [ OPDslEditor new
 				parser: BormLangParser new;
@@ -28,26 +28,26 @@ BormPlugin class >> toolbarMenu: aBuilder [
 ]
 
 { #category : #accessing }
-BormPlugin >> diagramControllerClass [
-	^ BormDiagramController
+OPBormPlugin >> diagramControllerClass [
+	^ OPBormDiagramController
 ]
 
 { #category : #accessing }
-BormPlugin >> icon [
-	^ BormEditorIcons current oRModel16Icon
+OPBormPlugin >> icon [
+	^ OPBormEditorIcons current oRModel16Icon
 ]
 
 { #category : #accessing }
-BormPlugin >> modelClass [
+OPBormPlugin >> modelClass [
 	^ BormORModel
 ]
 
 { #category : #accessing }
-BormPlugin >> name [
+OPBormPlugin >> name [
 	^ 'Borm OR Diagram'
 ]
 
 { #category : #accessing }
-BormPlugin >> serializerClass [
+OPBormPlugin >> serializerClass [
 	^ OPStonSerializer
 ]

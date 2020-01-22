@@ -1,6 +1,6 @@
 Class {
-	#name : #BormLangEditor,
-	#superclass : #ComposableModel,
+	#name : #OPBormLangEditor,
+	#superclass : #ComposablePresenter,
 	#instVars : [
 		'textModel',
 		'bormDiagram',
@@ -11,45 +11,45 @@ Class {
 }
 
 { #category : #specs }
-BormLangEditor class >> defaultSpec [
+OPBormLangEditor class >> defaultSpec [
 	^ SpecLayout composed newRow: [ :row | row add: #textModel ]
 ]
 
 { #category : #accessing }
-BormLangEditor >> bormDiagram [
+OPBormLangEditor >> bormDiagram [
 	^ bormDiagram
 ]
 
 { #category : #accessing }
-BormLangEditor >> bormDiagram: aBormDiagram [
+OPBormLangEditor >> bormDiagram: aBormDiagram [
 	bormDiagram := aBormDiagram.
 	self modelChanged
 ]
 
 { #category : #initialization }
-BormLangEditor >> initialize [
+OPBormLangEditor >> initialize [
 	super initialize.
 	serializer := BormLangSerializer new.
 	locked := false
 ]
 
 { #category : #initialization }
-BormLangEditor >> initializePresenter [
+OPBormLangEditor >> initializePresenter [
 	textModel widget announcer when: RubTextAccepted send: #textModelChanged to: self.
 ]
 
 { #category : #initialization }
-BormLangEditor >> initializeWidgets [
+OPBormLangEditor >> initializeWidgets [
 	textModel := self newRubScrolledText
 ]
 
 { #category : #locking }
-BormLangEditor >> lock [
+OPBormLangEditor >> lock [
 	locked := true
 ]
 
 { #category : #locking }
-BormLangEditor >> locked: aBlock [
+OPBormLangEditor >> locked: aBlock [
 	locked
 		ifTrue: [ ^ self ].
 	self lock.
@@ -58,7 +58,7 @@ BormLangEditor >> locked: aBlock [
 ]
 
 { #category : #events }
-BormLangEditor >> modelChanged [
+OPBormLangEditor >> modelChanged [
 	|newText|
 	self logCr: 'modelChanged'.
 	newText := serializer diagram: bormDiagram.
@@ -69,7 +69,7 @@ BormLangEditor >> modelChanged [
 ]
 
 { #category : #'instance creation' }
-BormLangEditor >> newRubScrolledText [
+OPBormLangEditor >> newRubScrolledText [
 	^ RubScrolledTextMorph new
 				vResizing: #spaceFill; 
       			hResizing: #spaceFill;
@@ -82,18 +82,18 @@ BormLangEditor >> newRubScrolledText [
 ]
 
 { #category : #'instance creation' }
-BormLangEditor >> newStartText [
+OPBormLangEditor >> newStartText [
 	^ 'Participant "User" {
 }'
 ]
 
 { #category : #accessing }
-BormLangEditor >> textModel [
+OPBormLangEditor >> textModel [
 	^ textModel
 ]
 
 { #category : #events }
-BormLangEditor >> textModelChanged [
+OPBormLangEditor >> textModelChanged [
 	| text newModel success |
 	self logCr: 'textModelChanged'.
 	text := self textModel widget text.
@@ -105,6 +105,6 @@ BormLangEditor >> textModelChanged [
 ]
 
 { #category : #locking }
-BormLangEditor >> unlock [
+OPBormLangEditor >> unlock [
 	locked := false
 ]

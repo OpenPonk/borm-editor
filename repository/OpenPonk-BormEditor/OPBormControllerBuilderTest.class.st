@@ -1,11 +1,11 @@
 Class {
-	#name : #BormControllerBuilderTest,
+	#name : #OPBormControllerBuilderTest,
 	#superclass : #TestCase,
 	#category : #'OpenPonk-BormEditor-Tests'
 }
 
 { #category : #tests }
-BormControllerBuilderTest >> testConvertDiagram [
+OPBormControllerBuilderTest >> testConvertDiagram [
 	| diagram user ctrl builder tr a s |
 	self skip.
 	diagram := BormORModel new name: 'BORM diagram'.

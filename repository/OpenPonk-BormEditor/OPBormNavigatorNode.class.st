@@ -1,5 +1,5 @@
 Class {
-	#name : #BormNavigatorNode,
+	#name : #OPBormNavigatorNode,
 	#superclass : #Object,
 	#instVars : [
 		'model'
@@ -8,16 +8,16 @@ Class {
 }
 
 { #category : #accessing }
-BormNavigatorNode >> model [
+OPBormNavigatorNode >> model [
 	^ model
 ]
 
 { #category : #accessing }
-BormNavigatorNode >> model: anObject [
+OPBormNavigatorNode >> model: anObject [
 	model := anObject
 ]
 
 { #category : #'as yet unclassified' }
-BormNavigatorNode >> name [
+OPBormNavigatorNode >> name [
 	^ ''
 ]

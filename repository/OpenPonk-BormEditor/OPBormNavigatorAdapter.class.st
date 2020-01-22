@@ -2,7 +2,7 @@
 I implement specific mappings for BORM model
 "
 Class {
-	#name : #BormNavigatorAdapter,
+	#name : #OPBormNavigatorAdapter,
 	#superclass : #OPNavigatorAdapter,
 	#instVars : [
 		'modelChildren'
@@ -11,24 +11,24 @@ Class {
 }
 
 { #category : #private }
-BormNavigatorAdapter >> bormNameFor: anObject [
+OPBormNavigatorAdapter >> bormNameFor: anObject [
 	^ (anObject className splitOn: 'Borm') last
 ]
 
 { #category : #'widget API' }
-BormNavigatorAdapter >> childrenForModel: aModel [
+OPBormNavigatorAdapter >> childrenForModel: aModel [
 	"Always recreationg the BormNavigator* nodes will close the tree on change, so we need to cache it."
 	^ modelChildren
 		ifNil: [ modelChildren := Array
-				with: (BormNavigatorElements new model: aModel)
-				with: (BormNavigatorEntities new model: aModel) ]
+				with: (OPBormNavigatorElements new model: aModel)
+				with: (OPBormNavigatorEntities new model: aModel) ]
 ]
 
 { #category : #'widget API' }
-BormNavigatorAdapter >> childrenMapping [
+OPBormNavigatorAdapter >> childrenMapping [
 	^ {BormORModel -> [ :m | self childrenForModel: m ].
 	BormEntity -> #representations.
-	BormNavigatorNode -> #children.
+	OPBormNavigatorNode -> #children.
 	BormParticipant -> #nodes.
 	BormState -> #outgoing.
 	BormActivity -> [ :o | o outgoing , o sent ].
@@ -38,23 +38,23 @@ BormNavigatorAdapter >> childrenMapping [
 ]
 
 { #category : #'widget API' }
-BormNavigatorAdapter >> displayMapping [
-	^ {BormNavigatorNode -> [ :o | (o className splitOn: 'BormNavigator') last  ].
+OPBormNavigatorAdapter >> displayMapping [
+	^ {OPBormNavigatorNode -> [ :o | (o className splitOn: 'BormNavigator') last  ].
 	OPModelObject -> [ :o | self bormNameFor: o ]}
 ]
 
 { #category : #testing }
-BormNavigatorAdapter >> hasMappingFor: anObject [
+OPBormNavigatorAdapter >> hasMappingFor: anObject [
 	^ anObject className beginsWith: 'Borm'
 ]
 
 { #category : #'widget API' }
-BormNavigatorAdapter >> iconMapping [
+OPBormNavigatorAdapter >> iconMapping [
 	^ Array
-		with: BormNavigatorEntities -> BormEditorIcons current entity16Icon
-		with: BormNavigatorNode -> [ :o | Smalltalk ui icons addIcon ]
+		with: OPBormNavigatorEntities -> OPBormEditorIcons current entity16Icon
+		with: OPBormNavigatorNode -> [ :o | Smalltalk ui icons addIcon ]
 		with:
 			OPModelObject
 				->
-					[ :o | BormEditorIcons current perform: ((self bormNameFor: o) uncapitalized , '16Icon') asSymbol ]
+					[ :o | OPBormEditorIcons current perform: ((self bormNameFor: o) uncapitalized , '16Icon') asSymbol ]
 ]

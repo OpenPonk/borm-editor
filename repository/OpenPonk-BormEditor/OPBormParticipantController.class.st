@@ -1,6 +1,6 @@
 Class {
-	#name : #BormParticipantController,
-	#superclass : #BormElementController,
+	#name : #OPBormParticipantController,
+	#superclass : #OPBormElementController,
 	#instVars : [
 		'elements',
 		'iconElement',
@@ -9,26 +9,13 @@ Class {
 	#category : #'OpenPonk-BormEditor-Controllers'
 }
 
-{ #category : #adding }
-BormParticipantController >> addAsTargetFor: aNodeController [
-	| newNode |
-	self assert: (self canBeTargetFor: aNodeController).
-	aNodeController diagramController: self diagramController.
-	newNode := aNodeController createModel.
-	self model add: newNode.
-	aNodeController model: newNode.
-	self diagramController controllers add: aNodeController.
-	aNodeController attach.
-	elements add: aNodeController figure
-]
-
 { #category : #accessing }
-BormParticipantController >> allOwnedElementsInModel [
+OPBormParticipantController >> allOwnedElementsInModel [
 	^ model nodes
 ]
 
 { #category : #hooks }
-BormParticipantController >> buildEditorForm: aForm [
+OPBormParticipantController >> buildEditorForm: aForm [
 	super buildEditorForm: aForm.
 
 	(aForm addDroplist: 'Type')
@@ -40,12 +27,12 @@ BormParticipantController >> buildEditorForm: aForm [
 ]
 
 { #category : #testing }
-BormParticipantController >> canBeTargetFor: aController [
-	^ aController isKindOf: BormProcessNodeController
+OPBormParticipantController >> canBeTargetFor: aController [
+	^ aController isKindOf: OPBormProcessNodeController
 ]
 
 { #category : #hooks }
-BormParticipantController >> createContainerFigure [
+OPBormParticipantController >> createContainerFigure [
 	^ (RTRoundedBox new
 		width: 200;
 		height: 300;
@@ -55,24 +42,17 @@ BormParticipantController >> createContainerFigure [
 ]
 
 { #category : #accessing }
-BormParticipantController >> createModelIn: aParentModel [
-	self model: self modelClass new.
-	aParentModel add: model.
-	^ model
-]
-
-{ #category : #accessing }
-BormParticipantController >> modelClass [
+OPBormParticipantController >> modelClass [
 	^ BormParticipant
 ]
 
 { #category : #accessing }
-BormParticipantController >> nodeFigures [
+OPBormParticipantController >> nodeFigures [
 	^ elements
 ]
 
 { #category : #hooks }
-BormParticipantController >> refreshFigure [
+OPBormParticipantController >> refreshFigure [
 	(figure attributeAt: #RTLabelledLabel) text: self model name.
 	labelConstraint move.
 	figure trachelShape pushBack.
@@ -81,17 +61,17 @@ BormParticipantController >> refreshFigure [
 ]
 
 { #category : #destruction }
-BormParticipantController >> removeModel [
+OPBormParticipantController >> removeModel [
 	self diagramController model remove: self model
 ]
 
 { #category : #accessing }
-BormParticipantController >> removedNodeFigure: aFigure [
+OPBormParticipantController >> removedNodeFigure: aFigure [
 	elements remove: aFigure
 ]
 
 { #category : #hooks }
-BormParticipantController >> renderFigureIn: aView [
+OPBormParticipantController >> renderFigureIn: aView [
 	| labeled |
 	figure := self createContainerFigure.
 	figure
@@ -126,12 +106,12 @@ BormParticipantController >> renderFigureIn: aView [
 ]
 
 { #category : #'canvas actions' }
-BormParticipantController >> showDenyFeedbackFor: aController [
+OPBormParticipantController >> showDenyFeedbackFor: aController [
 	^ nil
 ]
 
 { #category : #construction }
-BormParticipantController >> showInDiagram: aDiagramController [
+OPBormParticipantController >> showInDiagram: aDiagramController [
 	super showInDiagram: aDiagramController.
 	elements
 		addAll:
@@ -143,16 +123,16 @@ BormParticipantController >> showInDiagram: aDiagramController [
 ]
 
 { #category : #hooks }
-BormParticipantController >> typeIconFor: aType [
+OPBormParticipantController >> typeIconFor: aType [
 	aType = BormParticipantType Person
-		ifTrue: [ ^ BormEditorIcons current personIcon ].
+		ifTrue: [ ^ OPBormEditorIcons current personIcon ].
 	aType = BormParticipantType System
-		ifTrue: [ ^ BormEditorIcons current systemIcon ].
+		ifTrue: [ ^ OPBormEditorIcons current systemIcon ].
 	aType = BormParticipantType Organization
-		ifTrue: [ ^ BormEditorIcons current organizationIcon ]
+		ifTrue: [ ^ OPBormEditorIcons current organizationIcon ]
 ]
 
 { #category : #hooks }
-BormParticipantController >> typeIconForModel [
+OPBormParticipantController >> typeIconForModel [
 	^ self typeIconFor: self model type
 ]

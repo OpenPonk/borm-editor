@@ -1,10 +1,10 @@
 Class {
-	#name : #BormNavigatorEntities,
-	#superclass : #BormNavigatorNode,
+	#name : #OPBormNavigatorEntities,
+	#superclass : #OPBormNavigatorNode,
 	#category : #'OpenPonk-BormEditor-Adapters'
 }
 
 { #category : #'as yet unclassified' }
-BormNavigatorEntities >> children [
+OPBormNavigatorEntities >> children [
 	^ model project allBormEntities
 ]

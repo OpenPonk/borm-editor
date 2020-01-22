@@ -22,7 +22,7 @@ BormStateFigure >> createOwnedElements [
 	| block |
 	super createOwnedElements.
 	playIcon := RTBitmap new
-		form: BormEditorIcons current initialIcon;
+		form: OPBormEditorIcons current initialIcon;
 		element.
 	(RTConstraint on: playIcon background: self)
 		right;

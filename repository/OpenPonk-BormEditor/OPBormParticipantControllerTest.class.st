@@ -6,7 +6,12 @@ Class {
 
 { #category : #accessing }
 OPBormParticipantControllerTest >> controllerClass [
-	^ BormParticipantController
+	^ OPBormParticipantController
+]
+
+{ #category : #accessing }
+OPBormParticipantControllerTest >> figureClass [
+	^ RTElement
 ]
 
 { #category : #accessing }
