@@ -10,9 +10,9 @@ SmalltalkCISpec {
 		'scripts/script.st'
 	],
 	#testing : {
-		#packages : [ 'Borm.*' ],
+		#packages : [ 'OpenPonk-Borm*' ],
 		#coverage : {
-			#packages : [ 'Borm.*' ]
+			#packages : [ 'OpenPonk-Borm*' ]
 		}
 	}
 }

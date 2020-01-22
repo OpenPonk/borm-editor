@@ -1,7 +1,7 @@
 Class {
 	#name : #BaselineOfBormEditor,
 	#superclass : #BaselineOf,
-	#category : 'BaselineOfBormEditor'
+	#category : #BaselineOfBormEditor
 }
 
 { #category : #accessing }
@@ -25,8 +25,8 @@ BaselineOfBormEditor >> baseline: spec [
 				baseline: 'XPath'
 				with:
 					[ spec repository: 'github://pharo-contributions/XML-XPath:2.2.0/src' ].
-			spec package: 'Borm-Editor' with: [ spec requires: #('BormModel') ].
-			spec group: 'plugin' with: #('Borm-Editor').
+			spec package: 'OpenPonk-BormEditor' with: [ spec requires: #('BormModel') ].
+			spec group: 'plugin' with: #('OpenPonk-BormEditor').
 			spec group: 'default' with: #('plugin' 'OpenPonk') ]
 ]
 
