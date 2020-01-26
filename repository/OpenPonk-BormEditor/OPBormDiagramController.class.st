@@ -33,6 +33,16 @@ OPBormDiagramController >> allRelationshipsInModel [
 								ifFalse: [ #() ]) ] ]
 ]
 
+{ #category : #rebuilding }
+OPBormDiagramController >> allShowableElements [
+	"Should return all elements that could be directly hidden on diagram"
+
+	"^ (Set with: model) , self model elements flatCollect: [ :eachParticipant | (Set with: eachParticipant), (eachParticipant elements flatCollect: [ :eachNode | (Set with: eachNode), (eachNode elements flatCollect: [ :eachRelationship | eachRelationship elements   ])  ])  ]"
+
+	^ model allEntities
+		flatCollectAsSet: [ :each | each representations ]
+]
+
 { #category : #userinterface }
 OPBormDiagramController >> applyDefaultLayout [
 	OPBormBasicLayout new
