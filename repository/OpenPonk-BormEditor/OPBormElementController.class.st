@@ -22,3 +22,8 @@ OPBormElementController >> buildEntityForm: aForm [
 				addEntryLabel: 'New Entity';
 				itemsBlock: [ self diagramController model project allBormEntities ] ]
 ]
+
+{ #category : #testing }
+OPBormElementController >> isHideable [
+	^ true
+]

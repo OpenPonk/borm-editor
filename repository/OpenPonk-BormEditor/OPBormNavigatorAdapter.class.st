@@ -16,17 +16,8 @@ OPBormNavigatorAdapter >> bormNameFor: anObject [
 ]
 
 { #category : #'widget API' }
-OPBormNavigatorAdapter >> childrenForModel: aModel [
-	"Always recreationg the BormNavigator* nodes will close the tree on change, so we need to cache it."
-	^ modelChildren
-		ifNil: [ modelChildren := Array
-				with: (OPBormNavigatorElements new model: aModel)
-				with: (OPBormNavigatorEntities new model: aModel) ]
-]
-
-{ #category : #'widget API' }
 OPBormNavigatorAdapter >> childrenMapping [
-	^ {BormORModel -> [ :m | self childrenForModel: m ].
+	^ {BormORModel -> #participants.
 	BormEntity -> #representations.
 	OPBormNavigatorNode -> #children.
 	BormParticipant -> #nodes.
@@ -35,6 +26,22 @@ OPBormNavigatorAdapter >> childrenMapping [
 	BormCommunication
 		-> [ :o | o dataFlows , (o constraint ifNil: [ #() ] ifNotNil: [ {o constraint} ]) ].
 	BormTransition -> [ :o | o constraint ifNil: [ #() ] ifNotNil: [ {o constraint} ] ]}
+]
+
+{ #category : #'widget API' }
+OPBormNavigatorAdapter >> dependentMapping [
+	^ {(BormORModel -> #participants).
+	(BormEntity -> #representations).
+	(OPBormNavigatorNode -> #children).
+	(BormParticipant -> #nodes).
+	(BormState -> #transitions).
+	(BormActivity -> [ :o | o transitions , o communications ]).
+	(BormCommunication
+		-> [ :o | 
+			o dataFlows
+				, (o constraint ifNil: [ #() ] ifNotNil: [ {o constraint} ]) ]).
+	(BormTransition
+		-> [ :o | o constraint ifNil: [ #() ] ifNotNil: [ {o constraint} ] ])}
 ]
 
 { #category : #'widget API' }

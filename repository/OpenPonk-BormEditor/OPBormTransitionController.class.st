@@ -81,7 +81,7 @@ OPBormTransitionController >> removeModel [
 { #category : #construction }
 OPBormTransitionController >> renderFigureIn: aView [
 	figure := super renderFigureIn: aView.
-	(self diagramController controllerForModel: self model source owner)
+	(self diagramController showModelInDiagram: self model source owner)
 		figure trachelShape
 		addCallback:
 			(TRTranslationCallback

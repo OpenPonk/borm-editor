@@ -17,8 +17,7 @@ OPBormDiagramController >> addAsTargetFor: aController [
 
 { #category : #rebuilding }
 OPBormDiagramController >> allOwnedElementsInModel [
-	^ model allEntities
-		flatCollectAsSet: [ :each | each representations ]
+	^ model participants
 ]
 
 { #category : #rebuilding }
@@ -32,6 +31,13 @@ OPBormDiagramController >> allRelationshipsInModel [
 							((eachNode respondsTo: #sent)
 								ifTrue: [ eachNode sent ]
 								ifFalse: [ #() ]) ] ]
+]
+
+{ #category : #'as yet unclassified' }
+OPBormDiagramController >> allShowableElements [
+	"Should return all elements that could be directly hidden on diagram"
+
+	^ model allEntities flatCollect: [ :each | each representations ]
 ]
 
 { #category : #userinterface }

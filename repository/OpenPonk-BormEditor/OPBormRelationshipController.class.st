@@ -6,9 +6,12 @@ Class {
 
 { #category : #accessing }
 OPBormRelationshipController >> allOwnedElementsInModel [
-	model hasConstraint
-		ifTrue: [ ^ {model constraint} ].
-	^ {}
+	^ model constraints
+]
+
+{ #category : #testing }
+OPBormRelationshipController >> isHideable [
+	^ true
 ]
 
 { #category : #construction }
@@ -25,6 +28,8 @@ OPBormRelationshipController >> renderFigureIn: aView [
 
 { #category : #construction }
 OPBormRelationshipController >> showInDiagram: aDiagramController [
+	"protocol: #construction"
+
 	aDiagramController
 		controllerForModel: model target
 		ifNone: [ ^ aDiagramController
