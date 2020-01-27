@@ -51,3 +51,8 @@ OPBormPlugin >> name [
 OPBormPlugin >> serializerClass [
 	^ OPStonSerializer
 ]
+
+{ #category : #'as yet unclassified' }
+OPBormPlugin >> supportsHidingElements [
+	^ true
+]
