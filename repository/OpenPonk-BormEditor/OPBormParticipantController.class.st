@@ -9,11 +9,6 @@ Class {
 	#category : #'OpenPonk-BormEditor-Controllers'
 }
 
-{ #category : #accessing }
-OPBormParticipantController >> allOwnedElementsInModel [
-	^ model nodes
-]
-
 { #category : #hooks }
 OPBormParticipantController >> buildEditorForm: aForm [
 	super buildEditorForm: aForm.
@@ -39,6 +34,11 @@ OPBormParticipantController >> createContainerFigure [
 		color: (Color fromHexString: 'bce2fe');
 		borderRadius: 2;
 		borderColor: Color black) elementOn: ''
+]
+
+{ #category : #accessing }
+OPBormParticipantController >> elementsToShowInside [
+	^ model nodes
 ]
 
 { #category : #accessing }
@@ -115,11 +115,19 @@ OPBormParticipantController >> showInDiagram: aDiagramController [
 	super showInDiagram: aDiagramController.
 	elements
 		addAll:
-			(self allOwnedElementsInModel
-				collect: [ :each | 
-					(aDiagramController controllerForModel: each)
-						ownerParticipant: self;
-						figure ])
+			(self elementsToShowInside
+				collect:
+					[ :each | (aDiagramController showInDiagramModel: each) figure ])
+]
+
+{ #category : #construction }
+OPBormParticipantController >> showWithDependentInDiagram: aDiagramController [
+	super showWithDependentInDiagram: aDiagramController.
+	elements
+		addAll:
+			(self dependentElements
+				collect:
+					[ :each | (aDiagramController showInDiagramModel: each) figure ])
 ]
 
 { #category : #hooks }

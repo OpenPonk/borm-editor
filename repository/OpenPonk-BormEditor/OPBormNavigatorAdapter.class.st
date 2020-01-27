@@ -17,31 +17,14 @@ OPBormNavigatorAdapter >> bormNameFor: anObject [
 
 { #category : #'widget API' }
 OPBormNavigatorAdapter >> childrenMapping [
-	^ {BormORModel -> #participants.
-	BormEntity -> #representations.
-	OPBormNavigatorNode -> #children.
-	BormParticipant -> #nodes.
-	BormState -> #outgoing.
-	BormActivity -> [ :o | o outgoing , o sent ].
-	BormCommunication
-		-> [ :o | o dataFlows , (o constraint ifNil: [ #() ] ifNotNil: [ {o constraint} ]) ].
-	BormTransition -> [ :o | o constraint ifNil: [ #() ] ifNotNil: [ {o constraint} ] ]}
-]
-
-{ #category : #'widget API' }
-OPBormNavigatorAdapter >> dependentMapping [
 	^ {(BormORModel -> #participants).
 	(BormEntity -> #representations).
 	(OPBormNavigatorNode -> #children).
 	(BormParticipant -> #nodes).
-	(BormState -> #transitions).
+	(BormState -> [ :o | o transitions ]).
 	(BormActivity -> [ :o | o transitions , o communications ]).
-	(BormCommunication
-		-> [ :o | 
-			o dataFlows
-				, (o constraint ifNil: [ #() ] ifNotNil: [ {o constraint} ]) ]).
-	(BormTransition
-		-> [ :o | o constraint ifNil: [ #() ] ifNotNil: [ {o constraint} ] ])}
+	(BormCommunication -> [ :o | o dataFlows , o constraints ]).
+	(BormTransition -> [ :o | o constraints ])}
 ]
 
 { #category : #'widget API' }

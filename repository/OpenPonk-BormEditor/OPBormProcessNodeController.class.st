@@ -22,11 +22,6 @@ OPBormProcessNodeController >> addAsTargetFor: aController [
 		andShowInDiagram: self diagramController
 ]
 
-{ #category : #accessing }
-OPBormProcessNodeController >> allOwnedElementsInModel [
-	^ model transitions
-]
-
 { #category : #adding }
 OPBormProcessNodeController >> bormModels [
 	^ self diagramController editor workbench projectController project models
@@ -53,6 +48,11 @@ OPBormProcessNodeController >> canBeSourceFor: aController [
 { #category : #testing }
 OPBormProcessNodeController >> canBeTargetFor: aController [
 	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+OPBormProcessNodeController >> dependentElements [
+	^ model transitions
 ]
 
 { #category : #accessing }
@@ -85,4 +85,26 @@ OPBormProcessNodeController >> removeModel [
 OPBormProcessNodeController >> removeModelElement: aTransition [
 	self model removeTransition: aTransition.
 	aTransition target removeTransition: aTransition
+]
+
+{ #category : #construction }
+OPBormProcessNodeController >> showInDiagram: aDiagramController [
+	super showInDiagram: aDiagramController.
+	self
+		ownerParticipant:
+			(aDiagramController
+				controllerForModel:
+					(aDiagramController model participants
+						detect: [ :any | any elements includes: model ]))
+]
+
+{ #category : #construction }
+OPBormProcessNodeController >> showWithDependentInDiagram: aDiagramController [
+	super showWithDependentInDiagram: aDiagramController.
+	self
+		ownerParticipant:
+			(aDiagramController
+				controllerForModel:
+					(aDiagramController model participants
+						detect: [ :any | any elements includes: model ]))
 ]

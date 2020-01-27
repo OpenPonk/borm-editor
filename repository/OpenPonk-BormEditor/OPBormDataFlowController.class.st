@@ -119,6 +119,11 @@ OPBormDataFlowController >> refreshIcon [
 		ifFalse: [ iconFigure trachelShape form: OPBormEditorIcons current dataFlowLeftIcon ]
 ]
 
+{ #category : #destruction }
+OPBormDataFlowController >> removeModel [
+	self model owner remove: self model
+]
+
 { #category : #private }
 OPBormDataFlowController >> renderFigureIn: aView [
 	figure := self createContainerShape element.

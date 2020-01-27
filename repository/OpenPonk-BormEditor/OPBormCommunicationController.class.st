@@ -21,11 +21,6 @@ OPBormCommunicationController >> addAsTargetForDataFlow: aDataFlowController [
 	^ super addAsTargetFor: aDataFlowController
 ]
 
-{ #category : #accessing }
-OPBormCommunicationController >> allOwnedElementsInModel [
-	^ super allOwnedElementsInModel , model dataFlows
-]
-
 { #category : #testing }
 OPBormCommunicationController >> canBeTargetFor: aController [
 	^ (aController respondsTo: #canVisitTarget:)
@@ -76,8 +71,19 @@ OPBormCommunicationController >> createModelIn: aParentModel [
 ]
 
 { #category : #accessing }
+OPBormCommunicationController >> elementsToShowInside [
+	^ super elementsToShowInside , model dataFlows
+]
+
+{ #category : #accessing }
 OPBormCommunicationController >> modelClass [
 	^ BormCommunication
+]
+
+{ #category : #destruction }
+OPBormCommunicationController >> removeController [
+	"self model dataFlows ifNotEmpty: [ self halt ]."
+	super removeController
 ]
 
 { #category : #destruction }

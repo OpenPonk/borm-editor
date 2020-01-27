@@ -4,11 +4,6 @@ Class {
 	#category : #'OpenPonk-BormEditor-Controllers'
 }
 
-{ #category : #accessing }
-OPBormActivityController >> allOwnedElementsInModel [
-	^ super allOwnedElementsInModel , model communications
-]
-
 { #category : #testing }
 OPBormActivityController >> canBeSourceFor: aController [
 	^ (aController isKindOf: OPBormTransitionController) | (aController isKindOf: OPBormCommunicationController)
@@ -18,6 +13,11 @@ OPBormActivityController >> canBeSourceFor: aController [
 OPBormActivityController >> canBeTargetFor: aController [
 	^ ((aController isKindOf: OPBormTransitionController) and: [ aController source isKindOf: OPBormStateController ])
 		| ((aController isKindOf: OPBormCommunicationController) and: [ aController source model owner ~= self model owner ])
+]
+
+{ #category : #accessing }
+OPBormActivityController >> dependentElements [
+	^ super dependentElements , model communications
 ]
 
 { #category : #accessing }

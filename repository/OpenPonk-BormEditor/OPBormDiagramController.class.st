@@ -16,11 +16,6 @@ OPBormDiagramController >> addAsTargetFor: aController [
 ]
 
 { #category : #rebuilding }
-OPBormDiagramController >> allOwnedElementsInModel [
-	^ model participants
-]
-
-{ #category : #rebuilding }
 OPBormDiagramController >> allRelationshipsInModel [
 	^ self model elements
 		flatCollect: [ :eachParticipant | 
@@ -50,6 +45,11 @@ OPBormDiagramController >> applyDefaultLayout [
 { #category : #testing }
 OPBormDiagramController >> canBeTargetFor: aController [
 	^ aController isMemberOf: OPBormParticipantController
+]
+
+{ #category : #rebuilding }
+OPBormDiagramController >> elementsToShowInside [
+	^ model participants
 ]
 
 { #category : #testing }
