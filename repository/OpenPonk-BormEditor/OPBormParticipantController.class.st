@@ -9,6 +9,11 @@ Class {
 	#category : #'OpenPonk-BormEditor-Controllers'
 }
 
+{ #category : #accessing }
+OPBormParticipantController >> addedNodeFigure: aFigure [
+	elements add: aFigure
+]
+
 { #category : #hooks }
 OPBormParticipantController >> buildEditorForm: aForm [
 	super buildEditorForm: aForm.
@@ -38,7 +43,7 @@ OPBormParticipantController >> createContainerFigure [
 
 { #category : #accessing }
 OPBormParticipantController >> elementsToShowInside [
-	^ model nodes
+	^ model nodes , (model nodes flatCollect: [ :each | each outgoing ])
 ]
 
 { #category : #accessing }
@@ -108,26 +113,6 @@ OPBormParticipantController >> renderFigureIn: aView [
 { #category : #'canvas actions' }
 OPBormParticipantController >> showDenyFeedbackFor: aController [
 	^ nil
-]
-
-{ #category : #construction }
-OPBormParticipantController >> showInDiagram: aDiagramController [
-	super showInDiagram: aDiagramController.
-	elements
-		addAll:
-			(self elementsToShowInside
-				collect:
-					[ :each | (aDiagramController showInDiagramModel: each) figure ])
-]
-
-{ #category : #construction }
-OPBormParticipantController >> showWithDependentInDiagram: aDiagramController [
-	super showWithDependentInDiagram: aDiagramController.
-	elements
-		addAll:
-			(self dependentElements
-				collect:
-					[ :each | (aDiagramController showInDiagramModel: each) figure ])
 ]
 
 { #category : #hooks }

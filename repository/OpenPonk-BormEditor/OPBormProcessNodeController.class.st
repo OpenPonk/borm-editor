@@ -55,6 +55,11 @@ OPBormProcessNodeController >> dependentElements [
 	^ model transitions
 ]
 
+{ #category : #construction }
+OPBormProcessNodeController >> figureClass [
+	^ self subclassResponsibility
+]
+
 { #category : #accessing }
 OPBormProcessNodeController >> ownerParticipant [
 	^ ownerParticipant
@@ -85,6 +90,20 @@ OPBormProcessNodeController >> removeModel [
 OPBormProcessNodeController >> removeModelElement: aTransition [
 	self model removeTransition: aTransition.
 	aTransition target removeTransition: aTransition
+]
+
+{ #category : #construction }
+OPBormProcessNodeController >> renderFigureIn: aView [
+	figure := self figureClass on: self model.
+	figure renderIn: aView.
+	figure plusIcon
+		when: TRMouseLeftClick
+		do: [ self diagramController editor workbench
+				openEditorOn: self model submodel ].
+	(self diagramController controllerForModel: self model owner)
+		addedNodeFigure: figure.
+	self diagramController figureAdded: figure.
+	^ figure
 ]
 
 { #category : #construction }

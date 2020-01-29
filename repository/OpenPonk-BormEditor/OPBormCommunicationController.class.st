@@ -81,12 +81,6 @@ OPBormCommunicationController >> modelClass [
 ]
 
 { #category : #destruction }
-OPBormCommunicationController >> removeController [
-	"self model dataFlows ifNotEmpty: [ self halt ]."
-	super removeController
-]
-
-{ #category : #destruction }
 OPBormCommunicationController >> removeModel [
 	self model target removeCommunication: self model.
 	self model source removeCommunication: self model
