@@ -8,13 +8,6 @@ Class {
 }
 
 { #category : #toolbar }
-OPBormPlugin class >> canvasToolbarFor: aBuilder [
-	<opCanvasToolbar: #OPBormPlugin>
-	(aBuilder item: 'Layout')
-		action: [ aBuilder model diagramController applyDefaultLayout ]
-]
-
-{ #category : #toolbar }
 OPBormPlugin class >> toolbarMenu: aBuilder [
 	<opEditorToolbarMenu: #OPBormPlugin>
 	(aBuilder item: 'DSL Editor')
@@ -35,6 +28,11 @@ OPBormPlugin >> diagramControllerClass [
 { #category : #accessing }
 OPBormPlugin >> icon [
 	^ OPBormEditorIcons current oRModel16Icon
+]
+
+{ #category : #'as yet unclassified' }
+OPBormPlugin >> layouterClass [
+	^ OPBormLayouter
 ]
 
 { #category : #accessing }

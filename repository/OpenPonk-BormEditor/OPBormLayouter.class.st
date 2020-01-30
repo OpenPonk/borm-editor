@@ -7,34 +7,53 @@ BormBasicLayout provides elementary layouting for BORM ORDiagram.
 2. All participants are layouted with RTHorizontalLine.
 "
 Class {
-	#name : #OPBormBasicLayout,
-	#superclass : #Object,
-	#instVars : [
-		'diagramController'
-	],
-	#category : #'OpenPonk-BormEditor-Layouting'
+	#name : #OPBormLayouter,
+	#superclass : #OPLayouter,
+	#category : #'OpenPonk-BormEditor-Adapters'
 }
 
+{ #category : #'as yet unclassified' }
+OPBormLayouter class >> supportedLayoutCommands [
+	^ {OPBormLayoutCommand.
+	OPDominanceTreeLayoutCommand.
+	OPGridLayoutCommand.
+	OPSugiyamaLayoutCommand.
+	OPTreeLayoutCommand}
+]
+
+{ #category : #accessing }
+OPBormLayouter >> allEdges [
+	^ #()
+]
+
+{ #category : #accessing }
+OPBormLayouter >> allNodes [
+	^ diagramController controllers
+		select: [ :ctrl | ctrl isKindOf: OPBormParticipantController ]
+		thenCollect: #figure
+]
+
 { #category : #public }
-OPBormBasicLayout >> applyLayout [
-	self layoutDiagram: diagramController model
+OPBormLayouter >> applyLayout: aTwoArgBlock [
+	self defaultLayout.
+	super applyLayout: aTwoArgBlock
 ]
 
 { #category : #'as yet unclassified' }
-OPBormBasicLayout >> collectCommunications: participants [
+OPBormLayouter >> collectCommunications: participants [
 	| communications |
 	communications := OrderedCollection new.
 	participants do: [ :p | p nodes select: [ :n | n isKindOf: BormActivity ] thenDo: [ :n | communications addAll: n sent asOrderedCollection ] ].
 	^ communications
 ]
 
-{ #category : #accessing }
-OPBormBasicLayout >> diagramController: aBormDiagramController [
-	diagramController := aBormDiagramController
+{ #category : #public }
+OPBormLayouter >> defaultLayout [
+	self layoutDiagram: diagramController model
 ]
 
 { #category : #'as yet unclassified' }
-OPBormBasicLayout >> layoutCommunications: communications [
+OPBormLayouter >> layoutCommunications: communications [
 	communications
 		do:
 			[ :c | 
@@ -58,7 +77,7 @@ OPBormBasicLayout >> layoutCommunications: communications [
 ]
 
 { #category : #layouting }
-OPBormBasicLayout >> layoutDiagram: aDiagram [
+OPBormLayouter >> layoutDiagram: aDiagram [
 	aDiagram participants do: [ :each | self layoutParticipant: each ].
 	self layoutParticipants: aDiagram participants.
 	self updateView.
@@ -67,7 +86,7 @@ OPBormBasicLayout >> layoutDiagram: aDiagram [
 ]
 
 { #category : #'as yet unclassified' }
-OPBormBasicLayout >> layoutNode: aNode [
+OPBormLayouter >> layoutNode: aNode [
 	| figure bounds |
 	figure := (diagramController controllerForModel: aNode) figure.
 	bounds := figure encompassingRectangle.
@@ -76,11 +95,13 @@ OPBormBasicLayout >> layoutNode: aNode [
 			((figure isKindOf: BormNodeFigure)
 				ifTrue: [ figure text encompassingRectangle ]
 				ifFalse: [ (figure attributeAt: #RTLabelledLabel) encompassingRectangle ]).
-	RTNest new resizeWithoutRecursion: figure bounds: bounds
+	RTNest new
+		padding: 0;
+		resizeWithoutRecursion: figure bounds: bounds
 ]
 
 { #category : #layouting }
-OPBormBasicLayout >> layoutParticipant: aParticipant [
+OPBormLayouter >> layoutParticipant: aParticipant [
 	| ctrl bounds |
 	ctrl := diagramController controllerForModel: aParticipant.
 	aParticipant nodes do: [ :each | self layoutNode: each ].
@@ -90,18 +111,14 @@ OPBormBasicLayout >> layoutParticipant: aParticipant [
 		on: ctrl nodeFigures.
 	bounds := ctrl nodeFigures asGroup encompassingRectangle.
 	bounds := bounds expandBy: 40 @ 30.
-	RTNest new resizeWithoutRecursion: ctrl figure bounds: bounds
+	RTNest new
+		padding: 0;
+		resizeWithoutRecursion: ctrl figure bounds: bounds
 ]
 
 { #category : #layouting }
-OPBormBasicLayout >> layoutParticipants: participants [
+OPBormLayouter >> layoutParticipants: participants [
 	| figures |
 	figures := participants collect: [ :each | (diagramController controllerForModel: each) figure ].
 	RTHorizontalLineLayout new gapSize: 50; on: figures
-]
-
-{ #category : #updating }
-OPBormBasicLayout >> updateView [
-	diagramController view signalUpdate.
-	diagramController view canvas camera focusOnCenter
 ]

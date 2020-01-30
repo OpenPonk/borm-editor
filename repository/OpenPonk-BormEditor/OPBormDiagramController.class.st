@@ -35,13 +35,6 @@ OPBormDiagramController >> allShowableElements [
 	^ model allEntities flatCollect: [ :each | each representations ]
 ]
 
-{ #category : #userinterface }
-OPBormDiagramController >> applyDefaultLayout [
-	OPBormBasicLayout new
-		diagramController: self;
-		applyLayout
-]
-
 { #category : #testing }
 OPBormDiagramController >> canBeTargetFor: aController [
 	^ aController isMemberOf: OPBormParticipantController
@@ -137,12 +130,6 @@ OPBormDiagramController >> modelToControllerMapping [
 		at: BormState put: OPBormStateController;
 		at: BormTransition put: OPBormTransitionController;
 		yourself
-]
-
-{ #category : #userinterface }
-OPBormDiagramController >> rebuild [
-	super rebuild.
-	self applyDefaultLayout
 ]
 
 { #category : #'as yet unclassified' }
