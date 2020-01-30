@@ -28,18 +28,8 @@ OPBormRelationshipController >> renderFigureIn: aView [
 
 { #category : #construction }
 OPBormRelationshipController >> showInDiagram: aDiagramController [
-	"protocol: #construction"
-
-	aDiagramController
-		controllerForModel: model target
-		ifNone: [ ^ aDiagramController
-				controllerForModel: model source
-				ifNone: [ self
-						error:
-							'Trying to create controller for relationship that depends on elements, but none of them is shown in diagram before' ] ].
-	aDiagramController
-		controllerForModel: model source
-		ifNone: [ ^ self ].
+	aDiagramController showInDiagramModel: model target.
+	aDiagramController showInDiagramModel: model source.
 	^ super showInDiagram: aDiagramController
 ]
 
