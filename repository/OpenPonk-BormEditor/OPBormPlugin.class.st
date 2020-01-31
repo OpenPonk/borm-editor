@@ -41,13 +41,13 @@ OPBormPlugin >> modelClass [
 ]
 
 { #category : #accessing }
-OPBormPlugin >> name [
-	^ 'Borm OR Diagram'
+OPBormPlugin >> modelSerializerClass [
+	^ OPStonModelSerializer
 ]
 
 { #category : #accessing }
-OPBormPlugin >> serializerClass [
-	^ OPStonSerializer
+OPBormPlugin >> name [
+	^ 'Borm OR Diagram'
 ]
 
 { #category : #'as yet unclassified' }
