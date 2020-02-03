@@ -48,3 +48,14 @@ OPBormNavigatorAdapter >> iconMapping [
 				->
 					[ :o | OPBormEditorIcons current perform: ((self bormNameFor: o) uncapitalized , '16Icon') asSymbol ]
 ]
+
+{ #category : #'widget API' }
+OPBormNavigatorAdapter >> typesByDependency [
+	^ {BormORModel.
+	BormParticipant.
+	BormProcessNode.
+	BormTransition.
+	BormCommunication.
+	BormDataFlow.
+	BormConstraint}
+]
