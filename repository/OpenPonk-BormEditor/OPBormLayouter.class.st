@@ -35,7 +35,8 @@ OPBormLayouter >> allNodes [
 
 { #category : #public }
 OPBormLayouter >> applyLayout: aTwoArgBlock [
-	self defaultLayout.
+	diagramController model participants
+		do: [ :each | self layoutParticipant: each ].
 	super applyLayout: aTwoArgBlock
 ]
 
@@ -88,7 +89,9 @@ OPBormLayouter >> layoutDiagram: aDiagram [
 { #category : #'as yet unclassified' }
 OPBormLayouter >> layoutNode: aNode [
 	| figure bounds |
-	figure := (diagramController controllerForModel: aNode) figure.
+	figure := (diagramController
+		controllerForModel: aNode
+		ifNone: [ ^ self ]) figure.
 	bounds := figure encompassingRectangle.
 	bounds := bounds
 		merge:
@@ -101,14 +104,34 @@ OPBormLayouter >> layoutNode: aNode [
 ]
 
 { #category : #layouting }
-OPBormLayouter >> layoutParticipant: aParticipant [
-	| ctrl bounds |
+OPBormLayouter >> layoutNodesInParticipant: aParticipant [
+	| ctrl |
 	ctrl := diagramController controllerForModel: aParticipant.
 	aParticipant nodes do: [ :each | self layoutNode: each ].
 	RTDominanceTreeLayout new
 		horizontalGap: 30;
 		verticalGap: 30;
-		on: ctrl nodeFigures.
+		on: ctrl nodeFigures
+]
+
+{ #category : #layouting }
+OPBormLayouter >> layoutParticipant: aParticipant [
+	self
+		layoutNodesInParticipant: aParticipant;
+		layoutSizeOfParticipant: aParticipant
+]
+
+{ #category : #layouting }
+OPBormLayouter >> layoutParticipants: participants [
+	| figures |
+	figures := participants collect: [ :each | (diagramController controllerForModel: each) figure ].
+	RTHorizontalLineLayout new gapSize: 50; on: figures
+]
+
+{ #category : #layouting }
+OPBormLayouter >> layoutSizeOfParticipant: aParticipant [
+	| ctrl bounds |
+	ctrl := diagramController controllerForModel: aParticipant.
 	bounds := ctrl nodeFigures asGroup encompassingRectangle.
 	bounds := bounds expandBy: 40 @ 30.
 	RTNest new
@@ -117,8 +140,7 @@ OPBormLayouter >> layoutParticipant: aParticipant [
 ]
 
 { #category : #layouting }
-OPBormLayouter >> layoutParticipants: participants [
-	| figures |
-	figures := participants collect: [ :each | (diagramController controllerForModel: each) figure ].
-	RTHorizontalLineLayout new gapSize: 50; on: figures
+OPBormLayouter >> layoutSizesOfParticipants [
+	diagramController model participants
+		do: [ :each | self layoutSizeOfParticipant: each ]
 ]

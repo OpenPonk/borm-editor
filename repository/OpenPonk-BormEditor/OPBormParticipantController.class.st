@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'elements',
 		'iconElement',
-		'labelConstraint'
+		'labelConstraint',
+		'iconConstraint'
 	],
 	#category : #'OpenPonk-BormEditor-Controllers'
 }
@@ -47,6 +48,12 @@ OPBormParticipantController >> elementsToShowInside [
 ]
 
 { #category : #accessing }
+OPBormParticipantController >> layout: aPoint [
+	self figure trachelShape doWithoutCallbacks: [ super layout: aPoint ].
+	self refreshFigure
+]
+
+{ #category : #accessing }
 OPBormParticipantController >> modelClass [
 	^ BormParticipant
 ]
@@ -62,6 +69,7 @@ OPBormParticipantController >> refreshFigure [
 	labelConstraint move.
 	figure trachelShape pushBack.
 	iconElement trachelShape form: self typeIconForModel.
+	iconConstraint move.
 	self diagramController view signalUpdate
 ]
 
@@ -94,7 +102,7 @@ OPBormParticipantController >> renderFigureIn: aView [
 	figure renderIn: aView.
 	iconElement := (RTBitmap new form: self typeIconForModel) element.
 	iconElement renderIn: aView.
-	(RTConstraint on: iconElement background: figure)
+	iconConstraint := (RTConstraint on: iconElement background: figure)
 		topRight;
 		padding: 5;
 		stick.

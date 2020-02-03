@@ -121,6 +121,13 @@ OPBormDiagramController >> initializePaletteWithShortcuts: aPalette [
 ]
 
 { #category : #accessing }
+OPBormDiagramController >> layout: aLayout [
+	super layout: aLayout.
+	self layouter layoutSizesOfParticipants.
+	self updateView
+]
+
+{ #category : #accessing }
 OPBormDiagramController >> modelToControllerMapping [
 	^ Dictionary new
 		at: BormCommunication put: OPBormCommunicationController;
