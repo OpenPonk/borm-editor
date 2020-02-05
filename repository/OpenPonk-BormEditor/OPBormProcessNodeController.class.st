@@ -118,8 +118,8 @@ OPBormProcessNodeController >> showInDiagram: aDiagramController [
 ]
 
 { #category : #construction }
-OPBormProcessNodeController >> showWithDependentInDiagram: aDiagramController [
-	super showWithDependentInDiagram: aDiagramController.
+OPBormProcessNodeController >> showWithoutDependentInDiagram: aDiagramController [
+	super showWithoutDependentInDiagram: aDiagramController.
 	self
 		ownerParticipant:
 			(aDiagramController

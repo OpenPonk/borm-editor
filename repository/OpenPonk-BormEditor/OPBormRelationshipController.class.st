@@ -28,13 +28,6 @@ OPBormRelationshipController >> renderFigureIn: aView [
 
 { #category : #construction }
 OPBormRelationshipController >> showInDiagram: aDiagramController [
-	aDiagramController showInDiagramModel: model target.
-	aDiagramController showInDiagramModel: model source.
-	^ super showInDiagram: aDiagramController
-]
-
-{ #category : #construction }
-OPBormRelationshipController >> showWithDependentInDiagram: aDiagramController [
 	"protocol: #construction"
 
 	aDiagramController
@@ -47,5 +40,12 @@ OPBormRelationshipController >> showWithDependentInDiagram: aDiagramController [
 	aDiagramController
 		controllerForModel: model source
 		ifNone: [ ^ self ].
-	^ super showWithDependentInDiagram: aDiagramController
+	^ super showInDiagram: aDiagramController
+]
+
+{ #category : #construction }
+OPBormRelationshipController >> showWithoutDependentInDiagram: aDiagramController [
+	aDiagramController showWithoutDependentInDiagramModel: model target.
+	aDiagramController showWithoutDependentInDiagramModel: model source.
+	^ super showWithoutDependentInDiagram: aDiagramController
 ]
