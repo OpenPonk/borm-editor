@@ -8,12 +8,6 @@ Class {
 }
 
 { #category : #adding }
-OPBormProcessNodeController >> addAsSourceFor: aController [
-	self assert: (self canBeSourceFor: aController).
-	aController source: self
-]
-
-{ #category : #adding }
 OPBormProcessNodeController >> addAsTargetFor: aController [
 	self assert: (self canBeTargetFor: aController).
 	aController target: self.
