@@ -1,6 +1,6 @@
 Class {
 	#name : #BormEntityListPresenter,
-	#superclass : #ComposableModel,
+	#superclass : #ComposablePresenter,
 	#instVars : [
 		'searchInput',
 		'addEntryButton',
