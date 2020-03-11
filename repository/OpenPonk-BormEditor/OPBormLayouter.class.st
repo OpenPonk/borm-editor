@@ -56,24 +56,26 @@ OPBormLayouter >> defaultLayout [
 { #category : #'as yet unclassified' }
 OPBormLayouter >> layoutCommunications: communications [
 	communications
-		do:
-			[ :c | 
+		do: [ :c | 
 			| figures rect currentMid targetMid vector |
-			figures := c dataFlows
-				collect: [ :each | (diagramController controllerForModel: each) figure ].
+			figures := OrderedCollection new.
+			c dataFlows
+				do: [ :each | 
+					diagramController
+						controllerForModel: each
+						ifFound: [ :ctrl | figures add: ctrl figure ] ].
 			figures isNotEmpty
-				ifTrue:
-					[ 
-					RTHorizontalLineLayout new
+				ifTrue: [ RTHorizontalLineLayout new
 						gapSize: 10;
 						on: figures.
-					rect := Rectangle merging: (figures collect: [ :each | each encompassingRectangle ]).
+					rect := Rectangle
+						merging: (figures collect: [ :each | each encompassingRectangle ]).
 					currentMid := rect center.
-					targetMid := (diagramController controllerForModel: c) figure encompassingRectangle
-						center.
+					targetMid := (diagramController controllerForModel: c) figure
+						encompassingRectangle center.
 					vector := targetMid - currentMid.
-					figures do: [ :flow | flow translateBy: vector - (0 @ flow height) ].
-
+					figures
+						do: [ :flow | flow translateBy: vector - (0 @ flow height) ].
 					figures do: [ :flow | flow announce: TRMouseDragEnd new ] ] ]
 ]
 
