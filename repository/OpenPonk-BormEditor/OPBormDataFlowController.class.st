@@ -8,7 +8,7 @@ Class {
 	#category : #'OpenPonk-BormEditor-Controllers'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'ui hooks' }
 OPBormDataFlowController >> buildEditorForm: aForm [
 	super buildEditorForm: aForm.
 
@@ -94,6 +94,15 @@ OPBormDataFlowController >> createFigureInView: aView [
 	^ container
 ]
 
+{ #category : #'canvas actions' }
+OPBormDataFlowController >> hideSelectionFeedback [
+	figure shape
+		borderColor: Color gray;
+		borderWidth: 0.5.
+	figure updateShape.
+	super hideSelectionFeedback
+]
+
 { #category : #accessing }
 OPBormDataFlowController >> modelClass [
 	^ BormDataFlow
@@ -148,7 +157,17 @@ OPBormDataFlowController >> renderFigureIn: aView [
 		add: labelFigure.
 	self constraintOnEdge: figure.
 	self saveStateOnDragEndFor: figure.
+	self diagramController figureAdded: figure.
 	^ figure
+]
+
+{ #category : #'canvas actions' }
+OPBormDataFlowController >> showSelectionFeedback [
+	figure shape
+		borderColor: Color black;
+		borderWidth: 1.
+	super showSelectionFeedback.
+	figure updateShape
 ]
 
 { #category : #visiting }
