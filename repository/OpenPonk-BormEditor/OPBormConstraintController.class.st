@@ -9,7 +9,7 @@ OPBormConstraintController >> canVisitTarget: aController [
 	^ aController canBeTargetForConstraint: self
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #construction }
 OPBormConstraintController >> constraintOnEdge: anElement [
 	| edge const |
 	edge := (self diagramController controllerForModel: model owner) figure.
@@ -41,14 +41,22 @@ OPBormConstraintController >> refreshFigure [
 	super refreshFigure
 ]
 
+{ #category : #private }
+OPBormConstraintController >> removeModel [
+	self assert: self model owner constraint equals: self model.
+	self model owner removeConstraint
+]
+
 { #category : #hooks }
 OPBormConstraintController >> renderFigureIn: aView [
 	figure := RTLabel new
 		color: Color black;
+		height: 12;
 		elementOn: 'empty constraint'.
 	figure @ RTDraggable.
 	figure renderIn: aView.
 	figure trachelShape pushFront.
 	self constraintOnEdge: figure.
+	self diagramController figureAdded: figure.
 	^ figure
 ]

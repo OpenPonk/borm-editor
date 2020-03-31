@@ -56,44 +56,6 @@ OPBormDataFlowController >> createContainerShape [
 		borderWidth: 0.5
 ]
 
-{ #category : #hooks }
-OPBormDataFlowController >> createFigure [
-	^ OPRTCallbackBuilder block: [ :view | self createFigureInView: view ]
-]
-
-{ #category : #private }
-OPBormDataFlowController >> createFigureInView: aView [
-	| container |
-	container := self createContainerShape element.
-	container @ RTDraggable.
-
-	labelFigure := (RTLabel new
-		height: 10;
-		color: Color black) elementOn: ''.
-	(RTConstraint on: labelFigure background: container)
-		top;
-		stick.
-
-	iconFigure := (RTBitmap new form: OPBormEditorIcons current dataFlowLeftIcon) element.
-	(RTConstraint on: iconFigure background: container trachelShape)
-		bottom;
-		padding: 5;
-		stick.
-
-	container addCallback: (TRRemoveCallback with: iconFigure with: labelFigure).
-
-	aView
-		add: container;
-		add: iconFigure;
-		add: labelFigure.
-
-	self constraintOnEdge: container.
-	
-	self saveStateOnDragEndFor: container.
-
-	^ container
-]
-
 { #category : #'canvas actions' }
 OPBormDataFlowController >> hideSelectionFeedback [
 	figure shape

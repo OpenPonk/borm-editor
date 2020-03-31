@@ -80,12 +80,6 @@ OPBormProcessNodeController >> removeModel [
 	self model owner remove: self model
 ]
 
-{ #category : #removing }
-OPBormProcessNodeController >> removeModelElement: aTransition [
-	self model removeTransition: aTransition.
-	aTransition target removeTransition: aTransition
-]
-
 { #category : #construction }
 OPBormProcessNodeController >> renderFigureIn: aView [
 	figure := self figureClass on: self model.
