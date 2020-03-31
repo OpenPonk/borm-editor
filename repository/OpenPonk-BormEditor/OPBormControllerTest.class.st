@@ -1,6 +1,9 @@
 Class {
 	#name : #OPBormControllerTest,
 	#superclass : #OPControllerTest,
+	#instVars : [
+		'targetController'
+	],
 	#category : #'OpenPonk-BormEditor-Tests'
 }
 
@@ -15,6 +18,18 @@ OPBormControllerTest class >> isAbstract [
 { #category : #accessing }
 OPBormControllerTest >> controllerClass [
 	^ self subclassResponsibility
+]
+
+{ #category : #running }
+OPBormControllerTest >> createTargetController [
+	^ self targetControllerClass new
+		model: self createTargetModel;
+		yourself
+]
+
+{ #category : #running }
+OPBormControllerTest >> createTargetModel [
+	^ self targetModelClass new
 ]
 
 { #category : #accessing }
@@ -32,9 +47,38 @@ OPBormControllerTest >> modelClass [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 OPBormControllerTest >> modelOwner [
 	^ diagramController model
+]
+
+{ #category : #running }
+OPBormControllerTest >> setUp [
+	super setUp.
+	self setUpTarget
+]
+
+{ #category : #running }
+OPBormControllerTest >> setUpTarget [
+	targetController := self targetControllerClass new.
+	targetController diagramController: diagramController.
+	targetController createModelIn: diagramController model
+]
+
+{ #category : #accessing }
+OPBormControllerTest >> targetControllerClass [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+OPBormControllerTest >> targetModelClass [
+	^ self subclassResponsibility
+]
+
+{ #category : #tests }
+OPBormControllerTest >> testAssignmentToParent [
+	controller createModelIn: targetController model.
+	self assert: (targetController model has: controller model)
 ]
 
 { #category : #accessing }
@@ -49,7 +93,7 @@ OPBormControllerTest >> testCreateController [
 
 { #category : #accessing }
 OPBormControllerTest >> testCreateModel [
-	controller createModelIn: diagramController model.
+	controller createModelIn: targetController model.
 	self assert: controller model class equals: self modelClass
 ]
 

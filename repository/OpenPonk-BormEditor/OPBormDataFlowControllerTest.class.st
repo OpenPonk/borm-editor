@@ -39,3 +39,30 @@ OPBormDataFlowControllerTest >> setUp [
 	communicationController model: communication.
 	diagramController addController: communicationController
 ]
+
+{ #category : #running }
+OPBormDataFlowControllerTest >> setUpTarget [
+	| targetsSourceController targetsTargetController |
+	targetController := self targetControllerClass new.
+	targetController diagramController: diagramController.
+	targetsSourceController := OPBormActivityController new.
+	targetsSourceController diagramController: diagramController.
+	targetsSourceController createModelIn: diagramController model.
+	targetsTargetController := OPBormActivityController new.
+	targetsTargetController diagramController: diagramController.
+	targetsTargetController createModelIn: diagramController model.
+	targetController
+		source: targetsTargetController;
+		target: targetsSourceController.
+	targetController createModelIn: diagramController model
+]
+
+{ #category : #accessing }
+OPBormDataFlowControllerTest >> targetControllerClass [
+	^ OPBormCommunicationController
+]
+
+{ #category : #accessing }
+OPBormDataFlowControllerTest >> targetModelClass [
+	^ BormCommunication
+]

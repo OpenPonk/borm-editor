@@ -10,6 +10,16 @@ OPBormParticipantControllerTest >> controllerClass [
 ]
 
 { #category : #accessing }
+OPBormParticipantControllerTest >> createTargetController [
+	^ diagramController
+]
+
+{ #category : #accessing }
+OPBormParticipantControllerTest >> createTargetModel [
+	^ diagramController model
+]
+
+{ #category : #accessing }
 OPBormParticipantControllerTest >> figureClass [
 	^ RTElement
 ]
@@ -17,4 +27,19 @@ OPBormParticipantControllerTest >> figureClass [
 { #category : #accessing }
 OPBormParticipantControllerTest >> modelClass [
 	^ BormParticipant
+]
+
+{ #category : #running }
+OPBormParticipantControllerTest >> setUpTarget [
+	targetController := diagramController
+]
+
+{ #category : #accessing }
+OPBormParticipantControllerTest >> targetControllerClass [
+	^ self diagramControllerClass
+]
+
+{ #category : #accessing }
+OPBormParticipantControllerTest >> targetModelClass [
+	^ self diagramModelClass
 ]

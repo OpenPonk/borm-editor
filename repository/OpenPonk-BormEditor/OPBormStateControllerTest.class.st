@@ -21,3 +21,13 @@ OPBormStateControllerTest >> figureClass [
 OPBormStateControllerTest >> modelClass [
 	^ BormState
 ]
+
+{ #category : #accessing }
+OPBormStateControllerTest >> targetControllerClass [
+	^ OPBormParticipantController
+]
+
+{ #category : #accessing }
+OPBormStateControllerTest >> targetModelClass [
+	^ BormParticipant
+]
