@@ -4,34 +4,6 @@ Class {
 	#category : #'OpenPonk-BormEditor-Controllers'
 }
 
-{ #category : #adding }
-OPBormCommunicationController >> addAsTargetFor: aController [
-	^ aController visitTarget: self
-]
-
-{ #category : #adding }
-OPBormCommunicationController >> addAsTargetForConstraint: aConstraintController [
-	self assert: (self canBeTargetForConstraint: aConstraintController).
-	^ super addAsTargetFor: aConstraintController
-]
-
-{ #category : #adding }
-OPBormCommunicationController >> addAsTargetForDataFlow: aDataFlowController [
-	self assert: (self canBeTargetForDataFlow: aDataFlowController).
-	^ super addAsTargetFor: aDataFlowController
-]
-
-{ #category : #testing }
-OPBormCommunicationController >> canBeTargetFor: aController [
-	^ (aController respondsTo: #canVisitTarget:)
-		and: [ aController canVisitTarget: self ]
-]
-
-{ #category : #testing }
-OPBormCommunicationController >> canBeTargetForConstraint: aController [
-	^ self model hasConstraint not
-]
-
 { #category : #testing }
 OPBormCommunicationController >> canBeTargetForDataFlow: aController [
 	^ true

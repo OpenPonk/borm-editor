@@ -169,8 +169,3 @@ OPBormDataFlowController >> showSelectionFeedback [
 	super showSelectionFeedback.
 	figure updateShape
 ]
-
-{ #category : #visiting }
-OPBormDataFlowController >> visitTarget: aController [
-	^ aController addAsTargetForDataFlow: self
-]

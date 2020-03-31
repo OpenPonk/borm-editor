@@ -4,26 +4,9 @@ Class {
 	#category : #'OpenPonk-BormEditor-Controllers'
 }
 
-{ #category : #adding }
-OPBormTransitionController >> addAsTargetFor: aController [
-	^ aController visitTarget: self
-]
-
-{ #category : #adding }
-OPBormTransitionController >> addAsTargetForConstraint: aConstraintController [
-	self assert: (self canBeTargetFor: aConstraintController).
-	^ super addAsTargetFor: aConstraintController
-]
-
-{ #category : #connecting }
-OPBormTransitionController >> canBeTargetFor: aController [
-	^ (aController respondsTo: #canVisitTarget:)
-		and: [ aController canVisitTarget: self ]
-]
-
 { #category : #testing }
 OPBormTransitionController >> canBeTargetForConstraint: aController [
-	^ self model hasConstraint not
+	^ (super canBeTargetForConstraint: aController)
 		and: [ self model source isKindOf: BormState ]
 ]
 

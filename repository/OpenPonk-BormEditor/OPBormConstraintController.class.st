@@ -23,6 +23,13 @@ OPBormConstraintController >> constraintOnEdge: anElement [
 			const element: anElement connection: edge ]
 ]
 
+{ #category : #construction }
+OPBormConstraintController >> createModelIn: aParentModel [
+	self model: self modelClass new.
+	aParentModel constraint: model.
+	^ model
+]
+
 { #category : #accessing }
 OPBormConstraintController >> modelClass [
 	^ BormConstraint
@@ -44,9 +51,4 @@ OPBormConstraintController >> renderFigureIn: aView [
 	figure trachelShape pushFront.
 	self constraintOnEdge: figure.
 	^ figure
-]
-
-{ #category : #visiting }
-OPBormConstraintController >> visitTarget: aController [
-	^ aController addAsTargetForConstraint: self
 ]

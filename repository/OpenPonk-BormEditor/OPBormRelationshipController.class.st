@@ -4,6 +4,22 @@ Class {
 	#category : #'OpenPonk-BormEditor-Controllers'
 }
 
+{ #category : #connecting }
+OPBormRelationshipController >> canBeTargetFor: aController [
+	^ (aController respondsTo: #canVisitTarget:)
+		and: [ aController canVisitTarget: self ]
+]
+
+{ #category : #testing }
+OPBormRelationshipController >> canBeTargetForConstraint: aController [
+	^ self model hasConstraint not
+]
+
+{ #category : #testing }
+OPBormRelationshipController >> canBeTargetForDataFlow: aDataFlow [
+	^ self subclassResponsibility
+]
+
 { #category : #accessing }
 OPBormRelationshipController >> elementsToShowInside [
 	^ model constraints

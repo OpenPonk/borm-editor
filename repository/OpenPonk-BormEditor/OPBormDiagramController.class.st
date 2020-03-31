@@ -136,6 +136,7 @@ OPBormDiagramController >> modelToControllerMapping [
 		at: BormActivity put: OPBormActivityController;
 		at: BormState put: OPBormStateController;
 		at: BormTransition put: OPBormTransitionController;
+		at: BormConstraint put: OPBormConstraintController;
 		yourself
 ]
 
