@@ -26,12 +26,16 @@ OPBormProcessNodeController >> bormModels [
 OPBormProcessNodeController >> buildEditorForm: aForm [
 	(aForm addText: 'Name')
 		text: self model name;
-		whenTextIsAccepted: [ :newValue | self model name: newValue asString ].
+		whenTextIsAccepted: [ :newValue | 
+			self model name: newValue asString.
+			self refreshFigure ].
 	(aForm addDroplist: 'Submodel')
 		items: {nil} , self bormModels;
 		displayBlock: [ :m | m ifNil: '' ifNotNil: #name ];
 		setSelectedItem: self model submodel;
-		whenSelectedItemChanged: [ :newValue | self model submodel: newValue ]
+		whenSelectedItemChanged: [ :newValue | 
+			self model submodel: newValue.
+			self refreshFigure ]
 ]
 
 { #category : #testing }

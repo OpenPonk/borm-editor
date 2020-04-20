@@ -17,7 +17,8 @@ OPBormElementController >> buildEntityForm: aForm [
 		entity: self model entity;
 		whenEntityChanged: [ :e | 
 			(e isKindOf: BormEntity)
-				ifTrue: [ self model entity: e ] ];
+				ifTrue: [ self model entity: e.
+					self refreshFigure ] ];
 		selectDialog: [ BormEntityListPresenter new
 				addEntryLabel: 'New Entity';
 				itemsBlock: [ self diagramController model project allBormEntities ] ]

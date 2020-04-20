@@ -11,12 +11,13 @@ Class {
 { #category : #'ui hooks' }
 OPBormDataFlowController >> buildEditorForm: aForm [
 	super buildEditorForm: aForm.
-
 	(aForm addDroplist: 'Type')
 		items: #(#input #output);
 		displayBlock: [ :type | type asString ];
 		setSelectedItem: self model type;
-		whenSelectedItemChanged: [ :newValue | self model type: newValue ]
+		whenSelectedItemChanged: [ :newValue | 
+			self model type: newValue.
+			self refreshFigure ]
 ]
 
 { #category : #testing }
@@ -75,7 +76,7 @@ OPBormDataFlowController >> refreshFigure [
 	labelFigure trachelShape text: self model name.
 	figure width: (labelFigure width max: 40).
 	self refreshIcon.
-	self diagramController view signalUpdate.
+	self diagramController view signalUpdate
 ]
 
 { #category : #'as yet unclassified' }

@@ -22,10 +22,8 @@ BormNodeFigure >> createOwnedElements [
 		wrapText;
 		elementOn: self.
 	self add: text.
-	(RTConstraint on: text background: self) stick.
-	block := [ :aShape :step | 
-	text shape width: aShape width - 20.
-	text update ].
+	block := [ self updateText ].
+	block value.
 	self addCallback: (TRTranslationCallback block: block).
 	self addCallback: (TRExtentCallback block: block).
 	plusIcon := RTBitmap new
@@ -53,10 +51,27 @@ BormNodeFigure >> text [
 	^ text
 ]
 
+{ #category : #'creating - subelements' }
+BormNodeFigure >> textOffset [
+	^ 0 @ 0
+]
+
+{ #category : #'creating - subelements' }
+BormNodeFigure >> textPadding [
+	^ 8
+]
+
 { #category : #updating }
 BormNodeFigure >> update [
 	self show: plusIcon if: self model submodel isNotNil.
 	super update
+]
+
+{ #category : #updating }
+BormNodeFigure >> updateText [
+	text shape width: self width - (self textPadding * 2).
+	text update.
+	text translateTo: self position + self textOffset
 ]
 
 { #category : #wrapping }
