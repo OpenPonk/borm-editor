@@ -49,8 +49,11 @@ OPBormParticipantController >> elementsToShowInside [
 ]
 
 { #category : #accessing }
-OPBormParticipantController >> layout: aPoint [
-	self figure trachelShape doWithoutCallbacks: [ super layout: aPoint ].
+OPBormParticipantController >> layout: anElementLayout [
+	self figure trachelShape
+		doWithoutCallbacks: [ super layout: anElementLayout ].
+	anElementLayout hasExtent
+		ifTrue: [ self figure extent: anElementLayout extent ].
 	self refreshFigure
 ]
 

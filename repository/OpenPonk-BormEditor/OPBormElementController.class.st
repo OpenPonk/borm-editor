@@ -28,3 +28,10 @@ OPBormElementController >> buildEntityForm: aForm [
 OPBormElementController >> isHideable [
 	^ true
 ]
+
+{ #category : #accessing }
+OPBormElementController >> layout [
+	^ OPElementLayout
+		withPosition: self figure position
+		extent: self figure extent
+]

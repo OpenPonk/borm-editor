@@ -123,7 +123,8 @@ OPBormDiagramController >> initializePaletteWithShortcuts: aPalette [
 { #category : #accessing }
 OPBormDiagramController >> layout: aLayout [
 	super layout: aLayout.
-	self layouter layoutSizesOfParticipants.
+	(aLayout noneSatisfy: [ :any | any hasExtent ])
+		ifTrue: [ self layouter layoutSizesOfParticipants ].
 	self updateView
 ]
 
