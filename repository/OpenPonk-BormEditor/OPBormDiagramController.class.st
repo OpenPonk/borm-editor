@@ -40,6 +40,11 @@ OPBormDiagramController >> canBeTargetFor: aController [
 	^ aController isMemberOf: OPBormParticipantController
 ]
 
+{ #category : #'as yet unclassified' }
+OPBormDiagramController >> commonModelClassPrefix [
+	^ 'Borm'
+]
+
 { #category : #rebuilding }
 OPBormDiagramController >> elementsToShowInside [
 	^ model participants
