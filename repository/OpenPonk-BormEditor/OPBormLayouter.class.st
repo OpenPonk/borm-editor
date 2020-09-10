@@ -81,11 +81,14 @@ OPBormLayouter >> layoutCommunications: communications [
 
 { #category : #layouting }
 OPBormLayouter >> layoutDiagram: aDiagram [
-	aDiagram participants do: [ :each | self layoutParticipant: each ].
-	self layoutParticipants: aDiagram participants.
+	| shownParticipants |
+	shownParticipants := aDiagram participants
+		select: [ :each | diagramController hasControllerForModel: each ].
+	shownParticipants do: [ :each | self layoutParticipant: each ].
+	self layoutParticipants: shownParticipants.
 	self updateView.
 	self
-		layoutCommunications: (self collectCommunications: aDiagram participants).
+		layoutCommunications: (self collectCommunications: shownParticipants).
 	self updateView
 ]
 

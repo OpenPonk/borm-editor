@@ -74,7 +74,8 @@ OPBormParticipantController >> refreshFigure [
 	figure trachelShape pushBack.
 	iconElement trachelShape form: self typeIconForModel.
 	iconConstraint move.
-	self diagramController view signalUpdate
+	self diagramController view signalUpdate.
+	^ self figure
 ]
 
 { #category : #destruction }
@@ -90,6 +91,7 @@ OPBormParticipantController >> removedNodeFigure: aFigure [
 { #category : #hooks }
 OPBormParticipantController >> renderFigureIn: aView [
 	| labeled |
+	self diagramController addingFigureFor: self.
 	figure := self createContainerFigure.
 	figure
 		@ RTGhostDraggable;
@@ -118,8 +120,7 @@ OPBormParticipantController >> renderFigureIn: aView [
 			(TRTranslationCallback
 				block: [ :shape :step | elements do: [ :e | e translateBy: step ] ]).
 	self saveStateOnDragEndFor: figure.
-	self diagramController figureAdded: figure.
-	^ figure
+	^ self diagramController addedFigureFor: self
 ]
 
 { #category : #'canvas actions' }

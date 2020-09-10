@@ -38,7 +38,7 @@ OPBormConstraintController >> modelClass [
 { #category : #hooks }
 OPBormConstraintController >> refreshFigure [
 	self figure trachelShape text: self model name.
-	super refreshFigure
+	^ super refreshFigure
 ]
 
 { #category : #private }
@@ -49,6 +49,7 @@ OPBormConstraintController >> removeModel [
 
 { #category : #hooks }
 OPBormConstraintController >> renderFigureIn: aView [
+	self diagramController addingFigureFor: self.
 	figure := RTLabel new
 		color: Color black;
 		height: 12;
@@ -57,6 +58,5 @@ OPBormConstraintController >> renderFigureIn: aView [
 	figure renderIn: aView.
 	figure trachelShape pushFront.
 	self constraintOnEdge: figure.
-	self diagramController figureAdded: figure.
-	^ figure
+	^ self diagramController addedFigureFor: self
 ]

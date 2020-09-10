@@ -28,22 +28,20 @@ OPBormDataFlowController >> canVisitTarget: aController [
 { #category : #private }
 OPBormDataFlowController >> constraintOnEdge: anElement [
 	| edge cb const |
-	edge := (self diagramController controllerForModel: model owner) figure.
+	edge := (self diagramController
+		showWithoutDependentInDiagramModel: model owner) figure.
 	const := OPRTRailConstraint new.
 	const
 		initialPosition: 0.5;
 		distance: 10.
 	const element: anElement connection: edge.
-
 	cb := TRTranslationCallback block: [ self refreshIcon ].
 	edge from addCallback: cb.
 	edge to addCallback: cb.
 	anElement
 		addCallback:
 			(TRRemoveCallback
-				block:
-					[ 
-					edge from trachelShape removeCallback: cb ifAbsent: [ self error ].
+				block: [ edge from trachelShape removeCallback: cb ifAbsent: [ self error ].
 					edge to trachelShape removeCallback: cb ifAbsent: [ self error ] ])
 ]
 
@@ -76,19 +74,23 @@ OPBormDataFlowController >> refreshFigure [
 	labelFigure trachelShape text: self model name.
 	figure width: (labelFigure width max: 40).
 	self refreshIcon.
-	self diagramController view signalUpdate
+	self diagramController view signalUpdate.
+	^ self figure
 ]
 
 { #category : #'as yet unclassified' }
 OPBormDataFlowController >> refreshIcon [
 	| edge right |
-	edge := (self diagramController controllerForModel: model owner) figure.
+	edge := (self diagramController
+		showWithoutDependentInDiagramModel: model owner) figure.
 	right := edge from position x < edge to position x.
 	self model isOutput
 		ifTrue: [ right := right not ].
 	right
-		ifTrue: [ iconFigure trachelShape form: OPBormEditorIcons current dataFlowRightIcon ]
-		ifFalse: [ iconFigure trachelShape form: OPBormEditorIcons current dataFlowLeftIcon ]
+		ifTrue: [ iconFigure trachelShape
+				form: OPBormEditorIcons current dataFlowRightIcon ]
+		ifFalse: [ iconFigure trachelShape
+				form: OPBormEditorIcons current dataFlowLeftIcon ]
 ]
 
 { #category : #destruction }
@@ -98,6 +100,7 @@ OPBormDataFlowController >> removeModel [
 
 { #category : #private }
 OPBormDataFlowController >> renderFigureIn: aView [
+	self diagramController addingFigureFor: self.
 	figure := self createContainerShape element.
 	figure @ RTDraggable.
 	labelFigure := (RTLabel new
@@ -120,8 +123,7 @@ OPBormDataFlowController >> renderFigureIn: aView [
 		add: labelFigure.
 	self constraintOnEdge: figure.
 	self saveStateOnDragEndFor: figure.
-	self diagramController figureAdded: figure.
-	^ figure
+	^ self diagramController addedFigureFor: self
 ]
 
 { #category : #'canvas actions' }

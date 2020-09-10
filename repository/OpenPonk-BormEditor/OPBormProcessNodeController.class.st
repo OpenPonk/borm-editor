@@ -77,7 +77,8 @@ OPBormProcessNodeController >> ownerParticipant: aParticipantController [
 
 { #category : #hooks }
 OPBormProcessNodeController >> refreshFigure [
-	figure update
+	figure update.
+	^ self figure
 ]
 
 { #category : #destruction }
@@ -93,16 +94,17 @@ OPBormProcessNodeController >> removeModel [
 
 { #category : #construction }
 OPBormProcessNodeController >> renderFigureIn: aView [
+	self diagramController addingFigureFor: self.
 	figure := self figureClass on: self model.
 	figure renderIn: aView.
 	figure plusIcon
 		when: TRMouseLeftClick
 		do: [ self diagramController editor workbench
 				openEditorOn: self model submodel ].
-	(self diagramController controllerForModel: self model owner)
+	(self diagramController
+		showWithoutDependentInDiagramModel: self model owner)
 		addedNodeFigure: figure.
-	self diagramController figureAdded: figure.
-	^ figure
+	^ self diagramController addedFigureFor: self
 ]
 
 { #category : #construction }
