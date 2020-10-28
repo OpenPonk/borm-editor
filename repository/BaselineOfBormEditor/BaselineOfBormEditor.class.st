@@ -12,11 +12,11 @@ BaselineOfBormEditor >> baseline: spec [
 		do: [ spec
 				baseline: 'BormModel'
 				with: [ spec
-						repository: 'github://openponk/borm-model/repository';
+						repository: 'github://openponk/borm-model:v2.0.0/repository';
 						postLoadDoIt: #loadPetitParser ].
 			spec
 				baseline: 'OpenPonk'
-				with: [ spec repository: 'github://openponk/openponk/repository' ].
+				with: [ spec repository: 'github://openponk/openponk:v2.0.0/repository' ].
 			spec
 				baseline: 'XMLParser'
 				with: [ spec
