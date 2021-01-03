@@ -37,7 +37,8 @@ OPBormDiagramController >> allShowableElements [
 
 { #category : #testing }
 OPBormDiagramController >> canBeTargetFor: aController [
-	^ aController isMemberOf: OPBormParticipantController
+	^ (super canBeTargetFor: aController)
+		or: [ aController isMemberOf: OPBormParticipantController ]
 ]
 
 { #category : #'as yet unclassified' }
