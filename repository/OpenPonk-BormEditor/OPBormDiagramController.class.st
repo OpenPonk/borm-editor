@@ -32,7 +32,8 @@ OPBormDiagramController >> allRelationshipsInModel [
 OPBormDiagramController >> allShowableElements [
 	"Should return all elements that could be directly hidden on diagram"
 
-	^ model allEntities flatCollect: [ :each | each representations ]
+	^ (model allEntities flatCollect: [ :each | each representations ])
+		, self diagram commonElements
 ]
 
 { #category : #testing }
@@ -44,6 +45,18 @@ OPBormDiagramController >> canBeTargetFor: aController [
 { #category : #'as yet unclassified' }
 OPBormDiagramController >> commonModelClassPrefix [
 	^ 'Borm'
+]
+
+{ #category : #accessing }
+OPBormDiagramController >> controllerFactory [
+	^ super controllerFactory
+		register: OPBormCommunicationController forModel: BormCommunication;
+		register: OPBormDataFlowController forModel: BormDataFlow;
+		register: OPBormParticipantController forModel: BormParticipant;
+		register: OPBormActivityController forModel: BormActivity;
+		register: OPBormStateController forModel: BormState;
+		register: OPBormTransitionController forModel: BormTransition;
+		register: OPBormConstraintController forModel: BormConstraint
 ]
 
 { #category : #rebuilding }
@@ -132,19 +145,6 @@ OPBormDiagramController >> layout: aLayout [
 	(aLayout noneSatisfy: [ :any | any hasExtent ])
 		ifTrue: [ self layouter layoutSizesOfParticipants ].
 	self updateView
-]
-
-{ #category : #accessing }
-OPBormDiagramController >> modelToControllerMapping [
-	^ Dictionary new
-		at: BormCommunication put: OPBormCommunicationController;
-		at: BormDataFlow put: OPBormDataFlowController;
-		at: BormParticipant put: OPBormParticipantController;
-		at: BormActivity put: OPBormActivityController;
-		at: BormState put: OPBormStateController;
-		at: BormTransition put: OPBormTransitionController;
-		at: BormConstraint put: OPBormConstraintController;
-		yourself
 ]
 
 { #category : #'as yet unclassified' }
