@@ -9,6 +9,11 @@ Class {
 	#category : #'OpenPonk-BormEditor-Utility'
 }
 
+{ #category : #testing }
+BormControllerBuilder class >> isDeprecated [
+	^ true
+]
+
 { #category : #'private - building' }
 BormControllerBuilder >> addDataFlows: dataFlows [
 	dataFlows do: [ :each | (self controllerFor: each owner) addAsTargetFor: (self newControllerFor: each) ]
@@ -44,7 +49,6 @@ BormControllerBuilder >> build [
 	diagramController
 		ifNil: [ diagramController := self newDiagramControllerFor: diagram ].
 	diagramController view: view.
-	self halt.
 	self addParticipants: diagram participants.
 	self addNodes: (self collectNodes: diagram participants).
 	self addEdges: (self collectTransitions: diagram participants).
