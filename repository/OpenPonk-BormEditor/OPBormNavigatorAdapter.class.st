@@ -42,11 +42,19 @@ OPBormNavigatorAdapter >> hasMappingFor: anObject [
 OPBormNavigatorAdapter >> iconMapping [
 	^ Array
 		with: OPBormNavigatorEntities -> OPBormEditorIcons current entity16Icon
-		with: OPBormNavigatorNode -> [ :o | Smalltalk ui icons addIcon ]
+		with: OPBormNavigatorNode -> [ :o | self iconNamed: #addIcon ]
 		with:
 			OPModelObject
-				->
-					[ :o | OPBormEditorIcons current perform: ((self bormNameFor: o) uncapitalized , '16Icon') asSymbol ]
+				-> [ :o | 
+					OPBormEditorIcons current
+						perform: ((self bormNameFor: o) uncapitalized , '16Icon') asSymbol ]
+]
+
+{ #category : #private }
+OPBormNavigatorAdapter >> sort: modelObjects [
+	^ modelObjects
+		sorted:
+			[ :a :b | a name isNotNil and: [ b name isNil or: [ a name < b name ] ] ]
 ]
 
 { #category : #'widget API' }
