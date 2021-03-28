@@ -7,10 +7,10 @@ SmalltalkCISpec {
 		}
 	],
 	#postLoading : [
-		'scripts/script.st'
+		'.github/scripts/script.st'
 	],
 	#testing : {
-		#packages : [ 'OpenPonk-Borm*' ],
+		#packages : [ 'OpenPonk*' ],
 		#coverage : {
 			#packages : [ 'OpenPonk-Borm*' ]
 		}

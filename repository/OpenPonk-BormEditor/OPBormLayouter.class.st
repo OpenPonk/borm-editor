@@ -136,10 +136,9 @@ OPBormLayouter >> layoutParticipants: participants [
 
 { #category : #layouting }
 OPBormLayouter >> layoutSizeOfParticipant: aParticipant [
-
 	| ctrl bounds |
 	ctrl := diagramController controllerForModel: aParticipant.
-	bounds := RTGroup withAll: ctrl nodeFigures encompassingRectangle.
+	bounds := (RTGroup withAll: ctrl nodeFigures) encompassingRectangle.
 	bounds := bounds expandBy: 40 @ 30.
 	RTNest new
 		padding: 0;
