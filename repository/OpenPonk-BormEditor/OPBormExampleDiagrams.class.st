@@ -34,14 +34,16 @@ OPBormExampleDiagrams class >> exampleTravelingCard [
 
 { #category : #menu }
 OPBormExampleDiagrams class >> menuCommandOn: aBuilder [
+
 	<worldMenu>
-	((aBuilder item: #BORMEditor)
-		icon: OPBormEditorIcons current oRModel16Icon)
+	((aBuilder item: #BORMEditor) icon:
+			 OPBormEditorIcons current oRModel16Icon)
 		label: 'BORM Editor';
-		order: 25.725;
+		order: 225;
 		parent: #MostUsedTools;
 		action: [ self exampleEmpty ];
-		with: [ (aBuilder item: #BORMExamples)
+		with: [ 
+			(aBuilder item: #BORMExamples)
 				parent: #BORMEditor;
 				label: 'BORM Example Pizza Delivery';
 				icon: OPBormEditorIcons current oRModel16Icon;
