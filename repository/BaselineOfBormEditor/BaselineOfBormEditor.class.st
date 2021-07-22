@@ -25,7 +25,8 @@ BaselineOfBormEditor >> baseline: spec [
 			spec
 				baseline: 'XPath'
 				with: [ spec
-						repository: 'github://pharo-contributions/XML-XPath:3450f91/src' ].
+						repository: 'github://pharo-contributions/XML-XPath:3450f91/src';
+						loads: #(Core) ].
 			spec
 				package: 'OpenPonk-BormEditor'
 				with: [ spec requires: #('XPath' 'XMLParser' 'BormModel') ].
