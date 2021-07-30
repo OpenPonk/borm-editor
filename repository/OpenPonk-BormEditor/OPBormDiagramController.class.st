@@ -161,7 +161,7 @@ OPBormDiagramController >> registerModelEvents: aModel [
 OPBormDiagramController >> updateView [
 
 	self controllers do: [ :each | each refreshFigure ].
-	self view geomEdges do: [ :each | 
+	self view edges do: [ :each | 
 		each pushFront.
 		each update ].
 	self view signalUpdate
