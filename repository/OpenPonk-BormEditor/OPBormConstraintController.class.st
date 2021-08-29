@@ -43,7 +43,8 @@ OPBormConstraintController >> refreshFigure [
 
 { #category : #private }
 OPBormConstraintController >> removeModel [
-	self assert: self model owner constraint equals: self model.
+
+	self assert: self model owner constraint = self model.
 	self model owner removeConstraint
 ]
 

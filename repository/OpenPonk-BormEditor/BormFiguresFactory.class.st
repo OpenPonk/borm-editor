@@ -23,7 +23,7 @@ BormFiguresFactory >> activityFigure [
 		padding: 5;
 		stick.
 	box addCallback: (TRRemoveCallback with: label with: plus).
-	box @ RTDraggableSnapToGrid @ RTResizable.
+	box @ OPRTDraggableSnapToGrid @ RTResizable.
 	^ box
 ]
 

@@ -10,7 +10,7 @@ Class {
 
 { #category : #rendering }
 BormNodeFigure >> addInteractions [
-	self @ RTDraggableSnapToGrid.
+	self @ OPRTDraggableSnapToGrid.
 	self @ RTResizable
 ]
 
