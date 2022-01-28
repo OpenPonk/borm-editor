@@ -59,13 +59,11 @@ OPBormLangEditor >> locked: aBlock [
 
 { #category : #events }
 OPBormLangEditor >> modelChanged [
-	|newText|
-	self logCr: 'modelChanged'.
+	| newText |
+	self traceCr: 'modelChanged'.
 	newText := serializer diagram: bormDiagram.
-	newText = self textModel widget text ifFalse: [ 
-		self logCr: 'CHANGE'
-	]
-	"self textModel widget updateTextWith: (serializer diagram: bormDiagram)"
+	newText = self textModel widget text
+		ifFalse: [ self traceCr: 'CHANGE' ]
 ]
 
 { #category : #'instance creation' }
@@ -95,11 +93,13 @@ OPBormLangEditor >> textModel [
 { #category : #events }
 OPBormLangEditor >> textModelChanged [
 	| text newModel success |
-	self logCr: 'textModelChanged'.
+	self traceCr: 'textModelChanged'.
 	text := self textModel widget text.
 	success := true.
-	newModel := [ BormLangParser parse: text onError: [ success := false ] ] ifError: [ success := false ].
-	self logCr: success.
+	newModel := [ BormLangParser
+		parse: text
+		onError: [ success := false ] ] ifError: [ success := false ].
+	self traceCr: success.
 	success
 		ifTrue: [ BormFactory moveParticipantsFrom: newModel to: bormDiagram ]
 ]
