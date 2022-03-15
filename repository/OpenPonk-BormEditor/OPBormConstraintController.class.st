@@ -1,6 +1,6 @@
 Class {
 	#name : #OPBormConstraintController,
-	#superclass : #OPBormElementController,
+	#superclass : #OPBormAssociationEnhancementController,
 	#category : #'OpenPonk-BormEditor-Controllers'
 }
 
@@ -10,21 +10,8 @@ OPBormConstraintController >> canVisitTarget: aController [
 ]
 
 { #category : #construction }
-OPBormConstraintController >> constraintOnEdge: anElement [
-	| edge const |
-	edge := (self diagramController controllerForModel: model owner) figure.
-	anElement
-		withViewDo:
-			[ :view | 
-			const := OPRTRailConstraint new.
-			const
-				initialPosition: 0.5;
-				distance: 10.
-			const element: anElement connection: edge ]
-]
-
-{ #category : #construction }
 OPBormConstraintController >> createModelIn: aParentModel [
+
 	self model: self modelClass new.
 	aParentModel constraint: model.
 	^ model
@@ -37,7 +24,9 @@ OPBormConstraintController >> modelClass [
 
 { #category : #hooks }
 OPBormConstraintController >> refreshFigure [
-	self figure trachelShape text: self model name.
+
+	self figure trachelShape text:
+		(self model name ifEmpty: [ 'condition' ]).
 	^ super refreshFigure
 ]
 
@@ -50,14 +39,16 @@ OPBormConstraintController >> removeModel [
 
 { #category : #hooks }
 OPBormConstraintController >> renderFigureIn: aView [
+
 	self diagramController addingFigureFor: self.
 	figure := RTLabel new
-		color: Color black;
-		height: 12;
-		elementOn: 'empty constraint'.
+		          color: Color black;
+		          height: 12;
+		          elementOn: self model.
 	figure @ RTDraggable.
 	figure renderIn: aView.
 	figure trachelShape pushFront.
 	self constraintOnEdge: figure.
+	self refreshFigure.
 	^ self diagramController addedFigureFor: self
 ]
