@@ -15,7 +15,7 @@ OPBormCommunicationController >> connectionFeedback [
 		lineBuilder: [ :fromFigure :toFigure | 
 			OPRTStyledConnection new
 				decorate: [ :deco | deco arrowHead ];
-				withBorderAttachPoint;
+				withOrthogonalAttachPoint;
 				color: Color darkGray muchDarker;
 				edgeFrom: fromFigure to: toFigure ];
 		from: source figure
@@ -25,7 +25,7 @@ OPBormCommunicationController >> connectionFeedback [
 OPBormCommunicationController >> createEdgeFrom: fromElement to: toElement [
 	| edge |
 	edge := OPRTStyledConnection new
-		withBorderAttachPoint;
+		withOrthogonalAttachPoint;
 		color: Color black;
 		edgeFrom: fromElement to: toElement.
 	edge shape decorations arrowHead.

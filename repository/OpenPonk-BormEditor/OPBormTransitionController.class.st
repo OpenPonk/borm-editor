@@ -21,7 +21,7 @@ OPBormTransitionController >> connectionFeedback [
 		lineBuilder: [ :fromFigure :toFigure | 
 			OPRTStyledConnection new
 				decorate: [ :deco | deco arrowHead ];
-				withBorderAttachPoint;
+				withOrthogonalAttachPoint;
 				color: Color darkGray muchDarker;
 				edgeFrom: fromFigure to: toFigure ];
 		from: source figure
@@ -31,7 +31,7 @@ OPBormTransitionController >> connectionFeedback [
 OPBormTransitionController >> createEdgeFrom: fromElement to: toElement [
 	| edge shape |
 	shape := OPRTStyledConnection new
-		withBorderAttachPoint;
+		withOrthogonalAttachPoint;
 		color: Color black;
 		width: 2.
 	(self model target isKindOf: BormState)
