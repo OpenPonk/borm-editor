@@ -40,12 +40,11 @@ BormStateFigure >> createOwnedElements [
 
 { #category : #updating }
 BormStateFigure >> show: anElement if: aConditionBlock [
+
 	| wasShown isShown |
 	wasShown := anElement view isNotNil.
 	super show: anElement if: aConditionBlock.
-	isShown := anElement view isNotNil.
-	wasShown == isShown
-		ifFalse: [ self updateText ]
+	isShown := anElement view isNotNil
 ]
 
 { #category : #'creating - subelements' }

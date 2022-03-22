@@ -54,19 +54,19 @@ BormFiguresFactory >> newLabel [
 ]
 
 { #category : #'as yet unclassified' }
+BormFiguresFactory >> newMultilineLabel [
+	^ OPRTStyledMultilineLabel new
+		fontSize: 10;
+		color: self textColor;
+		yourself
+]
+
+{ #category : #'as yet unclassified' }
 BormFiguresFactory >> newRoundedBox [
 	^ RTRoundedBox new
 		color: self backgroundColor;
 		borderColor: self borderColor;
 		borderRadius: 20;
-		yourself
-]
-
-{ #category : #'as yet unclassified' }
-BormFiguresFactory >> newText [
-	^ RTText new
-		fontSize: 10;
-		color: self textColor;
 		yourself
 ]
 

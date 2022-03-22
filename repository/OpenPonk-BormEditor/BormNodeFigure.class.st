@@ -17,9 +17,8 @@ BormNodeFigure >> addInteractions [
 { #category : #'creating - subelements' }
 BormNodeFigure >> createOwnedElements [
 	| block |
-	text := self figuresFactory newText
+	text := self figuresFactory newMultilineLabel
 		text: [ :m | m model ifNil: '' ifNotNil: #name ];
-		wrapText;
 		elementOn: self.
 	self add: text.
 	block := [ self updateText ].
@@ -63,8 +62,10 @@ BormNodeFigure >> textPadding [
 
 { #category : #updating }
 BormNodeFigure >> update [
+
 	self show: plusIcon if: self model submodel isNotNil.
-	super update
+	super update.
+	self updateText
 ]
 
 { #category : #updating }
