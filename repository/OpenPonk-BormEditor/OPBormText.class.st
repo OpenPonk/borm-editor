@@ -1,6 +1,6 @@
 Class {
 	#name : #OPBormText,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'rubText'
 	],

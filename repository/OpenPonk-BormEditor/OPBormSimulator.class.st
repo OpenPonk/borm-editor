@@ -8,28 +8,35 @@ Class {
 	#category : #'OpenPonk-BormEditor-Simulator'
 }
 
-{ #category : #specs }
-OPBormSimulator class >> defaultSpec [
-	^ SpecColumnLayout composed
-		newRow: [ :row | 
+{ #category : #'as yet unclassified' }
+OPBormSimulator class >> defaultLayout [
+	^ SpBoxLayout newTopToBottom
+		add: SpBoxLayout newLeftToRight:  [ :row | 
 					row
 						add: #inputLabel;
 						add: #input width: 250 ] height: 25;
-		newRow: [ :row | 
+		add: SpBoxLayout newLeftToRight:  [ :row | 
 					row
 						add: #startButton;
 						add: #stopButton;
 						add: #resetButton ]
 			height: self toolbarHeight;
-		newRow: [ :row | row add: #letterPanel ] height: self toolbarHeight;
-		newRow: [ :row | 
+		add: SpBoxLayout newLeftToRight:  [ :row | row add: #letterPanel ] height: self toolbarHeight;
+		add: SpBoxLayout newLeftToRight:  [ :row | 
 					row
 						add: #backButton;
 						add: #nextButton;
-						newColumn: [ :col |  ] ]
+						add: SpBoxLayout newTopToBottom:  [ :col |  ] ]
 			height: self toolbarHeight;
-		newRow: [ :row |  ];
+		add: SpBoxLayout newLeftToRight:  [ :row |  ];
 		yourself
+]
+
+{ #category : #specs }
+OPBormSimulator class >> defaultSpec [
+
+	self flag: 'Pharo 9- compatibility'.
+	^ self defaultLayout
 ]
 
 { #category : #accessing }

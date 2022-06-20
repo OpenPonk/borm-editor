@@ -1,6 +1,6 @@
 Class {
 	#name : #BormEntityListPresenter,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'searchInput',
 		'addEntryButton',
@@ -12,18 +12,25 @@ Class {
 	#category : #'OpenPonk-BormEditor-UI'
 }
 
-{ #category : #specs }
-BormEntityListPresenter class >> defaultSpec [
+{ #category : #'as yet unclassified' }
+BormEntityListPresenter class >> defaultLayout [
 	^ SpecLayout composed
-		newColumn: [ :col | 
+		add: SpBoxLayout newTopToBottom:  [ :col | 
 			col
-				newRow: [ :row | 
+				add: SpBoxLayout newLeftToRight:  [ :row | 
 					row
 						add: #searchInput;
 						add: #addEntryButton ]
 					height: ComposableModel toolbarHeight;
 				add: #entriesList ];
 		yourself
+]
+
+{ #category : #specs }
+BormEntityListPresenter class >> defaultSpec [
+
+	self flag: 'Pharo 9- compatibility'.
+	^ self defaultLayout
 ]
 
 { #category : #'accessing - spec fields' }
@@ -34,6 +41,18 @@ BormEntityListPresenter >> addEntryButton [
 { #category : #accessing }
 BormEntityListPresenter >> addEntryLabel: aString [
 	addEntryButton label: aString
+]
+
+{ #category : #'as yet unclassified' }
+BormEntityListPresenter >> connectPresenters [
+
+	super connectPresenters.
+	searchInput whenTextChanged: [ self refreshList ].
+	addEntryButton action: [ self openEntryEditor ].
+	entriesList
+		displayBlock: displayNameBlock;
+		doubleClickAction: [ 
+			self openEntryEditorOn: entriesList selectedItem ]
 ]
 
 { #category : #accessing }
@@ -55,19 +74,8 @@ BormEntityListPresenter >> initialize [
 	super initialize
 ]
 
-{ #category : #initialization }
-BormEntityListPresenter >> initializePresenter [
-	super initializePresenter.
-	searchInput whenTextChanged: [ self refreshList ].
-	addEntryButton action: [ self openEntryEditor ].
-	entriesList
-		displayBlock: displayNameBlock;
-		handlesDoubleClick: true;
-		doubleClickAction: [ self openEntryEditorOn: entriesList selectedItem ]
-]
-
-{ #category : #initialization }
-BormEntityListPresenter >> initializeWidgets [
+{ #category : #'as yet unclassified' }
+BormEntityListPresenter >> initializePresenters [
 	searchInput := self newTextInput.
 	searchInput
 		autoAccept: true;
@@ -75,7 +83,7 @@ BormEntityListPresenter >> initializeWidgets [
 		ghostText: 'Search'.
 	addEntryButton := self newButton.
 	addEntryButton label: 'New Entry'.
-	entriesList := self instantiate: FastTableModel.
+	entriesList := self newList.
 	self focusOrder
 		add: searchInput;
 		add: addEntryButton;

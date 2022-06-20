@@ -1,6 +1,6 @@
 Class {
 	#name : #OPBormLangEditor,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'textModel',
 		'bormDiagram',
@@ -10,9 +10,19 @@ Class {
 	#category : #'OpenPonk-BormEditor-Extensions'
 }
 
+{ #category : #'as yet unclassified' }
+OPBormLangEditor class >> defaultLayout [
+
+	^ SpBoxLayout newLeftToRight
+		  add: #textModel;
+		  yourself
+]
+
 { #category : #specs }
 OPBormLangEditor class >> defaultSpec [
-	^ SpecLayout composed newRow: [ :row | row add: #textModel ]
+
+	self flag: 'Pharo 9- compatibility'.
+	^ self defaultLayout
 ]
 
 { #category : #accessing }
@@ -26,6 +36,11 @@ OPBormLangEditor >> bormDiagram: aBormDiagram [
 	self modelChanged
 ]
 
+{ #category : #'as yet unclassified' }
+OPBormLangEditor >> connectPresenters [
+	textModel widget announcer when: RubTextAccepted send: #textModelChanged to: self.
+]
+
 { #category : #initialization }
 OPBormLangEditor >> initialize [
 	super initialize.
@@ -33,13 +48,8 @@ OPBormLangEditor >> initialize [
 	locked := false
 ]
 
-{ #category : #initialization }
-OPBormLangEditor >> initializePresenter [
-	textModel widget announcer when: RubTextAccepted send: #textModelChanged to: self.
-]
-
-{ #category : #initialization }
-OPBormLangEditor >> initializeWidgets [
+{ #category : #'as yet unclassified' }
+OPBormLangEditor >> initializePresenters [
 	textModel := self newRubScrolledText
 ]
 
