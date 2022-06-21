@@ -10,12 +10,13 @@ Class {
 
 { #category : #'ui hooks' }
 OPBormDataFlowController >> buildEditorForm: aForm [
+
 	super buildEditorForm: aForm.
 	(aForm addDroplist: 'Type')
-		items: #(#input #output);
-		displayBlock: [ :type | type asString ];
-		setSelectedItem: self model type;
-		whenSelectedItemChanged: [ :newValue | 
+		items: #( #input #output );
+		display: [ :type | type asString ];
+		selectItem: self model type;
+		whenSelectedDo: [ :newValue | 
 			self model type: newValue.
 			self refreshFigure ]
 ]

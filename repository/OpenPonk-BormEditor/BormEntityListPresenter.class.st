@@ -50,7 +50,7 @@ BormEntityListPresenter >> connectPresenters [
 	searchInput whenTextChanged: [ self refreshList ].
 	addEntryButton action: [ self openEntryEditor ].
 	entriesList
-		displayBlock: displayNameBlock;
+		display: displayNameBlock;
 		doubleClickAction: [ 
 			self openEntryEditorOn: entriesList selectedItem ]
 ]
@@ -58,7 +58,7 @@ BormEntityListPresenter >> connectPresenters [
 { #category : #accessing }
 BormEntityListPresenter >> displayNameBlock: aOneArgBlock [
 	displayNameBlock := aOneArgBlock.
-	entriesList displayBlock: displayNameBlock
+	entriesList display: displayNameBlock
 ]
 
 { #category : #'accessing - spec fields' }
@@ -76,9 +76,9 @@ BormEntityListPresenter >> initialize [
 
 { #category : #'as yet unclassified' }
 BormEntityListPresenter >> initializePresenters [
+
 	searchInput := self newTextInput.
 	searchInput
-		autoAccept: true;
 		entryCompletion: nil;
 		ghostText: 'Search'.
 	addEntryButton := self newButton.

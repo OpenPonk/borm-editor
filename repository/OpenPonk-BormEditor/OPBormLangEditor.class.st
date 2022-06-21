@@ -78,15 +78,15 @@ OPBormLangEditor >> modelChanged [
 
 { #category : #'instance creation' }
 OPBormLangEditor >> newRubScrolledText [
+
 	^ RubScrolledTextMorph new
-				vResizing: #spaceFill; 
-      			hResizing: #spaceFill;
-				beWrapped;
-				autoAccept: true;
-				updateTextWith: self newStartText;
-				withLineNumbers;
-				withTextSegmentIcons;
-				asSpecAdapter.
+		  vResizing: #spaceFill;
+		  hResizing: #spaceFill;
+		  beWrapped;
+		  updateTextWith: self newStartText;
+		  withLineNumbers;
+		  withTextSegmentIcons;
+		  asSpecAdapter
 ]
 
 { #category : #'instance creation' }

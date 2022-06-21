@@ -17,13 +17,14 @@ OPBormParticipantController >> addedNodeFigure: aFigure [
 
 { #category : #hooks }
 OPBormParticipantController >> buildEditorForm: aForm [
+
 	super buildEditorForm: aForm.
 	(aForm addDroplist: 'Type')
-		items: #(#Person #System #Organization);
-		iconHolder: [ :type | self typeIconFor: type ];
-		displayBlock: [ :type | type asString ];
-		setSelectedItem: self model type;
-		whenSelectedItemChanged: [ :newValue | 
+		items: #( #Person #System #Organization );
+		displayIcon: [ :type | self typeIconFor: type ];
+		display: [ :type | type asString ];
+		selectItem: self model type;
+		whenSelectedDo: [ :newValue | 
 			self model type: newValue.
 			self refreshFigure ]
 ]
