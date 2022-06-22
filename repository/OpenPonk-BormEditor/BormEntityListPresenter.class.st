@@ -14,16 +14,15 @@ Class {
 
 { #category : #'as yet unclassified' }
 BormEntityListPresenter class >> defaultLayout [
-	^ SpecLayout composed
-		add: SpBoxLayout newTopToBottom:  [ :col | 
-			col
-				add: SpBoxLayout newLeftToRight:  [ :row | 
-					row
-						add: #searchInput;
-						add: #addEntryButton ]
-					height: ComposableModel toolbarHeight;
-				add: #entriesList ];
-		yourself
+
+	^ SpBoxLayout newTopToBottom
+		  add: (SpBoxLayout newLeftToRight
+				   add: #searchInput;
+				   add: #addEntryButton;
+				   yourself)
+		  height: self toolbarHeight;
+		  add: #entriesList;
+		  yourself
 ]
 
 { #category : #specs }
@@ -47,12 +46,11 @@ BormEntityListPresenter >> addEntryLabel: aString [
 BormEntityListPresenter >> connectPresenters [
 
 	super connectPresenters.
-	searchInput whenTextChanged: [ self refreshList ].
+	searchInput whenTextChangedDo: [ self refreshList ].
 	addEntryButton action: [ self openEntryEditor ].
 	entriesList
 		display: displayNameBlock;
-		doubleClickAction: [ 
-			self openEntryEditorOn: entriesList selectedItem ]
+		whenActivatedDo: [ self openEntryEditorOn: entriesList selectedItem ]
 ]
 
 { #category : #accessing }
@@ -80,7 +78,7 @@ BormEntityListPresenter >> initializePresenters [
 	searchInput := self newTextInput.
 	searchInput
 		entryCompletion: nil;
-		ghostText: 'Search'.
+		placeholder: 'Search'.
 	addEntryButton := self newButton.
 	addEntryButton label: 'New Entry'.
 	entriesList := self newList.
@@ -130,12 +128,13 @@ BormEntityListPresenter >> openEntryEditorOn: anEntry isNew: isNew [
 
 { #category : #updating }
 BormEntityListPresenter >> refreshList [
+
 	| search |
 	search := searchInput text asLowercase.
-	entriesList
-		items:
-			(itemsBlock value , orphanedItems
-				select: [ :each | (displayNameBlock value: each) asLowercase includesSubstring: search ])
+	entriesList items:
+		(itemsBlock value asArray , orphanedItems select: [ :each | 
+			 (displayNameBlock value: each) asLowercase includesSubstring:
+				 search ])
 ]
 
 { #category : #'accessing - spec fields' }
