@@ -18,13 +18,6 @@ OPBormLangEditor class >> defaultLayout [
 		  yourself
 ]
 
-{ #category : #specs }
-OPBormLangEditor class >> defaultSpec [
-
-	self flag: 'Pharo 9- compatibility'.
-	^ self defaultLayout
-]
-
 { #category : #accessing }
 OPBormLangEditor >> bormDiagram [
 	^ bormDiagram

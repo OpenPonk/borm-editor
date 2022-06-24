@@ -32,13 +32,6 @@ OPBormSimulator class >> defaultLayout [
 		yourself
 ]
 
-{ #category : #specs }
-OPBormSimulator class >> defaultSpec [
-
-	self flag: 'Pharo 9- compatibility'.
-	^ self defaultLayout
-]
-
 { #category : #accessing }
 OPBormSimulator >> controllerForModel: aModel [
 	^ diagramController controllerForModel: aModel
