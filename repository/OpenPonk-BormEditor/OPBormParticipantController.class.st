@@ -21,7 +21,7 @@ OPBormParticipantController >> buildEditorForm: aForm [
 	super buildEditorForm: aForm.
 	(aForm addDroplist: 'Type')
 		items: #( #Person #System #Organization );
-		iconBlock: [ :type | self typeIconFor: type ];
+		displayIcon: [ :type | self typeIconFor: type ];
 		display: [ :type | type asString ];
 		selectItem: self model type;
 		whenSelectedItemChangedDo: [ :newValue | 
