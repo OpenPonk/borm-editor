@@ -27,7 +27,7 @@ OPBormPlugin >> diagramControllerClass [
 
 { #category : #accessing }
 OPBormPlugin >> icon [
-	^ OPBormEditorIcons current oRModel16Icon
+	^ OPBormEditorIcons oRModel16Icon
 ]
 
 { #category : #'as yet unclassified' }

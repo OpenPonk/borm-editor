@@ -80,62 +80,62 @@ OPBormDiagramController >> hasUndo [
 OPBormDiagramController >> initializePalette: aPalette [
 	(aPalette newCreationTool: [ OPBormParticipantController new ])
 		label: 'Participant';
-		icon: OPBormEditorIcons current participant16Icon.
+		icon: OPBormEditorIcons participant16Icon.
 	aPalette newSeparator.
 	(aPalette newCreationTool: [ OPBormStateController new ])
 		label: 'State';
-		icon: OPBormEditorIcons current state16Icon.
+		icon: OPBormEditorIcons state16Icon.
 	(aPalette newCreationTool: [ OPBormActivityController new ])
 		label: 'Activity';
-		icon: OPBormEditorIcons current activity16Icon.
+		icon: OPBormEditorIcons activity16Icon.
 	aPalette newSeparator.
 	(aPalette newConnectionCreationTool: [ OPBormTransitionController new ])
 		label: 'Transition';
-		icon: OPBormEditorIcons current transition16Icon.
+		icon: OPBormEditorIcons transition16Icon.
 	(aPalette newConnectionCreationTool: [ OPBormCommunicationController new ])
 		label: 'Communication';
-		icon: OPBormEditorIcons current communication16Icon.
+		icon: OPBormEditorIcons communication16Icon.
 	aPalette newSeparator.
 	(aPalette newCreationTool: [ OPBormDataFlowController new ])
 		label: 'Data Flow';
-		icon: OPBormEditorIcons current dataFlow16Icon.
+		icon: OPBormEditorIcons dataFlow16Icon.
 	(aPalette newCreationTool: [ OPBormConstraintController new ])
 		label: 'Constraint';
-		icon: OPBormEditorIcons current constraint16Icon
+		icon: OPBormEditorIcons constraint16Icon
 ]
 
 { #category : #initialization }
 OPBormDiagramController >> initializePaletteWithShortcuts: aPalette [
 	(aPalette newCreationTool: [ OPBormParticipantController new ])
 		label: 'Participant';
-		icon: OPBormEditorIcons current participant16Icon;
+		icon: OPBormEditorIcons participant16Icon;
 		shortcut: $q asShortcut.
 	aPalette newSeparator.
 	(aPalette newCreationTool: [ OPBormStateController new ])
 		label: 'State';
-		icon: OPBormEditorIcons current state16Icon;
+		icon: OPBormEditorIcons state16Icon;
 		shortcut: $s asShortcut.
 	(aPalette newCreationTool: [ OPBormActivityController new ])
 		label: 'Activity';
-		icon: OPBormEditorIcons current activity16Icon;
+		icon: OPBormEditorIcons activity16Icon;
 		shortcut: $a asShortcut.
 	aPalette newSeparator.
 	(aPalette newConnectionCreationTool: [ OPBormTransitionController new ])
 		label: 'Transition';
-		icon: OPBormEditorIcons current transition16Icon;
+		icon: OPBormEditorIcons transition16Icon;
 		shortcut: $t asShortcut.
 	(aPalette newConnectionCreationTool: [ OPBormCommunicationController new ])
 		label: 'Communication';
-		icon: OPBormEditorIcons current communication16Icon;
+		icon: OPBormEditorIcons communication16Icon;
 		shortcut: $c asShortcut.
 	aPalette newSeparator.
 	(aPalette newCreationTool: [ OPBormDataFlowController new ])
 		label: 'Data Flow';
-		icon: OPBormEditorIcons current dataFlow16Icon;
+		icon: OPBormEditorIcons dataFlow16Icon;
 		shortcut: $f asShortcut.
 	(aPalette newCreationTool: [ OPBormConstraintController new ])
 		label: 'Constraint';
-		icon: OPBormEditorIcons current constraint16Icon;
+		icon: OPBormEditorIcons constraint16Icon;
 		shortcut: $r asShortcut
 ]
 

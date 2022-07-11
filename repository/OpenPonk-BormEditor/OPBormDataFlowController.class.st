@@ -94,8 +94,8 @@ OPBormDataFlowController >> refreshIcon [
 	right := edge from position x < edge to position x.
 	self model isOutput ifTrue: [ right := right not ].
 	iconFigure trachelShape form: (right
-			 ifTrue: [ OPBormEditorIcons current dataFlowRightIcon ]
-			 ifFalse: [ OPBormEditorIcons current dataFlowLeftIcon ])
+			 ifTrue: [ OPBormEditorIcons dataFlowRightIcon ]
+			 ifFalse: [ OPBormEditorIcons dataFlowLeftIcon ])
 ]
 
 { #category : #destruction }
@@ -117,7 +117,7 @@ OPBormDataFlowController >> renderFigureIn: aView [
 		top;
 		stick.
 	iconFigure := (RTBitmap new form:
-		               OPBormEditorIcons current dataFlowLeftIcon) element.
+		               OPBormEditorIcons dataFlowLeftIcon) element.
 	(RTConstraint on: iconFigure background: figure trachelShape)
 		bottom;
 		padding: 5;

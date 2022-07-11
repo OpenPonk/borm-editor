@@ -36,8 +36,7 @@ OPBormExampleDiagrams class >> exampleTravelingCard [
 OPBormExampleDiagrams class >> menuCommandOn: aBuilder [
 
 	<worldMenu>
-	((aBuilder item: #BORMEditor) icon:
-			 OPBormEditorIcons current oRModel16Icon)
+	((aBuilder item: #BORMEditor) icon: OPBormEditorIcons oRModel16Icon)
 		label: 'BORM Editor';
 		order: 225;
 		parent: #MostUsedTools;
@@ -46,12 +45,12 @@ OPBormExampleDiagrams class >> menuCommandOn: aBuilder [
 			(aBuilder item: #BORMExamples)
 				parent: #BORMEditor;
 				label: 'BORM Example Pizza Delivery';
-				icon: OPBormEditorIcons current oRModel16Icon;
+				icon: OPBormEditorIcons oRModel16Icon;
 				action: [ self examplePizzaDelivery ].
 			(aBuilder item: #BORMExamples)
 				parent: #BORMEditor;
 				label: 'BORM Simple Diagram';
-				icon: OPBormEditorIcons current oRModel16Icon;
+				icon: OPBormEditorIcons oRModel16Icon;
 				action: [ self exampleDataFlows ] ]
 ]
 

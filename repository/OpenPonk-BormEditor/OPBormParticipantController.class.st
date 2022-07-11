@@ -131,12 +131,13 @@ OPBormParticipantController >> showDenyFeedbackFor: aController [
 
 { #category : #hooks }
 OPBormParticipantController >> typeIconFor: aType [
-	aType = BormParticipantType Person
-		ifTrue: [ ^ OPBormEditorIcons current personIcon ].
-	aType = BormParticipantType System
-		ifTrue: [ ^ OPBormEditorIcons current systemIcon ].
-	aType = BormParticipantType Organization
-		ifTrue: [ ^ OPBormEditorIcons current organizationIcon ]
+
+	aType = BormParticipantType Person ifTrue: [ 
+		^ OPBormEditorIcons personIcon ].
+	aType = BormParticipantType System ifTrue: [ 
+		^ OPBormEditorIcons bormSystemIcon ].
+	aType = BormParticipantType Organization ifTrue: [ 
+		^ OPBormEditorIcons organizationIcon ]
 ]
 
 { #category : #hooks }

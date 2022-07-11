@@ -41,12 +41,12 @@ OPBormNavigatorAdapter >> hasMappingFor: anObject [
 { #category : #'widget API' }
 OPBormNavigatorAdapter >> iconMapping [
 	^ Array
-		with: OPBormNavigatorEntities -> OPBormEditorIcons current entity16Icon
+		with: OPBormNavigatorEntities -> OPBormEditorIcons entity16Icon
 		with: OPBormNavigatorNode -> [ :o | self iconNamed: #addIcon ]
 		with:
 			OPModelObject
 				-> [ :o | 
-					OPBormEditorIcons current
+					OPBormEditorIcons
 						perform: ((self bormNameFor: o) uncapitalized , '16Icon') asSymbol ]
 ]
 
