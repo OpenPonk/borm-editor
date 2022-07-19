@@ -12,16 +12,27 @@ OPBormElementController >> buildEditorForm: aForm [
 
 { #category : #'ui hooks' }
 OPBormElementController >> buildEntityForm: aForm [
+
+	self flag: 'Displays entry completion in wrong place'.
+
 	(aForm addEntity: 'Entity')
 		displaySymbol: #name;
 		entity: self model entity;
 		whenEntityChanged: [ :e | 
-			(e isKindOf: BormEntity)
-				ifTrue: [ self model entity: e.
+			(e isKindOf: BormEntity) ifTrue: [ 
+					self model entity: e.
 					self refreshFigure ] ];
-		selectDialog: [ BormEntityListPresenter new
+		"
+		possibleEntities: [ 
+			self diagramController model project allBormEntities sorted: [ :a :b | 
+					a name < b name ] ]'"
+		selectDialog: [ 
+			BormEntityListPresenter new
 				addEntryLabel: 'New Entity';
-				itemsBlock: [ self diagramController model project allBormEntities ] ]
+				itemsBlock: [ 
+					self diagramController model project allBormEntities sorted: [ 
+							:a 
+							:b | a name < b name ] ] ]
 ]
 
 { #category : #testing }
