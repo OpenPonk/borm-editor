@@ -10,6 +10,12 @@ Class {
 	#category : #'OpenPonk-BormEditor-Adapters'
 }
 
+{ #category : #accessing }
+OPBormNavigatorAdapter class >> priority [
+
+	^ 10
+]
+
 { #category : #private }
 OPBormNavigatorAdapter >> bormNameFor: anObject [
 	^ (anObject className splitOn: 'Borm') last
