@@ -40,8 +40,13 @@ OPBormNavigatorAdapter >> displayMapping [
 ]
 
 { #category : #testing }
-OPBormNavigatorAdapter >> hasMappingFor: anObject [
-	^ anObject className beginsWith: 'Borm'
+OPBormNavigatorAdapter >> hasMappingFor: anObject in: aModel [
+
+	^ { 
+		  BormElement.
+		  BormEntity.
+		  BormParticipantRole.
+		  BormParticipantType } anySatisfy: [ :any | anObject isKindOf: any ]
 ]
 
 { #category : #'widget API' }
