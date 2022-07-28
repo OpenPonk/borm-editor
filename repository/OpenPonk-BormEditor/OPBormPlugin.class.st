@@ -9,9 +9,12 @@ Class {
 
 { #category : #toolbar }
 OPBormPlugin class >> toolbarMenu: aBuilder [
+
 	<opEditorToolbarMenu: #OPBormPlugin>
 	(aBuilder item: 'DSL Editor')
-		action: [ OPDslEditor new
+		icon: OPBormEditorIcons oRModel16Icon;
+		action: [ 
+			OPDslEditor new
 				parser: BormLangParser new;
 				exporter: BormLangSerializer new;
 				highlighter: BormLangHighlighter new;
