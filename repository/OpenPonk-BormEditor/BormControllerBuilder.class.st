@@ -16,14 +16,14 @@ BormControllerBuilder class >> isDeprecated [
 
 { #category : #'private - building' }
 BormControllerBuilder >> addDataFlows: dataFlows [
-	dataFlows do: [ :each | (self controllerFor: each owner) addAsTargetFor: (self newControllerFor: each) ]
+	dataFlows do: [ :each | (self controllerForModel: each owner) addAsTargetFor: (self newControllerFor: each) ]
 ]
 
 { #category : #'private - building' }
 BormControllerBuilder >> addEdge: anEdge [
 	| sourceCtrl targetCtrl edgeCtrl |
-	sourceCtrl := self controllerFor: anEdge source.
-	targetCtrl := self controllerFor: anEdge target.
+	sourceCtrl := self controllerForModel: anEdge source.
+	targetCtrl := self controllerForModel: anEdge target.
 	edgeCtrl := self newControllerFor: anEdge.
 	sourceCtrl addAsSourceFor: edgeCtrl.
 	targetCtrl addAsTargetFor: edgeCtrl
@@ -36,7 +36,7 @@ BormControllerBuilder >> addEdges: edges [
 
 { #category : #'private - building' }
 BormControllerBuilder >> addNodes: nodes [
-	nodes do: [ :node | (self controllerFor: node owner) addAsTargetFor: (self newControllerFor: node) ]
+	nodes do: [ :node | (self newControllerFor: node owner) addAsTargetFor: (self newControllerFor: node) ]
 ]
 
 { #category : #'private - building' }
@@ -75,11 +75,6 @@ BormControllerBuilder >> collectNodes: participants [
 { #category : #'private - collecting' }
 BormControllerBuilder >> collectTransitions: participants [
 	^ ((self collectNodes: participants) collect: [ :node | node outgoing ]) flattened
-]
-
-{ #category : #'private - factories' }
-BormControllerBuilder >> controllerFor: anObject [
-	^ diagramController controllerForModel: anObject
 ]
 
 { #category : #accessing }
