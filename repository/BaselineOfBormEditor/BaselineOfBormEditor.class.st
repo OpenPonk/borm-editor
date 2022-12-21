@@ -14,7 +14,7 @@ BaselineOfBormEditor >> baseline: spec [
 			with: [ spec repository: 'github://openponk/borm-model/repository' ].
 		spec
 			baseline: 'OpenPonk'
-			with: [ spec repository: 'github://openponk/openponk' ].
+			with: [ spec repository: 'github://openponk/openponk:dev/Roassal3' ].
 		spec baseline: 'XMLParser' with: [ 
 			spec
 				repository: 'github://pharo-contributions/XML-XMLParser:3.5.x/src';
