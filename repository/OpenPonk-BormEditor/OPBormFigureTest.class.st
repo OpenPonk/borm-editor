@@ -2,7 +2,7 @@ Class {
 	#name : #OPBormFigureTest,
 	#superclass : #TestCase,
 	#instVars : [
-		'view',
+		'canvas',
 		'figure'
 	],
 	#category : #'OpenPonk-BormEditor-Tests'
@@ -16,6 +16,6 @@ OPBormFigureTest >> figureClass [
 { #category : #running }
 OPBormFigureTest >> setUp [
 	super setUp.
-	view := RTView new.
+	canvas := RSCanvas new.
 	figure := self figureClass new
 ]
