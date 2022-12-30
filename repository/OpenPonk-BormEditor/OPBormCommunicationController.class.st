@@ -22,7 +22,7 @@ OPBormCommunicationController >> connectionFeedback [
 ]
 
 { #category : #hooks }
-OPBormCommunicationController >> createEdgeFrom: fromElement to: toElement [
+OPBormCommunicationController >> createLineFrom: fromElement to: toElement [
 	| edge |
 	edge := OPRTStyledConnection new
 		withOrthogonalAttachPoint;

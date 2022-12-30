@@ -28,7 +28,7 @@ OPBormTransitionController >> connectionFeedback [
 ]
 
 { #category : #hooks }
-OPBormTransitionController >> createEdgeFrom: fromElement to: toElement [
+OPBormTransitionController >> createLineFrom: fromElement to: toElement [
 	| edge shape |
 	shape := OPRTStyledConnection new
 		withOrthogonalAttachPoint;

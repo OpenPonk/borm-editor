@@ -34,7 +34,7 @@ OPBormRelationshipController >> isHideable [
 OPBormRelationshipController >> renderFigureIn: aView [
 	self diagramController addingFigureFor: self.
 	figure := self
-		createEdgeFrom: self source figure
+		createLineFrom: self source figure
 		to: self target figure.
 	figure @ OPRTConnectionHandles.
 	figure renderIn: aView.
