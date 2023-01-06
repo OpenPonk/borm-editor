@@ -17,7 +17,7 @@ OPBormTransitionController >> canBeTargetForDataFlow: aDataFlow [
 
 { #category : #hooks }
 OPBormTransitionController >> connectionFeedback [
-	^ OPInteractiveLine new
+	^ OPRSInteractiveLine new
 		lineBuilder: [ :fromFigure :toFigure | 
 			OPRTStyledConnection new
 				decorate: [ :deco | deco arrowHead ];
