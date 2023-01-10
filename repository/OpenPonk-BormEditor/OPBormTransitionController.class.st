@@ -16,18 +16,6 @@ OPBormTransitionController >> canBeTargetForDataFlow: aDataFlow [
 ]
 
 { #category : #hooks }
-OPBormTransitionController >> connectionFeedback [
-	^ OPRSInteractiveLine new
-		lineBuilder: [ :fromFigure :toFigure | 
-			OPRTStyledConnection new
-				decorate: [ :deco | deco arrowHead ];
-				withOrthogonalAttachPoint;
-				color: Color darkGray muchDarker;
-				edgeFrom: fromFigure to: toFigure ];
-		from: source figure
-]
-
-{ #category : #hooks }
 OPBormTransitionController >> createLineFrom: fromElement to: toElement [
 	| edge shape |
 	shape := OPRTStyledConnection new

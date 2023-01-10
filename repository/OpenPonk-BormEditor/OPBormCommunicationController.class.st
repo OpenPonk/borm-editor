@@ -10,18 +10,6 @@ OPBormCommunicationController >> canBeTargetForDataFlow: aController [
 ]
 
 { #category : #hooks }
-OPBormCommunicationController >> connectionFeedback [
-	^ OPRSInteractiveLine new
-		lineBuilder: [ :fromFigure :toFigure | 
-			OPRTStyledConnection new
-				decorate: [ :deco | deco arrowHead ];
-				withOrthogonalAttachPoint;
-				color: Color darkGray muchDarker;
-				edgeFrom: fromFigure to: toFigure ];
-		from: source figure
-]
-
-{ #category : #hooks }
 OPBormCommunicationController >> createLineFrom: fromElement to: toElement [
 	| edge |
 	edge := OPRTStyledConnection new
