@@ -60,13 +60,6 @@ OPBormProcessNodeController >> figureClass [
 ]
 
 { #category : #accessing }
-OPBormProcessNodeController >> layout: anElementLayout [
-	super layout: anElementLayout.
-	anElementLayout hasExtent
-		ifTrue: [ self figure shape extent: anElementLayout extent ]
-]
-
-{ #category : #accessing }
 OPBormProcessNodeController >> ownerParticipant [
 	^ ownerParticipant
 ]

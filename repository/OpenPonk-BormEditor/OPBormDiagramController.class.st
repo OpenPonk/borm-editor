@@ -139,14 +139,6 @@ OPBormDiagramController >> initializePaletteWithShortcuts: aPalette [
 		shortcut: $r asShortcut
 ]
 
-{ #category : #accessing }
-OPBormDiagramController >> layout: aLayout [
-	super layout: aLayout.
-	(aLayout noneSatisfy: [ :any | any hasExtent ])
-		ifTrue: [ self layouter layoutSizesOfParticipants ].
-	self updateView
-]
-
 { #category : #userinterface }
 OPBormDiagramController >> updateCanvas [
 
