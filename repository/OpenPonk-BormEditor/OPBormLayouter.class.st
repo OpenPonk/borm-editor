@@ -30,7 +30,7 @@ OPBormLayouter >> allEdges [
 OPBormLayouter >> allNodes [
 	^ diagramController controllers
 		select: [ :ctrl | ctrl isKindOf: OPBormParticipantController ]
-		thenCollect: #figure
+		thenCollect: #roassalShape
 ]
 
 { #category : #public }
