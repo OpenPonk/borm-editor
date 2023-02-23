@@ -83,7 +83,7 @@ OPBormParticipantController >> removedNodeFigure: aFigure [
 { #category : #hooks }
 OPBormParticipantController >> renderFigureIn: aView [
 	| labeled |
-	self diagramController addingFigureFor: self.
+	self diagramController willRender: self.
 	figure := self createContainerFigure.
 	figure
 		@ RTGhostDraggable;
@@ -112,7 +112,7 @@ OPBormParticipantController >> renderFigureIn: aView [
 			(TRTranslationCallback
 				block: [ :shape :step | elements do: [ :e | e translateBy: step ] ]).
 	self saveStateOnDragEndFor: figure.
-	^ self diagramController addedFigureFor: self
+	^ self diagramController rendered: self
 ]
 
 { #category : #'canvas actions' }

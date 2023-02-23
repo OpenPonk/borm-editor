@@ -106,7 +106,7 @@ OPBormDataFlowController >> removeModel [
 { #category : #private }
 OPBormDataFlowController >> renderFigureIn: aView [
 
-	self diagramController addingFigureFor: self.
+	self diagramController willRender: self.
 	figure := self createContainerShape element.
 	figure @ RTDraggable.
 	labelFigure := RTLabel new
@@ -130,7 +130,7 @@ OPBormDataFlowController >> renderFigureIn: aView [
 		add: labelFigure.
 	self constraintOnEdge: figure.
 	self saveStateOnDragEndFor: figure.
-	^ self diagramController addedFigureFor: self
+	^ self diagramController rendered: self
 ]
 
 { #category : #'canvas actions' }

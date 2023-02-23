@@ -88,7 +88,7 @@ OPBormProcessNodeController >> removeModel [
 
 { #category : #construction }
 OPBormProcessNodeController >> renderFigureIn: aView [
-	self diagramController addingFigureFor: self.
+	self diagramController willRender: self.
 	figure := self figureClass on: self model.
 	figure renderIn: aView.
 	figure plusIcon
@@ -98,7 +98,7 @@ OPBormProcessNodeController >> renderFigureIn: aView [
 	(self diagramController
 		showWithoutDependentInDiagramModel: self model owner)
 		addedNodeFigure: figure.
-	^ self diagramController addedFigureFor: self
+	^ self diagramController rendered: self
 ]
 
 { #category : #construction }
