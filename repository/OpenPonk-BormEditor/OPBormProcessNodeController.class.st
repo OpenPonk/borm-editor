@@ -49,14 +49,18 @@ OPBormProcessNodeController >> canBeTargetFor: aController [
 	^ self subclassResponsibility
 ]
 
+{ #category : #construction }
+OPBormProcessNodeController >> createDiagramElement [
+
+	super createDiagramElement.
+	self diagramElement plusIconAction: [ 
+		self diagramController editor workbench openEditorOn:
+			self model submodel ]
+]
+
 { #category : #accessing }
 OPBormProcessNodeController >> dependentElements [
 	^ model transitions
-]
-
-{ #category : #construction }
-OPBormProcessNodeController >> figureClass [
-	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
@@ -69,56 +73,29 @@ OPBormProcessNodeController >> ownerParticipant: aParticipantController [
 	ownerParticipant := aParticipantController
 ]
 
-{ #category : #hooks }
-OPBormProcessNodeController >> refreshFigure [
-	figure update.
-	^ self figure
-]
-
-{ #category : #destruction }
-OPBormProcessNodeController >> removeFigure [
-	super removeFigure.
-	self ownerParticipant removedNodeFigure: figure
-]
-
 { #category : #destruction }
 OPBormProcessNodeController >> removeModel [
 	self model owner remove: self model
 ]
 
 { #category : #construction }
-OPBormProcessNodeController >> renderFigureIn: aView [
-	self diagramController willRender: self.
-	figure := self figureClass on: self model.
-	figure renderIn: aView.
-	figure plusIcon
-		when: TRMouseLeftClick
-		do: [ self diagramController editor workbench
-				openEditorOn: self model submodel ].
-	(self diagramController
-		showWithoutDependentInDiagramModel: self model owner)
-		addedNodeFigure: figure.
-	^ self diagramController rendered: self
+OPBormProcessNodeController >> setOwnerParticipant [
+
+	self ownerParticipant: (self diagramController controllerForModel:
+			 (self diagramController model participants detect: [ :any | 
+				  any elements includes: model ]))
 ]
 
 { #category : #construction }
 OPBormProcessNodeController >> showInDiagram: aDiagramController [
+
 	super showInDiagram: aDiagramController.
-	self
-		ownerParticipant:
-			(aDiagramController
-				controllerForModel:
-					(aDiagramController model participants
-						detect: [ :any | any elements includes: model ]))
+	self setOwnerParticipant
 ]
 
 { #category : #construction }
 OPBormProcessNodeController >> showWithoutDependentInDiagram: aDiagramController [
+
 	super showWithoutDependentInDiagram: aDiagramController.
-	self
-		ownerParticipant:
-			(aDiagramController
-				controllerForModel:
-					(aDiagramController model participants
-						detect: [ :any | any elements includes: model ]))
+	self setOwnerParticipant
 ]

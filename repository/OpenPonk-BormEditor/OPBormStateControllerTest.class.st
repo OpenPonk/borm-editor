@@ -14,7 +14,7 @@ OPBormStateControllerTest >> controllerClass [
 
 { #category : #accessing }
 OPBormStateControllerTest >> figureClass [
-	^ BormStateFigure
+	^ BormStateShape
 ]
 
 { #category : #accessing }

@@ -30,8 +30,9 @@ OPBormStateController >> canBeTargetFor: aController [
 ]
 
 { #category : #construction }
-OPBormStateController >> figureClass [
-	^ BormStateFigure
+OPBormStateController >> diagramElementClass [
+
+	^ BormStateShape
 ]
 
 { #category : #accessing }

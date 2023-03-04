@@ -17,5 +17,5 @@ OPBormFigureTest >> figureClass [
 OPBormFigureTest >> setUp [
 	super setUp.
 	canvas := RSCanvas new.
-	figure := self figureClass new
+	figure := self diagramElementClass new
 ]

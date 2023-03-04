@@ -101,7 +101,7 @@ OPBormLayouter >> layoutNode: aNode [
 	bounds := figure encompassingRectangle.
 	bounds := bounds
 		merge:
-			((figure isKindOf: BormNodeFigure)
+			((figure isKindOf: BormNodeShape)
 				ifTrue: [ figure text encompassingRectangle ]
 				ifFalse: [ (figure attributeAt: #RTLabelledLabel) encompassingRectangle ]).
 	RTNest new
@@ -117,7 +117,7 @@ OPBormLayouter >> layoutNodesInParticipant: aParticipant [
 	RTDominanceTreeLayout new
 		horizontalGap: 30;
 		verticalGap: 30;
-		on: ctrl nodeFigures
+		on: ctrl nodeRoassalShapes
 ]
 
 { #category : #layouting }
@@ -138,7 +138,7 @@ OPBormLayouter >> layoutParticipants: participants [
 OPBormLayouter >> layoutSizeOfParticipant: aParticipant [
 	| ctrl bounds |
 	ctrl := diagramController controllerForModel: aParticipant.
-	bounds := (RTGroup withAll: ctrl nodeFigures) encompassingRectangle.
+	bounds := (RTGroup withAll: ctrl nodeRoassalShapes) encompassingRectangle.
 	bounds := bounds expandBy: 40 @ 30.
 	RTNest new
 		padding: 0;

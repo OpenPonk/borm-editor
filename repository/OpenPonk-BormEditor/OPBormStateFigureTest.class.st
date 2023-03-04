@@ -6,7 +6,7 @@ Class {
 
 { #category : #accessing }
 OPBormStateFigureTest >> figureClass [
-	^ BormStateFigure
+	^ BormStateShape
 ]
 
 { #category : #'as yet unclassified' }

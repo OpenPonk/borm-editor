@@ -14,7 +14,7 @@ OPBormActivityControllerTest >> controllerClass [
 
 { #category : #accessing }
 OPBormActivityControllerTest >> figureClass [
-	^ BormActivityFigure
+	^ BormActivityShape
 ]
 
 { #category : #accessing }

@@ -21,8 +21,9 @@ OPBormActivityController >> dependentElements [
 ]
 
 { #category : #construction }
-OPBormActivityController >> figureClass [
-	^ BormActivityFigure
+OPBormActivityController >> diagramElementClass [
+
+	^ BormActivityShape
 ]
 
 { #category : #accessing }
