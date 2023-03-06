@@ -54,14 +54,3 @@ OPBormTransitionController >> removeModel [
 	self model target removeTransition: self model.
 	self model source removeTransition: self model
 ]
-
-{ #category : #construction }
-OPBormTransitionController >> renderFigureIn: aView [
-	figure := super renderFigureIn: aView.
-	(self diagramController showWithoutDependentInDiagramModel: self model source owner)
-		figure trachelShape
-		addCallback:
-			(TRTranslationCallback
-				block: [ :sh :step | figure shape translateBy: step for: figure ]).
-	^ figure
-]

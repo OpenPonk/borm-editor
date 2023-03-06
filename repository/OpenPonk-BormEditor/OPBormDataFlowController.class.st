@@ -27,24 +27,6 @@ OPBormDataFlowController >> canVisitTarget: aController [
 ]
 
 { #category : #private }
-OPBormDataFlowController >> constraintOnEdge: anElement [
-
-	| cb edge errorBlock |
-	super constraintOnEdge: anElement.
-	edge := (self diagramController showWithoutDependentInDiagramModel:
-		         model owner) figure.
-	cb := TRTranslationCallback block: [ self refreshIcon ].
-	edge from addCallback: cb.
-	edge to addCallback: cb.
-	errorBlock := [ 
-	              self traceCr:
-		              'OPBormDataFlowController>>#constraintOnEdge: - callback does not exist' ].
-	anElement addCallback: (TRRemoveCallback block: [ 
-			 edge from trachelShape removeCallback: cb ifAbsent: errorBlock.
-			 edge to trachelShape removeCallback: cb ifAbsent: errorBlock ])
-]
-
-{ #category : #private }
 OPBormDataFlowController >> createContainerShape [
 	^ RTRoundedBox new
 		width: 40;
@@ -68,27 +50,9 @@ OPBormDataFlowController >> diagramElementClass [
 	^ BormDataFlowShape
 ]
 
-{ #category : #'canvas actions' }
-OPBormDataFlowController >> hideSelectionFeedback [
-	figure shape
-		borderColor: Color gray;
-		borderWidth: 0.5.
-	figure updateShape.
-	super hideSelectionFeedback
-]
-
 { #category : #accessing }
 OPBormDataFlowController >> modelClass [
 	^ BormDataFlow
-]
-
-{ #category : #hooks }
-OPBormDataFlowController >> refreshFigure [
-
-	labelFigure trachelShape text: self model name.
-	figure width: (labelFigure width max: 40).
-	self refreshIcon.
-	^ super refreshFigure
 ]
 
 { #category : #'as yet unclassified' }
@@ -107,43 +71,4 @@ OPBormDataFlowController >> refreshIcon [
 { #category : #destruction }
 OPBormDataFlowController >> removeModel [
 	self model owner remove: self model
-]
-
-{ #category : #private }
-OPBormDataFlowController >> renderFigureIn: aView [
-
-	self diagramController willRender: self.
-	figure := self createContainerShape element.
-	figure @ RTDraggable.
-	labelFigure := RTLabel new
-		               height: 10;
-		               color: Color black;
-		               elementOn: self model.
-	(RTConstraint on: labelFigure background: figure)
-		top;
-		stick.
-	iconFigure := (RTBitmap new form:
-		               OPBormEditorIcons dataFlowLeftIcon) element.
-	(RTConstraint on: iconFigure background: figure trachelShape)
-		bottom;
-		padding: 5;
-		stick.
-	figure addCallback:
-		(TRRemoveCallback with: iconFigure with: labelFigure).
-	aView
-		add: figure;
-		add: iconFigure;
-		add: labelFigure.
-	self constraintOnEdge: figure.
-	self saveStateOnDragEndFor: figure.
-	^ self diagramController rendered: self
-]
-
-{ #category : #'canvas actions' }
-OPBormDataFlowController >> showSelectionFeedback [
-	figure shape
-		borderColor: Color black;
-		borderWidth: 1.
-	super showSelectionFeedback.
-	figure updateShape
 ]

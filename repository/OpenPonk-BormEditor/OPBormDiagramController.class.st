@@ -16,19 +16,6 @@ OPBormDiagramController >> addAsTargetFor: aController [
 ]
 
 { #category : #rebuilding }
-OPBormDiagramController >> allRelationshipsInModel [
-	^ self model elements
-		flatCollect: [ :eachParticipant | 
-			eachParticipant nodes
-				flatCollect: [ :eachNode | 
-					eachNode outgoing
-						,
-							((eachNode respondsTo: #sent)
-								ifTrue: [ eachNode sent ]
-								ifFalse: [ #() ]) ] ]
-]
-
-{ #category : #rebuilding }
 OPBormDiagramController >> allShowableElements [
 
 	| priorities |
