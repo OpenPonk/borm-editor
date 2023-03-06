@@ -41,6 +41,7 @@ OPBormParticipantController >> diagramElementClass [
 
 { #category : #accessing }
 OPBormParticipantController >> elementsToShowInside [
+
 	^ model nodes , (model nodes flatCollect: [ :each | each outgoing ])
 ]
 
@@ -66,6 +67,12 @@ OPBormParticipantController >> removeModel [
 ]
 
 { #category : #hooks }
+OPBormParticipantController >> typeIcon [
+
+	^ self typeIconFor: self model type
+]
+
+{ #category : #hooks }
 OPBormParticipantController >> typeIconFor: aType [
 
 	aType = BormParticipantType Person ifTrue: [ 
@@ -73,5 +80,6 @@ OPBormParticipantController >> typeIconFor: aType [
 	aType = BormParticipantType System ifTrue: [ 
 		^ OPBormEditorIcons bormSystemIcon ].
 	aType = BormParticipantType Organization ifTrue: [ 
-		^ OPBormEditorIcons organizationIcon ]
+		^ OPBormEditorIcons organizationIcon ].
+	^ nil
 ]

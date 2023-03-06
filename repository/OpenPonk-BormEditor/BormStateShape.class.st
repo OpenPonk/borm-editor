@@ -5,7 +5,7 @@ Class {
 		'playIcon',
 		'innerBox'
 	],
-	#category : #'OpenPonk-BormEditor-Visuals'
+	#category : #'OpenPonk-BormEditor-DiagramElements'
 }
 
 { #category : #'as yet unclassified' }
@@ -14,7 +14,7 @@ BormStateShape >> renderBasicShape [
 	^ self shapesFactory newRoundedBox
 		  width: self defaultSize x;
 		  height: self defaultSize y;
-		  borderRadius: 5;
+		  cornerRadius: 5;
 		  yourself
 ]
 
@@ -27,9 +27,10 @@ BormStateShape >> renderShapeDetails [
 		            form: OPBormEditorIcons initialIcon;
 		            yourself.
 	RSLocation new
+		inner;
 		right;
-		offset: 5;
-		stick: playIcon on: self.
+		offset: -5 @ 0;
+		stick: playIcon on: self roassalShape.
 	innerBox := self shapesFactory newBox
 		            color: Color transparent;
 		            yourself.
@@ -43,9 +44,9 @@ BormStateShape >> renderShapeDetails [
 
 { #category : #'creating - subelements' }
 BormStateShape >> textOffset [
-	self model ifNil: [ ^ super textOffset ].
-	self model isInitial
-		ifTrue: [ ^ super textOffset - (10 @ 0) ].
+
+	self modelElement ifNil: [ ^ super textOffset ].
+	self modelElement isInitial ifTrue: [ ^ super textOffset - (10 @ 0) ].
 	^ super textOffset
 ]
 
@@ -75,11 +76,11 @@ BormStateShape >> updateInnerBox [
 { #category : #'as yet unclassified' }
 BormStateShape >> updateRenderFromModel [
 
-	self model isInitial
+	self modelElement isInitial
 		ifTrue: [ 
 		playIcon isInACanvas ifFalse: [ self canvas add: playIcon ] ]
 		ifFalse: [ playIcon isInACanvas ifTrue: [ playIcon remove ] ].
-	innerBox borderColor: (self model isFinal
+	innerBox borderColor: (self modelElement isFinal
 			 ifTrue: [ self shapesFactory borderColor ]
 			 ifFalse: [ Color transparent ]).
 	self updateInnerBox.

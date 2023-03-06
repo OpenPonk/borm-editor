@@ -28,12 +28,21 @@ OPBormDiagramController >> allRelationshipsInModel [
 								ifFalse: [ #() ]) ] ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #rebuilding }
 OPBormDiagramController >> allShowableElements [
-	"Should return all elements that could be directly hidden on diagram"
 
-	^ (model allEntities flatCollect: [ :each | each representations ])
-		, self diagram commonElements
+	| priorities |
+	priorities := { 
+		              BormORModel.
+		              BormParticipant.
+		              BormState.
+		              BormActivity.
+		              BormTransition.
+		              BormCommunication.
+		              BormConstraint.
+		              BormDataFlow }.
+	^ (self model allEntities flatCollectAsSet: #representations) 
+		  sortedAs: [ :each | priorities indexOf: each class ]
 ]
 
 { #category : #testing }
@@ -142,7 +151,7 @@ OPBormDiagramController >> initializePaletteWithShortcuts: aPalette [
 { #category : #userinterface }
 OPBormDiagramController >> updateCanvas [
 
-	self controllers do: [ :each | each refreshFigure ].
+	self controllers do: [ :each | each diagramElement modelChanged ].
 	self canvas edges do: [ :each | 
 		each pushFront.
 		each update ].

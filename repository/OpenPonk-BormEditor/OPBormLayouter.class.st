@@ -55,69 +55,65 @@ OPBormLayouter >> defaultLayout [
 
 { #category : #'as yet unclassified' }
 OPBormLayouter >> layoutCommunications: communications [
-	communications
-		do: [ :c | 
-			| figures rect currentMid targetMid vector |
-			figures := OrderedCollection new.
-			c dataFlows
-				do: [ :each | 
-					diagramController
-						controllerForModel: each
-						ifFound: [ :ctrl | figures add: ctrl figure ] ].
-			figures isNotEmpty
-				ifTrue: [ RTHorizontalLineLayout new
-						gapSize: 10;
-						on: figures.
-					rect := Rectangle
-						merging: (figures collect: [ :each | each encompassingRectangle ]).
-					currentMid := rect center.
-					targetMid := (diagramController controllerForModel: c) figure
-						encompassingRectangle center.
-					vector := targetMid - currentMid.
-					figures
-						do: [ :flow | flow translateBy: vector - (0 @ flow height) ].
-					figures do: [ :flow | flow announce: TRMouseDragEnd new ] ] ]
+
+	communications do: [ :c | 
+		| figures rect currentMid targetMid vector |
+		figures := OrderedCollection new.
+		c dataFlows do: [ :each | 
+			diagramController
+				controllerForModel: each
+				ifFound: [ :ctrl | figures add: ctrl roassalShape ] ].
+		figures isNotEmpty ifTrue: [ 
+			RSHorizontalLineLayout new
+				gapSize: 10;
+				on: figures.
+			rect := Rectangle merging:
+				        (figures collect: [ :each | each encompassingRectangle ]).
+			currentMid := rect center.
+			targetMid := (diagramController controllerForModel: c) roassalShape
+				             encompassingRectangle center.
+			vector := targetMid - currentMid.
+			figures do: [ :flow | flow translateBy: vector - (0 @ flow height) ] ] ]
 ]
 
 { #category : #layouting }
 OPBormLayouter >> layoutDiagram: aDiagram [
+
 	| shownParticipants |
-	shownParticipants := aDiagram participants
-		select: [ :each | diagramController hasControllerForModel: each ].
+	shownParticipants := aDiagram participants select: [ :each | 
+		                     diagramController hasControllerForModel: each ].
 	shownParticipants do: [ :each | self layoutParticipant: each ].
 	self layoutParticipants: shownParticipants.
-	self updateView.
-	self
-		layoutCommunications: (self collectCommunications: shownParticipants).
-	self updateView
+	self updateCanvas.
+	self layoutCommunications:
+		(self collectCommunications: shownParticipants).
+	self updateCanvas
 ]
 
 { #category : #'as yet unclassified' }
 OPBormLayouter >> layoutNode: aNode [
+
 	| figure bounds |
 	figure := (diagramController
-		controllerForModel: aNode
-		ifNone: [ ^ self ]) figure.
+		           controllerForModel: aNode
+		           ifNone: [ ^ self ]) roassalShape.
 	bounds := figure encompassingRectangle.
-	bounds := bounds
-		merge:
-			((figure isKindOf: BormNodeShape)
-				ifTrue: [ figure text encompassingRectangle ]
-				ifFalse: [ (figure attributeAt: #RTLabelledLabel) encompassingRectangle ]).
-	RTNest new
-		padding: 0;
-		resizeWithoutRecursion: figure bounds: bounds
+	bounds := bounds merge:
+		          (figure propertyAt: #RSLabeled) encompassingRectangle.
+	figure extent: bounds extent
 ]
 
 { #category : #layouting }
 OPBormLayouter >> layoutNodesInParticipant: aParticipant [
-	| ctrl |
+
+	| ctrl nodeShapes |
 	ctrl := diagramController controllerForModel: aParticipant.
 	aParticipant nodes do: [ :each | self layoutNode: each ].
-	RTDominanceTreeLayout new
+	nodeShapes := ctrl nodeRoassalShapes.
+	RSDominanceTreeLayout new
 		horizontalGap: 30;
 		verticalGap: 30;
-		on: ctrl nodeRoassalShapes
+		on: nodeShapes
 ]
 
 { #category : #layouting }
@@ -129,20 +125,35 @@ OPBormLayouter >> layoutParticipant: aParticipant [
 
 { #category : #layouting }
 OPBormLayouter >> layoutParticipants: participants [
-	| figures |
-	figures := participants collect: [ :each | (diagramController controllerForModel: each) figure ].
-	RTHorizontalLineLayout new gapSize: 50; on: figures
+
+	| controllers participantShapes |
+	controllers := participants collect: [ :each | 
+		               diagramController controllerForModel: each ].
+	controllers do: [ :eachParticipantCtrl | 
+		eachParticipantCtrl roassalShape
+			when: RSPositionChangedEvent
+			do: [ :event | 
+				eachParticipantCtrl nodeRoassalShapes do: [ :each | 
+					each translateBy: event newPosition - event oldPosition ] ] ].
+	participantShapes := controllers collect: #roassalShape.
+	RSHorizontalLineLayout new
+		gapSize: 50;
+		on: participantShapes.
+	participantShapes do: [ :each | each announcer unsubscribe: self ]
 ]
 
 { #category : #layouting }
 OPBormLayouter >> layoutSizeOfParticipant: aParticipant [
-	| ctrl bounds |
+
+	| ctrl bounds roassalShape innerBounds |
 	ctrl := diagramController controllerForModel: aParticipant.
-	bounds := (RTGroup withAll: ctrl nodeRoassalShapes) encompassingRectangle.
-	bounds := bounds expandBy: 40 @ 30.
-	RTNest new
-		padding: 0;
-		resizeWithoutRecursion: ctrl figure bounds: bounds
+	roassalShape := ctrl roassalShape.
+	innerBounds := (RSGroup withAll: ctrl nodeRoassalShapes)
+		               encompassingRectangle.
+	bounds := innerBounds expandBy: 40 @ 30.
+	ctrl roassalShape
+		extent: bounds extent;
+		translateTo: bounds center
 ]
 
 { #category : #layouting }

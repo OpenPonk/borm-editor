@@ -29,7 +29,7 @@ OPBormProcessNodeController >> buildEditorForm: aForm [
 		text: self model name;
 		whenTextChangedDo: [ :newValue | 
 			self model name: newValue asString.
-			self refreshFigure ].
+			self diagramElement modelChanged ].
 	(aForm addDroplist: 'Submodel')
 		items: { nil } , self bormModels;
 		display: [ :m | m ifNil: '' ifNotNil: #name ];

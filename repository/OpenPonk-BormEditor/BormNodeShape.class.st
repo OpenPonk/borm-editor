@@ -2,11 +2,11 @@ Class {
 	#name : #BormNodeShape,
 	#superclass : #BormShape,
 	#instVars : [
-		'text',
+		'shapesFactory',
 		'plusIcon',
 		'plusIconAction'
 	],
-	#category : #'OpenPonk-BormEditor-Visuals'
+	#category : #'OpenPonk-BormEditor-DiagramElements'
 }
 
 { #category : #defaults }
@@ -35,11 +35,16 @@ BormNodeShape >> plusIconAction: aBlock [
 { #category : #'as yet unclassified' }
 BormNodeShape >> renderShapeDetails [
 
-	| block |
-	text := self shapesFactory newMultilineLabel
-		        model: self;
-		        yourself.
-	self canvas add: text.
+	| block labeled selectable |
+	labeled := RSLabeled new.
+	labeled shapeBuilder labelShape color: Color black.
+	labeled location
+		inner;
+		center;
+		middle;
+		offset: self textOffset.
+	roassalShape @ labeled.
+
 	block := [ self updateText ].
 	self roassalShape
 		when: RSPositionChangedEvent do: block;
@@ -52,16 +57,17 @@ BormNodeShape >> renderShapeDetails [
 		right;
 		bottom;
 		offset: 5;
-		stick: plusIcon on: self.
+		stick: plusIcon on: roassalShape.
 
-	self roassalShape @ OPRSSelectable.
-	self roassalShape @ OPRSSelectionDraggable.
-	self roassalShape @ OPRSResizable
+	selectable := OPRSSelectable new.
+	selectable highlightBorderColor: Color blue.
+	roassalShape @ selectable.
+	roassalShape @ OPRSSelectionDraggable @ OPRSResizable
 ]
 
 { #category : #accessing }
-BormNodeShape >> text [
-	^ text
+BormNodeShape >> shapesFactory [
+	^ shapesFactory ifNil: [ shapesFactory := BormShapesFactory new ]
 ]
 
 { #category : #'creating - subelements' }
@@ -79,7 +85,7 @@ BormNodeShape >> textPadding [
 { #category : #updating }
 BormNodeShape >> updateRenderFromModel [
 
-	self model submodel
+	self modelElement submodel
 		ifNil: [ plusIcon isInACanvas ifTrue: [ plusIcon remove ] ]
 		ifNotNil: [ 
 		plusIcon isInACanvas ifFalse: [ self canvas add: plusIcon ] ].
@@ -91,6 +97,5 @@ BormNodeShape >> updateRenderFromModel [
 { #category : #updating }
 BormNodeShape >> updateText [
 
-	text text: self modelElement name.
-	text translateTo: self position + self textOffset
+	(roassalShape propertyAt: #RSLabeled) text: self modelElement name
 ]

@@ -1,13 +1,5 @@
 Class {
 	#name : #BormShape,
 	#superclass : #OPShape,
-	#instVars : [
-		'shapesFactory'
-	],
-	#category : #'OpenPonk-BormEditor-Visuals'
+	#category : #'OpenPonk-BormEditor-DiagramElements'
 }
-
-{ #category : #accessing }
-BormShape >> shapesFactory [
-	^ shapesFactory ifNil: [ shapesFactory := BormShapesFactory new ]
-]

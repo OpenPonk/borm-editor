@@ -1,7 +1,7 @@
 Class {
 	#name : #BormActivityShape,
 	#superclass : #BormNodeShape,
-	#category : #'OpenPonk-BormEditor-Visuals'
+	#category : #'OpenPonk-BormEditor-DiagramElements'
 }
 
 { #category : #'as yet unclassified' }

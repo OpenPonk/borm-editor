@@ -17,6 +17,12 @@ OPBormConstraintController >> createModelIn: aParentModel [
 	^ model
 ]
 
+{ #category : #construction }
+OPBormConstraintController >> diagramElementClass [
+
+	^ BormConstraintShape
+]
+
 { #category : #accessing }
 OPBormConstraintController >> modelClass [
 	^ BormConstraint

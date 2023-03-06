@@ -38,6 +38,12 @@ OPBormTransitionController >> createModelIn: aParentModel [
 	^ model
 ]
 
+{ #category : #construction }
+OPBormTransitionController >> diagramElementClass [
+
+	^ BormTransitionShape
+]
+
 { #category : #accessing }
 OPBormTransitionController >> modelClass [
 	^ BormTransition

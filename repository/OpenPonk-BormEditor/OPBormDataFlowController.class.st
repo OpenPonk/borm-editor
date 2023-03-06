@@ -16,7 +16,7 @@ OPBormDataFlowController >> buildEditorForm: aForm [
 		items: #( #input #output );
 		display: [ :type | type asString ];
 		selectItem: self model type;
-		whenSelectedDo: [ :newValue | 
+		whenSelectedItemChangedDo: [ :newValue | 
 			self model type: newValue.
 			self refreshFigure ]
 ]
@@ -60,6 +60,12 @@ OPBormDataFlowController >> createModelIn: aParentModel [
 	self model: self modelClass new.
 	aParentModel add: model.
 	^ model
+]
+
+{ #category : #construction }
+OPBormDataFlowController >> diagramElementClass [
+
+	^ BormDataFlowShape
 ]
 
 { #category : #'canvas actions' }

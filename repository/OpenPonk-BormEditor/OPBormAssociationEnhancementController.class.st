@@ -17,3 +17,10 @@ OPBormAssociationEnhancementController >> constraintOnEdge: anElement [
 			distance: 10.
 		const element: anElement connection: edge ]
 ]
+
+{ #category : #'as yet unclassified' }
+OPBormAssociationEnhancementController >> diagramElementOwner [
+
+	^ (self diagramController showWithoutDependentInDiagramModel:
+		   model owner) diagramElement
+]

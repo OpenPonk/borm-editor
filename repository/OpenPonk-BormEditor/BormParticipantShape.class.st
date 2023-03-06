@@ -1,25 +1,13 @@
 Class {
 	#name : #BormParticipantShape,
-	#superclass : #BormShape,
+	#superclass : #OPShape,
 	#instVars : [
 		'innerRoassalShapesBlock',
 		'typeIconProvider',
-		'iconElement',
-		'labelConstraint',
-		'iconConstraint'
+		'icon'
 	],
-	#category : #'OpenPonk-BormEditor-Visuals'
+	#category : #'OpenPonk-BormEditor-DiagramElements'
 }
-
-{ #category : #hooks }
-BormParticipantShape >> createContainerFigure [
-	^ (RTRoundedBox new
-		width: 200;
-		height: 300;
-		color: (Color fromHexString: 'bce2fe');
-		borderRadius: 2;
-		borderColor: Color black) elementOn: ''
-]
 
 { #category : #initialization }
 BormParticipantShape >> initialize [
@@ -35,30 +23,48 @@ BormParticipantShape >> innerRoassalShapesBlock: aBlock [
 ]
 
 { #category : #hooks }
-BormParticipantShape >> refreshFigure [
-	(figure attributeAt: #RTLabelledLabel) text: self model name.
-	labelConstraint move.
-	figure trachelShape pushBack.
-	iconElement trachelShape form: self typeIconForModel.
-	iconConstraint move.
-	self diagramController view signalUpdate.
-	^ self figure
+BormParticipantShape >> renderBasicShape [
+
+	^ RSBox new
+		  width: 200;
+		  height: 300;
+		  color: (Color fromHexString: 'bce2fe');
+		  cornerRadius: 2;
+		  borderColor: Color black;
+		  yourself
 ]
 
 { #category : #rendering }
 BormParticipantShape >> renderShapeDetails [
 
+	| labeled selectable |
+	labeled := RSLabeled new.
+	labeled shapeBuilder labelShape color: Color black.
+	labeled location
+		inner;
+		left;
+		top;
+		offset: 5 @ 5.
+	roassalShape @ labeled.
+
+	icon := RSBitmap new
+		        form: typeIconProvider typeIcon;
+		        yourself.
+	RSLocation new
+		top;
+		right;
+		offset: -5 @ 5;
+		stick: icon on: self roassalShape.
+	self canvas add: icon.
+	roassalShape when: RSShapeRemovedEvent do: [ icon remove ].
+
+	selectable := OPRSSelectable new.
+	selectable highlightBorderColor: Color blue.
+	roassalShape @ selectable.
 	self roassalShape
-		@ OPRSSelectable;
 		@ (OPRSSelectionDraggable thatAlsoDragsShapesProvidedByBlock:
 					 innerRoassalShapesBlock);
 		@ OPRSResizable
-]
-
-{ #category : #hooks }
-BormParticipantShape >> typeIconForModel [
-
-	^ typeIconProvider typeIconFor: self model type
 ]
 
 { #category : #accessing }
@@ -70,12 +76,8 @@ BormParticipantShape >> typeIconProvider: anObject [
 { #category : #hooks }
 BormParticipantShape >> updateRenderFromModel [
 
-	(self roassalShape attributeAt: #RTLabelledLabel) text:
-		self model name.
-	labelConstraint move.
-	self roassalShape trachelShape pushBack.
-	iconElement trachelShape form: self typeIconForModel.
-	iconConstraint move.
-	self diagramController view signalUpdate.
-	^ self figure
+	(roassalShape propertyAt: #RSLabeled) text: self modelElement name.
+	icon form: typeIconProvider typeIcon.
+	super updateRenderFromModel.
+	roassalShape signalUpdate
 ]

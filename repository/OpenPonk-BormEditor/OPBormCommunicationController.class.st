@@ -30,6 +30,12 @@ OPBormCommunicationController >> createModelIn: aParentModel [
 	^ model
 ]
 
+{ #category : #construction }
+OPBormCommunicationController >> diagramElementClass [
+
+	^ BormCommunicationShape
+]
+
 { #category : #accessing }
 OPBormCommunicationController >> elementsToShowInside [
 	^ super elementsToShowInside , model dataFlows
