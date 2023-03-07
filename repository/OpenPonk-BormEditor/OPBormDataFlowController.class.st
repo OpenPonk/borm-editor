@@ -18,7 +18,7 @@ OPBormDataFlowController >> buildEditorForm: aForm [
 		selectItem: self model type;
 		whenSelectedItemChangedDo: [ :newValue | 
 			self model type: newValue.
-			self refreshFigure ]
+			self diagramElement modelChanged ]
 ]
 
 { #category : #testing }

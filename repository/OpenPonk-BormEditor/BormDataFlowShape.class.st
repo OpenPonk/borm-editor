@@ -76,3 +76,11 @@ BormDataFlowShape >> renderShapeDetails [
 	self addInteractions.	
 	self anchorToEdge
 ]
+
+{ #category : #rendering }
+BormDataFlowShape >> updateRenderFromModel [
+
+	super updateRenderFromModel.
+	roassalShape width:
+		(self label width max: self icon width) rounded + 6
+]

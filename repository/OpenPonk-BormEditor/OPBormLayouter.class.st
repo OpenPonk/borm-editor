@@ -54,26 +54,35 @@ OPBormLayouter >> defaultLayout [
 ]
 
 { #category : #'as yet unclassified' }
+OPBormLayouter >> layoutCommunication: aCommunication [
+
+	| figures rect currentMid targetMid vector |
+	figures := OrderedCollection new.
+	aCommunication dataFlows do: [ :each | 
+		diagramController
+			controllerForModel: each
+			ifFound: [ :ctrl | figures add: ctrl roassalShape ] ].
+
+	figures ifEmpty: [ ^ self ].
+
+	RSHorizontalLineLayout new
+		gapSize: 10;
+		on: figures.
+	rect := Rectangle merging:
+		        (figures collect: [ :each | each encompassingRectangle ]).
+	currentMid := rect center.
+	targetMid := (diagramController controllerForModel: aCommunication)
+		             roassalShape encompassingRectangle center.
+	vector := targetMid - currentMid.
+	figures do: [ :flow | 
+		flow translateBy: vector - (0 @ flow height).
+		(flow propertyAt: OPRSAnchorConstraint) saveShapePosition ]
+]
+
+{ #category : #'as yet unclassified' }
 OPBormLayouter >> layoutCommunications: communications [
 
-	communications do: [ :c | 
-		| figures rect currentMid targetMid vector |
-		figures := OrderedCollection new.
-		c dataFlows do: [ :each | 
-			diagramController
-				controllerForModel: each
-				ifFound: [ :ctrl | figures add: ctrl roassalShape ] ].
-		figures isNotEmpty ifTrue: [ 
-			RSHorizontalLineLayout new
-				gapSize: 10;
-				on: figures.
-			rect := Rectangle merging:
-				        (figures collect: [ :each | each encompassingRectangle ]).
-			currentMid := rect center.
-			targetMid := (diagramController controllerForModel: c) roassalShape
-				             encompassingRectangle center.
-			vector := targetMid - currentMid.
-			figures do: [ :flow | flow translateBy: vector - (0 @ flow height) ] ] ]
+	communications do: [ :c | self layoutCommunication: c ]
 ]
 
 { #category : #layouting }
