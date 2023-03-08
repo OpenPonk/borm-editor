@@ -13,7 +13,7 @@ OPBormTransitionControllerTest >> controllerClass [
 ]
 
 { #category : #accessing }
-OPBormTransitionControllerTest >> figureClass [
+OPBormTransitionControllerTest >> diagramElementClass [
 	^ RTEdge
 ]
 

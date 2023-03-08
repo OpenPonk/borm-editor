@@ -33,13 +33,13 @@ OPBormControllerTest >> createTargetModel [
 ]
 
 { #category : #accessing }
-OPBormControllerTest >> diagramModelClass [
-	^ BormORModel
+OPBormControllerTest >> diagramElementClass [
+	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
-OPBormControllerTest >> figureClass [
-	^ self subclassResponsibility
+OPBormControllerTest >> diagramModelClass [
+	^ BormORModel
 ]
 
 { #category : #accessing }

@@ -20,7 +20,7 @@ OPBormParticipantControllerTest >> createTargetModel [
 ]
 
 { #category : #accessing }
-OPBormParticipantControllerTest >> figureClass [
+OPBormParticipantControllerTest >> diagramElementClass [
 	^ RTElement
 ]
 

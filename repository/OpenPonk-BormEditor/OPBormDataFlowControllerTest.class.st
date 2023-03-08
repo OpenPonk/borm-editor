@@ -17,7 +17,7 @@ OPBormDataFlowControllerTest >> controllerClass [
 ]
 
 { #category : #accessing }
-OPBormDataFlowControllerTest >> figureClass [
+OPBormDataFlowControllerTest >> diagramElementClass [
 	^ RTElement
 ]
 

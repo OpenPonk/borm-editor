@@ -13,7 +13,7 @@ OPBormConstraintControllerTest >> controllerClass [
 ]
 
 { #category : #accessing }
-OPBormConstraintControllerTest >> figureClass [
+OPBormConstraintControllerTest >> diagramElementClass [
 	^ RTElement
 ]
 
