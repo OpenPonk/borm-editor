@@ -23,7 +23,7 @@ OPBormDiagramController >> allShowableElements [
 		              BormCommunication.
 		              BormConstraint.
 		              BormDataFlow }.
-	^ (self model allEntities flatCollectAsSet: #representations) 
+	^ (self model allEntities flatCollect: #representations) asArray 
 		  sortedAs: [ :each | priorities indexOf: each class ]
 ]
 
