@@ -14,7 +14,8 @@ OPBormTransitionControllerTest >> controllerClass [
 
 { #category : #accessing }
 OPBormTransitionControllerTest >> diagramElementClass [
-	^ RTEdge
+
+	^ BormTransitionShape
 ]
 
 { #category : #accessing }

@@ -14,7 +14,8 @@ OPBormCommunicationControllerTest >> controllerClass [
 
 { #category : #accessing }
 OPBormCommunicationControllerTest >> diagramElementClass [
-	^ RTEdge
+
+	^ BormCommunicationShape
 ]
 
 { #category : #accessing }

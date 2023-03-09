@@ -23,16 +23,6 @@ OPBormParticipantController >> canBeTargetFor: aController [
 	^ aController isKindOf: OPBormProcessNodeController
 ]
 
-{ #category : #figures }
-OPBormParticipantController >> createDiagramElement [
-
-	super createDiagramElement.
-
-	diagramElement
-		innerRoassalShapesBlock: [ self nodeRoassalShapes ];
-		typeIconProvider: self
-]
-
 { #category : #construction }
 OPBormParticipantController >> diagramElementClass [
 
@@ -43,6 +33,16 @@ OPBormParticipantController >> diagramElementClass [
 OPBormParticipantController >> elementsToShowInside [
 
 	^ model nodes , (model nodes flatCollect: [ :each | each outgoing ])
+]
+
+{ #category : #figures }
+OPBormParticipantController >> hookDiagramElement [
+
+	super hookDiagramElement.
+
+	diagramElement
+		innerRoassalShapesBlock: [ self nodeRoassalShapes ];
+		typeIconProvider: self
 ]
 
 { #category : #accessing }

@@ -4,11 +4,6 @@ Class {
 	#category : #'OpenPonk-BormEditor-Controllers'
 }
 
-{ #category : #accessing }
-OPBormDiagramController class >> modelClass [
-	^ BormORModel
-]
-
 { #category : #testing }
 OPBormDiagramController >> addAsTargetFor: aController [
 	super addAsTargetFor: aController.

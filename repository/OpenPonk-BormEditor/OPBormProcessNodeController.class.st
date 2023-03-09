@@ -49,18 +49,19 @@ OPBormProcessNodeController >> canBeTargetFor: aController [
 	^ self subclassResponsibility
 ]
 
-{ #category : #construction }
-OPBormProcessNodeController >> createDiagramElement [
-
-	super createDiagramElement.
-	self diagramElement plusIconAction: [ 
-		self diagramController editor workbench openEditorOn:
-			self model submodel ]
-]
-
 { #category : #accessing }
 OPBormProcessNodeController >> dependentElements [
 	^ model transitions
+]
+
+{ #category : #construction }
+OPBormProcessNodeController >> hookDiagramElement [
+
+	super hookDiagramElement.
+	
+	self diagramElement plusIconAction: [ 
+		self diagramController editor workbench openEditorOn:
+			self model submodel ]
 ]
 
 { #category : #accessing }

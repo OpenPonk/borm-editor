@@ -7,6 +7,6 @@ Class {
 { #category : #'as yet unclassified' }
 OPBormAssociationEnhancementController >> diagramElementOwner [
 
-	^ (self diagramController showWithoutDependentInDiagramModel:
-		   model owner) diagramElement
+	^ (self diagramController controllerForModel: model owner)
+		  diagramElement
 ]

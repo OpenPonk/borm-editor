@@ -21,7 +21,8 @@ OPBormParticipantControllerTest >> createTargetModel [
 
 { #category : #accessing }
 OPBormParticipantControllerTest >> diagramElementClass [
-	^ RTElement
+
+	^ BormParticipantShape
 ]
 
 { #category : #accessing }
@@ -31,7 +32,7 @@ OPBormParticipantControllerTest >> modelClass [
 
 { #category : #running }
 OPBormParticipantControllerTest >> setUpTarget [
-	targetController := diagramController
+	relationshipController := diagramController
 ]
 
 { #category : #accessing }

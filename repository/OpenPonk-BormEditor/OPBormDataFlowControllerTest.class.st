@@ -3,7 +3,7 @@ A BormDataFlowControllerTest is a test class for testing the behavior of BormDat
 "
 Class {
 	#name : #OPBormDataFlowControllerTest,
-	#superclass : #OPBormControllerTest,
+	#superclass : #OPBormAssociationEnhancementControllerTest,
 	#instVars : [
 		'communication',
 		'communicationController'
@@ -18,7 +18,8 @@ OPBormDataFlowControllerTest >> controllerClass [
 
 { #category : #accessing }
 OPBormDataFlowControllerTest >> diagramElementClass [
-	^ RTElement
+
+	^ BormDataFlowShape
 ]
 
 { #category : #accessing }
@@ -40,23 +41,6 @@ OPBormDataFlowControllerTest >> setUp [
 	diagramController addController: communicationController
 ]
 
-{ #category : #running }
-OPBormDataFlowControllerTest >> setUpTarget [
-	| targetsSourceController targetsTargetController |
-	targetController := self targetControllerClass new.
-	targetController diagramController: diagramController.
-	targetsSourceController := OPBormActivityController new.
-	targetsSourceController diagramController: diagramController.
-	targetsSourceController createModelIn: diagramController model.
-	targetsTargetController := OPBormActivityController new.
-	targetsTargetController diagramController: diagramController.
-	targetsTargetController createModelIn: diagramController model.
-	targetController
-		source: targetsTargetController;
-		target: targetsSourceController.
-	targetController createModelIn: diagramController model
-]
-
 { #category : #accessing }
 OPBormDataFlowControllerTest >> targetControllerClass [
 	^ OPBormCommunicationController
@@ -65,4 +49,10 @@ OPBormDataFlowControllerTest >> targetControllerClass [
 { #category : #accessing }
 OPBormDataFlowControllerTest >> targetModelClass [
 	^ BormCommunication
+]
+
+{ #category : #running }
+OPBormDataFlowControllerTest >> targetsSourceControllerClass [
+
+	^ OPBormActivityController
 ]
