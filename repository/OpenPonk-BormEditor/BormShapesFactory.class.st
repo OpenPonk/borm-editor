@@ -13,7 +13,7 @@ BormShapesFactory >> activityShape [
 		       height: 400;
 		       color: (Color fromHexString: 'f2f2f2');
 		       yourself.
-	label := self newLabel.
+	label := self newMultilineLabel.
 	RSLocation new stick: label on: box.
 	plus := RSBitmap new
 		        form: (self iconNamed: #smallAddIcon);
@@ -60,10 +60,12 @@ BormShapesFactory >> newLabel [
 
 { #category : #'as yet unclassified' }
 BormShapesFactory >> newMultilineLabel [
+
+	self flag: #multiline.
 	^ RSLabel new
-		fontSize: 10;
-		color: self textColor;
-		yourself
+		  fontSize: 10;
+		  color: self textColor;
+		  yourself
 ]
 
 { #category : #'as yet unclassified' }

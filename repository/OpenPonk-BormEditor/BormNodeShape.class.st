@@ -36,8 +36,8 @@ BormNodeShape >> plusIconAction: aBlock [
 BormNodeShape >> renderShapeDetails [
 
 	| block labeled selectable |
-	labeled := RSLabeled new.
-	labeled shapeBuilder labelShape color: Color black.
+	labeled := OPRSLabeled new.
+	labeled color: Color black.
 	labeled location
 		inner;
 		center;
