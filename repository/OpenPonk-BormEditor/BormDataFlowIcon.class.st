@@ -8,8 +8,6 @@ Class {
 BormDataFlowIcon >> renderBasicShape [
 
 	^ RSBitmap new
-		  form: OPBormEditorIcons dataFlowRightIcon;
-		  yourself
 ]
 
 { #category : #rendering }

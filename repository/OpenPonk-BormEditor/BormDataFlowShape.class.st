@@ -70,10 +70,9 @@ BormDataFlowShape >> renderBasicShape [
 { #category : #rendering }
 BormDataFlowShape >> renderShapeDetails [
 
-	| selectable |
 	super renderShapeDetails.
-	
-	self addInteractions.	
+
+	self addInteractions.
 	self anchorToEdge
 ]
 
