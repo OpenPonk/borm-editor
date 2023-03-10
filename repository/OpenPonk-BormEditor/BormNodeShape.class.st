@@ -4,7 +4,9 @@ Class {
 	#instVars : [
 		'shapesFactory',
 		'plusIcon',
-		'plusIconAction'
+		'plusIconAction',
+		'labeled',
+		'wrappedForWidth'
 	],
 	#category : #'OpenPonk-BormEditor-DiagramElements'
 }
@@ -35,9 +37,11 @@ BormNodeShape >> plusIconAction: aBlock [
 { #category : #'as yet unclassified' }
 BormNodeShape >> renderShapeDetails [
 
-	| block labeled selectable |
+	| selectable |
 	labeled := OPRSLabeled new.
 	labeled color: Color black.
+	labeled shapeBuilder wrapStrategy:
+		(RSWrapStrategy new wrapMaxWidth: self wrapMaxWidth).
 	labeled location
 		inner;
 		center;
@@ -45,10 +49,11 @@ BormNodeShape >> renderShapeDetails [
 		offset: self textOffset.
 	roassalShape @ labeled.
 
-	block := [ self updateText ].
-	self roassalShape
-		when: RSPositionChangedEvent do: block;
-		when: RSExtentChangedEvent do: block.
+
+	self roassalShape when: RSExtentChangedEvent do: [ :event | 
+		(event newExtent x closeTo: wrappedForWidth absolutePrecision: 0.99) 
+			ifFalse: [ self updateText ] ].
+
 	plusIcon := RSBitmap new
 		            form: (self iconNamed: #add);
 		            when: RSMouseLeftClick do: plusIconAction;
@@ -56,7 +61,7 @@ BormNodeShape >> renderShapeDetails [
 	RSLocation new
 		right;
 		bottom;
-		offset: 5;
+		offset: -5;
 		stick: plusIcon on: roassalShape.
 
 	selectable := OPRSSelectable new.
@@ -78,8 +83,7 @@ BormNodeShape >> textOffset [
 { #category : #'creating - subelements' }
 BormNodeShape >> textPadding [
 
-	self flag: #unused.
-	^ 8
+	^ 5
 ]
 
 { #category : #updating }
@@ -97,5 +101,18 @@ BormNodeShape >> updateRenderFromModel [
 { #category : #updating }
 BormNodeShape >> updateText [
 
-	(roassalShape propertyAt: #RSLabeled) text: self modelElement name
+	wrappedForWidth := roassalShape width.
+
+	labeled
+		wrapMaxWidth: self wrapMaxWidth;
+		text: self modelElement name.
+
+	labeled labelShape height > roassalShape height ifTrue: [ 
+		roassalShape height: labeled labelShape height + 10 ]
+]
+
+{ #category : #hooks }
+BormNodeShape >> wrapMaxWidth [
+
+	^ self width - (self textPadding * 2) max: 20
 ]

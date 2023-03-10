@@ -36,7 +36,7 @@ OPBormProcessNodeController >> buildEditorForm: aForm [
 		selectItem: self model submodel;
 		whenSelectedItemChangedDo: [ :newValue | 
 			self model submodel: newValue.
-			self refreshFigure ]
+			self diagramElement modelChanged ]
 ]
 
 { #category : #testing }

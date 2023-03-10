@@ -52,17 +52,15 @@ BormStateShape >> textOffset [
 
 { #category : #'creating - subelements' }
 BormStateShape >> textPadding [
+
 	| padding |
 	padding := super textPadding.
-	self model ifNil: [ ^ padding ].
-	self model isInitial
-		ifTrue: [ padding := padding + 12 ].
-	self model isFinal
-		ifTrue: [ padding := padding
-				+
-					(self model isInitial
-						ifTrue: [ 2 ]
-						ifFalse: [ 4 ]) ].
+	self modelElement ifNil: [ ^ padding ].
+	self modelElement isInitial ifTrue: [ padding := padding + 12 ].
+	self modelElement isFinal ifTrue: [ 
+		padding := padding + (self modelElement isInitial
+			            ifTrue: [ 2 ]
+			            ifFalse: [ 4 ]) ].
 	^ padding
 ]
 
