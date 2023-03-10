@@ -29,6 +29,7 @@ BormDataFlowShape >> anchorToEdge [
 { #category : #initialization }
 BormDataFlowShape >> createOwnedElementsWithoutController [
 
+	self ownedElements ifNotEmpty: [ ^ self ].
 	BormDataFlowLabel in: self.
 	BormDataFlowIcon in: self
 ]
