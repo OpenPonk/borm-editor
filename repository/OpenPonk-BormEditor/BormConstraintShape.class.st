@@ -19,7 +19,7 @@ BormConstraintShape >> anchorToEdge [
 
 	OPRSAnchorConstraint new
 		alwaysShowGuideLine;
-		minDistance: self defaultMinDistance;
+		minDistanceToLine: self defaultMinDistance;
 		positionReference: self defaultAnchorConstraintPosition;
 		stick: roassalShape on: self owningElement roassalShape
 ]
