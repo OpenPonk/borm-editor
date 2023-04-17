@@ -63,6 +63,7 @@ BormNodeShape >> renderShapeDetails [
 		bottom;
 		offset: -5;
 		stick: plusIcon on: roassalShape.
+	roassalShape when: RSShapeRemovedEvent do: [ plusIcon remove ].
 
 	selectable := OPRSSelectable new.
 	selectable highlightBorderColor: Color blue.

@@ -31,6 +31,7 @@ BormStateShape >> renderShapeDetails [
 		right;
 		offset: -5 @ 0;
 		stick: playIcon on: self roassalShape.
+	roassalShape when: RSShapeRemovedEvent do: [ playIcon remove ].
 	innerBox := self shapesFactory newBox
 		            color: Color transparent;
 		            yourself.

@@ -6,17 +6,18 @@ Class {
 
 { #category : #hooks }
 OPBormStateController >> buildEditorForm: aForm [
+
 	super buildEditorForm: aForm.
 	(aForm addCheckbox: 'Initial')
 		state: self model isInitial;
-		whenChangedDo: [ :newValue | 
+		whenChangedDo: [ :newValue |
 			self model isInitial: newValue.
-			self refreshFigure ].
+			self diagramElement modelChanged ].
 	(aForm addCheckbox: 'Final')
 		state: self model isFinal;
-		whenChangedDo: [ :newValue | 
+		whenChangedDo: [ :newValue |
 			self model isFinal: newValue.
-			self refreshFigure ]
+			self diagramElement modelChanged ]
 ]
 
 { #category : #testing }
