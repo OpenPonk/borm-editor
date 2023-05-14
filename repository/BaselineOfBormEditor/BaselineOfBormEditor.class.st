@@ -8,18 +8,18 @@ Class {
 BaselineOfBormEditor >> baseline: spec [
 
 	<baseline>
-	spec for: #common do: [ 
+	spec for: #common do: [
 		spec
 			baseline: 'BormModel'
-			with: [ spec repository: 'github://openponk/borm-model/repository' ].
+			with: [ spec repository: 'github://openponk/borm-model' ].
 		spec
 			baseline: 'OpenPonk'
-			with: [ spec repository: 'github://openponk/openponk:dev-roassal3' ].
-		spec baseline: 'XMLParser' with: [ 
+			with: [ spec repository: 'github://openponk/openponk' ].
+		spec baseline: 'XMLParser' with: [
 			spec
 				repository: 'github://pharo-contributions/XML-XMLParser:3.5.x/src';
 				loads: #( Core ) ].
-		spec baseline: 'XPath' with: [ 
+		spec baseline: 'XPath' with: [
 			spec
 				repository: 'github://pharo-contributions/XML-XPath:3450f91/src';
 				loads: #( Core ) ].
