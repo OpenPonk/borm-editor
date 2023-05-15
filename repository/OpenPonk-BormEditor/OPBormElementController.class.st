@@ -18,31 +18,24 @@ OPBormElementController >> buildEntityForm: aForm [
 	(aForm addEntity: 'Entity')
 		displaySymbol: #name;
 		entity: self model entity;
-		whenEntityChanged: [ :e | 
-			(e isKindOf: BormEntity) ifTrue: [ 
+		whenEntityChanged: [ :e |
+			(e isKindOf: BormEntity) ifTrue: [
 					self model entity: e.
-					self refreshFigure ] ];
+					self diagramElement modelChanged ] ];
 		"
 		possibleEntities: [ 
 			self diagramController model project allBormEntities sorted: [ :a :b | 
 					a name < b name ] ]'"
-		selectDialog: [ 
+		selectDialog: [
 			BormEntityListPresenter new
 				addEntryLabel: 'New Entity';
-				itemsBlock: [ 
-					self diagramController model project allBormEntities sorted: [ 
-							:a 
+				itemsBlock: [
+					self diagramController model project allBormEntities sorted: [
+							:a
 							:b | a name < b name ] ] ]
 ]
 
 { #category : #testing }
 OPBormElementController >> isHideable [
 	^ true
-]
-
-{ #category : #accessing }
-OPBormElementController >> layout [
-	^ OPElementLayout
-		withPosition: self figure position
-		extent: self figure extent
 ]

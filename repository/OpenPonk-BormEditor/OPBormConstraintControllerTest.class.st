@@ -3,7 +3,7 @@ A BormConstraintControllerTest is a test class for testing the behavior of BormC
 "
 Class {
 	#name : #OPBormConstraintControllerTest,
-	#superclass : #OPBormControllerTest,
+	#superclass : #OPBormAssociationEnhancementControllerTest,
 	#category : #'OpenPonk-BormEditor-Tests'
 }
 
@@ -13,30 +13,14 @@ OPBormConstraintControllerTest >> controllerClass [
 ]
 
 { #category : #accessing }
-OPBormConstraintControllerTest >> figureClass [
-	^ RTElement
+OPBormConstraintControllerTest >> diagramElementClass [
+
+	^ BormConstraintShape
 ]
 
 { #category : #accessing }
 OPBormConstraintControllerTest >> modelClass [
 	^ BormConstraint
-]
-
-{ #category : #running }
-OPBormConstraintControllerTest >> setUpTarget [
-	| targetsSourceController targetsTargetController |
-	targetController := self targetControllerClass new.
-	targetController diagramController: diagramController.
-	targetsSourceController := OPBormStateController new.
-	targetsSourceController diagramController: diagramController.
-	targetsSourceController createModelIn: diagramController model.
-	targetsTargetController := OPBormActivityController new.
-	targetsTargetController diagramController: diagramController.
-	targetsTargetController createModelIn: diagramController model.
-	targetController
-		source: targetsTargetController;
-		target: targetsSourceController.
-	targetController createModelIn: diagramController model
 ]
 
 { #category : #accessing }
@@ -47,4 +31,10 @@ OPBormConstraintControllerTest >> targetControllerClass [
 { #category : #accessing }
 OPBormConstraintControllerTest >> targetModelClass [
 	^ BormTransition
+]
+
+{ #category : #running }
+OPBormConstraintControllerTest >> targetsSourceControllerClass [
+
+	^ OPBormStateController
 ]

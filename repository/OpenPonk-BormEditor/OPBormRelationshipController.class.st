@@ -31,18 +31,6 @@ OPBormRelationshipController >> isHideable [
 ]
 
 { #category : #construction }
-OPBormRelationshipController >> renderFigureIn: aView [
-	self diagramController addingFigureFor: self.
-	figure := self
-		createEdgeFrom: self source figure
-		to: self target figure.
-	figure @ OPRTConnectionHandles.
-	figure renderIn: aView.
-	figure trachelShape pushFront.
-	^ self diagramController addedFigureFor: self
-]
-
-{ #category : #construction }
 OPBormRelationshipController >> showInDiagram: aDiagramController [
 	"protocol: #construction"
 

@@ -4,11 +4,6 @@ Class {
 	#category : #'OpenPonk-BormEditor-Controllers'
 }
 
-{ #category : #accessing }
-OPBormDiagramController class >> modelClass [
-	^ BormORModel
-]
-
 { #category : #testing }
 OPBormDiagramController >> addAsTargetFor: aController [
 	super addAsTargetFor: aController.
@@ -16,24 +11,20 @@ OPBormDiagramController >> addAsTargetFor: aController [
 ]
 
 { #category : #rebuilding }
-OPBormDiagramController >> allRelationshipsInModel [
-	^ self model elements
-		flatCollect: [ :eachParticipant | 
-			eachParticipant nodes
-				flatCollect: [ :eachNode | 
-					eachNode outgoing
-						,
-							((eachNode respondsTo: #sent)
-								ifTrue: [ eachNode sent ]
-								ifFalse: [ #() ]) ] ]
-]
-
-{ #category : #'as yet unclassified' }
 OPBormDiagramController >> allShowableElements [
-	"Should return all elements that could be directly hidden on diagram"
 
-	^ (model allEntities flatCollect: [ :each | each representations ])
-		, self diagram commonElements
+	| priorities |
+	priorities := { 
+		              BormORModel.
+		              BormParticipant.
+		              BormState.
+		              BormActivity.
+		              BormTransition.
+		              BormCommunication.
+		              BormConstraint.
+		              BormDataFlow }.
+	^ (self model allEntities flatCollect: #representations) asArray 
+		  sortedAs: [ :each | priorities indexOf: each class ]
 ]
 
 { #category : #testing }
@@ -139,30 +130,12 @@ OPBormDiagramController >> initializePaletteWithShortcuts: aPalette [
 		shortcut: $r asShortcut
 ]
 
-{ #category : #accessing }
-OPBormDiagramController >> layout: aLayout [
-	super layout: aLayout.
-	(aLayout noneSatisfy: [ :any | any hasExtent ])
-		ifTrue: [ self layouter layoutSizesOfParticipants ].
-	self updateView
-]
-
-{ #category : #'as yet unclassified' }
-OPBormDiagramController >> registerModelEvents: aModel [
-	super registerModelEvents: aModel.
-	aModel announcer
-		when: OPModelContentReplaced
-		do: [ self rebuild.
-			self applyDefaultLayout.
-			self view canvas focusOnCenterScaled ]
-]
-
 { #category : #userinterface }
-OPBormDiagramController >> updateView [
+OPBormDiagramController >> updateCanvas [
 
-	self controllers do: [ :each | each refreshFigure ].
-	self view edges do: [ :each | 
+	self controllers do: [ :each | each diagramElement modelChanged ].
+	self canvas edges do: [ :each | 
 		each pushFront.
 		each update ].
-	self view signalUpdate
+	self canvas signalUpdate
 ]

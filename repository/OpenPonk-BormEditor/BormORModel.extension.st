@@ -7,8 +7,9 @@ BormORModel >> open [
 
 { #category : #'*OpenPonk-BormEditor' }
 BormORModel >> openAs: aProjectName [
-	OPProject new
-		name: aProjectName;
-		addModel: self;
-		open
+
+	(OPProject new
+		 name: aProjectName;
+		 addModel: self;
+		 open) showAllElementsInAllDiagrams
 ]

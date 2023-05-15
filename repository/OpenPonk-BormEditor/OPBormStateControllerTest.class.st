@@ -13,8 +13,8 @@ OPBormStateControllerTest >> controllerClass [
 ]
 
 { #category : #accessing }
-OPBormStateControllerTest >> figureClass [
-	^ BormStateFigure
+OPBormStateControllerTest >> diagramElementClass [
+	^ BormStateShape
 ]
 
 { #category : #accessing }

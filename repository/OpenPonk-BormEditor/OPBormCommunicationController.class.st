@@ -10,19 +10,7 @@ OPBormCommunicationController >> canBeTargetForDataFlow: aController [
 ]
 
 { #category : #hooks }
-OPBormCommunicationController >> connectionFeedback [
-	^ OPInteractiveLine new
-		lineBuilder: [ :fromFigure :toFigure | 
-			OPRTStyledConnection new
-				decorate: [ :deco | deco arrowHead ];
-				withOrthogonalAttachPoint;
-				color: Color darkGray muchDarker;
-				edgeFrom: fromFigure to: toFigure ];
-		from: source figure
-]
-
-{ #category : #hooks }
-OPBormCommunicationController >> createEdgeFrom: fromElement to: toElement [
+OPBormCommunicationController >> createLineFrom: fromElement to: toElement [
 	| edge |
 	edge := OPRTStyledConnection new
 		withOrthogonalAttachPoint;
@@ -40,6 +28,12 @@ OPBormCommunicationController >> createModelIn: aParentModel [
 	source model send: model.
 	target model receive: model.
 	^ model
+]
+
+{ #category : #construction }
+OPBormCommunicationController >> diagramElementClass [
+
+	^ BormCommunicationShape
 ]
 
 { #category : #accessing }

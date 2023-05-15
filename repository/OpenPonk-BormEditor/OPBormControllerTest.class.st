@@ -1,8 +1,8 @@
 Class {
 	#name : #OPBormControllerTest,
-	#superclass : #OPControllerTest,
+	#superclass : #OPElementControllerTest,
 	#instVars : [
-		'targetController'
+		'relationshipController'
 	],
 	#category : #'OpenPonk-BormEditor-Tests'
 }
@@ -33,13 +33,14 @@ OPBormControllerTest >> createTargetModel [
 ]
 
 { #category : #accessing }
-OPBormControllerTest >> diagramModelClass [
-	^ BormORModel
+OPBormControllerTest >> diagramControllerClass [
+
+	^ OPBormDiagramController
 ]
 
 { #category : #accessing }
-OPBormControllerTest >> figureClass [
-	^ self subclassResponsibility
+OPBormControllerTest >> diagramModelClass [
+	^ BormORModel
 ]
 
 { #category : #accessing }
@@ -60,9 +61,9 @@ OPBormControllerTest >> setUp [
 
 { #category : #running }
 OPBormControllerTest >> setUpTarget [
-	targetController := self targetControllerClass new.
-	targetController diagramController: diagramController.
-	targetController createModelIn: diagramController model
+	relationshipController := self targetControllerClass new.
+	relationshipController diagramController: diagramController.
+	relationshipController createModelIn: diagramController model
 ]
 
 { #category : #accessing }
@@ -77,13 +78,8 @@ OPBormControllerTest >> targetModelClass [
 
 { #category : #tests }
 OPBormControllerTest >> testAssignmentToParent [
-	controller createModelIn: targetController model.
-	self assert: (targetController model has: controller model)
-]
-
-{ #category : #accessing }
-OPBormControllerTest >> testClassSideModelClass [
-	self assert: self controllerClass modelClass equals: self modelClass
+	controller createModelIn: relationshipController model.
+	self assert: (relationshipController model has: controller model)
 ]
 
 { #category : #accessing }
@@ -93,7 +89,7 @@ OPBormControllerTest >> testCreateController [
 
 { #category : #accessing }
 OPBormControllerTest >> testCreateModel [
-	controller createModelIn: targetController model.
+	controller createModelIn: relationshipController model.
 	self assert: controller model class equals: self modelClass
 ]
 

@@ -17,7 +17,7 @@ OPBormRelationshipControllerTest >> setUp [
 	super setUp.
 	self setUpSource.
 	controller source: sourceController.
-	controller target: targetController
+	controller target: relationshipController
 ]
 
 { #category : #running }

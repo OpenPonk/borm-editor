@@ -4,16 +4,9 @@ Class {
 	#category : #'OpenPonk-BormEditor-Controllers'
 }
 
-{ #category : #construction }
-OPBormAssociationEnhancementController >> constraintOnEdge: anElement [
+{ #category : #'as yet unclassified' }
+OPBormAssociationEnhancementController >> diagramElementOwner [
 
-	| edge const |
-	edge := (self diagramController showWithoutDependentInDiagramModel:
-		         model owner) figure.
-	anElement withViewDo: [ :view | 
-		const := OPRTRailConstraint new.
-		const
-			initialPosition: 0.5;
-			distance: 10.
-		const element: anElement connection: edge ]
+	^ (self diagramController controllerForModel: model owner)
+		  diagramElement
 ]
