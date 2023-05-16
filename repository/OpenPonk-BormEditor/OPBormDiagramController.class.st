@@ -6,8 +6,11 @@ Class {
 
 { #category : #testing }
 OPBormDiagramController >> addAsTargetFor: aController [
+
 	super addAsTargetFor: aController.
-	aController figure translateBy: (aController figure width / 2.5) @ (aController figure height / 2.2)
+	aController diagramElement translateBy:
+		aController diagramElement width / 2.5
+		@ (aController diagramElement height / 2.2)
 ]
 
 { #category : #rebuilding }
