@@ -9,17 +9,6 @@ OPBormCommunicationController >> canBeTargetForDataFlow: aController [
 	^ true
 ]
 
-{ #category : #hooks }
-OPBormCommunicationController >> createLineFrom: fromElement to: toElement [
-	| edge |
-	edge := OPRTStyledConnection new
-		withOrthogonalAttachPoint;
-		color: Color black;
-		edgeFrom: fromElement to: toElement.
-	edge shape decorations arrowHead.
-	^ edge
-]
-
 { #category : #accessing }
 OPBormCommunicationController >> createModelIn: aParentModel [
 	self model: self modelClass new.
