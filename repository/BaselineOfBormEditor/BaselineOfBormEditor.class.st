@@ -11,10 +11,10 @@ BaselineOfBormEditor >> baseline: spec [
 	spec for: #common do: [ 
 		spec
 			baseline: 'BormModel'
-			with: [ spec repository: 'github://openponk/borm-model/repository' ].
+			with: [ spec repository: 'github://openponk/borm-model' ].
 		spec
 			baseline: 'OpenPonk'
-			with: [ spec repository: 'github://openponk/openponk' ].
+			with: [ spec repository: 'github://openponk/openponk:legacy-roassal2' ].
 		spec baseline: 'XMLParser' with: [ 
 			spec
 				repository: 'github://pharo-contributions/XML-XMLParser:3.5.x/src';
