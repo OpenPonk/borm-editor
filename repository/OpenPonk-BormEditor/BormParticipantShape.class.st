@@ -56,7 +56,7 @@ BormParticipantShape >> renderShapeDetails [
 		offset: -5 @ 5;
 		stick: icon on: self roassalShape.
 	self canvas add: icon.
-	roassalShape when: RSShapeRemovedEvent do: [ icon remove ].
+	roassalShape when: RSShapeRemovedEvent do: [ icon remove ] for: self.
 
 	selectable := OPRSSelectable new.
 	selectable highlightBorderColor: Color blue.

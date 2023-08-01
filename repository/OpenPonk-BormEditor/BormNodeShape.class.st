@@ -50,20 +50,28 @@ BormNodeShape >> renderShapeDetails [
 	roassalShape @ labeled.
 
 
-	self roassalShape when: RSExtentChangedEvent do: [ :event | 
-		(event newExtent x closeTo: wrappedForWidth absolutePrecision: 0.99) 
-			ifFalse: [ self updateText ] ].
+	self roassalShape
+		when: RSExtentChangedEvent
+		do: [ :event |
+			(event newExtent x closeTo: wrappedForWidth absolutePrecision: 0.99)
+				ifFalse: [ self updateText ] ]
+		for: self.
 
 	plusIcon := RSBitmap new
 		            form: (self iconNamed: #add);
-		            when: RSMouseLeftClick do: plusIconAction;
+		            when: RSMouseLeftClick
+		            do: plusIconAction
+		            for: plusIconAction receiver;
 		            yourself.
 	RSLocation new
 		right;
 		bottom;
 		offset: -5;
 		stick: plusIcon on: roassalShape.
-	roassalShape when: RSShapeRemovedEvent do: [ plusIcon remove ].
+	roassalShape
+		when: RSShapeRemovedEvent
+		do: [ plusIcon remove ]
+		for: self.
 
 	selectable := OPRSSelectable new.
 	selectable highlightBorderColor: Color blue.

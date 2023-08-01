@@ -24,6 +24,7 @@ BormDataFlowIcon >> renderShapeDetails [
 	roassalShape
 		when: RSPositionChangedEvent
 		do: [ self updateRenderFromModel ]
+		for: self
 ]
 
 { #category : #rendering }

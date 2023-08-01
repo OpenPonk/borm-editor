@@ -136,14 +136,15 @@ OPBormLayouter >> layoutParticipant: aParticipant [
 OPBormLayouter >> layoutParticipants: participants [
 
 	| controllers participantShapes |
-	controllers := participants collect: [ :each | 
+	controllers := participants collect: [ :each |
 		               diagramController controllerForModel: each ].
-	controllers do: [ :eachParticipantCtrl | 
+	controllers do: [ :eachParticipantCtrl |
 		eachParticipantCtrl roassalShape
 			when: RSPositionChangedEvent
-			do: [ :event | 
-				eachParticipantCtrl nodeRoassalShapes do: [ :each | 
-					each translateBy: event newPosition - event oldPosition ] ] ].
+			do: [ :event |
+				eachParticipantCtrl nodeRoassalShapes do: [ :each |
+					each translateBy: event newPosition - event oldPosition ] ]
+			for: self ].
 	participantShapes := controllers collect: #roassalShape.
 	RSHorizontalLineLayout new
 		gapSize: 50;
