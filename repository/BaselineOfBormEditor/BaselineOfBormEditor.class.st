@@ -4,7 +4,7 @@ Class {
 	#category : #BaselineOfBormEditor
 }
 
-{ #category : #accessing }
+{ #category : #baselines }
 BaselineOfBormEditor >> baseline: spec [
 
 	<baseline>
@@ -17,11 +17,11 @@ BaselineOfBormEditor >> baseline: spec [
 			with: [ spec repository: 'github://openponk/openponk' ].
 		spec baseline: 'XMLParser' with: [
 			spec
-				repository: 'github://pharo-contributions/XML-XMLParser:3.5.x/src';
+				repository: 'github://pharo-contributions/XML-XMLParser:4f9cb10';
 				loads: #( Core ) ].
 		spec baseline: 'XPath' with: [
 			spec
-				repository: 'github://pharo-contributions/XML-XPath:3450f91/src';
+				repository: 'github://pharo-contributions/XML-XPath:c063098';
 				loads: #( Core ) ].
 		spec
 			package: 'OpenPonk-BormEditor'
