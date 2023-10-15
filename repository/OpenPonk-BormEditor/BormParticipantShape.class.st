@@ -9,6 +9,14 @@ Class {
 	#category : #'OpenPonk-BormEditor-DiagramElements'
 }
 
+{ #category : #rendering }
+BormParticipantShape >> addSelectionDraggableInteraction [
+
+	roassalShape
+	@ (OPRSSelectionDraggable thatAlsoDragsShapesProvidedByBlock:
+			 innerRoassalShapesBlock)
+]
+
 { #category : #initialization }
 BormParticipantShape >> initialize [
 
@@ -37,7 +45,7 @@ BormParticipantShape >> renderBasicShape [
 { #category : #rendering }
 BormParticipantShape >> renderShapeDetails [
 
-	| labeled selectable |
+	| labeled |
 	labeled := OPRSLabeled new.
 	labeled color: Color black.
 	labeled location
@@ -56,15 +64,25 @@ BormParticipantShape >> renderShapeDetails [
 		offset: -5 @ 5;
 		stick: icon on: self roassalShape.
 	self canvas add: icon.
-	roassalShape when: RSShapeRemovedEvent do: [ icon remove ] for: self.
+	roassalShape when: RSShapeRemovedEvent do: [ icon remove ] for: self
+]
 
-	selectable := OPRSSelectable new.
-	selectable highlightBorderColor: Color blue.
-	roassalShape @ selectable.
-	self roassalShape
-		@ (OPRSSelectionDraggable thatAlsoDragsShapesProvidedByBlock:
-					 innerRoassalShapesBlock);
-		@ OPRSResizable
+{ #category : #rendering }
+BormParticipantShape >> selectableInteraction [
+
+	^ OPRSSelectable highlightBorderColorBlue
+]
+
+{ #category : #rendering }
+BormParticipantShape >> shouldBePositionableByUser [
+
+	^ true
+]
+
+{ #category : #interactions }
+BormParticipantShape >> shouldBeResizableByUser [
+
+	^ true
 ]
 
 { #category : #accessing }

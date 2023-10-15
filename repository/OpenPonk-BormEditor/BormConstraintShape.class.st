@@ -5,16 +5,6 @@ Class {
 }
 
 { #category : #adding }
-BormConstraintShape >> addInteractions [
-
-	| selectable |
-	selectable := OPRSSelectable new.
-	selectable highlightColor: Color blue.
-	roassalShape @ selectable.
-	roassalShape @ OPRSSelectionDraggable
-]
-
-{ #category : #adding }
 BormConstraintShape >> anchorToEdge [
 
 	OPRSAnchorConstraint new
@@ -46,4 +36,16 @@ BormConstraintShape >> defaultMinDistance [
 BormConstraintShape >> defaultText [
 
 	^ self modelElement name ifEmpty: [ 'condition' ]
+]
+
+{ #category : #adding }
+BormConstraintShape >> selectableInteraction [
+
+	^ OPRSSelectable highlightColorBlue
+]
+
+{ #category : #adding }
+BormConstraintShape >> shouldBePositionableByUser [
+
+	^ true
 ]

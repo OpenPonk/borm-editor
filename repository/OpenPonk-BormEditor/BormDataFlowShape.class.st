@@ -4,16 +4,6 @@ Class {
 	#category : #'OpenPonk-BormEditor-DiagramElements'
 }
 
-{ #category : #rendering }
-BormDataFlowShape >> addInteractions [
-
-	| selectable |
-	selectable := OPRSSelectable new.
-	selectable highlightBorderColor: Color blue.
-	roassalShape @ selectable.
-	roassalShape @ OPRSSelectionDraggable
-]
-
 { #category : #'as yet unclassified' }
 BormDataFlowShape >> anchorToEdge [
 
@@ -73,8 +63,19 @@ BormDataFlowShape >> renderShapeDetails [
 
 	super renderShapeDetails.
 
-	self addInteractions.
 	self anchorToEdge
+]
+
+{ #category : #rendering }
+BormDataFlowShape >> selectableInteraction [
+
+	^ OPRSSelectable highlightBorderColorBlue
+]
+
+{ #category : #rendering }
+BormDataFlowShape >> shouldBePositionableByUser [
+
+	^ true
 ]
 
 { #category : #rendering }

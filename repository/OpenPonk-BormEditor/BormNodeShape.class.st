@@ -37,7 +37,6 @@ BormNodeShape >> plusIconAction: aBlock [
 { #category : #'as yet unclassified' }
 BormNodeShape >> renderShapeDetails [
 
-	| selectable |
 	labeled := OPRSLabeled new.
 	labeled color: Color black.
 	labeled shapeBuilder wrapStrategy:
@@ -72,16 +71,29 @@ BormNodeShape >> renderShapeDetails [
 		when: RSShapeRemovedEvent
 		do: [ plusIcon remove ]
 		for: self.
+]
 
-	selectable := OPRSSelectable new.
-	selectable highlightBorderColor: Color blue.
-	roassalShape @ selectable.
-	roassalShape @ OPRSSelectionDraggable @ OPRSResizable
+{ #category : #'as yet unclassified' }
+BormNodeShape >> selectableInteraction [
+
+	^ OPRSSelectable highlightBorderColorBlue
 ]
 
 { #category : #accessing }
 BormNodeShape >> shapesFactory [
 	^ shapesFactory ifNil: [ shapesFactory := BormShapesFactory new ]
+]
+
+{ #category : #'as yet unclassified' }
+BormNodeShape >> shouldBePositionableByUser [
+
+	^ true
+]
+
+{ #category : #interactions }
+BormNodeShape >> shouldBeResizableByUser [
+
+	^ true
 ]
 
 { #category : #'creating - subelements' }
