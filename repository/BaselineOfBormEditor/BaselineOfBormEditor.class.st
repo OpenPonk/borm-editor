@@ -15,6 +15,13 @@ BaselineOfBormEditor >> baseline: spec [
 		spec
 			baseline: 'OpenPonk'
 			with: [ spec repository: 'github://openponk/openponk' ].
+		spec baseline: 'PetitParser' with: [
+			spec
+				repository: 'github://moosetechnology/PetitParser:v3.x.x/src';
+				loads:
+					#( 'Core' 'Tests' 'Examples' 'Islands' 'Analyzer' 'Preprocessor'
+					   'Indent' 'Extension' 'TestsExtension' 'Parser' ) ].
+
 		spec baseline: 'XMLParser' with: [
 			spec
 				repository: 'github://pharo-contributions/XML-XMLParser:3.5.x';
@@ -25,7 +32,7 @@ BaselineOfBormEditor >> baseline: spec [
 				loads: #( Core ) ].
 		spec
 			package: 'OpenPonk-BormEditor'
-			with: [ spec requires: #( 'XPath' 'XMLParser' 'BormModel' ) ].
+			with: [ spec requires: #( 'PetitParser' 'XPath' 'XMLParser' 'BormModel' ) ].
 		spec group: 'plugin' with: #( 'OpenPonk-BormEditor' ).
 		spec group: 'default' with: #( 'OpenPonk' 'plugin' ) ]
 ]
