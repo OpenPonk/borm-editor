@@ -1,7 +1,7 @@
 Class {
 	#name : #BormTransitionShape,
 	#superclass : #BormAssociationShape,
-	#category : #'OpenPonk-BormEditor-DiagramElements'
+	#category : #'OpenPonk-BormEditor-Shapes'
 }
 
 { #category : #constants }

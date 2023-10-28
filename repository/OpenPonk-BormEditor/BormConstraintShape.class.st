@@ -1,7 +1,7 @@
 Class {
 	#name : #BormConstraintShape,
 	#superclass : #OPEdgeLabel,
-	#category : #'OpenPonk-BormEditor-DiagramElements'
+	#category : #'OpenPonk-BormEditor-Shapes'
 }
 
 { #category : #adding }

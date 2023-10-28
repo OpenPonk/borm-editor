@@ -1,12 +1,12 @@
 Class {
 	#name : #BormParticipantShape,
-	#superclass : #OPShape,
+	#superclass : #OPBoundNode,
 	#instVars : [
 		'innerRoassalShapesBlock',
 		'typeIconProvider',
 		'icon'
 	],
-	#category : #'OpenPonk-BormEditor-DiagramElements'
+	#category : #'OpenPonk-BormEditor-Shapes'
 }
 
 { #category : #rendering }

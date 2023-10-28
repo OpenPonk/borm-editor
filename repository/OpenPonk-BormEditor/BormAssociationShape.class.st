@@ -1,7 +1,7 @@
 Class {
 	#name : #BormAssociationShape,
 	#superclass : #OPEdge,
-	#category : #'OpenPonk-BormEditor-DiagramElements'
+	#category : #'OpenPonk-BormEditor-Shapes'
 }
 
 { #category : #constants }

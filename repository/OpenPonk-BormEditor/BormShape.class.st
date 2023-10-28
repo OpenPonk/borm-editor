@@ -1,5 +1,5 @@
 Class {
 	#name : #BormShape,
-	#superclass : #OPShape,
-	#category : #'OpenPonk-BormEditor-DiagramElements'
+	#superclass : #OPBoundNode,
+	#category : #'OpenPonk-BormEditor-Shapes'
 }

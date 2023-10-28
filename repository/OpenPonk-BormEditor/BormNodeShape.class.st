@@ -8,7 +8,7 @@ Class {
 		'labeled',
 		'wrappedForWidth'
 	],
-	#category : #'OpenPonk-BormEditor-DiagramElements'
+	#category : #'OpenPonk-BormEditor-Shapes'
 }
 
 { #category : #defaults }

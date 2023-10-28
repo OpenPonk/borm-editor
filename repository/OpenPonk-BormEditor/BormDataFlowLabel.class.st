@@ -1,7 +1,7 @@
 Class {
 	#name : #BormDataFlowLabel,
 	#superclass : #OPLabel,
-	#category : #'OpenPonk-BormEditor-DiagramElements'
+	#category : #'OpenPonk-BormEditor-Shapes'
 }
 
 { #category : #accessing }

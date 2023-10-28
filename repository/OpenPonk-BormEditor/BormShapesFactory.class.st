@@ -1,7 +1,7 @@
 Class {
 	#name : #BormShapesFactory,
 	#superclass : #Object,
-	#category : #'OpenPonk-BormEditor-DiagramElements'
+	#category : #'OpenPonk-BormEditor-Shapes'
 }
 
 { #category : #'as yet unclassified' }
