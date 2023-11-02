@@ -22,17 +22,13 @@ BaselineOfBormEditor >> baseline: spec [
 					#( 'Core' 'Tests' 'Examples' 'Islands' 'Analyzer' 'Preprocessor'
 					   'Indent' 'Extension' 'TestsExtension' 'Parser' ) ].
 
-		spec baseline: 'XMLParser' with: [
-			spec
-				repository: 'github://pharo-contributions/XML-XMLParser:3.5.x';
-				loads: #( Core ) ].
 		spec baseline: 'XPath' with: [
 			spec
 				repository: 'github://pharo-contributions/XML-XPath:c063098';
 				loads: #( Core ) ].
 		spec
 			package: 'OpenPonk-BormEditor'
-			with: [ spec requires: #( 'PetitParser' 'XPath' 'XMLParser' 'BormModel' ) ].
+			with: [ spec requires: #( 'PetitParser' 'XPath' 'BormModel' ) ].
 		spec group: 'plugin' with: #( 'OpenPonk-BormEditor' ).
 		spec group: 'default' with: #( 'OpenPonk' 'plugin' ) ]
 ]
