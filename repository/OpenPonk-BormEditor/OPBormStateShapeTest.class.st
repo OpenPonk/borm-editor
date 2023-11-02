@@ -1,45 +1,45 @@
 Class {
 	#name : #OPBormStateShapeTest,
-	#superclass : #OPBormShapeTest,
+	#superclass : #OPAbstractShapeTest,
 	#category : #'OpenPonk-BormEditor-Tests'
 }
 
-{ #category : #accessing }
-OPBormStateShapeTest >> diagramElementClass [
+{ #category : #hooks }
+OPBormStateShapeTest >> shapeClass [
 	^ BormStateShape
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 OPBormStateShapeTest >> testAdd [
 
-	diagramElement modelElement: BormState new.
-	diagramElement renderBasicShapeIn: canvas.
+	shape modelElement: BormState new.
+	shape renderBasicShapeIn: canvas.
 	self
 		assertCollection: canvas nodes asSet
 		equals:
-			({ diagramElement } asSet , diagramElement ownedElements collect:
+			({ shape } asSet , shape ownedElements collect:
 				 #roassalShape)
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 OPBormStateShapeTest >> testRemove [
-	diagramElement modelElement: BormState new.
+	shape modelElement: BormState new.
 	self assert: canvas nodes isEmpty.
-	diagramElement renderBasicShapeIn: canvas.
+	shape renderBasicShapeIn: canvas.
 	self assert: canvas nodes isNotEmpty.
-	diagramElement remove.
+	shape remove.
 	self assert: canvas nodes isEmpty.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 OPBormStateShapeTest >> testRemove1 [
 
-	diagramElement modelElement: (BormState new
+	shape modelElement: (BormState new
 			 beInitial;
 			 beFinal).
 	self assert: canvas nodes isEmpty.
-	diagramElement renderBasicShapeIn: canvas.
+	shape renderBasicShapeIn: canvas.
 	self assert: canvas nodes isNotEmpty.
-	diagramElement remove.
+	shape remove.
 	self assert: canvas nodes isEmpty
 ]

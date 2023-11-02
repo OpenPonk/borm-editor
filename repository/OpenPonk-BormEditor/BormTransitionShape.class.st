@@ -7,7 +7,8 @@ Class {
 { #category : #constants }
 BormTransitionShape >> marker [
 
-	(self modelElement target isKindOf: BormState) ifTrue: [ 
-		^ OPRSMarkerBuilder triangle ].
+	self modelElement ifNotNil: [ :model |
+		(model target isKindOf: BormState) ifTrue: [
+			^ OPRSMarkerBuilder triangle ] ].
 	^ nil
 ]
