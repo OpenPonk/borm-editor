@@ -18,8 +18,10 @@ OPBormProcessNodeController >> addAsTargetFor: aController [
 
 { #category : #adding }
 OPBormProcessNodeController >> bormModels [
-	^ self diagramController editor workbench projectController project models
-		select: [ :each | each isKindOf: self diagramController modelClass ]
+|allModels|
+allModels := OrderedCollection new.
+	OPBormDiagramController allInstances do: [ :each | each editor workbench  projectController project models do: [ :each2 | allModels add: each2  ] ].
+	^ allModels 
 ]
 
 { #category : #'ui hooks' }
