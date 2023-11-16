@@ -4,7 +4,7 @@ Class {
 	#category : #'OpenPonk-BormEditor-Controllers'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'diagram elements' }
 OPBormAssociationEnhancementController >> diagramElementOwner [
 
 	^ (self diagramController controllerForModel: model owner)
