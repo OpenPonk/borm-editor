@@ -22,6 +22,28 @@ OPBormStateShapeTest >> testAdd [
 ]
 
 { #category : #tests }
+OPBormStateShapeTest >> testFinalShape [
+
+	| borderedShapesCounter originalCount |
+	borderedShapesCounter := [
+	                         canvas shapes count: [ :each |
+		                         each hasBorder and: [
+			                         each borderColor isTransparent not ] ] ].
+
+	shape modelElement: BormState new.
+	shape renderIn: canvas.
+	originalCount := borderedShapesCounter value.
+
+	shape modelElement isFinal: true.
+	shape modelChanged.
+	self assert: borderedShapesCounter value > originalCount.
+
+	shape modelElement isFinal: false.
+	shape modelChanged.
+	self assert: borderedShapesCounter value equals: originalCount
+]
+
+{ #category : #tests }
 OPBormStateShapeTest >> testRemove [
 	shape modelElement: BormState new.
 	self assert: canvas nodes isEmpty.
