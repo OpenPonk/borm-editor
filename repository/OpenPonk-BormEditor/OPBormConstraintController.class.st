@@ -1,15 +1,17 @@
 Class {
-	#name : #OPBormConstraintController,
-	#superclass : #OPBormAssociationEnhancementController,
-	#category : #'OpenPonk-BormEditor-Controllers'
+	#name : 'OPBormConstraintController',
+	#superclass : 'OPBormAssociationEnhancementController',
+	#category : 'OpenPonk-BormEditor-Controllers',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Controllers'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 OPBormConstraintController >> canVisitTarget: aController [
 	^ aController canBeTargetForConstraint: self
 ]
 
-{ #category : #construction }
+{ #category : 'construction' }
 OPBormConstraintController >> createModelIn: aParentModel [
 
 	self model: self modelClass new.
@@ -17,18 +19,18 @@ OPBormConstraintController >> createModelIn: aParentModel [
 	^ model
 ]
 
-{ #category : #construction }
+{ #category : 'construction' }
 OPBormConstraintController >> diagramElementClass [
 
 	^ BormConstraintShape
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormConstraintController >> modelClass [
 	^ BormConstraint
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 OPBormConstraintController >> removeModel [
 
 	self assert: self model owner constraint = self model.

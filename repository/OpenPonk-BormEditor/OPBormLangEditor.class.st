@@ -1,16 +1,18 @@
 Class {
-	#name : #OPBormLangEditor,
-	#superclass : #SpPresenter,
+	#name : 'OPBormLangEditor',
+	#superclass : 'SpPresenter',
 	#instVars : [
 		'textModel',
 		'bormDiagram',
 		'serializer',
 		'locked'
 	],
-	#category : #'OpenPonk-BormEditor-Extensions'
+	#category : 'OpenPonk-BormEditor-Extensions',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Extensions'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 OPBormLangEditor class >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
@@ -18,40 +20,40 @@ OPBormLangEditor class >> defaultLayout [
 		  yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormLangEditor >> bormDiagram [
 	^ bormDiagram
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormLangEditor >> bormDiagram: aBormDiagram [
 	bormDiagram := aBormDiagram.
 	self modelChanged
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 OPBormLangEditor >> connectPresenters [
 	textModel widget announcer when: RubTextAccepted send: #textModelChanged to: self.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OPBormLangEditor >> initialize [
 	super initialize.
 	serializer := BormLangSerializer new.
 	locked := false
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 OPBormLangEditor >> initializePresenters [
 	textModel := self newRubScrolledText
 ]
 
-{ #category : #locking }
+{ #category : 'locking' }
 OPBormLangEditor >> lock [
 	locked := true
 ]
 
-{ #category : #locking }
+{ #category : 'locking' }
 OPBormLangEditor >> locked: aBlock [
 	locked
 		ifTrue: [ ^ self ].
@@ -60,7 +62,7 @@ OPBormLangEditor >> locked: aBlock [
 	self unlock
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 OPBormLangEditor >> modelChanged [
 	| newText |
 	self traceCr: 'modelChanged'.
@@ -69,7 +71,7 @@ OPBormLangEditor >> modelChanged [
 		ifFalse: [ self traceCr: 'CHANGE' ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPBormLangEditor >> newRubScrolledText [
 
 	^ RubScrolledTextMorph new
@@ -82,18 +84,18 @@ OPBormLangEditor >> newRubScrolledText [
 		  asSpecAdapter
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPBormLangEditor >> newStartText [
 	^ 'Participant "User" {
 }'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormLangEditor >> textModel [
 	^ textModel
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 OPBormLangEditor >> textModelChanged [
 	| text newModel success |
 	self traceCr: 'textModelChanged'.
@@ -107,7 +109,7 @@ OPBormLangEditor >> textModelChanged [
 		ifTrue: [ BormFactory moveParticipantsFrom: newModel to: bormDiagram ]
 ]
 
-{ #category : #locking }
+{ #category : 'locking' }
 OPBormLangEditor >> unlock [
 	locked := false
 ]

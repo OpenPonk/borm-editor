@@ -1,16 +1,18 @@
 Class {
-	#name : #BormDataFlowIcon,
-	#superclass : #OPNode,
-	#category : #'OpenPonk-BormEditor-Shapes'
+	#name : 'BormDataFlowIcon',
+	#superclass : 'OPNode',
+	#category : 'OpenPonk-BormEditor-Shapes',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Shapes'
 }
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 BormDataFlowIcon >> renderBasicShape [
 
 	^ RSBitmap new
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 BormDataFlowIcon >> renderShapeDetails [
 
 	super renderShapeDetails.
@@ -27,7 +29,7 @@ BormDataFlowIcon >> renderShapeDetails [
 		for: self
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 BormDataFlowIcon >> updateRenderFromModel [
 
 	| constraintShape right |

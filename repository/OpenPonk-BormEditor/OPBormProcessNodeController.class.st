@@ -1,13 +1,15 @@
 Class {
-	#name : #OPBormProcessNodeController,
-	#superclass : #OPBormElementController,
+	#name : 'OPBormProcessNodeController',
+	#superclass : 'OPBormElementController',
 	#instVars : [
 		'ownerParticipant'
 	],
-	#category : #'OpenPonk-BormEditor-Controllers'
+	#category : 'OpenPonk-BormEditor-Controllers',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Controllers'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 OPBormProcessNodeController >> addAsTargetFor: aController [
 	self assert: (self canBeTargetFor: aController).
 	aController target: self.
@@ -16,13 +18,13 @@ OPBormProcessNodeController >> addAsTargetFor: aController [
 		andShowInDiagram: self diagramController
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 OPBormProcessNodeController >> bormModels [
 	^ self diagramController editor workbench projectController project models
 		select: [ :each | each isKindOf: self diagramController modelClass ]
 ]
 
-{ #category : #'ui hooks' }
+{ #category : 'ui hooks' }
 OPBormProcessNodeController >> buildEditorForm: aForm [
 
 	(aForm addText: 'Name')
@@ -39,22 +41,22 @@ OPBormProcessNodeController >> buildEditorForm: aForm [
 			self diagramElement modelChanged ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormProcessNodeController >> canBeSourceFor: aController [
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormProcessNodeController >> canBeTargetFor: aController [
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormProcessNodeController >> dependentElements [
 	^ model transitions
 ]
 
-{ #category : #construction }
+{ #category : 'construction' }
 OPBormProcessNodeController >> hookDiagramElement [
 
 	super hookDiagramElement.
@@ -64,22 +66,22 @@ OPBormProcessNodeController >> hookDiagramElement [
 			self model submodel ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormProcessNodeController >> ownerParticipant [
 	^ ownerParticipant
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormProcessNodeController >> ownerParticipant: aParticipantController [
 	ownerParticipant := aParticipantController
 ]
 
-{ #category : #destruction }
+{ #category : 'destruction' }
 OPBormProcessNodeController >> removeModel [
 	self model owner remove: self model
 ]
 
-{ #category : #construction }
+{ #category : 'construction' }
 OPBormProcessNodeController >> setOwnerParticipant [
 
 	self ownerParticipant: (self diagramController controllerForModel:
@@ -87,14 +89,14 @@ OPBormProcessNodeController >> setOwnerParticipant [
 				  any elements includes: model ]))
 ]
 
-{ #category : #construction }
+{ #category : 'construction' }
 OPBormProcessNodeController >> showInDiagram: aDiagramController [
 
 	super showInDiagram: aDiagramController.
 	self setOwnerParticipant
 ]
 
-{ #category : #construction }
+{ #category : 'construction' }
 OPBormProcessNodeController >> showWithoutDependentInDiagram: aDiagramController [
 
 	super showWithoutDependentInDiagram: aDiagramController.

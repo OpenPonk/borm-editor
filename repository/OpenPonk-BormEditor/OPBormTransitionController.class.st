@@ -1,21 +1,23 @@
 Class {
-	#name : #OPBormTransitionController,
-	#superclass : #OPBormRelationshipController,
-	#category : #'OpenPonk-BormEditor-Controllers'
+	#name : 'OPBormTransitionController',
+	#superclass : 'OPBormRelationshipController',
+	#category : 'OpenPonk-BormEditor-Controllers',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Controllers'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormTransitionController >> canBeTargetForConstraint: aController [
 	^ (super canBeTargetForConstraint: aController)
 		and: [ self model source isKindOf: BormState ]
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 OPBormTransitionController >> canBeTargetForDataFlow: aDataFlow [
 	^ false
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 OPBormTransitionController >> createModelIn: aParentModel [
 	self model: self modelClass new.
 	model source: self source model.
@@ -25,18 +27,18 @@ OPBormTransitionController >> createModelIn: aParentModel [
 	^ model
 ]
 
-{ #category : #construction }
+{ #category : 'construction' }
 OPBormTransitionController >> diagramElementClass [
 
 	^ BormTransitionShape
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormTransitionController >> modelClass [
 	^ BormTransition
 ]
 
-{ #category : #destruction }
+{ #category : 'destruction' }
 OPBormTransitionController >> removeModel [
 	self model target removeTransition: self model.
 	self model source removeTransition: self model

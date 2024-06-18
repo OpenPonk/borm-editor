@@ -1,15 +1,17 @@
 Class {
-	#name : #OPBormCommunicationController,
-	#superclass : #OPBormRelationshipController,
-	#category : #'OpenPonk-BormEditor-Controllers'
+	#name : 'OPBormCommunicationController',
+	#superclass : 'OPBormRelationshipController',
+	#category : 'OpenPonk-BormEditor-Controllers',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Controllers'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormCommunicationController >> canBeTargetForDataFlow: aController [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormCommunicationController >> createModelIn: aParentModel [
 	self model: self modelClass new.
 	model source: self source model.
@@ -19,23 +21,23 @@ OPBormCommunicationController >> createModelIn: aParentModel [
 	^ model
 ]
 
-{ #category : #construction }
+{ #category : 'construction' }
 OPBormCommunicationController >> diagramElementClass [
 
 	^ BormCommunicationShape
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormCommunicationController >> elementsToShowInside [
 	^ super elementsToShowInside , model dataFlows
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormCommunicationController >> modelClass [
 	^ BormCommunication
 ]
 
-{ #category : #destruction }
+{ #category : 'destruction' }
 OPBormCommunicationController >> removeModel [
 	self model target removeCommunication: self model.
 	self model source removeCommunication: self model

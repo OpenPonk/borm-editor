@@ -1,10 +1,12 @@
 Class {
-	#name : #BormActivityShape,
-	#superclass : #BormNodeShape,
-	#category : #'OpenPonk-BormEditor-Shapes'
+	#name : 'BormActivityShape',
+	#superclass : 'BormNodeShape',
+	#category : 'OpenPonk-BormEditor-Shapes',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Shapes'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormActivityShape >> renderBasicShape [
 
 	^ self shapesFactory newRoundedBox

@@ -2,32 +2,34 @@
 A BormActivityControllerTest is a test class for testing the behavior of BormActivityController
 "
 Class {
-	#name : #OPBormActivityControllerTest,
-	#superclass : #OPBormControllerTest,
-	#category : #'OpenPonk-BormEditor-Tests'
+	#name : 'OPBormActivityControllerTest',
+	#superclass : 'OPBormControllerTest',
+	#category : 'OpenPonk-BormEditor-Tests',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormActivityControllerTest >> controllerClass [
 	^ OPBormActivityController
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormActivityControllerTest >> diagramElementClass [
 	^ BormActivityShape
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormActivityControllerTest >> modelClass [
 	^ BormActivity
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormActivityControllerTest >> targetControllerClass [
 	^ OPBormParticipantController
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormActivityControllerTest >> targetModelClass [
 	^ BormParticipant
 ]

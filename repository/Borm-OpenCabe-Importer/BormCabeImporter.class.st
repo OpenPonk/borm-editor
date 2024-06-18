@@ -1,30 +1,32 @@
 Class {
-	#name : #BormCabeImporter,
-	#superclass : #Object,
+	#name : 'BormCabeImporter',
+	#superclass : 'Object',
 	#instVars : [
 		'entities',
 		'root',
 		'project'
 	],
-	#category : 'Borm-OpenCabe-Importer-Importer'
+	#category : 'Borm-OpenCabe-Importer-Importer',
+	#package : 'Borm-OpenCabe-Importer',
+	#tag : 'Importer'
 }
 
-{ #category : #importing }
+{ #category : 'importing' }
 BormCabeImporter class >> importFile: aFileReference [
 	^ self new importFile: aFileReference
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormCabeImporter >> entities [
 	^ entities
 ]
 
-{ #category : #retrieving }
+{ #category : 'retrieving' }
 BormCabeImporter >> getDocument: aPath [
 	^ self parseXml: (root resolve: aPath)
 ]
 
-{ #category : #'private - importing' }
+{ #category : 'private - importing' }
 BormCabeImporter >> importDiagram: aXMLDocument [
 	| importer |
 	importer := BormCabeDiagramVisitor new.
@@ -33,18 +35,18 @@ BormCabeImporter >> importDiagram: aXMLDocument [
 	project addDiagram: importer diagram
 ]
 
-{ #category : #'private - importing' }
+{ #category : 'private - importing' }
 BormCabeImporter >> importEntities: aDocument [
 	entities := aDocument // #entities collect: #attributes
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 BormCabeImporter >> importFile: aFileReference [
 	root := (FileSystem zip: aFileReference) open workingDirectory.
 	self importProject: (self getDocument: 'project.xmi')
 ]
 
-{ #category : #'private - importing' }
+{ #category : 'private - importing' }
 BormCabeImporter >> importProject: aDocument [
 	project := DCProject new.
 	self
@@ -57,17 +59,17 @@ BormCabeImporter >> importProject: aDocument [
 			[ :each | self importDiagram: (self resolvePath: (each attributeAt: #href)) ]
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 BormCabeImporter >> parseXml: aFile [
 	^ XMLDOMParser parse: aFile
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormCabeImporter >> project [
 	^ project
 ]
 
-{ #category : #navigating }
+{ #category : 'navigating' }
 BormCabeImporter >> resolvePath: aString [
 	| url |
 	url := XMLURI fromString: aString.

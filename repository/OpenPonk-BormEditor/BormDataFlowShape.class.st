@@ -1,10 +1,12 @@
 Class {
-	#name : #BormDataFlowShape,
-	#superclass : #OPBoundNode,
-	#category : #'OpenPonk-BormEditor-Shapes'
+	#name : 'BormDataFlowShape',
+	#superclass : 'OPBoundNode',
+	#category : 'OpenPonk-BormEditor-Shapes',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Shapes'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormDataFlowShape >> anchorToEdge [
 
 	"inspired by OPEdgeLabel"
@@ -16,7 +18,7 @@ BormDataFlowShape >> anchorToEdge [
 		stick: roassalShape on: self owningElement roassalShape
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 BormDataFlowShape >> createOwnedElementsWithoutController [
 
 	self ownedElements ifNotEmpty: [ ^ self ].
@@ -24,31 +26,31 @@ BormDataFlowShape >> createOwnedElementsWithoutController [
 	BormDataFlowIcon in: self
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormDataFlowShape >> defaultAnchorConstraintPosition [
 
 	^ OPRSAnchorConstraintBalanceReference balance: 0.5
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormDataFlowShape >> defaultMinDistance [
 
 	^ 10
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormDataFlowShape >> icon [
 
 	^ self ownedElements second
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormDataFlowShape >> label [
 
 	^ self ownedElements first
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 BormDataFlowShape >> renderBasicShape [
 
 	^ RSBox new
@@ -58,7 +60,7 @@ BormDataFlowShape >> renderBasicShape [
 		  borderColor: Color veryLightGray
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 BormDataFlowShape >> renderShapeDetails [
 
 	super renderShapeDetails.
@@ -66,19 +68,19 @@ BormDataFlowShape >> renderShapeDetails [
 	self anchorToEdge
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 BormDataFlowShape >> selectableInteraction [
 
 	^ OPRSSelectable highlightBorderColorBlue
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 BormDataFlowShape >> shouldBePositionableByUser [
 
 	^ true
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 BormDataFlowShape >> updateRenderFromModel [
 
 	super updateRenderFromModel.

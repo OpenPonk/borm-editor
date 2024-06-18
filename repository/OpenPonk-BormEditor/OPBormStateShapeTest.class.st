@@ -1,15 +1,17 @@
 Class {
-	#name : #OPBormStateShapeTest,
-	#superclass : #OPAbstractShapeTest,
-	#category : #'OpenPonk-BormEditor-Tests'
+	#name : 'OPBormStateShapeTest',
+	#superclass : 'OPAbstractShapeTest',
+	#category : 'OpenPonk-BormEditor-Tests',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Tests'
 }
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 OPBormStateShapeTest >> shapeClass [
 	^ BormStateShape
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBormStateShapeTest >> testAdd [
 
 	shape modelElement: BormState new.
@@ -21,7 +23,7 @@ OPBormStateShapeTest >> testAdd [
 				 #roassalShape)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBormStateShapeTest >> testFinalShape [
 
 	| borderedShapesCounter originalCount |
@@ -43,7 +45,7 @@ OPBormStateShapeTest >> testFinalShape [
 	self assert: borderedShapesCounter value equals: originalCount
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBormStateShapeTest >> testRemove [
 	shape modelElement: BormState new.
 	self assert: canvas nodes isEmpty.
@@ -53,7 +55,7 @@ OPBormStateShapeTest >> testRemove [
 	self assert: canvas nodes isEmpty.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBormStateShapeTest >> testRemove1 [
 
 	shape modelElement: (BormState new

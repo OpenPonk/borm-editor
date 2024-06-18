@@ -1,10 +1,12 @@
 Class {
-	#name : #OPBormContainerControllerTest,
-	#superclass : #OPBormControllerTest,
-	#category : #'OpenPonk-BormEditor-Tests'
+	#name : 'OPBormContainerControllerTest',
+	#superclass : 'OPBormControllerTest',
+	#category : 'OpenPonk-BormEditor-Tests',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Tests'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormContainerControllerTest class >> isAbstract [
 	"Override to true if a TestCase subclass is Abstract and should not have
 	TestCase instances built from it"
@@ -12,7 +14,7 @@ OPBormContainerControllerTest class >> isAbstract [
 	^ self = OPBormContainerControllerTest
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormContainerControllerTest >> testFigureRefresh [
 
 	| text |

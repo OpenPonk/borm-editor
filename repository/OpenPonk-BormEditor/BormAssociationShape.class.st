@@ -1,16 +1,18 @@
 Class {
-	#name : #BormAssociationShape,
-	#superclass : #OPEdge,
-	#category : #'OpenPonk-BormEditor-Shapes'
+	#name : 'BormAssociationShape',
+	#superclass : 'OPEdge',
+	#category : 'OpenPonk-BormEditor-Shapes',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Shapes'
 }
 
-{ #category : #constants }
+{ #category : 'constants' }
 BormAssociationShape >> marker [
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 BormAssociationShape >> renderBasicShape [
 
 	^ OPRSPolyline new

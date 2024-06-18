@@ -1,20 +1,22 @@
 Class {
-	#name : #OPBormAssociationEnhancementControllerTest,
-	#superclass : #OPBormControllerTest,
+	#name : 'OPBormAssociationEnhancementControllerTest',
+	#superclass : 'OPBormControllerTest',
 	#instVars : [
 		'relationshipsSourceController',
 		'relationshipsTargetController'
 	],
-	#category : #'OpenPonk-BormEditor-Tests'
+	#category : 'OpenPonk-BormEditor-Tests',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Tests'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormAssociationEnhancementControllerTest class >> isAbstract [
 
 	^ self = OPBormAssociationEnhancementControllerTest
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OPBormAssociationEnhancementControllerTest >> setUpTarget [
 
 	relationshipsSourceController := self targetsSourceControllerClass
@@ -33,13 +35,13 @@ OPBormAssociationEnhancementControllerTest >> setUpTarget [
 		relationshipsSourceController model
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 OPBormAssociationEnhancementControllerTest >> targetsSourceControllerClass [
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBormAssociationEnhancementControllerTest >> testCreateDiagramElement [
 
 	relationshipController model add: model.

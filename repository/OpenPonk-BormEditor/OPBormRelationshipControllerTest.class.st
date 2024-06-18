@@ -1,18 +1,20 @@
 Class {
-	#name : #OPBormRelationshipControllerTest,
-	#superclass : #OPBormControllerTest,
+	#name : 'OPBormRelationshipControllerTest',
+	#superclass : 'OPBormControllerTest',
 	#instVars : [
 		'sourceController'
 	],
-	#category : #'OpenPonk-BormEditor-Tests'
+	#category : 'OpenPonk-BormEditor-Tests',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Tests'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormRelationshipControllerTest class >> isAbstract [
 	^ self = OPBormRelationshipControllerTest
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 OPBormRelationshipControllerTest >> setUp [
 	super setUp.
 	self setUpSource.
@@ -20,14 +22,14 @@ OPBormRelationshipControllerTest >> setUp [
 	controller target: relationshipController
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 OPBormRelationshipControllerTest >> setUpSource [
 	sourceController := self sourceControllerClass new.
 	sourceController diagramController: diagramController.
 	sourceController createModelIn: diagramController model
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 OPBormRelationshipControllerTest >> sourceControllerClass [
 	^ OPBormActivityController
 ]

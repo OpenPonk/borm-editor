@@ -1,10 +1,12 @@
 Class {
-	#name : #BormConstraintShape,
-	#superclass : #OPEdgeLabel,
-	#category : #'OpenPonk-BormEditor-Shapes'
+	#name : 'BormConstraintShape',
+	#superclass : 'OPEdgeLabel',
+	#category : 'OpenPonk-BormEditor-Shapes',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Shapes'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 BormConstraintShape >> anchorToEdge [
 
 	OPRSAnchorConstraint new
@@ -14,37 +16,37 @@ BormConstraintShape >> anchorToEdge [
 		stick: roassalShape on: self owningElement roassalShape
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 BormConstraintShape >> defaultAnchorConstraintPosition [
 
 	^ OPRSAnchorConstraintBalanceReference balance: 0.5
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormConstraintShape >> defaultFontSize [
 
 	^ 12
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 BormConstraintShape >> defaultMinDistance [
 
 	^ 10
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 BormConstraintShape >> defaultText [
 
 	^ self modelElement name ifEmpty: [ 'condition' ]
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 BormConstraintShape >> selectableInteraction [
 
 	^ OPRSSelectable highlightColorBlue
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 BormConstraintShape >> shouldBePositionableByUser [
 
 	^ true

@@ -7,12 +7,14 @@ BormBasicLayout provides elementary layouting for BORM ORDiagram.
 2. All participants are layouted with RTHorizontalLine.
 "
 Class {
-	#name : #OPBormLayouter,
-	#superclass : #OPLayouter,
-	#category : #'OpenPonk-BormEditor-Adapters'
+	#name : 'OPBormLayouter',
+	#superclass : 'OPLayouter',
+	#category : 'OpenPonk-BormEditor-Adapters',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Adapters'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 OPBormLayouter class >> supportedLayoutCommands [
 	^ {OPBormLayoutCommand.
 	OPDominanceTreeLayoutCommand.
@@ -21,26 +23,26 @@ OPBormLayouter class >> supportedLayoutCommands [
 	OPTreeLayoutCommand}
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormLayouter >> allEdges [
 	^ #()
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormLayouter >> allNodes [
 	^ diagramController controllers
 		select: [ :ctrl | ctrl isKindOf: OPBormParticipantController ]
 		thenCollect: #roassalShape
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 OPBormLayouter >> applyLayout: aTwoArgBlock [
 	diagramController model participants
 		do: [ :each | self layoutParticipant: each ].
 	super applyLayout: aTwoArgBlock
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 OPBormLayouter >> collectCommunications: participants [
 	| communications |
 	communications := OrderedCollection new.
@@ -48,12 +50,12 @@ OPBormLayouter >> collectCommunications: participants [
 	^ communications
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 OPBormLayouter >> defaultLayout [
 	self layoutDiagram: diagramController model
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 OPBormLayouter >> layoutCommunication: aCommunication [
 
 	| figures rect currentMid targetMid vector |
@@ -79,13 +81,13 @@ OPBormLayouter >> layoutCommunication: aCommunication [
 		(flow propertyAt: OPRSAnchorConstraint) saveShapePosition ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 OPBormLayouter >> layoutCommunications: communications [
 
 	communications do: [ :c | self layoutCommunication: c ]
 ]
 
-{ #category : #layouting }
+{ #category : 'layouting' }
 OPBormLayouter >> layoutDiagram: aDiagram [
 
 	| shownParticipants |
@@ -99,7 +101,7 @@ OPBormLayouter >> layoutDiagram: aDiagram [
 	self updateCanvas
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 OPBormLayouter >> layoutNode: aNode [
 
 	| figure bounds |
@@ -112,7 +114,7 @@ OPBormLayouter >> layoutNode: aNode [
 	figure extent: bounds extent
 ]
 
-{ #category : #layouting }
+{ #category : 'layouting' }
 OPBormLayouter >> layoutNodesInParticipant: aParticipant [
 
 	| ctrl nodeShapes |
@@ -125,14 +127,14 @@ OPBormLayouter >> layoutNodesInParticipant: aParticipant [
 		on: nodeShapes
 ]
 
-{ #category : #layouting }
+{ #category : 'layouting' }
 OPBormLayouter >> layoutParticipant: aParticipant [
 	self
 		layoutNodesInParticipant: aParticipant;
 		layoutSizeOfParticipant: aParticipant
 ]
 
-{ #category : #layouting }
+{ #category : 'layouting' }
 OPBormLayouter >> layoutParticipants: participants [
 
 	| controllers participantShapes |
@@ -152,7 +154,7 @@ OPBormLayouter >> layoutParticipants: participants [
 	participantShapes do: [ :each | each announcer unsubscribe: self ]
 ]
 
-{ #category : #layouting }
+{ #category : 'layouting' }
 OPBormLayouter >> layoutSizeOfParticipant: aParticipant [
 
 	| ctrl bounds roassalShape innerBounds |
@@ -166,7 +168,7 @@ OPBormLayouter >> layoutSizeOfParticipant: aParticipant [
 		translateTo: bounds center
 ]
 
-{ #category : #layouting }
+{ #category : 'layouting' }
 OPBormLayouter >> layoutSizesOfParticipants [
 	diagramController model participants
 		do: [ :each | self layoutSizeOfParticipant: each ]

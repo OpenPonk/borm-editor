@@ -1,6 +1,6 @@
 Class {
-	#name : #BormNodeShape,
-	#superclass : #BormShape,
+	#name : 'BormNodeShape',
+	#superclass : 'BormShape',
 	#instVars : [
 		'shapesFactory',
 		'plusIcon',
@@ -8,33 +8,35 @@ Class {
 		'labeled',
 		'wrappedForWidth'
 	],
-	#category : #'OpenPonk-BormEditor-Shapes'
+	#category : 'OpenPonk-BormEditor-Shapes',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Shapes'
 }
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 BormNodeShape >> defaultSize [
 	^ 150 @ 60
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 BormNodeShape >> initialize [
 
 	super initialize.
 	plusIconAction := [  ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormNodeShape >> plusIcon [
 	^ plusIcon
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormNodeShape >> plusIconAction: aBlock [
 
 	plusIconAction := aBlock
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormNodeShape >> renderShapeDetails [
 
 	labeled := OPRSLabeled new.
@@ -73,41 +75,41 @@ BormNodeShape >> renderShapeDetails [
 		for: self.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormNodeShape >> selectableInteraction [
 
 	^ OPRSSelectable highlightBorderColorBlue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormNodeShape >> shapesFactory [
 	^ shapesFactory ifNil: [ shapesFactory := BormShapesFactory new ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormNodeShape >> shouldBePositionableByUser [
 
 	^ true
 ]
 
-{ #category : #interactions }
+{ #category : 'interactions' }
 BormNodeShape >> shouldBeResizableByUser [
 
 	^ true
 ]
 
-{ #category : #'creating - subelements' }
+{ #category : 'creating - subelements' }
 BormNodeShape >> textOffset [
 	^ 0 @ 0
 ]
 
-{ #category : #'creating - subelements' }
+{ #category : 'creating - subelements' }
 BormNodeShape >> textPadding [
 
 	^ 5
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 BormNodeShape >> updateRenderFromModel [
 
 	self modelElement submodel
@@ -119,7 +121,7 @@ BormNodeShape >> updateRenderFromModel [
 	roassalShape signalUpdate
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 BormNodeShape >> updateText [
 
 	wrappedForWidth := roassalShape width.
@@ -132,7 +134,7 @@ BormNodeShape >> updateText [
 		roassalShape height: labeled labelShape height + 10 ]
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 BormNodeShape >> wrapMaxWidth [
 
 	^ self width - (self textPadding * 2) max: 20

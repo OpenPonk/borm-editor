@@ -1,46 +1,48 @@
 Class {
-	#name : #OPBormParticipantControllerTest,
-	#superclass : #OPBormContainerControllerTest,
-	#category : #'OpenPonk-BormEditor-Tests'
+	#name : 'OPBormParticipantControllerTest',
+	#superclass : 'OPBormContainerControllerTest',
+	#category : 'OpenPonk-BormEditor-Tests',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormParticipantControllerTest >> controllerClass [
 	^ OPBormParticipantController
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormParticipantControllerTest >> createTargetController [
 	^ diagramController
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormParticipantControllerTest >> createTargetModel [
 	^ diagramController model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormParticipantControllerTest >> diagramElementClass [
 
 	^ BormParticipantShape
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormParticipantControllerTest >> modelClass [
 	^ BormParticipant
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 OPBormParticipantControllerTest >> setUpTarget [
 	relationshipController := diagramController
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormParticipantControllerTest >> targetControllerClass [
 	^ self diagramControllerClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormParticipantControllerTest >> targetModelClass [
 	^ self diagramModelClass
 ]

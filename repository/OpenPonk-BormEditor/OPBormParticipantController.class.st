@@ -1,10 +1,12 @@
 Class {
-	#name : #OPBormParticipantController,
-	#superclass : #OPBormElementController,
-	#category : #'OpenPonk-BormEditor-Controllers'
+	#name : 'OPBormParticipantController',
+	#superclass : 'OPBormElementController',
+	#category : 'OpenPonk-BormEditor-Controllers',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Controllers'
 }
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 OPBormParticipantController >> buildEditorForm: aForm [
 
 	super buildEditorForm: aForm.
@@ -18,24 +20,24 @@ OPBormParticipantController >> buildEditorForm: aForm [
 			self refreshFigure ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormParticipantController >> canBeTargetFor: aController [
 	^ aController isKindOf: OPBormProcessNodeController
 ]
 
-{ #category : #construction }
+{ #category : 'construction' }
 OPBormParticipantController >> diagramElementClass [
 
 	^ BormParticipantShape
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormParticipantController >> elementsToShowInside [
 
 	^ model nodes , (model nodes flatCollect: [ :each | each outgoing ])
 ]
 
-{ #category : #figures }
+{ #category : 'figures' }
 OPBormParticipantController >> hookDiagramElement [
 
 	super hookDiagramElement.
@@ -45,12 +47,12 @@ OPBormParticipantController >> hookDiagramElement [
 		typeIconProvider: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormParticipantController >> modelClass [
 	^ BormParticipant
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 OPBormParticipantController >> nodeRoassalShapes [
 
 	^ self model nodes
@@ -61,18 +63,18 @@ OPBormParticipantController >> nodeRoassalShapes [
 		  thenSelect: #isNotNil
 ]
 
-{ #category : #destruction }
+{ #category : 'destruction' }
 OPBormParticipantController >> removeModel [
 	self diagramController model remove: self model
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 OPBormParticipantController >> typeIcon [
 
 	^ self typeIconFor: self model type
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 OPBormParticipantController >> typeIconFor: aType [
 
 	aType = BormParticipantType Person ifTrue: [ 

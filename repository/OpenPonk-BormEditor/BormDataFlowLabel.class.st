@@ -1,16 +1,18 @@
 Class {
-	#name : #BormDataFlowLabel,
-	#superclass : #OPLabel,
-	#category : #'OpenPonk-BormEditor-Shapes'
+	#name : 'BormDataFlowLabel',
+	#superclass : 'OPLabel',
+	#category : 'OpenPonk-BormEditor-Shapes',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Shapes'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormDataFlowLabel >> defaultText [
 
 	^ self modelElement name
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 BormDataFlowLabel >> renderShapeDetails [
 
 	super renderShapeDetails.

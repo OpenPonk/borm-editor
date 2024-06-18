@@ -1,14 +1,16 @@
 Class {
-	#name : #OPBormDataFlowController,
-	#superclass : #OPBormAssociationEnhancementController,
+	#name : 'OPBormDataFlowController',
+	#superclass : 'OPBormAssociationEnhancementController',
 	#instVars : [
 		'labelFigure',
 		'iconFigure'
 	],
-	#category : #'OpenPonk-BormEditor-Controllers'
+	#category : 'OpenPonk-BormEditor-Controllers',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Controllers'
 }
 
-{ #category : #'ui hooks' }
+{ #category : 'ui hooks' }
 OPBormDataFlowController >> buildEditorForm: aForm [
 
 	super buildEditorForm: aForm.
@@ -21,12 +23,12 @@ OPBormDataFlowController >> buildEditorForm: aForm [
 			self diagramElement modelChanged ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormDataFlowController >> canVisitTarget: aController [
 	^ aController canBeTargetForDataFlow: self
 ]
 
-{ #category : #construction }
+{ #category : 'construction' }
 OPBormDataFlowController >> createModelIn: aParentModel [
 
 	self model: self modelClass new.
@@ -34,18 +36,18 @@ OPBormDataFlowController >> createModelIn: aParentModel [
 	^ model
 ]
 
-{ #category : #construction }
+{ #category : 'construction' }
 OPBormDataFlowController >> diagramElementClass [
 
 	^ BormDataFlowShape
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormDataFlowController >> modelClass [
 	^ BormDataFlow
 ]
 
-{ #category : #destruction }
+{ #category : 'destruction' }
 OPBormDataFlowController >> removeModel [
 	self model owner remove: self model
 ]

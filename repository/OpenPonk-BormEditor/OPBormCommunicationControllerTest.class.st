@@ -2,28 +2,30 @@
 A BormCommunicationControllerTest is a test class for testing the behavior of BormCommunicationController
 "
 Class {
-	#name : #OPBormCommunicationControllerTest,
-	#superclass : #OPBormRelationshipControllerTest,
-	#category : #'OpenPonk-BormEditor-Tests'
+	#name : 'OPBormCommunicationControllerTest',
+	#superclass : 'OPBormRelationshipControllerTest',
+	#category : 'OpenPonk-BormEditor-Tests',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormCommunicationControllerTest >> controllerClass [
 	^ OPBormCommunicationController
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormCommunicationControllerTest >> diagramElementClass [
 
 	^ BormCommunicationShape
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormCommunicationControllerTest >> modelClass [
 	^ BormCommunication
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 OPBormCommunicationControllerTest >> targetControllerClass [
 	^ OPBormActivityController
 ]

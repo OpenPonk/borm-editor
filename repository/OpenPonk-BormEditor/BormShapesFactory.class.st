@@ -1,20 +1,22 @@
 Class {
-	#name : #BormShapesFactory,
-	#superclass : #Object,
-	#category : #'OpenPonk-BormEditor-Shapes'
+	#name : 'BormShapesFactory',
+	#superclass : 'Object',
+	#category : 'OpenPonk-BormEditor-Shapes',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Shapes'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormShapesFactory >> backgroundColor [
 	^ Color white
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormShapesFactory >> borderColor [
 	^ Color black
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormShapesFactory >> newBox [
 
 	^ RSBox new
@@ -23,7 +25,7 @@ BormShapesFactory >> newBox [
 		  yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormShapesFactory >> newRoundedBox [
 
 	^ RSBox new
@@ -33,7 +35,7 @@ BormShapesFactory >> newRoundedBox [
 		  yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormShapesFactory >> textColor [
 	^ Color black
 ]

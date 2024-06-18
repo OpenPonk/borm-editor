@@ -8,18 +8,20 @@ IconFactory new
 BormEditorIcons current initializeIcons
 "
 Class {
-	#name : #OPBormEditorIcons,
-	#superclass : #OPIcons,
-	#category : #'OpenPonk-BormEditor-Icons'
+	#name : 'OPBormEditorIcons',
+	#superclass : 'OPIcons',
+	#category : 'OpenPonk-BormEditor-Icons',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Icons'
 }
 
-{ #category : #'accessing - icons' }
+{ #category : 'accessing - icons' }
 OPBormEditorIcons class >> activity16Icon [
 
 	^ Form fromBinaryStream: self activity16IconContents base64Decoded asByteArray readStream
 ]
 
-{ #category : #'private - contents' }
+{ #category : 'private - contents' }
 OPBormEditorIcons class >> activity16IconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/16/activity16.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA
@@ -42,13 +44,13 @@ JslkUqLRKHNzc9hsNgYHB+ns7MQwDObn5wmHw3i9Xrq7u2lvb+91uVzf2O12/gGZc7kbIRNE
 GwAAAABJRU5ErkJggg=='
 ]
 
-{ #category : #'accessing - icons' }
+{ #category : 'accessing - icons' }
 OPBormEditorIcons class >> bormSystemIcon [
 
 	^ Form fromBinaryStream: self bormSystemIconContents base64Decoded asByteArray readStream
 ]
 
-{ #category : #'private - contents' }
+{ #category : 'private - contents' }
 OPBormEditorIcons class >> bormSystemIconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/system.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA
@@ -83,13 +85,13 @@ QplFVUMhWEufzHL66adpbt+zFE0k04ZcW/hrc7WusO0AvsgIrXGcKna5lC9bhVSlXEJ5HmY4
 TCJVRzSeXC/HdvFfK+HXOcgyrTIAAAAASUVORK5CYII='
 ]
 
-{ #category : #'accessing - icons' }
+{ #category : 'accessing - icons' }
 OPBormEditorIcons class >> communication16Icon [
 
 	^ Form fromBinaryStream: self communication16IconContents base64Decoded asByteArray readStream
 ]
 
-{ #category : #'private - contents' }
+{ #category : 'private - contents' }
 OPBormEditorIcons class >> communication16IconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/16/communication16.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA
@@ -104,13 +106,13 @@ XQCp1Wp0u92n76rNer1mMBgQBAGPx+MbBsT3fU6nk7wMfJ5X+F/zI/wt8L/4KRAGq0BYDIh4
 nhcaAyKHwwHP80JhQH4B0XFwur8ipyMAAAAASUVORK5CYII='
 ]
 
-{ #category : #'accessing - icons' }
+{ #category : 'accessing - icons' }
 OPBormEditorIcons class >> constraint16Icon [
 
 	^ Form fromBinaryStream: self constraint16IconContents base64Decoded asByteArray readStream
 ]
 
-{ #category : #'private - contents' }
+{ #category : 'private - contents' }
 OPBormEditorIcons class >> constraint16IconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/16/constraint16.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA
@@ -124,13 +126,13 @@ cglRFIfbqOt6Z5tBt+A4Dg6HA1RV7ax/Pp/p3/I/gIje5vF4pMf+druRJEkEoE3btokNOeeq
 qlDXddsLgoBfctCfQrEb8q0AAAAASUVORK5CYII='
 ]
 
-{ #category : #'accessing - icons' }
+{ #category : 'accessing - icons' }
 OPBormEditorIcons class >> dataFlow16Icon [
 
 	^ Form fromBinaryStream: self dataFlow16IconContents base64Decoded asByteArray readStream
 ]
 
-{ #category : #'private - contents' }
+{ #category : 'private - contents' }
 OPBormEditorIcons class >> dataFlow16IconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/16/dataFlow16.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA
@@ -149,13 +151,13 @@ mmazSWfnOy4vCxiGwcDAAH19fcLn893J/jDfnrmuS6VSGTZN86dlWei6jq7rBIPBu0X9K+L2
 Ka7r3jXR4/E8ansS8Jz8BhxTJrrtOHjNAAAAAElFTkSuQmCC'
 ]
 
-{ #category : #'accessing - icons' }
+{ #category : 'accessing - icons' }
 OPBormEditorIcons class >> dataFlowLeftIcon [
 
 	^ Form fromBinaryStream: self dataFlowLeftIconContents base64Decoded asByteArray readStream
 ]
 
-{ #category : #'private - contents' }
+{ #category : 'private - contents' }
 OPBormEditorIcons class >> dataFlowLeftIconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/shapes/dataFlowLeft.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAACMAAAALCAYAAAD1JjQCAAAABmJLR0QA/wD/AP+gvaeTAAAA
@@ -175,13 +177,13 @@ dR0ejwdjY2NNOfDNzQ01TUOpVILNZoPb7YbP5xPt7e1oaWnBb847+Kj1GEhBAAAAAElFTkSu
 QmCC'
 ]
 
-{ #category : #'accessing - icons' }
+{ #category : 'accessing - icons' }
 OPBormEditorIcons class >> dataFlowRightIcon [
 
 	^ Form fromBinaryStream: self dataFlowRightIconContents base64Decoded asByteArray readStream
 ]
 
-{ #category : #'private - contents' }
+{ #category : 'private - contents' }
 OPBormEditorIcons class >> dataFlowRightIconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/shapes/dataFlowRight.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAACMAAAALCAYAAAD1JjQCAAAABmJLR0QA/wD/AP+gvaeTAAAA
@@ -201,13 +203,13 @@ VquFWq2GQqHADw8P+Pz8hMvlgqIocLvdNEgC39zccLFYhCzLmJmZIZvNBiLqK4H/AGLEf54Z
 60XqAAAAAElFTkSuQmCC'
 ]
 
-{ #category : #'accessing - icons' }
+{ #category : 'accessing - icons' }
 OPBormEditorIcons class >> entity16Icon [
 
 	^ Form fromBinaryStream: self entity16IconContents base64Decoded asByteArray readStream
 ]
 
-{ #category : #'private - contents' }
+{ #category : 'private - contents' }
 OPBormEditorIcons class >> entity16IconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/16/entity16.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA
@@ -223,13 +225,13 @@ Gv0BEMLXlQxAAjdX13A9WEOW+W/nGRZ7rYFJ5vvmt1ZuNiMmieTJD8U0VUwSxX5fsftN8ehI
 8fBQ8eBA8ctXyc3NX61cmk/j/w5T6arj/BO7031tDWM5IAAAAABJRU5ErkJggg=='
 ]
 
-{ #category : #'accessing - icons' }
+{ #category : 'accessing - icons' }
 OPBormEditorIcons class >> initialIcon [
 
 	^ Form fromBinaryStream: self initialIconContents base64Decoded asByteArray readStream
 ]
 
-{ #category : #'private - contents' }
+{ #category : 'private - contents' }
 OPBormEditorIcons class >> initialIconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/initial.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABmJLR0QA/wD/AP+gvaeTAAAA
@@ -250,13 +252,13 @@ G5FIBLquo7a2tqOwsHDmIsgCi1WVnvf1YWVtDel0GoqioL29Hbquo6ampoMxNiOKIi4bYXNz
 k1KpFCYnJ1FfX4+uri5UV1dfGcrnD/XhNjfKnXGJAAAAAElFTkSuQmCC'
 ]
 
-{ #category : #'accessing - icons' }
+{ #category : 'accessing - icons' }
 OPBormEditorIcons class >> oRModel16Icon [
 
 	^ Form fromBinaryStream: self oRModel16IconContents base64Decoded asByteArray readStream
 ]
 
-{ #category : #'private - contents' }
+{ #category : 'private - contents' }
 OPBormEditorIcons class >> oRModel16IconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/16/diagram16.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA
@@ -276,13 +278,13 @@ nmBzXmFs7BaatoLbPYEsyyiFhUdFJPLNikbDFBSEMqIasQTbKxJL4SnMSARVvYAkBfB6K9ja
 IO3A/Ow2eSfKEUKkdk6nk/r6emG32/kLTPUPZfrsIJ8AAAAASUVORK5CYII='
 ]
 
-{ #category : #'accessing - icons' }
+{ #category : 'accessing - icons' }
 OPBormEditorIcons class >> organizationIcon [
 
 	^ Form fromBinaryStream: self organizationIconContents base64Decoded asByteArray readStream
 ]
 
-{ #category : #'private - contents' }
+{ #category : 'private - contents' }
 OPBormEditorIcons class >> organizationIconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/organization.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA
@@ -311,13 +313,13 @@ w+liMhE/mEzEm4yMTAiB3enE5w/uKwmUHptZPgsAxTxbZqtcj3th/A9/UGDY/JrFzAAAAABJ
 RU5ErkJggg=='
 ]
 
-{ #category : #'accessing - icons' }
+{ #category : 'accessing - icons' }
 OPBormEditorIcons class >> participant16Icon [
 
 	^ Form fromBinaryStream: self participant16IconContents base64Decoded asByteArray readStream
 ]
 
-{ #category : #'private - contents' }
+{ #category : 'private - contents' }
 OPBormEditorIcons class >> participant16IconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/16/participant16.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA
@@ -339,13 +341,13 @@ Oh2Wfnhbi5d+5lLcps808DXs75zjqr7JwusLQgjBWWsNw0DKpx0UWmt836fZbFLYKWjbshk+
 N0wymRTRaPRf5v/TPx/rS42dMRyqAAAAAElFTkSuQmCC'
 ]
 
-{ #category : #'accessing - icons' }
+{ #category : 'accessing - icons' }
 OPBormEditorIcons class >> personIcon [
 
 	^ Form fromBinaryStream: self personIconContents base64Decoded asByteArray readStream
 ]
 
-{ #category : #'private - contents' }
+{ #category : 'private - contents' }
 OPBormEditorIcons class >> personIconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/person.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA
@@ -377,13 +379,13 @@ QbF0UnsX22s5wBKQrJuQtBuSNGOSVkyadHAux/N8/CDEDwqYsIApFAmLfU+aYvSo7we9ibxk
 on4LMDxxUbrMRGEAAAAASUVORK5CYII='
 ]
 
-{ #category : #'accessing - icons' }
+{ #category : 'accessing - icons' }
 OPBormEditorIcons class >> settingsIcon [
 
 	^ Form fromBinaryStream: self settingsIconContents base64Decoded asByteArray readStream
 ]
 
-{ #category : #'private - contents' }
+{ #category : 'private - contents' }
 OPBormEditorIcons class >> settingsIconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/settings.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlw
@@ -396,13 +398,13 @@ lwY7t5jsq6K+FpFpyA9RMQOgmSj0BRiJyFqfn4BeAttUrvebFpHpoNW3KmpZdhX/+6ZEYOPJ
 9Z6DL2esYF6BT2esYHL3t4of1ezMdo7TPcYAAAAASUVORK5CYII='
 ]
 
-{ #category : #'accessing - icons' }
+{ #category : 'accessing - icons' }
 OPBormEditorIcons class >> state16Icon [
 
 	^ Form fromBinaryStream: self state16IconContents base64Decoded asByteArray readStream
 ]
 
-{ #category : #'private - contents' }
+{ #category : 'private - contents' }
 OPBormEditorIcons class >> state16IconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/16/state16.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA
@@ -424,13 +426,13 @@ wfOrz9FsNsnzXFhrkVL+O43/jXNRFAyHw/uj0ahhraVer4v9BD5YfwPbkTqZVMc9VQAAAABJ
 RU5ErkJggg=='
 ]
 
-{ #category : #'accessing - icons' }
+{ #category : 'accessing - icons' }
 OPBormEditorIcons class >> transition16Icon [
 
 	^ Form fromBinaryStream: self transition16IconContents base64Decoded asByteArray readStream
 ]
 
-{ #category : #'private - contents' }
+{ #category : 'private - contents' }
 OPBormEditorIcons class >> transition16IconContents [
 	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/16/transition16.png"
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA

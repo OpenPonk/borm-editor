@@ -3,36 +3,38 @@ I provide couple of examples for BORM.
 See class-side.
 "
 Class {
-	#name : #OPBormExampleDiagrams,
-	#superclass : #Object,
-	#category : #'OpenPonk-BormEditor-Examples'
+	#name : 'OPBormExampleDiagrams',
+	#superclass : 'Object',
+	#category : 'OpenPonk-BormEditor-Examples',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Examples'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 OPBormExampleDiagrams class >> exampleDataFlows [
 	<example>
 	self sampleDataFlows openAs: 'Example Data Flows'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 OPBormExampleDiagrams class >> exampleEmpty [
 	<example>
 	^ self sampleEmpty openAs: 'BORM'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 OPBormExampleDiagrams class >> examplePizzaDelivery [
 	<example>
 	^ self samplePizzaDelivery openAs: 'Pizza Delivery'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 OPBormExampleDiagrams class >> exampleTravelingCard [
 	<example>
 	^ self sampleTravelingCard openAs: 'Traveling Card'
 ]
 
-{ #category : #menu }
+{ #category : 'menu' }
 OPBormExampleDiagrams class >> menuCommandOn: aBuilder [
 
 	<worldMenu>
@@ -54,7 +56,7 @@ OPBormExampleDiagrams class >> menuCommandOn: aBuilder [
 				action: [ self exampleDataFlows ] ]
 ]
 
-{ #category : #samples }
+{ #category : 'samples' }
 OPBormExampleDiagrams class >> sampleDataFlows [
 	<sample>
 	| diagram user sys |
@@ -103,13 +105,13 @@ OPBormExampleDiagrams class >> sampleDataFlows [
 	 ^ diagram
 ]
 
-{ #category : #samples }
+{ #category : 'samples' }
 OPBormExampleDiagrams class >> sampleEmpty [
 	<sample>
 	^ BormORModel named: 'ORD'
 ]
 
-{ #category : #samples }
+{ #category : 'samples' }
 OPBormExampleDiagrams class >> samplePizzaDelivery [
 	<sample>
 	^ 'Person "Customer" {
@@ -181,7 +183,7 @@ Person "Cashier" {
 ' asBorm: 'Pizza Delivery'
 ]
 
-{ #category : #samples }
+{ #category : 'samples' }
 OPBormExampleDiagrams class >> sampleTravelingCard [
 	^ 'Person "Customer" {
 	initial state "wants a travel card"

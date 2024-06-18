@@ -1,14 +1,16 @@
 Class {
-	#name : #BormStateShape,
-	#superclass : #BormNodeShape,
+	#name : 'BormStateShape',
+	#superclass : 'BormNodeShape',
 	#instVars : [
 		'playIcon',
 		'innerBox'
 	],
-	#category : #'OpenPonk-BormEditor-Shapes'
+	#category : 'OpenPonk-BormEditor-Shapes',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Shapes'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormStateShape >> renderBasicShape [
 
 	^ self shapesFactory newRoundedBox
@@ -18,7 +20,7 @@ BormStateShape >> renderBasicShape [
 		  yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormStateShape >> renderShapeDetails [
 
 	| block |
@@ -53,7 +55,7 @@ BormStateShape >> renderShapeDetails [
 		when: RSExtentChangedEvent do: block for: self
 ]
 
-{ #category : #'creating - subelements' }
+{ #category : 'creating - subelements' }
 BormStateShape >> textOffset [
 
 	self modelElement ifNil: [ ^ super textOffset ].
@@ -61,7 +63,7 @@ BormStateShape >> textOffset [
 	^ super textOffset
 ]
 
-{ #category : #'creating - subelements' }
+{ #category : 'creating - subelements' }
 BormStateShape >> textPadding [
 
 	| padding |
@@ -75,14 +77,14 @@ BormStateShape >> textPadding [
 	^ padding
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormStateShape >> updateInnerBox [
 	innerBox
 		width: self width - 10;
 		height: self height - 10
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormStateShape >> updateRenderFromModel [
 
 	self modelElement isInitial

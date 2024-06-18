@@ -1,10 +1,12 @@
 Class {
-	#name : #OPBormDiagramController,
-	#superclass : #OPDiagramController,
-	#category : #'OpenPonk-BormEditor-Controllers'
+	#name : 'OPBormDiagramController',
+	#superclass : 'OPDiagramController',
+	#category : 'OpenPonk-BormEditor-Controllers',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Controllers'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormDiagramController >> addAsTargetFor: aController [
 
 	super addAsTargetFor: aController.
@@ -13,7 +15,7 @@ OPBormDiagramController >> addAsTargetFor: aController [
 		@ (aController diagramElement height / 2.2)
 ]
 
-{ #category : #rebuilding }
+{ #category : 'rebuilding' }
 OPBormDiagramController >> allShowableElements [
 
 	| priorities |
@@ -30,18 +32,18 @@ OPBormDiagramController >> allShowableElements [
 		  sortedAs: [ :each | priorities indexOf: each class ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormDiagramController >> canBeTargetFor: aController [
 	^ (super canBeTargetFor: aController)
 		or: [ aController isMemberOf: OPBormParticipantController ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 OPBormDiagramController >> commonModelClassPrefix [
 	^ 'Borm'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormDiagramController >> controllerFactory [
 	^ super controllerFactory
 		register: OPBormCommunicationController forModel: BormCommunication;
@@ -53,24 +55,24 @@ OPBormDiagramController >> controllerFactory [
 		register: OPBormConstraintController forModel: BormConstraint
 ]
 
-{ #category : #rebuilding }
+{ #category : 'rebuilding' }
 OPBormDiagramController >> elementsToShowInside [
 	^ model participants
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormDiagramController >> hasRedo [
 	self flag: 'Disabled due to RTBitmap canvas issues'.
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormDiagramController >> hasUndo [
 	self flag: 'Disabled due to RTBitmap canvas issues'.
 	^ false
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OPBormDiagramController >> initializePalette: aPalette [
 	(aPalette newCreationTool: [ OPBormParticipantController new ])
 		label: 'Participant';
@@ -98,7 +100,7 @@ OPBormDiagramController >> initializePalette: aPalette [
 		icon: OPBormEditorIcons constraint16Icon
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OPBormDiagramController >> initializePaletteWithShortcuts: aPalette [
 	(aPalette newCreationTool: [ OPBormParticipantController new ])
 		label: 'Participant';
@@ -133,7 +135,7 @@ OPBormDiagramController >> initializePaletteWithShortcuts: aPalette [
 		shortcut: $r asShortcut
 ]
 
-{ #category : #userinterface }
+{ #category : 'userinterface' }
 OPBormDiagramController >> updateCanvas [
 
 	self controllers do: [ :each | each diagramElement modelChanged ].

@@ -1,16 +1,18 @@
 Class {
-	#name : #OPBormElementController,
-	#superclass : #OPElementController,
-	#category : #'OpenPonk-BormEditor-Controllers'
+	#name : 'OPBormElementController',
+	#superclass : 'OPElementController',
+	#category : 'OpenPonk-BormEditor-Controllers',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Controllers'
 }
 
-{ #category : #'ui hooks' }
+{ #category : 'ui hooks' }
 OPBormElementController >> buildEditorForm: aForm [
 	super buildEditorForm: aForm.
 	self buildEntityForm: aForm
 ]
 
-{ #category : #'ui hooks' }
+{ #category : 'ui hooks' }
 OPBormElementController >> buildEntityForm: aForm [
 
 	self flag: 'Displays entry completion in wrong place'.
@@ -35,7 +37,7 @@ OPBormElementController >> buildEntityForm: aForm [
 							:b | a name < b name ] ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormElementController >> isHideable [
 	^ true
 ]

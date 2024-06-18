@@ -1,10 +1,12 @@
 Class {
-	#name : #OPBormStateController,
-	#superclass : #OPBormProcessNodeController,
-	#category : #'OpenPonk-BormEditor-Controllers'
+	#name : 'OPBormStateController',
+	#superclass : 'OPBormProcessNodeController',
+	#category : 'OpenPonk-BormEditor-Controllers',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Controllers'
 }
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 OPBormStateController >> buildEditorForm: aForm [
 
 	super buildEditorForm: aForm.
@@ -20,23 +22,23 @@ OPBormStateController >> buildEditorForm: aForm [
 			self diagramElement modelChanged ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormStateController >> canBeSourceFor: aController [
 	^ aController isKindOf: OPBormTransitionController
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormStateController >> canBeTargetFor: aController [
 	^ (aController isKindOf: OPBormTransitionController) and: [ aController source isKindOf: OPBormActivityController ]
 ]
 
-{ #category : #construction }
+{ #category : 'construction' }
 OPBormStateController >> diagramElementClass [
 
 	^ BormStateShape
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormStateController >> modelClass [
 	^ BormState
 ]

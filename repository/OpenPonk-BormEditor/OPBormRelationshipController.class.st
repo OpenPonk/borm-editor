@@ -1,36 +1,38 @@
 Class {
-	#name : #OPBormRelationshipController,
-	#superclass : #OPDirectionalRelationshipController,
-	#category : #'OpenPonk-BormEditor-Controllers'
+	#name : 'OPBormRelationshipController',
+	#superclass : 'OPDirectionalRelationshipController',
+	#category : 'OpenPonk-BormEditor-Controllers',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Controllers'
 }
 
-{ #category : #connecting }
+{ #category : 'connecting' }
 OPBormRelationshipController >> canBeTargetFor: aController [
 	^ (aController respondsTo: #canVisitTarget:)
 		and: [ aController canVisitTarget: self ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormRelationshipController >> canBeTargetForConstraint: aController [
 	^ self model hasConstraint not
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormRelationshipController >> canBeTargetForDataFlow: aDataFlow [
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormRelationshipController >> elementsToShowInside [
 	^ model constraints
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormRelationshipController >> isHideable [
 	^ true
 ]
 
-{ #category : #construction }
+{ #category : 'construction' }
 OPBormRelationshipController >> showInDiagram: aDiagramController [
 	"protocol: #construction"
 
@@ -47,7 +49,7 @@ OPBormRelationshipController >> showInDiagram: aDiagramController [
 	^ super showInDiagram: aDiagramController
 ]
 
-{ #category : #construction }
+{ #category : 'construction' }
 OPBormRelationshipController >> showWithoutDependentInDiagram: aDiagramController [
 	aDiagramController showWithoutDependentInDiagramModel: model target.
 	aDiagramController showWithoutDependentInDiagramModel: model source.

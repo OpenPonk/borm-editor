@@ -1,6 +1,6 @@
 Class {
-	#name : #BormEntityListPresenter,
-	#superclass : #SpPresenter,
+	#name : 'BormEntityListPresenter',
+	#superclass : 'SpPresenter',
 	#instVars : [
 		'searchInput',
 		'addEntryButton',
@@ -9,10 +9,12 @@ Class {
 		'displayNameBlock',
 		'orphanedItems'
 	],
-	#category : #'OpenPonk-BormEditor-UI'
+	#category : 'OpenPonk-BormEditor-UI',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'UI'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormEntityListPresenter class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -25,17 +27,17 @@ BormEntityListPresenter class >> defaultLayout [
 		  yourself
 ]
 
-{ #category : #'accessing - spec fields' }
+{ #category : 'accessing - spec fields' }
 BormEntityListPresenter >> addEntryButton [
 	^ addEntryButton
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormEntityListPresenter >> addEntryLabel: aString [
 	addEntryButton label: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormEntityListPresenter >> connectPresenters [
 
 	super connectPresenters.
@@ -46,18 +48,18 @@ BormEntityListPresenter >> connectPresenters [
 		whenActivatedDo: [ self openEntryEditorOn: entriesList selectedItem ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormEntityListPresenter >> displayNameBlock: aOneArgBlock [
 	displayNameBlock := aOneArgBlock.
 	entriesList display: displayNameBlock
 ]
 
-{ #category : #'accessing - spec fields' }
+{ #category : 'accessing - spec fields' }
 BormEntityListPresenter >> entriesList [
 	^ entriesList
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 BormEntityListPresenter >> initialize [
 	orphanedItems := OrderedCollection new.
 	itemsBlock := [ #() ].
@@ -65,7 +67,7 @@ BormEntityListPresenter >> initialize [
 	super initialize
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormEntityListPresenter >> initializePresenters [
 
 	searchInput := self newTextInput.
@@ -81,23 +83,23 @@ BormEntityListPresenter >> initializePresenters [
 		add: entriesList
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormEntityListPresenter >> itemsBlock: aBlock [
 	itemsBlock := aBlock.
 	self refreshList
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 BormEntityListPresenter >> openEntryEditor [
 	self openEntryEditorOn: BormEntity new isNew: true
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 BormEntityListPresenter >> openEntryEditorOn: anEntry [
 	self openEntryEditorOn: anEntry isNew: false
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 BormEntityListPresenter >> openEntryEditorOn: anEntry isNew: isNew [
 	| response |
 	response := self uiManager
@@ -112,7 +114,7 @@ BormEntityListPresenter >> openEntryEditorOn: anEntry isNew: isNew [
 	self refreshList
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 BormEntityListPresenter >> refreshList [
 
 	| search |
@@ -123,12 +125,12 @@ BormEntityListPresenter >> refreshList [
 				 search ])
 ]
 
-{ #category : #'accessing - spec fields' }
+{ #category : 'accessing - spec fields' }
 BormEntityListPresenter >> searchInput [
 	^ searchInput
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormEntityListPresenter >> selectedItem [
 	^ entriesList selectedItem
 ]

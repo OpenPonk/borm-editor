@@ -1,15 +1,17 @@
 Class {
-	#name : #BormParticipantShape,
-	#superclass : #OPBoundNode,
+	#name : 'BormParticipantShape',
+	#superclass : 'OPBoundNode',
 	#instVars : [
 		'innerRoassalShapesBlock',
 		'typeIconProvider',
 		'icon'
 	],
-	#category : #'OpenPonk-BormEditor-Shapes'
+	#category : 'OpenPonk-BormEditor-Shapes',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Shapes'
 }
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 BormParticipantShape >> addSelectionDraggableInteraction [
 
 	roassalShape
@@ -17,20 +19,20 @@ BormParticipantShape >> addSelectionDraggableInteraction [
 			 innerRoassalShapesBlock)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 BormParticipantShape >> initialize [
 
 	super initialize.
 	innerRoassalShapesBlock := [ :allNodes | allNodes ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 BormParticipantShape >> innerRoassalShapesBlock: aBlock [
 
 	innerRoassalShapesBlock := aBlock
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 BormParticipantShape >> renderBasicShape [
 
 	^ RSBox new
@@ -42,7 +44,7 @@ BormParticipantShape >> renderBasicShape [
 		  yourself
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 BormParticipantShape >> renderShapeDetails [
 
 	| labeled |
@@ -67,31 +69,31 @@ BormParticipantShape >> renderShapeDetails [
 	roassalShape when: RSShapeRemovedEvent do: [ icon remove ] for: self
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 BormParticipantShape >> selectableInteraction [
 
 	^ OPRSSelectable highlightBorderColorBlue
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 BormParticipantShape >> shouldBePositionableByUser [
 
 	^ true
 ]
 
-{ #category : #interactions }
+{ #category : 'interactions' }
 BormParticipantShape >> shouldBeResizableByUser [
 
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormParticipantShape >> typeIconProvider: anObject [
 
 	typeIconProvider := anObject
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 BormParticipantShape >> updateRenderFromModel [
 
 	(roassalShape propertyAt: #RSLabeled) text: self modelElement name.

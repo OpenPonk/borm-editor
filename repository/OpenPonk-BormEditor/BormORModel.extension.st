@@ -1,11 +1,11 @@
-Extension { #name : #BormORModel }
+Extension { #name : 'BormORModel' }
 
-{ #category : #'*OpenPonk-BormEditor' }
+{ #category : '*OpenPonk-BormEditor' }
 BormORModel >> open [
 	self openAs: 'New BORM Project'
 ]
 
-{ #category : #'*OpenPonk-BormEditor' }
+{ #category : '*OpenPonk-BormEditor' }
 BormORModel >> openAs: aProjectName [
 
 	(OPProject new

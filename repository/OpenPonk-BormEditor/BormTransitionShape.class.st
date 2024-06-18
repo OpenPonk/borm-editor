@@ -1,10 +1,12 @@
 Class {
-	#name : #BormTransitionShape,
-	#superclass : #BormAssociationShape,
-	#category : #'OpenPonk-BormEditor-Shapes'
+	#name : 'BormTransitionShape',
+	#superclass : 'BormAssociationShape',
+	#category : 'OpenPonk-BormEditor-Shapes',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Shapes'
 }
 
-{ #category : #constants }
+{ #category : 'constants' }
 BormTransitionShape >> marker [
 
 	self modelElement ifNotNil: [ :model |

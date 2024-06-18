@@ -1,43 +1,45 @@
 Class {
-	#name : #BormCabeDiagramVisitor,
-	#superclass : #Object,
+	#name : 'BormCabeDiagramVisitor',
+	#superclass : 'Object',
 	#instVars : [
 		'entityNames',
 		'entities',
 		'diagram',
 		'document'
 	],
-	#category : 'Borm-OpenCabe-Importer-Importer'
+	#category : 'Borm-OpenCabe-Importer-Importer',
+	#package : 'Borm-OpenCabe-Importer',
+	#tag : 'Importer'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormCabeDiagramVisitor >> diagram [
 	^ diagram
 ]
 
-{ #category : #visitor }
+{ #category : 'visitor' }
 BormCabeDiagramVisitor >> ensureEntityFor: aXMLElement [
 	(entities includesKey: (aXMLElement attributeAt: 'ID'))
 		ifFalse: [ self visit: aXMLElement ].
 	^ entities at: (aXMLElement attributeAt: 'ID')
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormCabeDiagramVisitor >> entities: aDictionary [
 	entityNames := aDictionary
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormCabeDiagramVisitor >> entityFor: aXMLElement [
 	^ self resolve: (aXMLElement xPath: 'entity/@href') stringValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormCabeDiagramVisitor >> entityNameFor: aXMLElement [
 	^ (self entityFor: aXMLElement) at: #name
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormCabeDiagramVisitor >> parseFragment: aString [
 	| rx parts |
 	rx := '//?([^/])+' asRegex.
@@ -50,7 +52,7 @@ BormCabeDiagramVisitor >> parseFragment: aString [
 			(parts second asNumber + 1)} ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormCabeDiagramVisitor >> resolve: aString [
 	| uri fragment selector position |
 	uri := XMLURI fromString: aString.
@@ -64,7 +66,7 @@ BormCabeDiagramVisitor >> resolve: aString [
 	^ self resolveFragment: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormCabeDiagramVisitor >> resolveFragment: aString [
 	| fragment first element |
 	fragment := self parseFragment: aString.
@@ -74,7 +76,7 @@ BormCabeDiagramVisitor >> resolveFragment: aString [
 	^ element
 ]
 
-{ #category : #visitor }
+{ #category : 'visitor' }
 BormCabeDiagramVisitor >> visit: aXMLElement [
 	| selector |
 	(aXMLElement includesAttribute: 'xsi:type')
@@ -86,7 +88,7 @@ BormCabeDiagramVisitor >> visit: aXMLElement [
 		ifAbsent: [ self perform: selector asSymbol with: aXMLElement ]
 ]
 
-{ #category : #visitor }
+{ #category : 'visitor' }
 BormCabeDiagramVisitor >> visitActivity: aXMLElement [
 	| activity |
 	activity := BormActivity named: (self entityNameFor: aXMLElement).
@@ -94,7 +96,7 @@ BormCabeDiagramVisitor >> visitActivity: aXMLElement [
 	(self ensureEntityFor: aXMLElement parent) add: activity
 ]
 
-{ #category : #visitor }
+{ #category : 'visitor' }
 BormCabeDiagramVisitor >> visitCommunication: aXMLElement [
 	| communication |
 	communication := BormFactory
@@ -105,7 +107,7 @@ BormCabeDiagramVisitor >> visitCommunication: aXMLElement [
 	entities at: aXMLElement put: communication
 ]
 
-{ #category : #visitor }
+{ #category : 'visitor' }
 BormCabeDiagramVisitor >> visitDataFlow: aXMLElement [
 	| flow |
 	(entities includesKey: aXMLElement parent)
@@ -117,7 +119,7 @@ BormCabeDiagramVisitor >> visitDataFlow: aXMLElement [
 	(entities at: aXMLElement parent) addDataFlow: flow
 ]
 
-{ #category : #visitor }
+{ #category : 'visitor' }
 BormCabeDiagramVisitor >> visitDocument: aXMLDocument [
 	document := aXMLDocument.
 	entities := Dictionary new.
@@ -126,7 +128,7 @@ BormCabeDiagramVisitor >> visitDocument: aXMLDocument [
 	aXMLDocument root allElementsDo: [ :each | self visit: each ]
 ]
 
-{ #category : #visitor }
+{ #category : 'visitor' }
 BormCabeDiagramVisitor >> visitORTransition: aXMLElement [
 	| transition |
 	transition := BormFactory
@@ -137,7 +139,7 @@ BormCabeDiagramVisitor >> visitORTransition: aXMLElement [
 	^ transition
 ]
 
-{ #category : #visitor }
+{ #category : 'visitor' }
 BormCabeDiagramVisitor >> visitParticipant: aXMLElement [
 	| participant |
 	participant := BormParticipant new.
@@ -152,7 +154,7 @@ BormCabeDiagramVisitor >> visitParticipant: aXMLElement [
 	diagram add: participant
 ]
 
-{ #category : #visitor }
+{ #category : 'visitor' }
 BormCabeDiagramVisitor >> visitState: aXMLElement [
 	| state |
 	state := BormState named: (self entityNameFor: aXMLElement).

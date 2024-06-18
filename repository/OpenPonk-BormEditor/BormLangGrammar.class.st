@@ -31,8 +31,8 @@ System ""Operator"" {
 ]]]
 "
 Class {
-	#name : #BormLangGrammar,
-	#superclass : #PPCompositeParser,
+	#name : 'BormLangGrammar',
+	#superclass : 'PPCompositeParser',
 	#instVars : [
 		'participants',
 		'participant',
@@ -55,67 +55,69 @@ Class {
 		'diagram',
 		'activityStart'
 	],
-	#category : #'OpenPonk-BormEditor-Dsl'
+	#category : 'OpenPonk-BormEditor-Dsl',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Dsl'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangGrammar >> activity [
 	^ (activityStart , space , namePair) ==> [ :arr | arr last ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangGrammar >> activityStart [
 	^ 'activity' asParser
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangGrammar >> communication [
 	^ (('talk to ' asParser , name) ==> [ :arr | { arr second . nil . nil } ])
 		/ (('send ' asParser , name , ' to ' asParser , name , (' and receive ' asParser , name) optional) ==> [ :arr | { arr fourth . arr second . arr fifth ifNotNil: [ arr fifth second ] } ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangGrammar >> communications [
 	^ communication trim star
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangGrammar >> constraint [
 	^ (space , 'if' asParser , space , name) optional ==> [ :arr | arr ifNotNil: [ arr fourth ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangGrammar >> diagram [
 	^ participants
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangGrammar >> name [
 	^ ($" asParser , string , $" asParser) ==> [ :arr | arr second ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangGrammar >> namePair [
 	^ (name , ((space , 'as' asParser , space , name) ==> [ :arr | arr fourth ]) optional)
 		==> [ :arr | arr first -> (arr second ifNil: [ arr first ]) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangGrammar >> newLine [
 	^ Character cr asParser plus
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangGrammar >> node [
 	^ activity / state , communications , transitions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangGrammar >> nodes [
 	^ node trim star
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangGrammar >> participant [
 	^ (participantType , space , namePair , space , ${ asParser , #newline asParser , nodes
 		, #newline asParser optional , $} asParser) map: [ :type :sp :pair :sp2 :bra :nl :vertices :nl2 :ket
@@ -124,27 +126,27 @@ BormLangGrammar >> participant [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangGrammar >> participantType [
 	^ 'Person' asParser / 'Organization' asParser / 'System' asParser
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangGrammar >> participants [
 	^ participant trim star
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangGrammar >> space [
 	^ Character space asParser plus
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangGrammar >> start [
 	^ diagram end
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangGrammar >> state [
 	^ (stateType , space) optional , 'state' asParser , space , namePair
 		map: [ :type :smb :sp :pair | 
@@ -152,24 +154,24 @@ BormLangGrammar >> state [
 			pair} ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangGrammar >> stateType [
 	^ ('final' asParser / 'initial and final' asParser / 'initial' asParser) flatten
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangGrammar >> string [
 	^ (#word asParser / Character space asParser / '::' asParser) plus flatten
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangGrammar >> transition [
 	^ 'go to ' asParser , name , constraint
 		map: [ :goTo :pair :condition | 
 			{pair. condition} ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangGrammar >> transitions [
 	^ transition trim star
 ]

@@ -1,10 +1,12 @@
 Class {
-	#name : #OPBormAssociationEnhancementController,
-	#superclass : #OPBormElementController,
-	#category : #'OpenPonk-BormEditor-Controllers'
+	#name : 'OPBormAssociationEnhancementController',
+	#superclass : 'OPBormElementController',
+	#category : 'OpenPonk-BormEditor-Controllers',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Controllers'
 }
 
-{ #category : #'diagram elements' }
+{ #category : 'diagram elements' }
 OPBormAssociationEnhancementController >> diagramElementOwner [
 
 	^ (self diagramController controllerForModel: model owner)
