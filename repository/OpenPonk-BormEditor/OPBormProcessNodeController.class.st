@@ -1,9 +1,6 @@
 Class {
 	#name : 'OPBormProcessNodeController',
 	#superclass : 'OPBormElementController',
-	#instVars : [
-		'ownerParticipant'
-	],
 	#category : 'OpenPonk-BormEditor-Controllers',
 	#package : 'OpenPonk-BormEditor',
 	#tag : 'Controllers'
@@ -66,39 +63,7 @@ OPBormProcessNodeController >> hookDiagramElement [
 			self model submodel ]
 ]
 
-{ #category : 'accessing' }
-OPBormProcessNodeController >> ownerParticipant [
-	^ ownerParticipant
-]
-
-{ #category : 'accessing' }
-OPBormProcessNodeController >> ownerParticipant: aParticipantController [
-	ownerParticipant := aParticipantController
-]
-
 { #category : 'destruction' }
 OPBormProcessNodeController >> removeModel [
 	self model owner remove: self model
-]
-
-{ #category : 'construction' }
-OPBormProcessNodeController >> setOwnerParticipant [
-
-	self ownerParticipant: (self diagramController controllerForModel:
-			 (self diagramController model participants detect: [ :any | 
-				  any elements includes: model ]))
-]
-
-{ #category : 'construction' }
-OPBormProcessNodeController >> showInDiagram: aDiagramController [
-
-	super showInDiagram: aDiagramController.
-	self setOwnerParticipant
-]
-
-{ #category : 'construction' }
-OPBormProcessNodeController >> showWithoutDependentInDiagram: aDiagramController [
-
-	super showWithoutDependentInDiagram: aDiagramController.
-	self setOwnerParticipant
 ]
