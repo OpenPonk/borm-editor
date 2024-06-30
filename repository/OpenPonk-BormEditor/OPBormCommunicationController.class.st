@@ -11,16 +11,6 @@ OPBormCommunicationController >> canBeTargetForDataFlow: aController [
 	^ true
 ]
 
-{ #category : 'accessing' }
-OPBormCommunicationController >> createModelIn: aParentModel [
-	self model: self modelClass new.
-	model source: self source model.
-	model target: self target model.
-	source model send: model.
-	target model receive: model.
-	^ model
-]
-
 { #category : 'construction' }
 OPBormCommunicationController >> diagramElementClass [
 
@@ -35,6 +25,22 @@ OPBormCommunicationController >> elementsToShowInside [
 { #category : 'accessing' }
 OPBormCommunicationController >> modelClass [
 	^ BormCommunication
+]
+
+{ #category : 'accessing' }
+OPBormCommunicationController >> modelSource: aModel in: aParentModel [
+
+	(super modelSource: aModel in: aParentModel) ifFalse: [ ^ false ].
+	self modelSource send: model.
+	^ true
+]
+
+{ #category : 'accessing' }
+OPBormCommunicationController >> modelTarget: aModel in: aParentModel [
+
+	(super modelTarget: aModel in: aParentModel) ifFalse: [ ^ false ].
+	self modelTarget receive: model.
+	^ true
 ]
 
 { #category : 'destruction' }

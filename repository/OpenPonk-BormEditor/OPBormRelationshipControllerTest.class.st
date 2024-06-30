@@ -1,9 +1,6 @@
 Class {
 	#name : 'OPBormRelationshipControllerTest',
-	#superclass : 'OPBormControllerTest',
-	#instVars : [
-		'sourceController'
-	],
+	#superclass : 'OPAbstractDirectionalRelationshipControllerTest',
 	#category : 'OpenPonk-BormEditor-Tests',
 	#package : 'OpenPonk-BormEditor',
 	#tag : 'Tests'
@@ -14,22 +11,33 @@ OPBormRelationshipControllerTest class >> isAbstract [
 	^ self = OPBormRelationshipControllerTest
 ]
 
-{ #category : 'running' }
-OPBormRelationshipControllerTest >> setUp [
-	super setUp.
-	self setUpSource.
-	controller source: sourceController.
-	controller target: relationshipController
+{ #category : 'accessing' }
+OPBormRelationshipControllerTest >> diagramControllerClass [
+
+	^ OPBormDiagramController
+]
+
+{ #category : 'accessing' }
+OPBormRelationshipControllerTest >> diagramModelClass [
+	^ BormORModel
 ]
 
 { #category : 'running' }
-OPBormRelationshipControllerTest >> setUpSource [
-	sourceController := self sourceControllerClass new.
-	sourceController diagramController: diagramController.
-	sourceController createModelIn: diagramController model
+OPBormRelationshipControllerTest >> setUpSourceModel [
+
+	| participant |
+	participant := BormParticipant new.
+	diagramController model add: participant.
+
+	^ sourceModel := creationTargetController createModelIn: participant
 ]
 
-{ #category : 'as yet unclassified' }
-OPBormRelationshipControllerTest >> sourceControllerClass [
-	^ OPBormActivityController
+{ #category : 'running' }
+OPBormRelationshipControllerTest >> setUpTargetModel [
+
+	| participant |
+	participant := BormParticipant new.
+	diagramController model add: participant.
+
+	targetModel := targetController createModelIn: participant
 ]

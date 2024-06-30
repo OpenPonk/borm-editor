@@ -9,6 +9,20 @@ Class {
 	#tag : 'Tests'
 }
 
+{ #category : 'initialization' }
+OPBormTransitionControllerTest >> assignModelSource [
+
+	super assignModelSource.
+	model source addTransition: model
+]
+
+{ #category : 'initialization' }
+OPBormTransitionControllerTest >> assignModelTarget [
+
+	super assignModelTarget.
+	model target addTransition: model
+]
+
 { #category : 'accessing' }
 OPBormTransitionControllerTest >> controllerClass [
 	^ OPBormTransitionController
@@ -26,6 +40,21 @@ OPBormTransitionControllerTest >> modelClass [
 ]
 
 { #category : 'as yet unclassified' }
-OPBormTransitionControllerTest >> targetControllerClass [
+OPBormTransitionControllerTest >> sourceControllerClass [
 	^ OPBormStateController
+]
+
+{ #category : 'as yet unclassified' }
+OPBormTransitionControllerTest >> sourceModelClass [
+	^ BormState
+]
+
+{ #category : 'as yet unclassified' }
+OPBormTransitionControllerTest >> targetControllerClass [
+	^ OPBormActivityController
+]
+
+{ #category : 'as yet unclassified' }
+OPBormTransitionControllerTest >> targetModelClass [
+	^ BormActivity
 ]

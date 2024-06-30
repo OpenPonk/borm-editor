@@ -29,14 +29,6 @@ OPBormDataFlowController >> canVisitTarget: aController [
 ]
 
 { #category : 'construction' }
-OPBormDataFlowController >> createModelIn: aParentModel [
-
-	self model: self modelClass new.
-	aParentModel add: model.
-	^ model
-]
-
-{ #category : 'construction' }
 OPBormDataFlowController >> diagramElementClass [
 
 	^ BormDataFlowShape

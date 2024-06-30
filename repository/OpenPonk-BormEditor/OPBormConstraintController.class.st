@@ -12,14 +12,6 @@ OPBormConstraintController >> canVisitTarget: aController [
 ]
 
 { #category : 'construction' }
-OPBormConstraintController >> createModelIn: aParentModel [
-
-	self model: self modelClass new.
-	aParentModel constraint: model.
-	^ model
-]
-
-{ #category : 'construction' }
 OPBormConstraintController >> diagramElementClass [
 
 	^ BormConstraintShape
@@ -28,6 +20,12 @@ OPBormConstraintController >> diagramElementClass [
 { #category : 'accessing' }
 OPBormConstraintController >> modelClass [
 	^ BormConstraint
+]
+
+{ #category : 'construction' }
+OPBormConstraintController >> registerModelInContainer: aParentModel [
+
+	aParentModel constraint: model
 ]
 
 { #category : 'private' }

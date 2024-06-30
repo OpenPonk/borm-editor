@@ -17,16 +17,6 @@ OPBormTransitionController >> canBeTargetForDataFlow: aDataFlow [
 	^ false
 ]
 
-{ #category : 'hooks' }
-OPBormTransitionController >> createModelIn: aParentModel [
-	self model: self modelClass new.
-	model source: self source model.
-	model target: self target model.
-	source model addTransition: model.
-	target model addTransition: model.
-	^ model
-]
-
 { #category : 'construction' }
 OPBormTransitionController >> diagramElementClass [
 
@@ -36,6 +26,22 @@ OPBormTransitionController >> diagramElementClass [
 { #category : 'accessing' }
 OPBormTransitionController >> modelClass [
 	^ BormTransition
+]
+
+{ #category : 'hooks' }
+OPBormTransitionController >> modelSource: aModel in: aParentModel [
+
+	(super modelSource: aModel in: aParentModel) ifFalse: [ ^ false ].
+	self modelSource addTransition: model.
+	^ true
+]
+
+{ #category : 'hooks' }
+OPBormTransitionController >> modelTarget: aModel in: aParentModel [
+
+	(super modelTarget: aModel in: aParentModel) ifFalse: [ ^ false ].
+	self modelTarget addTransition: model.
+	^ true
 ]
 
 { #category : 'destruction' }

@@ -9,6 +9,20 @@ Class {
 	#tag : 'Tests'
 }
 
+{ #category : 'initialization' }
+OPBormCommunicationControllerTest >> assignModelSource [
+
+	super assignModelSource.
+	model source send: model
+]
+
+{ #category : 'initialization' }
+OPBormCommunicationControllerTest >> assignModelTarget [
+
+	super assignModelTarget.
+	model target receive: model
+]
+
 { #category : 'accessing' }
 OPBormCommunicationControllerTest >> controllerClass [
 	^ OPBormCommunicationController
@@ -26,6 +40,12 @@ OPBormCommunicationControllerTest >> modelClass [
 ]
 
 { #category : 'as yet unclassified' }
-OPBormCommunicationControllerTest >> targetControllerClass [
+OPBormCommunicationControllerTest >> sourceControllerClass [
 	^ OPBormActivityController
+]
+
+{ #category : 'as yet unclassified' }
+OPBormCommunicationControllerTest >> sourceModelClass [
+
+	^ BormActivity
 ]

@@ -3,7 +3,7 @@ A BormStateControllerTest is a test class for testing the behavior of BormStateC
 "
 Class {
 	#name : 'OPBormStateControllerTest',
-	#superclass : 'OPBormControllerTest',
+	#superclass : 'OPBormProcessNodeControllerTest',
 	#category : 'OpenPonk-BormEditor-Tests',
 	#package : 'OpenPonk-BormEditor',
 	#tag : 'Tests'
@@ -15,6 +15,16 @@ OPBormStateControllerTest >> controllerClass [
 ]
 
 { #category : 'accessing' }
+OPBormStateControllerTest >> creationTargetControllerClass [
+	^ OPBormParticipantController
+]
+
+{ #category : 'accessing' }
+OPBormStateControllerTest >> creationTargetModelClass [
+	^ BormParticipant
+]
+
+{ #category : 'accessing' }
 OPBormStateControllerTest >> diagramElementClass [
 	^ BormStateShape
 ]
@@ -22,14 +32,4 @@ OPBormStateControllerTest >> diagramElementClass [
 { #category : 'accessing' }
 OPBormStateControllerTest >> modelClass [
 	^ BormState
-]
-
-{ #category : 'accessing' }
-OPBormStateControllerTest >> targetControllerClass [
-	^ OPBormParticipantController
-]
-
-{ #category : 'accessing' }
-OPBormStateControllerTest >> targetModelClass [
-	^ BormParticipant
 ]

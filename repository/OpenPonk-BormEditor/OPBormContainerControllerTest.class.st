@@ -1,6 +1,6 @@
 Class {
 	#name : 'OPBormContainerControllerTest',
-	#superclass : 'OPBormControllerTest',
+	#superclass : 'OPBormElementControllerTest',
 	#category : 'OpenPonk-BormEditor-Tests',
 	#package : 'OpenPonk-BormEditor',
 	#tag : 'Tests'

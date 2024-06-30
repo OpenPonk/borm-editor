@@ -28,33 +28,3 @@ OPBormDataFlowControllerTest >> diagramElementClass [
 OPBormDataFlowControllerTest >> modelClass [
 	^ BormDataFlow
 ]
-
-{ #category : 'as yet unclassified' }
-OPBormDataFlowControllerTest >> modelOwner [
-	^ communication
-]
-
-{ #category : 'running' }
-OPBormDataFlowControllerTest >> setUp [
-	super setUp.
-	communicationController := OPBormCommunicationController new.
-	communication := BormCommunication new.
-	communicationController model: communication.
-	diagramController addController: communicationController
-]
-
-{ #category : 'accessing' }
-OPBormDataFlowControllerTest >> targetControllerClass [
-	^ OPBormCommunicationController
-]
-
-{ #category : 'accessing' }
-OPBormDataFlowControllerTest >> targetModelClass [
-	^ BormCommunication
-]
-
-{ #category : 'running' }
-OPBormDataFlowControllerTest >> targetsSourceControllerClass [
-
-	^ OPBormActivityController
-]

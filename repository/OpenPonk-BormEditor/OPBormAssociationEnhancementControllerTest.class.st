@@ -1,10 +1,6 @@
 Class {
 	#name : 'OPBormAssociationEnhancementControllerTest',
-	#superclass : 'OPBormControllerTest',
-	#instVars : [
-		'relationshipsSourceController',
-		'relationshipsTargetController'
-	],
+	#superclass : 'OPBormElementControllerTest',
 	#category : 'OpenPonk-BormEditor-Tests',
 	#package : 'OpenPonk-BormEditor',
 	#tag : 'Tests'
@@ -16,36 +12,40 @@ OPBormAssociationEnhancementControllerTest class >> isAbstract [
 	^ self = OPBormAssociationEnhancementControllerTest
 ]
 
-{ #category : 'initialization' }
-OPBormAssociationEnhancementControllerTest >> setUpTarget [
+{ #category : 'accessing' }
+OPBormAssociationEnhancementControllerTest >> creationTargetControllerClass [
 
-	relationshipsSourceController := self targetsSourceControllerClass
-		                                 new.
-	relationshipsSourceController diagramController: diagramController.
-	relationshipsSourceController createModelIn: diagramController model.
-	relationshipsTargetController := OPBormActivityController new.
-	relationshipsTargetController diagramController: diagramController.
-	relationshipsTargetController createModelIn: diagramController model.
-	relationshipController := self targetControllerClass new.
-	relationshipController diagramController: diagramController.
-	relationshipController
-		source: relationshipsTargetController;
-		target: relationshipsSourceController.
-	relationshipController createModelIn:
-		relationshipsSourceController model
+	^ OPBormCommunicationController
 ]
 
-{ #category : 'running' }
-OPBormAssociationEnhancementControllerTest >> targetsSourceControllerClass [
+{ #category : 'accessing' }
+OPBormAssociationEnhancementControllerTest >> creationTargetModelClass [
 
-	^ self subclassResponsibility
+	^ BormCommunication
 ]
 
-{ #category : 'tests' }
-OPBormAssociationEnhancementControllerTest >> testCreateDiagramElement [
+{ #category : 'accessing' }
+OPBormAssociationEnhancementControllerTest >> setUpCreationTargetModel [
 
-	relationshipController model add: model.
-	diagramController addController: relationshipController.
+	| sourceParticipant targetParticipant sourceActivity targetActivity creationTargetModel |
+	sourceParticipant := BormParticipant new.
+	diagramController model add: sourceParticipant.
+	targetParticipant := BormParticipant new.
+	diagramController model add: targetParticipant.
 
-	super testCreateDiagramElement
+	sourceActivity := BormActivity new.
+	sourceParticipant add: sourceActivity.
+
+	targetActivity := BormActivity new.
+	targetParticipant add: targetActivity.
+
+	creationTargetModel := self creationTargetModelClass new.
+	creationTargetController model: creationTargetModel.
+	creationTargetController
+		modelSource: sourceActivity
+		in: targetActivity.
+	creationTargetController
+		modelTarget: targetActivity
+		in: targetActivity.
+	^ creationTargetModel
 ]

@@ -24,19 +24,3 @@ OPBormConstraintControllerTest >> diagramElementClass [
 OPBormConstraintControllerTest >> modelClass [
 	^ BormConstraint
 ]
-
-{ #category : 'accessing' }
-OPBormConstraintControllerTest >> targetControllerClass [
-	^ OPBormTransitionController
-]
-
-{ #category : 'accessing' }
-OPBormConstraintControllerTest >> targetModelClass [
-	^ BormTransition
-]
-
-{ #category : 'running' }
-OPBormConstraintControllerTest >> targetsSourceControllerClass [
-
-	^ OPBormStateController
-]

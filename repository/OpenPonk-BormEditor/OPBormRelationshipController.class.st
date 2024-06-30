@@ -31,3 +31,9 @@ OPBormRelationshipController >> elementsToShowInside [
 OPBormRelationshipController >> isHideable [
 	^ true
 ]
+
+{ #category : 'construction' }
+OPBormRelationshipController >> registerModelInContainer: aParentModel [
+
+	"do nothing"
+]

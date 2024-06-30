@@ -65,7 +65,8 @@ OPBormParticipantController >> nodeRoassalShapes [
 
 { #category : 'destruction' }
 OPBormParticipantController >> removeModel [
-	self diagramController model remove: self model
+
+	self model owner remove: self model
 ]
 
 { #category : 'hooks' }

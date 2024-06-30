@@ -7,15 +7,6 @@ Class {
 }
 
 { #category : 'adding' }
-OPBormProcessNodeController >> addAsTargetFor: aController [
-	self assert: (self canBeTargetFor: aController).
-	aController target: self.
-	aController
-		createModelIn: self model
-		andShowInDiagram: self diagramController
-]
-
-{ #category : 'adding' }
 OPBormProcessNodeController >> bormModels [
 	^ self diagramController editor workbench projectController project models
 		select: [ :each | each isKindOf: self diagramController modelClass ]
@@ -26,14 +17,15 @@ OPBormProcessNodeController >> buildEditorForm: aForm [
 
 	(aForm addText: 'Name')
 		text: self model name;
-		whenTextChangedDo: [ :newValue | 
+		whenTextChangedDo: [ :newValue |
 			self model name: newValue asString.
 			self diagramElement modelChanged ].
+	self diagramController editor ifNil: [ ^ self ].
 	(aForm addDroplist: 'Submodel')
 		items: { nil } , self bormModels;
 		display: [ :m | m ifNil: '' ifNotNil: #name ];
 		selectItem: self model submodel;
-		whenSelectedItemChangedDo: [ :newValue | 
+		whenSelectedItemChangedDo: [ :newValue |
 			self model submodel: newValue.
 			self diagramElement modelChanged ]
 ]
@@ -51,6 +43,14 @@ OPBormProcessNodeController >> canBeTargetFor: aController [
 { #category : 'accessing' }
 OPBormProcessNodeController >> dependentElements [
 	^ model transitions
+]
+
+{ #category : 'construction' }
+OPBormProcessNodeController >> dependingOnElements [
+
+	^ super dependingOnElements
+	  , (Set with: (self model participant ifNil: [
+				    self error: 'There is no participant of ' , self model asString ]))
 ]
 
 { #category : 'construction' }
