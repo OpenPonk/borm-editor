@@ -15,6 +15,16 @@ OPBormConstraintControllerTest >> controllerClass [
 ]
 
 { #category : 'accessing' }
+OPBormConstraintControllerTest >> creationTargetControllerClass [
+	^ OPBormTransitionController
+]
+
+{ #category : 'accessing' }
+OPBormConstraintControllerTest >> creationTargetModelClass [
+	^ BormTransition
+]
+
+{ #category : 'accessing' }
 OPBormConstraintControllerTest >> diagramElementClass [
 
 	^ BormConstraintShape
@@ -23,16 +33,6 @@ OPBormConstraintControllerTest >> diagramElementClass [
 { #category : 'accessing' }
 OPBormConstraintControllerTest >> modelClass [
 	^ BormConstraint
-]
-
-{ #category : 'accessing' }
-OPBormConstraintControllerTest >> targetControllerClass [
-	^ OPBormTransitionController
-]
-
-{ #category : 'accessing' }
-OPBormConstraintControllerTest >> targetModelClass [
-	^ BormTransition
 ]
 
 { #category : 'running' }

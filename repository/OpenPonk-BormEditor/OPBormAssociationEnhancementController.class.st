@@ -6,6 +6,12 @@ Class {
 	#tag : 'Controllers'
 }
 
+{ #category : 'construction' }
+OPBormAssociationEnhancementController >> dependingOnElements [
+
+	^ super dependingOnElements , (Set with: self model owner)
+]
+
 { #category : 'diagram elements' }
 OPBormAssociationEnhancementController >> diagramElementOwner [
 

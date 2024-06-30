@@ -15,6 +15,16 @@ OPBormActivityControllerTest >> controllerClass [
 ]
 
 { #category : 'accessing' }
+OPBormActivityControllerTest >> creationTargetControllerClass [
+	^ OPBormParticipantController
+]
+
+{ #category : 'accessing' }
+OPBormActivityControllerTest >> creationTargetModelClass [
+	^ BormParticipant
+]
+
+{ #category : 'accessing' }
 OPBormActivityControllerTest >> diagramElementClass [
 	^ BormActivityShape
 ]
@@ -22,14 +32,4 @@ OPBormActivityControllerTest >> diagramElementClass [
 { #category : 'accessing' }
 OPBormActivityControllerTest >> modelClass [
 	^ BormActivity
-]
-
-{ #category : 'accessing' }
-OPBormActivityControllerTest >> targetControllerClass [
-	^ OPBormParticipantController
-]
-
-{ #category : 'accessing' }
-OPBormActivityControllerTest >> targetModelClass [
-	^ BormParticipant
 ]

@@ -26,6 +26,11 @@ OPBormTransitionControllerTest >> modelClass [
 ]
 
 { #category : 'as yet unclassified' }
-OPBormTransitionControllerTest >> targetControllerClass [
+OPBormTransitionControllerTest >> sourceControllerClass [
 	^ OPBormStateController
+]
+
+{ #category : 'as yet unclassified' }
+OPBormTransitionControllerTest >> sourceModelClass [
+	^ BormState
 ]

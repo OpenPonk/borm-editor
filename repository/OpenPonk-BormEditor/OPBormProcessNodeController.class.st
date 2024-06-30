@@ -54,6 +54,12 @@ OPBormProcessNodeController >> dependentElements [
 ]
 
 { #category : 'construction' }
+OPBormProcessNodeController >> dependingOnElements [
+
+	^ super dependingOnElements , (Set with: self model participant)
+]
+
+{ #category : 'construction' }
 OPBormProcessNodeController >> hookDiagramElement [
 
 	super hookDiagramElement.

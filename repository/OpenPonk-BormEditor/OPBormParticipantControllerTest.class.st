@@ -17,8 +17,13 @@ OPBormParticipantControllerTest >> createTargetController [
 ]
 
 { #category : 'accessing' }
-OPBormParticipantControllerTest >> createTargetModel [
-	^ diagramController model
+OPBormParticipantControllerTest >> creationTargetControllerClass [
+	^ self diagramControllerClass
+]
+
+{ #category : 'accessing' }
+OPBormParticipantControllerTest >> creationTargetModelClass [
+	^ self diagramModelClass
 ]
 
 { #category : 'accessing' }
@@ -33,16 +38,6 @@ OPBormParticipantControllerTest >> modelClass [
 ]
 
 { #category : 'running' }
-OPBormParticipantControllerTest >> setUpTarget [
+OPBormParticipantControllerTest >> setUpCreationTarget [
 	relationshipController := diagramController
-]
-
-{ #category : 'accessing' }
-OPBormParticipantControllerTest >> targetControllerClass [
-	^ self diagramControllerClass
-]
-
-{ #category : 'accessing' }
-OPBormParticipantControllerTest >> targetModelClass [
-	^ self diagramModelClass
 ]

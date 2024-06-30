@@ -26,6 +26,12 @@ OPBormCommunicationControllerTest >> modelClass [
 ]
 
 { #category : 'as yet unclassified' }
-OPBormCommunicationControllerTest >> targetControllerClass [
+OPBormCommunicationControllerTest >> sourceControllerClass [
 	^ OPBormActivityController
+]
+
+{ #category : 'as yet unclassified' }
+OPBormCommunicationControllerTest >> sourceModelClass [
+
+	^ BormActivity
 ]

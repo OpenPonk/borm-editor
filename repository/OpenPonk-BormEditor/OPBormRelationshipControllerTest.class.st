@@ -1,6 +1,6 @@
 Class {
 	#name : 'OPBormRelationshipControllerTest',
-	#superclass : 'OPBormControllerTest',
+	#superclass : 'OPAbstractDirectionalRelationshipControllerTest',
 	#instVars : [
 		'sourceController'
 	],
@@ -14,22 +14,13 @@ OPBormRelationshipControllerTest class >> isAbstract [
 	^ self = OPBormRelationshipControllerTest
 ]
 
-{ #category : 'running' }
-OPBormRelationshipControllerTest >> setUp [
-	super setUp.
-	self setUpSource.
-	controller source: sourceController.
-	controller target: relationshipController
+{ #category : 'accessing' }
+OPBormRelationshipControllerTest >> diagramControllerClass [
+
+	^ OPBormDiagramController
 ]
 
-{ #category : 'running' }
-OPBormRelationshipControllerTest >> setUpSource [
-	sourceController := self sourceControllerClass new.
-	sourceController diagramController: diagramController.
-	sourceController createModelIn: diagramController model
-]
-
-{ #category : 'as yet unclassified' }
-OPBormRelationshipControllerTest >> sourceControllerClass [
-	^ OPBormActivityController
+{ #category : 'accessing' }
+OPBormRelationshipControllerTest >> diagramModelClass [
+	^ BormORModel
 ]

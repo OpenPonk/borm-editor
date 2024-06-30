@@ -17,7 +17,7 @@ OPBormAssociationEnhancementControllerTest class >> isAbstract [
 ]
 
 { #category : 'initialization' }
-OPBormAssociationEnhancementControllerTest >> setUpTarget [
+OPBormAssociationEnhancementControllerTest >> setUpCreationTarget [
 
 	relationshipsSourceController := self targetsSourceControllerClass
 		                                 new.
@@ -26,7 +26,7 @@ OPBormAssociationEnhancementControllerTest >> setUpTarget [
 	relationshipsTargetController := OPBormActivityController new.
 	relationshipsTargetController diagramController: diagramController.
 	relationshipsTargetController createModelIn: diagramController model.
-	relationshipController := self targetControllerClass new.
+	relationshipController := self creationTargetControllerClass new.
 	relationshipController diagramController: diagramController.
 	relationshipController
 		source: relationshipsTargetController;
