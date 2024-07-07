@@ -46,6 +46,8 @@ OPBormTransitionController >> modelTarget: aModel in: aParentModel [
 
 { #category : 'destruction' }
 OPBormTransitionController >> removeModel [
+
 	self model target removeTransition: self model.
-	self model source removeTransition: self model
+	self model source removeTransition: self model.
+	super removeModel
 ]

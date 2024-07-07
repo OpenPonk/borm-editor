@@ -41,5 +41,7 @@ OPBormDataFlowController >> modelClass [
 
 { #category : 'destruction' }
 OPBormDataFlowController >> removeModel [
-	self model owner remove: self model
+
+	self model owner remove: self model.
+	super removeModel
 ]

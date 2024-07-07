@@ -46,5 +46,6 @@ OPBormCommunicationController >> modelTarget: aModel in: aParentModel [
 { #category : 'destruction' }
 OPBormCommunicationController >> removeModel [
 	self model target removeCommunication: self model.
-	self model source removeCommunication: self model
+	self model source removeCommunication: self model.
+	super removeModel
 ]

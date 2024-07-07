@@ -65,5 +65,7 @@ OPBormProcessNodeController >> hookDiagramElement [
 
 { #category : 'destruction' }
 OPBormProcessNodeController >> removeModel [
-	self model owner remove: self model
+
+	self model owner remove: self model.
+	super removeModel
 ]
