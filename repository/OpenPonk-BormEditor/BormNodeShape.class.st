@@ -36,7 +36,7 @@ BormNodeShape >> plusIconAction: aBlock [
 	plusIconAction := aBlock
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'rendering' }
 BormNodeShape >> renderShapeDetails [
 
 	labeled := OPRSLabeled new.
@@ -75,7 +75,7 @@ BormNodeShape >> renderShapeDetails [
 		for: self.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'interactions' }
 BormNodeShape >> selectableInteraction [
 
 	^ OPRSSelectable highlightBorderColorBlue
@@ -86,7 +86,7 @@ BormNodeShape >> shapesFactory [
 	^ shapesFactory ifNil: [ shapesFactory := BormShapesFactory new ]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'interactions' }
 BormNodeShape >> shouldBePositionableByUser [
 
 	^ true
@@ -109,7 +109,7 @@ BormNodeShape >> textPadding [
 	^ 5
 ]
 
-{ #category : 'updating' }
+{ #category : 'rendering' }
 BormNodeShape >> updateRenderFromModel [
 
 	self modelElement submodel
@@ -121,7 +121,7 @@ BormNodeShape >> updateRenderFromModel [
 	roassalShape signalUpdate
 ]
 
-{ #category : 'updating' }
+{ #category : 'rendering' }
 BormNodeShape >> updateText [
 
 	wrappedForWidth := roassalShape width.

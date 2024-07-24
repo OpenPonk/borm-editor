@@ -10,7 +10,7 @@ Class {
 	#tag : 'Shapes'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'rendering' }
 BormStateShape >> renderBasicShape [
 
 	^ self shapesFactory newRoundedBox
@@ -20,7 +20,7 @@ BormStateShape >> renderBasicShape [
 		  yourself
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'rendering' }
 BormStateShape >> renderShapeDetails [
 
 	| block |
@@ -77,14 +77,14 @@ BormStateShape >> textPadding [
 	^ padding
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'rendering' }
 BormStateShape >> updateInnerBox [
 	innerBox
 		width: self width - 10;
 		height: self height - 10
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'rendering' }
 BormStateShape >> updateRenderFromModel [
 
 	self modelElement isInitial

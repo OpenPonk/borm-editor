@@ -32,7 +32,7 @@ BormParticipantShape >> innerRoassalShapesBlock: aBlock [
 	innerRoassalShapesBlock := aBlock
 ]
 
-{ #category : 'hooks' }
+{ #category : 'rendering' }
 BormParticipantShape >> renderBasicShape [
 
 	^ RSBox new
@@ -93,7 +93,7 @@ BormParticipantShape >> typeIconProvider: anObject [
 	typeIconProvider := anObject
 ]
 
-{ #category : 'hooks' }
+{ #category : 'rendering' }
 BormParticipantShape >> updateRenderFromModel [
 
 	(roassalShape propertyAt: #RSLabeled) text: self modelElement name.
