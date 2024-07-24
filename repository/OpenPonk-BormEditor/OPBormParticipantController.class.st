@@ -37,7 +37,7 @@ OPBormParticipantController >> elementsToShowInside [
 	^ model nodes , (model nodes flatCollect: [ :each | each outgoing ])
 ]
 
-{ #category : 'figures' }
+{ #category : 'construction' }
 OPBormParticipantController >> hookDiagramElement [
 
 	super hookDiagramElement.
