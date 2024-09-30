@@ -2,28 +2,30 @@
 I take parsed Borm DSL and produce instances of Borm Model.
 "
 Class {
-	#name : #BormLangParser,
-	#superclass : #BormLangGrammar,
+	#name : 'BormLangParser',
+	#superclass : 'BormLangGrammar',
 	#instVars : [
 		'incompleteTransitions',
 		'nodesLookup',
 		'participantsLookup',
 		'incompleteCommunications'
 	],
-	#category : #'OpenPonk-BormEditor-Dsl'
+	#category : 'OpenPonk-BormEditor-Dsl',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Dsl'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangParser class >> ignoredNames [
 	^ super ignoredNames, #(incompleteTransitions nodesLookup incompleteCommunications participantsLookup)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangParser >> activity [
 	^ super activity ==> [ :pair | nodesLookup at: pair value put: (BormActivity named: pair key) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangParser >> communication [
 	^ super communication
 		==> [ :arr | 
@@ -35,12 +37,12 @@ BormLangParser >> communication [
 			comm ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangParser >> constraint [
 	^ super constraint ==> [ :condition | condition ifNotNil: [ BormConstraint named: condition ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangParser >> diagram [
 	^ super diagram
 		==> [ :arr | 
@@ -59,13 +61,13 @@ BormLangParser >> diagram [
 			d ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 BormLangParser >> initialize [
 	super initialize.
 	self resetCache
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangParser >> node [
 	^ super node
 		map: [ :n :comms :trans | 
@@ -83,12 +85,12 @@ BormLangParser >> node [
 			n ]
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 BormLangParser >> parseStatements: aString [
 	^ self parse: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangParser >> participant [
 	^ super participant
 		==> [ :arr | 
@@ -112,18 +114,18 @@ BormLangParser >> participant [
 			p ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangParser >> participantType [
 	^ super participantType ==> [ :str | BormParticipantType perform: str asSymbol ]
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 BormLangParser >> replaceModel: aModel withStatements: parsedModel [
 	aModel elements reset.
 	parsedModel elements do: [ :each | aModel add: each ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 BormLangParser >> resetCache [
 	nodesLookup := Dictionary new.
 	participantsLookup := Dictionary new.
@@ -131,7 +133,7 @@ BormLangParser >> resetCache [
 	incompleteCommunications := OrderedCollection new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangParser >> state [
 	^ super state
 		map: [ :arr | 
@@ -153,7 +155,7 @@ BormLangParser >> state [
 			s ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangParser >> transition [
 	^ super transition
 		==> [ :arr | 

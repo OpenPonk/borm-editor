@@ -5,30 +5,32 @@ I take a BORM model and produce its BormLang string representation.
 The inverse operation (taking DSL and parsing it) is provided by BormLangGrammar/BormLangParser
 "
 Class {
-	#name : #BormLangSerializer,
-	#superclass : #Object,
+	#name : 'BormLangSerializer',
+	#superclass : 'Object',
 	#instVars : [
 		'diagram'
 	],
-	#category : #'OpenPonk-BormEditor-Dsl'
+	#category : 'OpenPonk-BormEditor-Dsl',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Dsl'
 }
 
-{ #category : #'public-exporting' }
+{ #category : 'public-exporting' }
 BormLangSerializer class >> export: aDiagram [
 	^ self new diagram: aDiagram
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 BormLangSerializer >> activity: anActivity [
 	^ 'activity ' , (self name: anActivity name)
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 BormLangSerializer >> activityNode: anActivity [
 	^ (self activity: anActivity) , (self newLineIf: anActivity sent isNotEmpty), (self communications: anActivity sent)
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 BormLangSerializer >> communication: aCommunication [
 	| to flows |
 	to := aCommunication receiver.
@@ -46,78 +48,78 @@ BormLangSerializer >> communication: aCommunication [
 						ifFalse: [ '' ]) ]
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 BormLangSerializer >> communications: aCollection [
 	^ (aCollection collect: [ :each | self tab , self tab , (self communication: each) ]) joinUsing: self newLine
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 BormLangSerializer >> constraint: aConstraint [
 	^ aConstraint ifNil: [ '' ] ifNotNil: [ ' if ' , (self name: aConstraint name) ]
 ]
 
-{ #category : #exporting }
+{ #category : 'exporting' }
 BormLangSerializer >> export: aModel [
 	^ self ormodel: aModel
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 BormLangSerializer >> name: aString [
 	^ '"' , aString , '"'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangSerializer >> newLine [
 	^ Character cr asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangSerializer >> newLineIf: aBoolean [
 	^ aBoolean
 		ifTrue: [ self newLine ]
 		ifFalse: [ '' ]
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 BormLangSerializer >> node: aNode [
 	^ ((aNode isKindOf: BormActivity)
 		ifTrue: [ self activityNode: aNode ]
 		ifFalse: [ self state: aNode ]) , (self newLineIf: aNode outgoing isNotEmpty), (self transitions: aNode outgoing)
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 BormLangSerializer >> nodes: aCollection [
 	^ (aCollection collect: [ :each | self tab , (self node: each) ]) joinUsing: self newLine , self newLine
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 BormLangSerializer >> ormodel: aModel [
 	^ self participants: aModel participants
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 BormLangSerializer >> participant: aParticipant [
 	^ (self participantType: aParticipant type) , ' ' , (self name: aParticipant name) , ' ' , '{' , self newLine
 		, (self nodes: aParticipant nodes) , self newLine , '}'
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 BormLangSerializer >> participantType: aType [
 	^ aType asString
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 BormLangSerializer >> participants: aCollection [
 	^ (aCollection collect: [ :each | self participant: each ])
 		joinUsing: self newLine , self newLine
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 BormLangSerializer >> state: aState [
 	^ (self stateType: aState) , 'state' , ' ' , (self name: aState name)
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 BormLangSerializer >> stateType: aState [
 	aState isInitial & aState isFinal
 		ifTrue: [ ^ 'initial and final ' ].
@@ -131,17 +133,17 @@ BormLangSerializer >> stateType: aState [
 	^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormLangSerializer >> tab [
 	^ Character tab asString
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 BormLangSerializer >> transition: aTransition [
 	^ 'go to ' , (self name: aTransition target name) , (self constraint: aTransition constraint)
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 BormLangSerializer >> transitions: aCollection [
 	^ (aCollection collect: [ :each | self tab , self tab , (self transition: each) ]) joinUsing: self newLine
 ]

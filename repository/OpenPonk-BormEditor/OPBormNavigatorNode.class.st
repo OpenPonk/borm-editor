@@ -1,23 +1,25 @@
 Class {
-	#name : #OPBormNavigatorNode,
-	#superclass : #Object,
+	#name : 'OPBormNavigatorNode',
+	#superclass : 'Object',
 	#instVars : [
 		'model'
 	],
-	#category : #'OpenPonk-BormEditor-Adapters'
+	#category : 'OpenPonk-BormEditor-Adapters',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Adapters'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormNavigatorNode >> model [
 	^ model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormNavigatorNode >> model: anObject [
 	model := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 OPBormNavigatorNode >> name [
 	^ ''
 ]

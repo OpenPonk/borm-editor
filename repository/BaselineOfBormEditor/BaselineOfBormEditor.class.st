@@ -1,10 +1,11 @@
 Class {
-	#name : #BaselineOfBormEditor,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfBormEditor
+	#name : 'BaselineOfBormEditor',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfBormEditor',
+	#package : 'BaselineOfBormEditor'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BaselineOfBormEditor >> baseline: spec [
 
 	<baseline>

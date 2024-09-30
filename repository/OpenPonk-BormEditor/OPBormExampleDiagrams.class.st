@@ -3,76 +3,40 @@ I provide couple of examples for BORM.
 See class-side.
 "
 Class {
-	#name : #OPBormExampleDiagrams,
-	#superclass : #Object,
-	#category : #'OpenPonk-BormEditor-Examples'
+	#name : 'OPBormExampleDiagrams',
+	#superclass : 'Object',
+	#category : 'OpenPonk-BormEditor-Examples',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Examples'
 }
 
-{ #category : #examples }
+{ #category : 'samples' }
+OPBormExampleDiagrams class >> emptyModel [
+
+	<script: 'self emptyModel inspect'>
+	^ BormORModel named: 'ORD'
+]
+
+{ #category : 'samples' }
 OPBormExampleDiagrams class >> exampleDataFlows [
-	<example>
-	self sampleDataFlows openAs: 'Example Data Flows'
-]
 
-{ #category : #examples }
-OPBormExampleDiagrams class >> exampleEmpty [
-	<example>
-	^ self sampleEmpty openAs: 'BORM'
-]
-
-{ #category : #examples }
-OPBormExampleDiagrams class >> examplePizzaDelivery [
-	<example>
-	^ self samplePizzaDelivery openAs: 'Pizza Delivery'
-]
-
-{ #category : #examples }
-OPBormExampleDiagrams class >> exampleTravelingCard [
-	<example>
-	^ self sampleTravelingCard openAs: 'Traveling Card'
-]
-
-{ #category : #menu }
-OPBormExampleDiagrams class >> menuCommandOn: aBuilder [
-
-	<worldMenu>
-	((aBuilder item: #BORMEditor) icon:
-			 OPBormEditorIcons current oRModel16Icon)
-		label: 'BORM Editor';
-		order: 225;
-		parent: #MostUsedTools;
-		action: [ self exampleEmpty ];
-		with: [ 
-			(aBuilder item: #BORMExamples)
-				parent: #BORMEditor;
-				label: 'BORM Example Pizza Delivery';
-				icon: OPBormEditorIcons current oRModel16Icon;
-				action: [ self examplePizzaDelivery ].
-			(aBuilder item: #BORMExamples)
-				parent: #BORMEditor;
-				label: 'BORM Simple Diagram';
-				icon: OPBormEditorIcons current oRModel16Icon;
-				action: [ self exampleDataFlows ] ]
-]
-
-{ #category : #samples }
-OPBormExampleDiagrams class >> sampleDataFlows [
-	<sample>
+	<script: 'self exampleDataFlows inspect'>
 	| diagram user sys |
 	diagram := BormORModel named: 'Two Participants'.
 	user := BormParticipant named: 'User'.
-	(sys := BormParticipant named: 'System') type: BormParticipantType System.
-	
-	diagram addAll: { user . sys }.
+	(sys := BormParticipant named: 'System') type:
+		BormParticipantType System.
 
-	user
-		addAll: {
+	diagram addAll: {
+			user.
+			sys }.
+
+	user addAll: {
 			(BormState named: 'init') beInitial.
-			BormActivity named: 'a1'.
-			BormState named: 'sMid'.
-			BormActivity named: 'a2'.
-			(BormState named: 's2') beFinal
-	}.
+			(BormActivity named: 'a1').
+			(BormState named: 'sMid').
+			(BormActivity named: 'a2').
+			(BormState named: 's2') beFinal }.
 
 	user @ 'init' -> (user @ 'a1').
 	user @ 'a1' -> (user @ 'sMid').
@@ -80,39 +44,33 @@ OPBormExampleDiagrams class >> sampleDataFlows [
 	user @ 'a2' -> (user @ 's2').
 
 	sys addAll: {
-		(BormState named: 's1') beInitial.
-		BormActivity named: 'a1'.
-		BormState named: 'sMid'.
-		BormActivity named: 'a2'.
-		(BormState named: 's2') beFinal.
-	}.
-	
-	BormFactory addFqnTransitions: { 
-		's1' -> 'a1'.
-		'a1' -> 'sMid'.
-		'sMid' -> 'a2'.
-		'a2' -> 's2'.
-	} in: sys.
-	
-	
-	(user @ 'a1' ==> (sys @ 'a1'))
-		addDataFlowNamed: 'input'.
-	
-	(diagram @ 'System::a2' ==> (diagram @ 'User::a2'))
-		addDataFlow: ((BormDataFlow named: 'output') beOutput).
-	
-	 ^ diagram
+			(BormState named: 's1') beInitial.
+			(BormActivity named: 'a1').
+			(BormState named: 'sMid').
+			(BormActivity named: 'a2').
+			(BormState named: 's2') beFinal }.
+
+	BormFactory
+		addFqnTransitions: {
+				('s1' -> 'a1').
+				('a1' -> 'sMid').
+				('sMid' -> 'a2').
+				('a2' -> 's2') }
+		in: sys.
+
+
+	user @ 'a1' ==> (sys @ 'a1') addDataFlowNamed: 'input'.
+
+	diagram @ 'System::a2' ==> (diagram @ 'User::a2') addDataFlow:
+		(BormDataFlow named: 'output') beOutput.
+
+	^ diagram
 ]
 
-{ #category : #samples }
-OPBormExampleDiagrams class >> sampleEmpty [
-	<sample>
-	^ BormORModel named: 'ORD'
-]
+{ #category : 'samples' }
+OPBormExampleDiagrams class >> examplePizzaDelivery [
 
-{ #category : #samples }
-OPBormExampleDiagrams class >> samplePizzaDelivery [
-	<sample>
+	<script: 'self examplePizzaDelivery inspect'>
 	^ 'Person "Customer" {
 	initial state "wants pizza"
 		go to "order"
@@ -182,8 +140,10 @@ Person "Cashier" {
 ' asBorm: 'Pizza Delivery'
 ]
 
-{ #category : #samples }
-OPBormExampleDiagrams class >> sampleTravelingCard [
+{ #category : 'samples' }
+OPBormExampleDiagrams class >> exampleTravelingCard [
+
+	<script: 'self exampleTravelingCard inspect'>
 	^ 'Person "Customer" {
 	initial state "wants a travel card"
 		go to "request"
@@ -245,4 +205,50 @@ System "Card Distributor" {
 	
 	final state "card delivered" as "final"
 }' asBorm: 'Traveling Card'
+]
+
+{ #category : 'menu' }
+OPBormExampleDiagrams class >> menuCommandOn: aBuilder [
+
+	<worldMenu>
+	((aBuilder item: #BORMEditor) icon: OPBormEditorIcons oRModel16Icon)
+		label: 'BORM Editor';
+		order: 225;
+		parent: #MostUsedTools;
+		action: [ self openExampleEmptyModel ];
+		with: [ 
+			(aBuilder item: #BORMExamples)
+				parent: #BORMEditor;
+				label: 'BORM Example Pizza Delivery';
+				icon: OPBormEditorIcons oRModel16Icon;
+				action: [ self openExamplePizzaDelivery ].
+			(aBuilder item: #BORMExamples)
+				parent: #BORMEditor;
+				label: 'BORM Simple Diagram';
+				icon: OPBormEditorIcons oRModel16Icon;
+				action: [ self openExampleDataFlows ] ]
+]
+
+{ #category : 'examples' }
+OPBormExampleDiagrams class >> openExampleDataFlows [
+	<example>
+	self exampleDataFlows openAs: 'Example Data Flows'
+]
+
+{ #category : 'examples' }
+OPBormExampleDiagrams class >> openExampleEmptyModel [
+	<example>
+	^ self emptyModel openAs: 'BORM'
+]
+
+{ #category : 'examples' }
+OPBormExampleDiagrams class >> openExamplePizzaDelivery [
+	<example>
+	^ self examplePizzaDelivery openAs: 'Pizza Delivery'
+]
+
+{ #category : 'examples' }
+OPBormExampleDiagrams class >> openExampleTravelingCard [
+	<example>
+	^ self exampleTravelingCard openAs: 'Traveling Card'
 ]

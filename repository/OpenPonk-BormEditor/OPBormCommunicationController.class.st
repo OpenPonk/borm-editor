@@ -1,59 +1,51 @@
 Class {
-	#name : #OPBormCommunicationController,
-	#superclass : #OPBormRelationshipController,
-	#category : #'OpenPonk-BormEditor-Controllers'
+	#name : 'OPBormCommunicationController',
+	#superclass : 'OPBormRelationshipController',
+	#category : 'OpenPonk-BormEditor-Controllers',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Controllers'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormCommunicationController >> canBeTargetForDataFlow: aController [
 	^ true
 ]
 
-{ #category : #hooks }
-OPBormCommunicationController >> connectionFeedback [
-	^ OPInteractiveLine new
-		lineBuilder: [ :fromFigure :toFigure | 
-			OPRTStyledConnection new
-				decorate: [ :deco | deco arrowHead ];
-				withBorderAttachPoint;
-				color: Color darkGray muchDarker;
-				edgeFrom: fromFigure to: toFigure ];
-		from: source figure
+{ #category : 'construction' }
+OPBormCommunicationController >> diagramElementClass [
+
+	^ BormCommunicationShape
 ]
 
-{ #category : #hooks }
-OPBormCommunicationController >> createEdgeFrom: fromElement to: toElement [
-	| edge |
-	edge := OPRTStyledConnection new
-		withBorderAttachPoint;
-		color: Color black;
-		edgeFrom: fromElement to: toElement.
-	edge shape decorations arrowHead.
-	^ edge
-]
-
-{ #category : #accessing }
-OPBormCommunicationController >> createModelIn: aParentModel [
-	self model: self modelClass new.
-	model source: self source model.
-	model target: self target model.
-	source model send: model.
-	target model receive: model.
-	^ model
-]
-
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormCommunicationController >> elementsToShowInside [
 	^ super elementsToShowInside , model dataFlows
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormCommunicationController >> modelClass [
 	^ BormCommunication
 ]
 
-{ #category : #destruction }
+{ #category : 'accessing' }
+OPBormCommunicationController >> modelSource: aModel in: aParentModel [
+
+	(super modelSource: aModel in: aParentModel) ifFalse: [ ^ false ].
+	self modelSource send: model.
+	^ true
+]
+
+{ #category : 'accessing' }
+OPBormCommunicationController >> modelTarget: aModel in: aParentModel [
+
+	(super modelTarget: aModel in: aParentModel) ifFalse: [ ^ false ].
+	self modelTarget receive: model.
+	^ true
+]
+
+{ #category : 'destruction' }
 OPBormCommunicationController >> removeModel [
 	self model target removeCommunication: self model.
-	self model source removeCommunication: self model
+	self model source removeCommunication: self model.
+	super removeModel
 ]

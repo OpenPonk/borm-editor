@@ -1,40 +1,44 @@
 Class {
-	#name : #OPBormStateController,
-	#superclass : #OPBormProcessNodeController,
-	#category : #'OpenPonk-BormEditor-Controllers'
+	#name : 'OPBormStateController',
+	#superclass : 'OPBormProcessNodeController',
+	#category : 'OpenPonk-BormEditor-Controllers',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Controllers'
 }
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 OPBormStateController >> buildEditorForm: aForm [
+
 	super buildEditorForm: aForm.
 	(aForm addCheckbox: 'Initial')
 		state: self model isInitial;
-		whenChangedDo: [ :newValue | 
+		whenChangedDo: [ :newValue |
 			self model isInitial: newValue.
-			self refreshFigure ].
+			self diagramElement modelChanged ].
 	(aForm addCheckbox: 'Final')
 		state: self model isFinal;
-		whenChangedDo: [ :newValue | 
+		whenChangedDo: [ :newValue |
 			self model isFinal: newValue.
-			self refreshFigure ]
+			self diagramElement modelChanged ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormStateController >> canBeSourceFor: aController [
 	^ aController isKindOf: OPBormTransitionController
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormStateController >> canBeTargetFor: aController [
 	^ (aController isKindOf: OPBormTransitionController) and: [ aController source isKindOf: OPBormActivityController ]
 ]
 
-{ #category : #construction }
-OPBormStateController >> figureClass [
-	^ BormStateFigure
+{ #category : 'construction' }
+OPBormStateController >> diagramElementClass [
+
+	^ BormStateShape
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormStateController >> modelClass [
 	^ BormState
 ]

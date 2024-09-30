@@ -1,10 +1,12 @@
 Class {
-	#name : #OPBormContainerControllerTest,
-	#superclass : #OPBormControllerTest,
-	#category : #'OpenPonk-BormEditor-Tests'
+	#name : 'OPBormContainerControllerTest',
+	#superclass : 'OPBormElementControllerTest',
+	#category : 'OpenPonk-BormEditor-Tests',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Tests'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPBormContainerControllerTest class >> isAbstract [
 	"Override to true if a TestCase subclass is Abstract and should not have
 	TestCase instances built from it"
@@ -12,15 +14,20 @@ OPBormContainerControllerTest class >> isAbstract [
 	^ self = OPBormContainerControllerTest
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormContainerControllerTest >> testFigureRefresh [
+
 	| text |
 	controller createModelIn: diagramController model.
 	diagramController addController: controller.
-	controller renderFigureIn: diagramController view.
-	self assert: (controller figure attributeAt: #RTLabelledLabel) text = ''.
+	controller
+		createDiagramElement;
+		renderDiagramElement.
+	self assert:
+		(controller roassalShape propertyAt: #RSLabeled) text = ''.
 	controller model name: 'new name'.
-	controller refreshFigure.
-	text := (controller figure attributeAt: #RTLabelledLabel) text.
-	self assert: ((text last: 8) = 'new name' or: [ (text first: 8) = 'new name' ])
+	controller diagramElement modelChanged.
+	text := (controller roassalShape propertyAt: #RSLabeled) text.
+	self assert:
+		((text last: 8) = 'new name' or: [ (text first: 8) = 'new name' ])
 ]

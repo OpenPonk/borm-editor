@@ -1,6 +1,6 @@
 Class {
-	#name : #BormEntityListPresenter,
-	#superclass : #ComposablePresenter,
+	#name : 'BormEntityListPresenter',
+	#superclass : 'SpPresenter',
 	#instVars : [
 		'searchInput',
 		'addEntryButton',
@@ -9,45 +9,57 @@ Class {
 		'displayNameBlock',
 		'orphanedItems'
 	],
-	#category : #'OpenPonk-BormEditor-UI'
+	#category : 'OpenPonk-BormEditor-UI',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'UI'
 }
 
-{ #category : #specs }
-BormEntityListPresenter class >> defaultSpec [
-	^ SpecLayout composed
-		newColumn: [ :col | 
-			col
-				newRow: [ :row | 
-					row
-						add: #searchInput;
-						add: #addEntryButton ]
-					height: ComposableModel toolbarHeight;
-				add: #entriesList ];
-		yourself
+{ #category : 'as yet unclassified' }
+BormEntityListPresenter class >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		  add: (SpBoxLayout newLeftToRight
+				   add: #searchInput;
+				   add: #addEntryButton;
+				   yourself)
+		  height: self toolbarHeight;
+		  add: #entriesList;
+		  yourself
 ]
 
-{ #category : #'accessing - spec fields' }
+{ #category : 'accessing - spec fields' }
 BormEntityListPresenter >> addEntryButton [
 	^ addEntryButton
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormEntityListPresenter >> addEntryLabel: aString [
 	addEntryButton label: aString
 ]
 
-{ #category : #accessing }
-BormEntityListPresenter >> displayNameBlock: aOneArgBlock [
-	displayNameBlock := aOneArgBlock.
-	entriesList displayBlock: displayNameBlock
+{ #category : 'as yet unclassified' }
+BormEntityListPresenter >> connectPresenters [
+
+	super connectPresenters.
+	searchInput whenTextChangedDo: [ self refreshList ].
+	addEntryButton action: [ self openEntryEditor ].
+	entriesList
+		display: displayNameBlock;
+		whenActivatedDo: [ self openEntryEditorOn: entriesList selectedItem ]
 ]
 
-{ #category : #'accessing - spec fields' }
+{ #category : 'accessing' }
+BormEntityListPresenter >> displayNameBlock: aOneArgBlock [
+	displayNameBlock := aOneArgBlock.
+	entriesList display: displayNameBlock
+]
+
+{ #category : 'accessing - spec fields' }
 BormEntityListPresenter >> entriesList [
 	^ entriesList
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 BormEntityListPresenter >> initialize [
 	orphanedItems := OrderedCollection new.
 	itemsBlock := [ #() ].
@@ -55,87 +67,70 @@ BormEntityListPresenter >> initialize [
 	super initialize
 ]
 
-{ #category : #initialization }
-BormEntityListPresenter >> initializePresenter [
-	super initializePresenter.
-	searchInput whenTextChanged: [ self refreshList ].
-	addEntryButton action: [ self openEntryEditor ].
-	entriesList
-		displayBlock: displayNameBlock;
-		handlesDoubleClick: true;
-		doubleClickAction: [ self openEntryEditorOn: entriesList selectedItem ]
-]
+{ #category : 'as yet unclassified' }
+BormEntityListPresenter >> initializePresenters [
 
-{ #category : #initialization }
-BormEntityListPresenter >> initializeWidgets [
 	searchInput := self newTextInput.
 	searchInput
-		autoAccept: true;
 		entryCompletion: nil;
-		ghostText: 'Search'.
+		placeholder: 'Search'.
 	addEntryButton := self newButton.
 	addEntryButton label: 'New Entry'.
-	entriesList := self instantiate: FastTableModel.
+	entriesList := self newList.
 	self focusOrder
 		add: searchInput;
 		add: addEntryButton;
 		add: entriesList
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormEntityListPresenter >> itemsBlock: aBlock [
 	itemsBlock := aBlock.
 	self refreshList
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 BormEntityListPresenter >> openEntryEditor [
 	self openEntryEditorOn: BormEntity new isNew: true
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 BormEntityListPresenter >> openEntryEditorOn: anEntry [
 	self openEntryEditorOn: anEntry isNew: false
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 BormEntityListPresenter >> openEntryEditorOn: anEntry isNew: isNew [
-	| control pane nameField |
-	control := WizardControl new.
-	pane := WizardSinglePane new.
-	pane name: 'New Entity'.
-	nameField := TextFieldPart new
-		inGroupboxNamed: 'Entity name';
-		defaultValue: anEntry name;
-		horizontalSize: 300;
-		yourself.
-	pane addPart: nameField associatedTo: #name.
-	control addPane: pane.
-	control
-		atEndDo: [ :vals | 
-			anEntry name: (vals at: #name).
-			isNew
-				ifTrue: [ orphanedItems add: anEntry ].
-			self refreshList ].
-	control open
+	| response |
+	response := self uiManager
+		            request: 'Entity name:'
+		            initialAnswer: anEntry name
+		            title: (isNew
+				             ifTrue: [ 'New entity' ]
+				             ifFalse: [ 'Entity' ]).
+	response ifNil: [ ^ self ].
+	anEntry name: response.
+	isNew ifTrue: [ orphanedItems add: anEntry ].
+	self refreshList
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 BormEntityListPresenter >> refreshList [
+
 	| search |
 	search := searchInput text asLowercase.
-	entriesList
-		items:
-			(itemsBlock value , orphanedItems
-				select: [ :each | (displayNameBlock value: each) asLowercase includesSubstring: search ])
+	entriesList items:
+		(itemsBlock value asArray , orphanedItems select: [ :each | 
+			 (displayNameBlock value: each) asLowercase includesSubstring:
+				 search ])
 ]
 
-{ #category : #'accessing - spec fields' }
+{ #category : 'accessing - spec fields' }
 BormEntityListPresenter >> searchInput [
 	^ searchInput
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormEntityListPresenter >> selectedItem [
 	^ entriesList selectedItem
 ]

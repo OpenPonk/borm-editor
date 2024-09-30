@@ -1,63 +1,36 @@
 Class {
-	#name : #OPBormConstraintController,
-	#superclass : #OPBormElementController,
-	#category : #'OpenPonk-BormEditor-Controllers'
+	#name : 'OPBormConstraintController',
+	#superclass : 'OPBormAssociationEnhancementController',
+	#category : 'OpenPonk-BormEditor-Controllers',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Controllers'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 OPBormConstraintController >> canVisitTarget: aController [
 	^ aController canBeTargetForConstraint: self
 ]
 
-{ #category : #construction }
-OPBormConstraintController >> constraintOnEdge: anElement [
-	| edge const |
-	edge := (self diagramController controllerForModel: model owner) figure.
-	anElement
-		withViewDo:
-			[ :view | 
-			const := OPRTRailConstraint new.
-			const
-				initialPosition: 0.5;
-				distance: 10.
-			const element: anElement connection: edge ]
+{ #category : 'construction' }
+OPBormConstraintController >> diagramElementClass [
+
+	^ BormConstraintShape
 ]
 
-{ #category : #construction }
-OPBormConstraintController >> createModelIn: aParentModel [
-	self model: self modelClass new.
-	aParentModel constraint: model.
-	^ model
-]
-
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormConstraintController >> modelClass [
 	^ BormConstraint
 ]
 
-{ #category : #hooks }
-OPBormConstraintController >> refreshFigure [
-	self figure trachelShape text: self model name.
-	^ super refreshFigure
+{ #category : 'construction' }
+OPBormConstraintController >> registerModelInContainer: aParentModel [
+
+	aParentModel constraint: model
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 OPBormConstraintController >> removeModel [
 
 	self assert: self model owner constraint = self model.
 	self model owner removeConstraint
-]
-
-{ #category : #hooks }
-OPBormConstraintController >> renderFigureIn: aView [
-	self diagramController addingFigureFor: self.
-	figure := RTLabel new
-		color: Color black;
-		height: 12;
-		elementOn: 'empty constraint'.
-	figure @ RTDraggable.
-	figure renderIn: aView.
-	figure trachelShape pushFront.
-	self constraintOnEdge: figure.
-	^ self diagramController addedFigureFor: self
 ]

@@ -1,8 +1,10 @@
 Class {
-	#name : #OPBormText,
-	#superclass : #ComposablePresenter,
+	#name : 'OPBormText',
+	#superclass : 'SpPresenter',
 	#instVars : [
 		'rubText'
 	],
-	#category : #'OpenPonk-BormEditor-Extensions'
+	#category : 'OpenPonk-BormEditor-Extensions',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Extensions'
 }

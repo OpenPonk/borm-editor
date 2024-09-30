@@ -1,15 +1,17 @@
 Class {
-	#name : #OPBormLayoutCommand,
-	#superclass : #OPLayoutDiagramCommand,
-	#category : #'OpenPonk-BormEditor-Adapters'
+	#name : 'OPBormLayoutCommand',
+	#superclass : 'OPLayoutDiagramCommand',
+	#category : 'OpenPonk-BormEditor-Adapters',
+	#package : 'OpenPonk-BormEditor',
+	#tag : 'Adapters'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPBormLayoutCommand >> defaultMenuItemName [
 	^ 'Default'
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 OPBormLayoutCommand >> execute [
 	layouter defaultLayout
 ]
