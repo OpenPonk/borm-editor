@@ -5,28 +5,27 @@ Class {
 	#package : 'BaselineOfBormEditor'
 }
 
-{ #category : 'accessing' }
+{ #category : 'baselines' }
 BaselineOfBormEditor >> baseline: spec [
 
 	<baseline>
-	spec for: #common do: [ 
+	spec for: #common do: [
 		spec
 			baseline: 'BormModel'
-			with: [ spec repository: 'github://openponk/borm-model:v3.0.x/repository' ].
+			with: [ spec repository: 'github://openponk/borm-model:v4.0.x' ].
 		spec
 			baseline: 'OpenPonk'
-			with: [ spec repository: 'github://openponk/openponk:v3.0.x/repository' ].
-		spec baseline: 'XMLParser' with: [ 
+			with: [ spec repository: 'github://openponk/openponk:v4.0.x' ].
+		spec baseline: 'PetitParser' with: [
 			spec
-				repository: 'github://pharo-contributions/XML-XMLParser:3.5.x/src';
-				loads: #( Core ) ].
-		spec baseline: 'XPath' with: [ 
-			spec
-				repository: 'github://pharo-contributions/XML-XPath:3450f91/src';
-				loads: #( Core ) ].
+				repository: 'github://moosetechnology/PetitParser:v3.x.x/src';
+				loads:
+					#( 'Core' 'Tests' 'Examples' 'Islands' 'Analyzer' 'Preprocessor'
+					   'Indent' 'Extension' 'TestsExtension' 'Parser' ) ].
+
 		spec
 			package: 'OpenPonk-BormEditor'
-			with: [ spec requires: #( 'XPath' 'XMLParser' 'BormModel' ) ].
+			with: [ spec requires: #( 'PetitParser' 'BormModel' ) ].
 		spec group: 'plugin' with: #( 'OpenPonk-BormEditor' ).
 		spec group: 'default' with: #( 'OpenPonk' 'plugin' ) ]
 ]
