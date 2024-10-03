@@ -6,7 +6,7 @@ Class {
 	#tag : 'Controllers'
 }
 
-{ #category : 'ui hooks' }
+{ #category : 'forms' }
 OPBormElementController >> buildEditorForm: aForm [
 	super buildEditorForm: aForm.
 	self buildEntityForm: aForm

@@ -10,7 +10,7 @@ Class {
 	#tag : 'Controllers'
 }
 
-{ #category : 'ui hooks' }
+{ #category : 'forms' }
 OPBormDataFlowController >> buildEditorForm: aForm [
 
 	super buildEditorForm: aForm.
