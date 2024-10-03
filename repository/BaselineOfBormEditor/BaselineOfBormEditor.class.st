@@ -18,7 +18,7 @@ BaselineOfBormEditor >> baseline: spec [
 			with: [ spec repository: 'github://openponk/openponk:v4.0.x' ].
 		spec baseline: 'PetitParser' with: [
 			spec
-				repository: 'github://moosetechnology/PetitParser:v3.x.x/src';
+				repository: 'github://moosetechnology/PetitParser:v3.0.x';
 				loads:
 					#( 'Core' 'Tests' 'Examples' 'Islands' 'Analyzer' 'Preprocessor'
 					   'Indent' 'Extension' 'TestsExtension' 'Parser' ) ].
