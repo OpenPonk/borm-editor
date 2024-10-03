@@ -6,7 +6,7 @@ Class {
 	#tag : 'Controllers'
 }
 
-{ #category : 'hooks' }
+{ #category : 'forms' }
 OPBormParticipantController >> buildEditorForm: aForm [
 
 	super buildEditorForm: aForm.
@@ -15,9 +15,9 @@ OPBormParticipantController >> buildEditorForm: aForm [
 		displayIcon: [ :type | self typeIconFor: type ];
 		display: [ :type | type asString ];
 		selectItem: self model type;
-		whenSelectedItemChangedDo: [ :newValue | 
+		whenSelectedItemChangedDo: [ :newValue |
 			self model type: newValue.
-			self refreshFigure ]
+			self diagramElement modelChanged ]
 ]
 
 { #category : 'testing' }

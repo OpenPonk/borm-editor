@@ -6,7 +6,7 @@ Class {
 	#tag : 'Controllers'
 }
 
-{ #category : 'hooks' }
+{ #category : 'forms' }
 OPBormStateController >> buildEditorForm: aForm [
 
 	super buildEditorForm: aForm.

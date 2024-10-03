@@ -12,7 +12,7 @@ OPBormProcessNodeController >> bormModels [
 		select: [ :each | each isKindOf: self diagramController modelClass ]
 ]
 
-{ #category : 'ui hooks' }
+{ #category : 'forms' }
 OPBormProcessNodeController >> buildEditorForm: aForm [
 
 	(aForm addText: 'Name')
