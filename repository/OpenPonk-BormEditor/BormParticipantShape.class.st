@@ -3,13 +3,24 @@ Class {
 	#superclass : 'OPBoundNode',
 	#instVars : [
 		'innerRoassalShapesBlock',
-		'typeIconProvider',
 		'icon'
 	],
 	#category : 'OpenPonk-BormEditor-Shapes',
 	#package : 'OpenPonk-BormEditor',
 	#tag : 'Shapes'
 }
+
+{ #category : 'printing' }
+BormParticipantShape class >> typeIconFor: aType [
+
+	aType = BormParticipantType Person ifTrue: [ 
+		^ OPBormEditorIcons personIcon ].
+	aType = BormParticipantType System ifTrue: [ 
+		^ OPBormEditorIcons bormSystemIcon ].
+	aType = BormParticipantType Organization ifTrue: [ 
+		^ OPBormEditorIcons organizationIcon ].
+	^ nil
+]
 
 { #category : 'rendering' }
 BormParticipantShape >> addSelectionDraggableInteraction [
@@ -58,7 +69,7 @@ BormParticipantShape >> renderShapeDetails [
 	roassalShape @ labeled.
 
 	icon := RSBitmap new
-		        form: typeIconProvider typeIcon;
+		        form: self typeIcon;
 		        yourself.
 	RSLocation new
 		top;
@@ -87,17 +98,23 @@ BormParticipantShape >> shouldBeResizableByUser [
 	^ true
 ]
 
-{ #category : 'accessing' }
-BormParticipantShape >> typeIconProvider: anObject [
+{ #category : 'rendering' }
+BormParticipantShape >> typeIcon [
 
-	typeIconProvider := anObject
+	^ self typeIconFor: self modelElement type
+]
+
+{ #category : 'rendering' }
+BormParticipantShape >> typeIconFor: aType [
+
+	^ self class typeIconFor: aType
 ]
 
 { #category : 'rendering' }
 BormParticipantShape >> updateRenderFromModel [
 
 	(roassalShape propertyAt: #RSLabeled) text: self modelElement name.
-	icon form: typeIconProvider typeIcon.
+	icon form: self typeIcon.
 	super updateRenderFromModel.
 	roassalShape signalUpdate
 ]

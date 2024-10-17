@@ -12,7 +12,7 @@ OPBormParticipantController >> buildEditorForm: aForm [
 	super buildEditorForm: aForm.
 	(aForm addDroplist: 'Type')
 		items: #( #Person #System #Organization );
-		displayIcon: [ :type | self typeIconFor: type ];
+		displayIcon: [ :type | BormParticipantShape typeIconFor: type ];
 		display: [ :type | type asString ];
 		selectItem: self model type;
 		whenSelectedItemChangedDo: [ :newValue |
@@ -42,9 +42,7 @@ OPBormParticipantController >> hookDiagramElement [
 
 	super hookDiagramElement.
 
-	diagramElement
-		innerRoassalShapesBlock: [ self nodeRoassalShapes ];
-		typeIconProvider: self
+	diagramElement innerRoassalShapesBlock: [ self nodeRoassalShapes ]
 ]
 
 { #category : 'accessing' }
@@ -68,22 +66,4 @@ OPBormParticipantController >> removeModel [
 
 	self model owner remove: self model.
 	super removeModel
-]
-
-{ #category : 'hooks' }
-OPBormParticipantController >> typeIcon [
-
-	^ self typeIconFor: self model type
-]
-
-{ #category : 'hooks' }
-OPBormParticipantController >> typeIconFor: aType [
-
-	aType = BormParticipantType Person ifTrue: [ 
-		^ OPBormEditorIcons personIcon ].
-	aType = BormParticipantType System ifTrue: [ 
-		^ OPBormEditorIcons bormSystemIcon ].
-	aType = BormParticipantType Organization ifTrue: [ 
-		^ OPBormEditorIcons organizationIcon ].
-	^ nil
 ]
