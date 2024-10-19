@@ -10,6 +10,14 @@ Class {
 	#tag : 'Shapes'
 }
 
+{ #category : 'removing' }
+BormStateShape >> removeRender [
+
+	super removeRender.
+	playIcon := nil.
+	innerBox := nil
+]
+
 { #category : 'rendering' }
 BormStateShape >> renderBasicShape [
 

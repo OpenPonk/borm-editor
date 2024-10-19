@@ -36,6 +36,14 @@ BormNodeShape >> plusIconAction: aBlock [
 	plusIconAction := aBlock
 ]
 
+{ #category : 'removing' }
+BormNodeShape >> removeRender [
+
+	super removeRender.
+	plusIcon := nil.
+	labeled := nil
+]
+
 { #category : 'rendering' }
 BormNodeShape >> renderShapeDetails [
 

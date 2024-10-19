@@ -15,8 +15,7 @@ OPBormAssociationEnhancementController >> dependingOnElements [
 ]
 
 { #category : 'diagram elements' }
-OPBormAssociationEnhancementController >> diagramElementOwner [
+OPBormAssociationEnhancementController >> owner [
 
-	^ (self diagramController controllerForModel: model owner)
-		  diagramElement
+	^ self diagramController controllerForModel: model owner
 ]
