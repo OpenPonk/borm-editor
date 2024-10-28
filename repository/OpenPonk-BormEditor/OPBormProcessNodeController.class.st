@@ -69,3 +69,11 @@ OPBormProcessNodeController >> removeModel [
 	self model owner remove: self model.
 	super removeModel
 ]
+
+{ #category : 'diagram elements' }
+OPBormProcessNodeController >> unhookDiagramElement [
+
+	super unhookDiagramElement.
+
+	(self diagramElement ifNotExists: [ ^ self ]) plusIconAction: [  ]
+]

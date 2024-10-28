@@ -67,3 +67,11 @@ OPBormParticipantController >> removeModel [
 	self model owner remove: self model.
 	super removeModel
 ]
+
+{ #category : 'diagram elements' }
+OPBormParticipantController >> unhookDiagramElement [
+
+	super unhookDiagramElement.
+	(self diagramElement ifNotExists: [ ^ self ])
+		innerRoassalShapesBlock: [  ]
+]

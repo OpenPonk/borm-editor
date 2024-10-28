@@ -43,6 +43,13 @@ BormParticipantShape >> innerRoassalShapesBlock: aBlock [
 	innerRoassalShapesBlock := aBlock
 ]
 
+{ #category : 'removing' }
+BormParticipantShape >> removeRender [
+
+	super removeRender.
+	icon := nil
+]
+
 { #category : 'rendering' }
 BormParticipantShape >> renderBasicShape [
 
