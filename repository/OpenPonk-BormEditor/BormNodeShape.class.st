@@ -13,6 +13,14 @@ Class {
 	#tag : 'Shapes'
 }
 
+{ #category : 'accessing' }
+BormNodeShape >> attachedShapes [
+
+	^ {
+		  plusIcon.
+		  (labeled ifNotNil: [ :l | l labelShape ]) }
+]
+
 { #category : 'defaults' }
 BormNodeShape >> defaultSize [
 	^ 150 @ 60
@@ -76,11 +84,7 @@ BormNodeShape >> renderShapeDetails [
 		right;
 		bottom;
 		offset: -5;
-		stick: plusIcon on: roassalShape.
-	roassalShape
-		when: RSShapeRemovedEvent
-		do: [ plusIcon remove ]
-		for: self.
+		stick: plusIcon on: roassalShape
 ]
 
 { #category : 'interactions' }

@@ -10,6 +10,14 @@ Class {
 	#tag : 'Shapes'
 }
 
+{ #category : 'accessing' }
+BormStateShape >> attachedShapes [
+
+	^ super attachedShapes , {
+		  playIcon.
+		  innerBox }
+]
+
 { #category : 'removing' }
 BormStateShape >> removeRender [
 
@@ -44,13 +52,6 @@ BormStateShape >> renderShapeDetails [
 	innerBox := self shapesFactory newBox
 		            color: Color transparent;
 		            yourself.
-
-	roassalShape
-		when: RSShapeRemovedEvent
-		do: [
-			playIcon remove.
-			innerBox remove ]
-		for: self.
 
 	roassalShape canvas add: innerBox.
 

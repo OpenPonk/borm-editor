@@ -34,7 +34,7 @@ OPBormParticipantController >> diagramElementClass [
 { #category : 'accessing' }
 OPBormParticipantController >> elementsToShowInside [
 
-	^ model nodes , (model nodes flatCollect: [ :each | each outgoing ])
+	^ self model nodes , (self model nodes flatCollect: [ :each | each outgoing ])
 ]
 
 { #category : 'construction' }

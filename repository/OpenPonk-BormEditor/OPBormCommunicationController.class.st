@@ -19,7 +19,8 @@ OPBormCommunicationController >> diagramElementClass [
 
 { #category : 'accessing' }
 OPBormCommunicationController >> elementsToShowInside [
-	^ super elementsToShowInside , model dataFlows
+
+	^ super elementsToShowInside , self model dataFlows
 ]
 
 { #category : 'accessing' }
@@ -31,7 +32,7 @@ OPBormCommunicationController >> modelClass [
 OPBormCommunicationController >> modelSource: aModel in: aParentModel [
 
 	(super modelSource: aModel in: aParentModel) ifFalse: [ ^ false ].
-	self modelSource send: model.
+	self modelSource send: self model.
 	^ true
 ]
 
@@ -39,7 +40,7 @@ OPBormCommunicationController >> modelSource: aModel in: aParentModel [
 OPBormCommunicationController >> modelTarget: aModel in: aParentModel [
 
 	(super modelTarget: aModel in: aParentModel) ifFalse: [ ^ false ].
-	self modelTarget receive: model.
+	self modelTarget receive: self model.
 	^ true
 ]
 
