@@ -36,8 +36,3 @@ OPBormElementController >> buildEntityForm: aForm [
 							:a
 							:b | a name < b name ] ] ]
 ]
-
-{ #category : 'testing' }
-OPBormElementController >> isHideable [
-	^ true
-]

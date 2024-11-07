@@ -28,11 +28,6 @@ OPBormRelationshipController >> elementsToShowInside [
 	^ self model constraints
 ]
 
-{ #category : 'testing' }
-OPBormRelationshipController >> isHideable [
-	^ true
-]
-
 { #category : 'construction' }
 OPBormRelationshipController >> registerModelInContainer: aParentModel [
 
