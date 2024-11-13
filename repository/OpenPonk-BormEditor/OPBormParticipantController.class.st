@@ -42,7 +42,8 @@ OPBormParticipantController >> hookDiagramElement [
 
 	super hookDiagramElement.
 
-	diagramElement innerRoassalShapesBlock: [ self nodeRoassalShapes ]
+	self diagramElement innerRoassalShapesBlock: [
+		self nodeRoassalShapes ]
 ]
 
 { #category : 'accessing' }
