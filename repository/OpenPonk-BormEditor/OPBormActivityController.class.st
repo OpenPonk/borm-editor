@@ -19,7 +19,7 @@ OPBormActivityController >> canBeTargetFor: aController [
 
 { #category : 'accessing' }
 OPBormActivityController >> dependentElements [
-	^ super dependentElements , model communications
+	^ super dependentElements , self model communications
 ]
 
 { #category : 'construction' }

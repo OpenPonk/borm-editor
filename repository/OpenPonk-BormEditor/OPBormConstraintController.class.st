@@ -25,7 +25,7 @@ OPBormConstraintController >> modelClass [
 { #category : 'construction' }
 OPBormConstraintController >> registerModelInContainer: aParentModel [
 
-	aParentModel constraint: model
+	aParentModel constraint: self model
 ]
 
 { #category : 'private' }

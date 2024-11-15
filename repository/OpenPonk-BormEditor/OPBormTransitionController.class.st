@@ -32,7 +32,7 @@ OPBormTransitionController >> modelClass [
 OPBormTransitionController >> modelSource: aModel in: aParentModel [
 
 	(super modelSource: aModel in: aParentModel) ifFalse: [ ^ false ].
-	self modelSource addTransition: model.
+	self modelSource addTransition: self model.
 	^ true
 ]
 
@@ -40,7 +40,7 @@ OPBormTransitionController >> modelSource: aModel in: aParentModel [
 OPBormTransitionController >> modelTarget: aModel in: aParentModel [
 
 	(super modelTarget: aModel in: aParentModel) ifFalse: [ ^ false ].
-	self modelTarget addTransition: model.
+	self modelTarget addTransition: self model.
 	^ true
 ]
 

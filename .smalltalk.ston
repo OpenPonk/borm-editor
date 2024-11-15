@@ -1,7 +1,7 @@
 SmalltalkCISpec {
 	#loading : [
 		SCIMetacelloLoadSpec {
-			#baseline : 'BormEditor',
+			#baseline : 'OpenPonkBormEditor',
 			#directory : 'repository',
 			#platforms : [ #pharo ]
 		}

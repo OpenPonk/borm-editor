@@ -42,7 +42,7 @@ OPBormProcessNodeController >> canBeTargetFor: aController [
 
 { #category : 'accessing' }
 OPBormProcessNodeController >> dependentElements [
-	^ model transitions
+	^ self model transitions
 ]
 
 { #category : 'construction' }

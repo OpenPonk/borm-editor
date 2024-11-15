@@ -30,6 +30,12 @@ BormParticipantShape >> addSelectionDraggableInteraction [
 			 innerRoassalShapesBlock)
 ]
 
+{ #category : 'accessing' }
+BormParticipantShape >> attachedShapes [
+
+	^ super attachedShapes , { icon }
+]
+
 { #category : 'initialization' }
 BormParticipantShape >> initialize [
 
@@ -83,8 +89,7 @@ BormParticipantShape >> renderShapeDetails [
 		right;
 		offset: -5 @ 5;
 		stick: icon on: self roassalShape.
-	self canvas add: icon.
-	roassalShape when: RSShapeRemovedEvent do: [ icon remove ] for: self
+	self canvas add: icon
 ]
 
 { #category : 'rendering' }

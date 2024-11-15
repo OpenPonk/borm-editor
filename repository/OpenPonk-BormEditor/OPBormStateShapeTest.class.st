@@ -1,10 +1,16 @@
 Class {
 	#name : 'OPBormStateShapeTest',
-	#superclass : 'OPAbstractShapeTest',
+	#superclass : 'OPAbstractNodeTest',
 	#category : 'OpenPonk-BormEditor-Tests',
 	#package : 'OpenPonk-BormEditor',
 	#tag : 'Tests'
 }
+
+{ #category : 'instance creation' }
+OPBormStateShapeTest >> modelClass [
+
+	^ BormState 
+]
 
 { #category : 'hooks' }
 OPBormStateShapeTest >> shapeClass [

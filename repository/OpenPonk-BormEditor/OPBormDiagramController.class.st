@@ -58,7 +58,7 @@ OPBormDiagramController >> controllerFactory [
 { #category : 'rebuilding' }
 OPBormDiagramController >> elementsToShowInside [
 
-	^ model participants
+	^ self model participants
 ]
 
 { #category : 'testing' }

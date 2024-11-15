@@ -24,12 +24,8 @@ OPBormRelationshipController >> canBeTargetForDataFlow: aDataFlow [
 
 { #category : 'accessing' }
 OPBormRelationshipController >> elementsToShowInside [
-	^ model constraints
-]
 
-{ #category : 'testing' }
-OPBormRelationshipController >> isHideable [
-	^ true
+	^ self model constraints
 ]
 
 { #category : 'construction' }

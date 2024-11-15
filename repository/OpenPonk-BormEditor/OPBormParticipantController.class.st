@@ -34,7 +34,7 @@ OPBormParticipantController >> diagramElementClass [
 { #category : 'accessing' }
 OPBormParticipantController >> elementsToShowInside [
 
-	^ model nodes , (model nodes flatCollect: [ :each | each outgoing ])
+	^ self model nodes , (self model nodes flatCollect: [ :each | each outgoing ])
 ]
 
 { #category : 'construction' }
@@ -42,7 +42,8 @@ OPBormParticipantController >> hookDiagramElement [
 
 	super hookDiagramElement.
 
-	diagramElement innerRoassalShapesBlock: [ self nodeRoassalShapes ]
+	self diagramElement innerRoassalShapesBlock: [
+		self nodeRoassalShapes ]
 ]
 
 { #category : 'accessing' }

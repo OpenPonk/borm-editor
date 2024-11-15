@@ -6,6 +6,12 @@ Class {
 	#tag : 'Tests'
 }
 
+{ #category : 'instance creation' }
+OPBormTransitionShapeTest >> modelClass [
+
+	^ BormTransition
+]
+
 { #category : 'hooks' }
 OPBormTransitionShapeTest >> shapeClass [
 
