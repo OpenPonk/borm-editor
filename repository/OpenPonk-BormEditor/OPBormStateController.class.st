@@ -14,12 +14,12 @@ OPBormStateController >> buildEditorForm: aForm [
 		state: self model isInitial;
 		whenChangedDo: [ :newValue |
 			self model isInitial: newValue.
-			self diagramElement modelChanged ].
+			self modelChanged ].
 	(aForm addCheckbox: 'Final')
 		state: self model isFinal;
 		whenChangedDo: [ :newValue |
 			self model isFinal: newValue.
-			self diagramElement modelChanged ]
+			self modelChanged ]
 ]
 
 { #category : 'testing' }

@@ -23,7 +23,7 @@ OPBormElementController >> buildEntityForm: aForm [
 		whenEntityChanged: [ :e |
 			(e isKindOf: BormEntity) ifTrue: [
 					self model entity: e.
-					self diagramElement modelChanged ] ];
+					self modelChanged ] ];
 		"
 		possibleEntities: [ 
 			self diagramController model project allBormEntities sorted: [ :a :b | 

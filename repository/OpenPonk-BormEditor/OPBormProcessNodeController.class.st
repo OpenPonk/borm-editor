@@ -19,7 +19,7 @@ OPBormProcessNodeController >> buildEditorForm: aForm [
 		text: self model name;
 		whenTextChangedDo: [ :newValue |
 			self model name: newValue asString.
-			self diagramElement modelChanged ].
+			self modelChanged ].
 	self diagramController editor ifNil: [ ^ self ].
 	(aForm addDroplist: 'Submodel')
 		items: { nil } , self bormModels;
@@ -27,7 +27,7 @@ OPBormProcessNodeController >> buildEditorForm: aForm [
 		selectItem: self model submodel;
 		whenSelectedItemChangedDo: [ :newValue |
 			self model submodel: newValue.
-			self diagramElement modelChanged ]
+			self modelChanged ]
 ]
 
 { #category : 'testing' }

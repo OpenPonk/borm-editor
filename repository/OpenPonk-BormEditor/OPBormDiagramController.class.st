@@ -139,8 +139,8 @@ OPBormDiagramController >> initializePaletteWithShortcuts: aPalette [
 { #category : 'userinterface' }
 OPBormDiagramController >> updateCanvas [
 
-	self controllers do: [ :each | each diagramElement modelChanged ].
-	self canvas edges do: [ :each | 
+	self controllers do: [ :each | each modelChanged ].
+	self canvas edges do: [ :each |
 		each pushFront.
 		each update ].
 	self canvas signalUpdate

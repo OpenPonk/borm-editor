@@ -26,7 +26,7 @@ OPBormContainerControllerTest >> testFigureRefresh [
 	self assert:
 		(controller roassalShape propertyAt: #RSLabeled) text = ''.
 	controller model name: 'new name'.
-	controller diagramElement modelChanged.
+	controller modelChanged.
 	text := (controller roassalShape propertyAt: #RSLabeled) text.
 	self assert:
 		((text last: 8) = 'new name' or: [ (text first: 8) = 'new name' ])
