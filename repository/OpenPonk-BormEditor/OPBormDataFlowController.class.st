@@ -18,9 +18,9 @@ OPBormDataFlowController >> buildEditorForm: aForm [
 		items: #( #input #output );
 		display: [ :type | type asString ];
 		selectItem: self model type;
-		whenSelectedItemChangedDo: [ :newValue | 
+		whenSelectedItemChangedDo: [ :newValue |
 			self model type: newValue.
-			self diagramElement modelChanged ]
+			self modelChanged ]
 ]
 
 { #category : 'testing' }
