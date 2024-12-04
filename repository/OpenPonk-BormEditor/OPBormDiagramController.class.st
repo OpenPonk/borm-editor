@@ -15,21 +15,10 @@ OPBormDiagramController >> addAsTargetFor: aController [
 		@ (aController diagramElement height / 2.2)
 ]
 
-{ #category : 'rebuilding' }
-OPBormDiagramController >> allShowableElements [
+{ #category : 'enumerating' }
+OPBormDiagramController >> allModelElementsWithPossibleController [
 
-	| priorities |
-	priorities := { 
-		              BormORModel.
-		              BormParticipant.
-		              BormState.
-		              BormActivity.
-		              BormTransition.
-		              BormCommunication.
-		              BormConstraint.
-		              BormDataFlow }.
-	^ (self model allEntities flatCollect: #representations) asArray 
-		  sortedAs: [ :each | priorities indexOf: each class ]
+	^ self model allEntities flatCollectAsSet: #representations
 ]
 
 { #category : 'testing' }
@@ -38,7 +27,7 @@ OPBormDiagramController >> canBeTargetFor: aController [
 		or: [ aController isMemberOf: OPBormParticipantController ]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 OPBormDiagramController >> commonModelClassPrefix [
 	^ 'Borm'
 ]

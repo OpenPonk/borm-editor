@@ -1,9 +1,9 @@
 Class {
 	#name : 'BormTransitionShape',
 	#superclass : 'BormAssociationShape',
-	#category : 'OpenPonk-BormEditor-Shapes',
+	#category : 'OpenPonk-BormEditor-DiagramElements',
 	#package : 'OpenPonk-BormEditor',
-	#tag : 'Shapes'
+	#tag : 'DiagramElements'
 }
 
 { #category : 'constants' }

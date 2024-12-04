@@ -1,9 +1,9 @@
 Class {
 	#name : 'BormDataFlowShape',
 	#superclass : 'OPBoundNode',
-	#category : 'OpenPonk-BormEditor-Shapes',
+	#category : 'OpenPonk-BormEditor-DiagramElements',
 	#package : 'OpenPonk-BormEditor',
-	#tag : 'Shapes'
+	#tag : 'DiagramElements'
 }
 
 { #category : 'as yet unclassified' }
