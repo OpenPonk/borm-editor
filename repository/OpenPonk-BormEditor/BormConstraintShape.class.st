@@ -1,9 +1,9 @@
 Class {
 	#name : 'BormConstraintShape',
 	#superclass : 'OPEdgeLabel',
-	#category : 'OpenPonk-BormEditor-Shapes',
+	#category : 'OpenPonk-BormEditor-DiagramElements',
 	#package : 'OpenPonk-BormEditor',
-	#tag : 'Shapes'
+	#tag : 'DiagramElements'
 }
 
 { #category : 'adding' }
@@ -14,6 +14,12 @@ BormConstraintShape >> anchorToEdge [
 		minDistanceToLine: self defaultMinDistance;
 		positionReference: self defaultAnchorConstraintPosition;
 		stick: roassalShape on: self owningElement roassalShape
+]
+
+{ #category : 'accessing' }
+BormConstraintShape >> canHaveController [
+
+	^ true
 ]
 
 { #category : 'adding' }

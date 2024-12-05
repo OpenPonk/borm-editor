@@ -8,8 +8,9 @@ Class {
 
 { #category : 'connecting' }
 OPBormRelationshipController >> canBeTargetFor: aController [
-	^ (aController respondsTo: #canVisitTarget:)
-		and: [ aController canVisitTarget: self ]
+
+	^ (aController respondsTo: #canVisitTarget:) and: [
+		  aController canVisitTarget: self ]
 ]
 
 { #category : 'testing' }
@@ -26,6 +27,12 @@ OPBormRelationshipController >> canBeTargetForDataFlow: aDataFlow [
 OPBormRelationshipController >> elementsToShowInside [
 
 	^ self model constraints
+]
+
+{ #category : 'initialization' }
+OPBormRelationshipController >> initialize [
+
+	super initialize
 ]
 
 { #category : 'construction' }

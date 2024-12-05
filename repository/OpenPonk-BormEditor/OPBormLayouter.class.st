@@ -58,25 +58,26 @@ OPBormLayouter >> defaultLayout [
 { #category : 'as yet unclassified' }
 OPBormLayouter >> layoutCommunication: aCommunication [
 
-	| figures rect currentMid targetMid vector |
-	figures := OrderedCollection new.
-	aCommunication dataFlows do: [ :each | 
+	| roassalShapes rect currentMid targetMid vector |
+	roassalShapes := OrderedCollection new.
+	aCommunication dataFlows do: [ :each |
 		diagramController
 			controllerForModel: each
-			ifFound: [ :ctrl | figures add: ctrl roassalShape ] ].
+			ifFound: [ :ctrl | roassalShapes add: ctrl roassalShape ] ].
 
-	figures ifEmpty: [ ^ self ].
+	roassalShapes ifEmpty: [ ^ self ].
 
 	RSHorizontalLineLayout new
 		gapSize: 10;
-		on: figures.
+		on: roassalShapes.
 	rect := Rectangle merging:
-		        (figures collect: [ :each | each encompassingRectangle ]).
+		        (roassalShapes collect: [ :each |
+			         each encompassingRectangle ]).
 	currentMid := rect center.
 	targetMid := (diagramController controllerForModel: aCommunication)
 		             roassalShape encompassingRectangle center.
 	vector := targetMid - currentMid.
-	figures do: [ :flow | 
+	roassalShapes do: [ :flow |
 		flow translateBy: vector - (0 @ flow height).
 		(flow propertyAt: OPRSAnchorConstraint) saveShapePosition ]
 ]
@@ -104,14 +105,15 @@ OPBormLayouter >> layoutDiagram: aDiagram [
 { #category : 'as yet unclassified' }
 OPBormLayouter >> layoutNode: aNode [
 
-	| figure bounds |
-	figure := (diagramController
-		           controllerForModel: aNode
-		           ifNone: [ ^ self ]) roassalShape.
-	bounds := figure encompassingRectangle.
+	| roassalShape bounds |
+	roassalShape := (diagramController
+		                 controllerForModel: aNode
+		                 ifNone: [ ^ self ]) roassalShape.
+	bounds := roassalShape encompassingRectangle.
 	bounds := bounds merge:
-		          (figure propertyAt: #RSLabeled) encompassingRectangle.
-	figure extent: bounds extent
+		          (roassalShape propertyAt: #RSLabeled)
+			          encompassingRectangle.
+	roassalShape extent: bounds extent
 ]
 
 { #category : 'layouting' }
