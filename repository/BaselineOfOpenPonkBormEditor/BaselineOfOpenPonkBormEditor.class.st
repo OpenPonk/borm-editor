@@ -15,7 +15,7 @@ BaselineOfOpenPonkBormEditor >> baseline: spec [
 			with: [ spec repository: 'github://openponk/borm-model' ].
 		spec baseline: 'OpenPonkSimulation' with: [
 			spec
-				repository: 'github://JanBliznicenko/openponk-simulation';
+				repository: 'github://openponk/simulation';
 				loads: 'plugin' ].
 		spec
 			baseline: 'OpenPonk'
