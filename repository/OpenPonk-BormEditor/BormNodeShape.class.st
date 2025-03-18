@@ -21,6 +21,12 @@ BormNodeShape >> attachedShapes [
 		  (labeled ifNotNil: [ :l | l labelShape ]) }
 ]
 
+{ #category : 'rendering' }
+BormNodeShape >> defaultBackgroundColor [
+
+	^ self shapesFactory backgroundColor
+]
+
 { #category : 'defaults' }
 BormNodeShape >> defaultSize [
 	^ 150 @ 60
@@ -50,6 +56,16 @@ BormNodeShape >> removeRender [
 	super removeRender.
 	plusIcon := nil.
 	labeled := nil
+]
+
+{ #category : 'rendering' }
+BormNodeShape >> renderBasicShape [
+
+	^ self shapesFactory newRoundedBox
+		  width: self defaultSize x;
+		  height: self defaultSize y;
+		  color: self defaultBackgroundColor;
+		  yourself
 ]
 
 { #category : 'rendering' }

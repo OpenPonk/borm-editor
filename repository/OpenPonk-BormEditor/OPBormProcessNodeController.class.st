@@ -27,7 +27,25 @@ OPBormProcessNodeController >> buildEditorForm: aForm [
 		selectItem: self model submodel;
 		whenSelectedItemChangedDo: [ :newValue |
 			self model submodel: newValue.
-			self modelChanged ]
+			self modelChanged ].
+	(aForm addDroplist: 'Input Transition Condition')
+		items: (BormNodeSimulationCondition allSubclasses collect: #new);
+		display: [ :type | type nameAsInput ];
+		selectItem: self model inputTransitionSimulationCondition;
+		whenSelectedItemChangedDo: [ :newValue |
+			self model inputTransitionSimulationCondition: newValue ].
+	(aForm addDroplist: 'Input Communication Condition')
+		items: (BormNodeSimulationCondition allSubclasses collect: #new);
+		display: [ :type | type nameAsInput ];
+		selectItem: self model inputCommunicationSimulationCondition;
+		whenSelectedItemChangedDo: [ :newValue |
+			self model inputCommunicationSimulationCondition: newValue ].
+	(aForm addDroplist: 'Output Condition')
+		items: (BormNodeSimulationCondition allSubclasses collect: #new);
+		display: [ :type | type nameAsOutput ];
+		selectItem: self model outputSimulationCondition;
+		whenSelectedItemChangedDo: [ :newValue |
+			self model outputSimulationCondition: newValue ]
 ]
 
 { #category : 'testing' }

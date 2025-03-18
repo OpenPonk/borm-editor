@@ -29,9 +29,7 @@ BormStateShape >> removeRender [
 { #category : 'rendering' }
 BormStateShape >> renderBasicShape [
 
-	^ self shapesFactory newRoundedBox
-		  width: self defaultSize x;
-		  height: self defaultSize y;
+	^ super renderBasicShape
 		  cornerRadius: 5;
 		  yourself
 ]
