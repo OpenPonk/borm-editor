@@ -13,7 +13,7 @@ Class {
 OPBormPlugin class >> toolbarMenu: aBuilder [
 
 	<opEditorToolbarMenu: #OPBormPlugin>
-	(aBuilder item: 'DSL Editor')
+	(aBuilder item: 'DSL Editor (not working)')
 		icon: OPBormEditorIcons oRModel16Icon;
 		action: [ 
 			OPDslEditor new
