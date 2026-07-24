@@ -20,7 +20,7 @@ OPBormParticipantController >> buildEditorForm: aForm [
 			self modelChanged ]
 ]
 
-{ #category : 'testing' }
+{ #category : 'connecting' }
 OPBormParticipantController >> canBeTargetFor: aController [
 	^ aController isKindOf: OPBormProcessNodeController
 ]
@@ -51,7 +51,7 @@ OPBormParticipantController >> modelClass [
 	^ BormParticipant
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 OPBormParticipantController >> nodeRoassalShapes [
 
 	^ self model nodes
