@@ -51,9 +51,3 @@ BormConstraintShape >> selectableInteraction [
 
 	^ OPRSSelectable highlightColorBlue
 ]
-
-{ #category : 'adding' }
-BormConstraintShape >> shouldBePositionableByUser [
-
-	^ true
-]

@@ -75,12 +75,6 @@ BormDataFlowShape >> selectableInteraction [
 ]
 
 { #category : 'rendering' }
-BormDataFlowShape >> shouldBePositionableByUser [
-
-	^ true
-]
-
-{ #category : 'rendering' }
 BormDataFlowShape >> updateRenderFromModel [
 
 	super updateRenderFromModel.

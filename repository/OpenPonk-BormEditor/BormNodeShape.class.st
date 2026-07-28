@@ -115,12 +115,6 @@ BormNodeShape >> shapesFactory [
 ]
 
 { #category : 'interactions' }
-BormNodeShape >> shouldBePositionableByUser [
-
-	^ true
-]
-
-{ #category : 'interactions' }
 BormNodeShape >> shouldBeResizableByUser [
 
 	^ true
@@ -158,8 +152,9 @@ BormNodeShape >> updateText [
 		wrapMaxWidth: self wrapMaxWidth;
 		text: self modelElement name.
 
-	labeled labelShape height > roassalShape height ifTrue: [ 
-		roassalShape height: labeled labelShape height + 10 ]
+	labeled labelShape height > roassalShape height ifTrue: [
+			roassalShape height:
+				labeled labelShape height + (self textPadding * 2) ]
 ]
 
 { #category : 'hooks' }

@@ -98,12 +98,6 @@ BormParticipantShape >> selectableInteraction [
 	^ OPRSSelectable highlightBorderColorBlue
 ]
 
-{ #category : 'rendering' }
-BormParticipantShape >> shouldBePositionableByUser [
-
-	^ true
-]
-
 { #category : 'interactions' }
 BormParticipantShape >> shouldBeResizableByUser [
 
