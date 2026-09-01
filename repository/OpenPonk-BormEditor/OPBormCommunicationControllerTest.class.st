@@ -1,5 +1,5 @@
 "
-A BormCommunicationControllerTest is a test class for testing the behavior of BormCommunicationController
+I am a unit test class verifying the behavior of OPBormCommunicationController, ensuring correct cross-participant source and target edge assignments.
 "
 Class {
 	#name : 'OPBormCommunicationControllerTest',
@@ -8,6 +8,12 @@ Class {
 	#package : 'OpenPonk-BormEditor',
 	#tag : 'Tests'
 }
+
+{ #category : 'constants' }
+OPBormCommunicationControllerTest class >> diagramElementClass [
+
+	^ BormCommunicationShape
+]
 
 { #category : 'initialization' }
 OPBormCommunicationControllerTest >> assignModelSource [
@@ -23,28 +29,22 @@ OPBormCommunicationControllerTest >> assignModelTarget [
 	model target receive: model
 ]
 
-{ #category : 'accessing' }
+{ #category : 'constants' }
 OPBormCommunicationControllerTest >> controllerClass [
 	^ OPBormCommunicationController
 ]
 
-{ #category : 'accessing' }
-OPBormCommunicationControllerTest >> diagramElementClass [
-
-	^ BormCommunicationShape
-]
-
-{ #category : 'accessing' }
+{ #category : 'constants' }
 OPBormCommunicationControllerTest >> modelClass [
 	^ BormCommunication
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'constants' }
 OPBormCommunicationControllerTest >> sourceControllerClass [
 	^ OPBormActivityController
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'constants' }
 OPBormCommunicationControllerTest >> sourceModelClass [
 
 	^ BormActivity

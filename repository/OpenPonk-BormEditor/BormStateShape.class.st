@@ -1,3 +1,6 @@
+"
+I render a BORM State as a Roassal bound node. I manage the visual representation, including inner boundary boxes denoting initial or final state statuses.
+"
 Class {
 	#name : 'BormStateShape',
 	#superclass : 'BormNodeShape',

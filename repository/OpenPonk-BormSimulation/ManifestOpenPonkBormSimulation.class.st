@@ -1,5 +1,5 @@
 "
-Please describe the package using the class comment of the included manifest class. The manifest class also includes other additional metadata for the package. These meta data are used by other tools such as the SmalllintManifestChecker and the critics Browser
+Manifest for the OpenPonk BORM Simulation package. Contains metadata and settings for the BORM simulation plugin and its critic rules.
 "
 Class {
 	#name : 'ManifestOpenPonkBormSimulation',
@@ -21,4 +21,11 @@ ManifestOpenPonkBormSimulation class >> rulePrecedenceRuleV1FalsePositive [
 
 	<ignoreForCoverage>
 	^ #(#(#(#RGMethodDefinition #(#OPBormSimulationGUI #adjustWindowSize #false)) #'2025-03-18T17:04:47.64+01:00') )
+]
+
+{ #category : 'code-critics' }
+ManifestOpenPonkBormSimulation class >> ruleReShouldSendSuperInitializeAsFirstMessageV1FalsePositive [
+
+	<ignoreForCoverage>
+	^ #(#(#(#RGMethodDefinition #(#OPBormSimulationGUI #initialize #false)) #'2026-08-30T22:36:38.57+02:00') )
 ]

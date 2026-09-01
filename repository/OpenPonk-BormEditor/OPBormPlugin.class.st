@@ -1,12 +1,12 @@
 "
-I am a descriptior class for Borm plugin.
+I am the core plugin descriptor for the BORM editor in OpenPonk. I register the BORM model classes, diagram controllers, layouters, and default UI tools.
 "
 Class {
 	#name : 'OPBormPlugin',
 	#superclass : 'OPPlugin',
-	#category : 'OpenPonk-BormEditor-Adapters',
+	#category : 'OpenPonk-BormEditor-ViewModels',
 	#package : 'OpenPonk-BormEditor',
-	#tag : 'Adapters'
+	#tag : 'ViewModels'
 }
 
 { #category : 'toolbar' }
@@ -35,7 +35,7 @@ OPBormPlugin >> icon [
 	^ OPBormEditorIcons oRModel16Icon
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 OPBormPlugin >> layouterClass [
 	^ OPBormLayouter
 ]
@@ -55,7 +55,7 @@ OPBormPlugin >> name [
 	^ 'Borm OR Diagram'
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'testing' }
 OPBormPlugin >> supportsHidingElements [
 	^ true
 ]

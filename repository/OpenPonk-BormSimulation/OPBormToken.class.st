@@ -1,3 +1,7 @@
+"
+Model representing a token in a BORM simulation.
+It carries a type identifier to track data or control flow through the BORM model.
+"
 Class {
 	#name : 'OPBormToken',
 	#superclass : 'OPToken',

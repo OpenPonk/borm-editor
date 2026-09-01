@@ -1,3 +1,7 @@
+"
+Unit tests for OPBormTransitionSimulator.
+Verifies internal token progression along transitions within a single participant.
+"
 Class {
 	#name : 'BormTransitionSimulationTest',
 	#superclass : 'BormSimulationTest',
@@ -12,7 +16,7 @@ Class {
 	#tag : 'Tests'
 }
 
-{ #category : 'tests' }
+{ #category : 'running' }
 BormTransitionSimulationTest >> controllerClass [
 
 	^ OPBormSimulator

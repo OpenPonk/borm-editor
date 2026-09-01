@@ -1,11 +1,5 @@
 "
-Icons for BORM visualization.
-
-IconFactory new 
-    createIconsFromDirectory: '/home/peter/prog/dynacase/git/borm-editor/icons'
-    inClass: BormEditorIcons.
-
-BormEditorIcons current initializeIcons
+I provide and cache specific UI icons (e.g., participants, states, data flows) used in the BORM editor palette and menus.
 "
 Class {
 	#name : 'OPBormEditorIcons',

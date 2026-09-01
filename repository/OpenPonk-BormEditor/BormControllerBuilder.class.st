@@ -1,3 +1,6 @@
+"
+I am a deprecated builder responsible for instantiating and wiring diagram controllers based on an existing BORM model's structure.
+"
 Class {
 	#name : 'BormControllerBuilder',
 	#superclass : 'Object',

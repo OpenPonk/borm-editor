@@ -1,3 +1,6 @@
+"
+Abstract base class for unit tests verifying the behavior of BORM model simulation components.
+"
 Class {
 	#name : 'BormSimulationTest',
 	#superclass : 'BormTest',

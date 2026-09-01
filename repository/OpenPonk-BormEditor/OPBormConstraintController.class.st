@@ -1,3 +1,6 @@
+"
+I am the controller for BORM Constraints. I manage diagram interactions for constraint adornments attached to transitions or communications.
+"
 Class {
 	#name : 'OPBormConstraintController',
 	#superclass : 'OPBormAssociationEnhancementController',
@@ -6,31 +9,18 @@ Class {
 	#tag : 'Controllers'
 }
 
-{ #category : 'visiting' }
-OPBormConstraintController >> canVisitTarget: aController [
-	^ aController canBeTargetForConstraint: self
-]
-
 { #category : 'construction' }
-OPBormConstraintController >> diagramElementClass [
+OPBormConstraintController class >> diagramElementClass [
 
 	^ BormConstraintShape
 ]
 
 { #category : 'accessing' }
-OPBormConstraintController >> modelClass [
-	^ BormConstraint
+OPBormConstraintController class >> viewModelClass [
+	^ OPBormConstraintViewModel
 ]
 
-{ #category : 'construction' }
-OPBormConstraintController >> registerModelInContainer: aParentModel [
-
-	aParentModel constraint: self model
-]
-
-{ #category : 'private' }
-OPBormConstraintController >> removeModel [
-
-	self assert: self model owner constraint = self model.
-	self model owner removeConstraint
+{ #category : 'visiting' }
+OPBormConstraintController >> canVisitTarget: aController [
+	^ aController canBeTargetForConstraint: self
 ]

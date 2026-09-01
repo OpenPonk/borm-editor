@@ -1,5 +1,5 @@
 "
-A BormTransitionControllerTest is a test class for testing the behavior of BormTransitionController
+I am a unit test class verifying the behavior of OPBormTransitionController, testing correct sequential flow connections between process nodes.
 "
 Class {
 	#name : 'OPBormTransitionControllerTest',
@@ -8,6 +8,12 @@ Class {
 	#package : 'OpenPonk-BormEditor',
 	#tag : 'Tests'
 }
+
+{ #category : 'constants' }
+OPBormTransitionControllerTest class >> diagramElementClass [
+
+	^ BormTransitionShape
+]
 
 { #category : 'initialization' }
 OPBormTransitionControllerTest >> assignModelSource [
@@ -23,38 +29,32 @@ OPBormTransitionControllerTest >> assignModelTarget [
 	model target addTransition: model
 ]
 
-{ #category : 'accessing' }
+{ #category : 'constants' }
 OPBormTransitionControllerTest >> controllerClass [
 	^ OPBormTransitionController
 ]
 
-{ #category : 'accessing' }
-OPBormTransitionControllerTest >> diagramElementClass [
-
-	^ BormTransitionShape
-]
-
-{ #category : 'accessing' }
+{ #category : 'constants' }
 OPBormTransitionControllerTest >> modelClass [
 	^ BormTransition
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'constants' }
 OPBormTransitionControllerTest >> sourceControllerClass [
 	^ OPBormStateController
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'constants' }
 OPBormTransitionControllerTest >> sourceModelClass [
 	^ BormState
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'constants' }
 OPBormTransitionControllerTest >> targetControllerClass [
 	^ OPBormActivityController
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'constants' }
 OPBormTransitionControllerTest >> targetModelClass [
 	^ BormActivity
 ]

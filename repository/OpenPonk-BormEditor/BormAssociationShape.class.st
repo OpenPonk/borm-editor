@@ -1,3 +1,6 @@
+"
+I am the abstract base edge shape for BORM directional relationships (like transitions and communications), providing default rendering and marker logic.
+"
 Class {
 	#name : 'BormAssociationShape',
 	#superclass : 'OPEdge',

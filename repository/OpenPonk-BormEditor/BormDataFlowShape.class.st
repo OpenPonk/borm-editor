@@ -1,3 +1,6 @@
+"
+I am a visual node shape representing a BORM Data Flow. I act as an adornment attached to a communication edge, displaying the data flow label and directional indicators.
+"
 Class {
 	#name : 'BormDataFlowShape',
 	#superclass : 'OPBoundNode',
@@ -6,7 +9,7 @@ Class {
 	#tag : 'DiagramElements'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'adding' }
 BormDataFlowShape >> anchorToEdge [
 
 	"inspired by OPEdgeLabel"
@@ -26,13 +29,13 @@ BormDataFlowShape >> createOwnedElementsWithoutController [
 	BormDataFlowIcon in: self
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'adding' }
 BormDataFlowShape >> defaultAnchorConstraintPosition [
 
 	^ OPRSAnchorConstraintBalanceReference balance: 0.5
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'adding' }
 BormDataFlowShape >> defaultMinDistance [
 
 	^ 10
@@ -68,7 +71,7 @@ BormDataFlowShape >> renderShapeDetails [
 	self anchorToEdge
 ]
 
-{ #category : 'rendering' }
+{ #category : 'interactions' }
 BormDataFlowShape >> selectableInteraction [
 
 	^ OPRSSelectable highlightBorderColorBlue

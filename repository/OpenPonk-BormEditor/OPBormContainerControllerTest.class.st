@@ -1,3 +1,6 @@
+"
+I am an abstract base test class verifying the visual refresh and diagram embedding behavior of BORM container controllers, such as Participants.
+"
 Class {
 	#name : 'OPBormContainerControllerTest',
 	#superclass : 'OPBormElementControllerTest',
@@ -14,7 +17,7 @@ OPBormContainerControllerTest class >> isAbstract [
 	^ self = OPBormContainerControllerTest
 ]
 
-{ #category : 'accessing' }
+{ #category : 'tests' }
 OPBormContainerControllerTest >> testFigureRefresh [
 
 	| text |

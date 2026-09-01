@@ -1,3 +1,7 @@
+"
+Simulator component for BORM constraints.
+Evaluates and stores the boolean state of a constraint, determining whether an associated transition or communication can proceed.
+"
 Class {
 	#name : 'OPBormConstraintSimulator',
 	#superclass : 'OPElementSimulator',

@@ -1,3 +1,6 @@
+"
+Unit tests verifying communication steps in a BORM simulation when constrained by specific boolean conditions (true or false).
+"
 Class {
 	#name : 'BormConstraintCommunicationSimulationTest',
 	#superclass : 'BormSimulationTest',
@@ -14,7 +17,7 @@ Class {
 	#tag : 'Tests'
 }
 
-{ #category : 'tests' }
+{ #category : 'running' }
 BormConstraintCommunicationSimulationTest >> controllerClass [
 
 	^ OPBormSimulator

@@ -1,3 +1,7 @@
+"
+Abstract simulator component for BORM nodes (states and activities).
+Evaluates input/output conditions and manages token flow across incoming and outgoing communications and transitions.
+"
 Class {
 	#name : 'OPBormElementSimulator',
 	#superclass : 'OPElementSimulator',

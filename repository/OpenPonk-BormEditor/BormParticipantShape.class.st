@@ -1,3 +1,6 @@
+"
+I render a BORM Participant as a Roassal bound node. I manage the participant's boundary, background, inner nested shapes (process nodes), and dynamic type icons.
+"
 Class {
 	#name : 'BormParticipantShape',
 	#superclass : 'OPBoundNode',
@@ -22,7 +25,7 @@ BormParticipantShape class >> typeIconFor: aType [
 	^ nil
 ]
 
-{ #category : 'rendering' }
+{ #category : 'interactions' }
 BormParticipantShape >> addSelectionDraggableInteraction [
 
 	roassalShape
@@ -92,7 +95,7 @@ BormParticipantShape >> renderShapeDetails [
 	self canvas add: icon
 ]
 
-{ #category : 'rendering' }
+{ #category : 'interactions' }
 BormParticipantShape >> selectableInteraction [
 
 	^ OPRSSelectable highlightBorderColorBlue

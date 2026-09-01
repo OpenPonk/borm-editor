@@ -1,3 +1,7 @@
+"
+Simulator component for BORM transitions.
+Controls the internal progression of tokens between states and activities within the same participant.
+"
 Class {
 	#name : 'OPBormTransitionSimulator',
 	#superclass : 'OPEdgeSimulator',

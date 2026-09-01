@@ -1,20 +1,19 @@
 "
-BormBasicLayout provides elementary layouting for BORM ORDiagram.
+I provide elementary automated layouting for BORM Object Relation diagrams. 
 
-1. Each participant is:
-	1.1. layouted with RTTreeLayout
-	1.2. expanded to encompass the layouted tree
-2. All participants are layouted with RTHorizontalLine.
+My layout strategy works in two steps:
+1. Each participant is layouted internally (its process nodes are arranged using a tree layout) and its boundaries are expanded to encompass the layouted tree.
+2. All participants are then arranged side-by-side using a horizontal line layout.
 "
 Class {
 	#name : 'OPBormLayouter',
-	#superclass : 'OPLayouter',
-	#category : 'OpenPonk-BormEditor-Adapters',
+	#superclass : 'OPNodesAndEdgesLayouter',
+	#category : 'OpenPonk-BormEditor-ViewModels',
 	#package : 'OpenPonk-BormEditor',
-	#tag : 'Adapters'
+	#tag : 'ViewModels'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 OPBormLayouter class >> supportedLayoutCommands [
 	^ {OPBormLayoutCommand.
 	OPDominanceTreeLayoutCommand.
@@ -35,27 +34,31 @@ OPBormLayouter >> allNodes [
 		thenCollect: #roassalShape
 ]
 
-{ #category : 'public' }
+{ #category : 'userinterface' }
 OPBormLayouter >> applyLayout: aTwoArgBlock [
 	diagramController model participants
 		do: [ :each | self layoutParticipant: each ].
 	super applyLayout: aTwoArgBlock
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'private - collecting' }
 OPBormLayouter >> collectCommunications: participants [
+
 	| communications |
 	communications := OrderedCollection new.
-	participants do: [ :p | p nodes select: [ :n | n isKindOf: BormActivity ] thenDo: [ :n | communications addAll: n sent asOrderedCollection ] ].
+	participants do: [ :p |
+			p nodes
+				select: [ :n | n isKindOf: BormActivity ]
+				thenDo: [ :n | communications addAll: n sent ] ].
 	^ communications
 ]
 
-{ #category : 'public' }
+{ #category : 'layouts' }
 OPBormLayouter >> defaultLayout [
 	self layoutDiagram: diagramController model
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'processing' }
 OPBormLayouter >> layoutCommunication: aCommunication [
 
 	| roassalShapes rect currentMid targetMid vector |
@@ -82,13 +85,13 @@ OPBormLayouter >> layoutCommunication: aCommunication [
 		(flow propertyAt: OPRSAnchorConstraint) saveShapePosition ]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'processing' }
 OPBormLayouter >> layoutCommunications: communications [
 
 	communications do: [ :c | self layoutCommunication: c ]
 ]
 
-{ #category : 'layouting' }
+{ #category : 'processing' }
 OPBormLayouter >> layoutDiagram: aDiagram [
 
 	| shownParticipants |
@@ -102,7 +105,7 @@ OPBormLayouter >> layoutDiagram: aDiagram [
 	self updateCanvas
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'processing' }
 OPBormLayouter >> layoutNode: aNode [
 
 	| roassalShape bounds |
@@ -116,7 +119,7 @@ OPBormLayouter >> layoutNode: aNode [
 	roassalShape extent: bounds extent
 ]
 
-{ #category : 'layouting' }
+{ #category : 'processing' }
 OPBormLayouter >> layoutNodesInParticipant: aParticipant [
 
 	| ctrl nodeShapes |
@@ -129,14 +132,14 @@ OPBormLayouter >> layoutNodesInParticipant: aParticipant [
 		on: nodeShapes
 ]
 
-{ #category : 'layouting' }
+{ #category : 'processing' }
 OPBormLayouter >> layoutParticipant: aParticipant [
 	self
 		layoutNodesInParticipant: aParticipant;
 		layoutSizeOfParticipant: aParticipant
 ]
 
-{ #category : 'layouting' }
+{ #category : 'processing' }
 OPBormLayouter >> layoutParticipants: participants [
 
 	| controllers participantShapes |
@@ -156,7 +159,7 @@ OPBormLayouter >> layoutParticipants: participants [
 	participantShapes do: [ :each | each announcer unsubscribe: self ]
 ]
 
-{ #category : 'layouting' }
+{ #category : 'processing' }
 OPBormLayouter >> layoutSizeOfParticipant: aParticipant [
 
 	| ctrl bounds roassalShape innerBounds |
@@ -170,7 +173,7 @@ OPBormLayouter >> layoutSizeOfParticipant: aParticipant [
 		translateTo: bounds center
 ]
 
-{ #category : 'layouting' }
+{ #category : 'processing' }
 OPBormLayouter >> layoutSizesOfParticipants [
 	diagramController model participants
 		do: [ :each | self layoutSizeOfParticipant: each ]

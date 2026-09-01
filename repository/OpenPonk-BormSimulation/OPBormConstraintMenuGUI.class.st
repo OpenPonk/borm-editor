@@ -1,3 +1,7 @@
+"
+Spec presenter for the BORM constraint configuration menu.
+Allows users to manually set or toggle constraint values (true/false) before or during a simulation.
+"
 Class {
 	#name : 'OPBormConstraintMenuGUI',
 	#superclass : 'SpPresenter',
@@ -49,6 +53,7 @@ OPBormConstraintMenuGUI >> initializePresenters [
 { #category : 'initialization' }
 OPBormConstraintMenuGUI >> initializeWindow: aWindow [
 
+	super initializeWindow: aWindow.
 	aWindow title: 'Constraint Menu'
 ]
 

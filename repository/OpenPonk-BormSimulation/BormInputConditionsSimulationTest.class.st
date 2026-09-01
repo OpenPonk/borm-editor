@@ -1,24 +1,26 @@
+"
+Unit tests verifying the evaluation of complex input conditions (e.g., ALL, ANY, NONE) for BORM elements during simulation.
+"
 Class {
 	#name : 'BormInputConditionsSimulationTest',
 	#superclass : 'BormSimulationTest',
 	#instVars : [
 		'participantA',
-		'constraint',
 		'participantB',
+		'stateA',
+		'stateB',
+		'stateC',
+		'stateEnd',
 		'activityA',
 		'activityB',
 		'communication',
-		'stateA',
-		'stateB',
-		'stateEnd',
 		'transitionA',
 		'transitionB',
 		'transitionC',
+		'transitionD',
 		'constraintA',
 		'constraintB',
-		'stateC',
-		'constraintC',
-		'transitionD'
+		'constraintC'
 	],
 	#category : 'OpenPonk-BormSimulation-Tests',
 	#package : 'OpenPonk-BormSimulation',

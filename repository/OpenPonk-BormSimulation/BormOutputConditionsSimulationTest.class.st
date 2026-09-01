@@ -1,19 +1,14 @@
+"
+Unit tests verifying the evaluation of complex output conditions (e.g., ALL, ANY, NONE) for BORM elements during simulation.
+"
 Class {
 	#name : 'BormOutputConditionsSimulationTest',
 	#superclass : 'BormSimulationTest',
 	#instVars : [
-		'activity',
-		'state',
-		'communication',
-		'participant',
 		'participantA',
-		'participantB',
+		'state',
 		'activityA',
 		'activityB',
-		'stateA',
-		'stateB',
-		'transition',
-		'constraint',
 		'transitionA',
 		'transitionB',
 		'constraintA',

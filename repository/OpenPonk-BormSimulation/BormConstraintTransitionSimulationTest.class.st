@@ -1,16 +1,15 @@
+"
+Unit tests verifying transition steps in a BORM simulation when constrained by specific boolean conditions (true or false).
+"
 Class {
 	#name : 'BormConstraintTransitionSimulationTest',
 	#superclass : 'BormSimulationTest',
 	#instVars : [
 		'participantA',
-		'participantB',
-		'activityA',
-		'activityB',
-		'communication',
-		'constraint',
 		'stateA',
 		'stateB',
-		'transition'
+		'transition',
+		'constraint'
 	],
 	#category : 'OpenPonk-BormSimulation-Tests',
 	#package : 'OpenPonk-BormSimulation',

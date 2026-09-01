@@ -1,3 +1,6 @@
+"
+I am a unit test class verifying the behavior of OPBormParticipantController, focusing on its role as a container, diagram hooks, and figure rendering tasks.
+"
 Class {
 	#name : 'OPBormParticipantControllerTest',
 	#superclass : 'OPBormContainerControllerTest',
@@ -6,7 +9,13 @@ Class {
 	#tag : 'Tests'
 }
 
-{ #category : 'accessing' }
+{ #category : 'constants' }
+OPBormParticipantControllerTest class >> diagramElementClass [
+
+	^ BormParticipantShape
+]
+
+{ #category : 'constants' }
 OPBormParticipantControllerTest >> controllerClass [
 	^ OPBormParticipantController
 ]
@@ -16,23 +25,17 @@ OPBormParticipantControllerTest >> createTargetController [
 	^ diagramController
 ]
 
-{ #category : 'accessing' }
+{ #category : 'constants' }
 OPBormParticipantControllerTest >> creationTargetControllerClass [
 	^ self diagramControllerClass
 ]
 
-{ #category : 'accessing' }
+{ #category : 'constants' }
 OPBormParticipantControllerTest >> creationTargetModelClass [
 	^ self diagramModelClass
 ]
 
-{ #category : 'accessing' }
-OPBormParticipantControllerTest >> diagramElementClass [
-
-	^ BormParticipantShape
-]
-
-{ #category : 'accessing' }
+{ #category : 'constants' }
 OPBormParticipantControllerTest >> modelClass [
 	^ BormParticipant
 ]

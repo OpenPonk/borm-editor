@@ -1,3 +1,6 @@
+"
+I am a Spec presenter that displays a searchable list of semantic BORM entities. I provide UI capabilities to filter, select, edit, and create new entities within the model.
+"
 Class {
 	#name : 'BormEntityListPresenter',
 	#superclass : 'SpPresenter',
@@ -14,7 +17,7 @@ Class {
 	#tag : 'UI'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'layout' }
 BormEntityListPresenter class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -37,7 +40,7 @@ BormEntityListPresenter >> addEntryLabel: aString [
 	addEntryButton label: aString
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'initialization' }
 BormEntityListPresenter >> connectPresenters [
 
 	super connectPresenters.
@@ -67,7 +70,7 @@ BormEntityListPresenter >> initialize [
 	super initialize
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'initialization' }
 BormEntityListPresenter >> initializePresenters [
 
 	searchInput := self newTextInput.

@@ -1,3 +1,6 @@
+"
+I am the abstract base controller for directional BORM relationships. I handle common connection targeting logic and manage attachments for constraints and data flows.
+"
 Class {
 	#name : 'OPBormRelationshipController',
 	#superclass : 'OPDirectionalRelationshipController',
@@ -21,22 +24,4 @@ OPBormRelationshipController >> canBeTargetForConstraint: aController [
 { #category : 'testing' }
 OPBormRelationshipController >> canBeTargetForDataFlow: aDataFlow [
 	^ self subclassResponsibility
-]
-
-{ #category : 'accessing' }
-OPBormRelationshipController >> elementsToShowInside [
-
-	^ self model constraints
-]
-
-{ #category : 'initialization' }
-OPBormRelationshipController >> initialize [
-
-	super initialize
-]
-
-{ #category : 'construction' }
-OPBormRelationshipController >> registerModelInContainer: aParentModel [
-
-	"do nothing"
 ]

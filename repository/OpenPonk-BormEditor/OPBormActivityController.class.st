@@ -1,3 +1,6 @@
+"
+I am the controller for BORM Activities. I manage diagram interactions and enforce valid connection rules for transitions and communications.
+"
 Class {
 	#name : 'OPBormActivityController',
 	#superclass : 'OPBormProcessNodeController',
@@ -6,29 +9,24 @@ Class {
 	#tag : 'Controllers'
 }
 
-{ #category : 'testing' }
-OPBormActivityController >> canBeSourceFor: aController [
-	^ (aController isKindOf: OPBormTransitionController) | (aController isKindOf: OPBormCommunicationController)
-]
-
-{ #category : 'testing' }
-OPBormActivityController >> canBeTargetFor: aController [
-	^ ((aController isKindOf: OPBormTransitionController) and: [ aController source isKindOf: OPBormStateController ])
-		| ((aController isKindOf: OPBormCommunicationController) and: [ aController source model owner ~= self model owner ])
-]
-
-{ #category : 'accessing' }
-OPBormActivityController >> dependentElements [
-	^ super dependentElements , self model communications
-]
-
 { #category : 'construction' }
-OPBormActivityController >> diagramElementClass [
+OPBormActivityController class >> diagramElementClass [
 
 	^ BormActivityShape
 ]
 
 { #category : 'accessing' }
-OPBormActivityController >> modelClass [
-	^ BormActivity
+OPBormActivityController class >> viewModelClass [
+	^ OPBormActivityViewModel
+]
+
+{ #category : 'connecting' }
+OPBormActivityController >> canBeSourceFor: aController [
+	^ (aController isKindOf: OPBormTransitionController) | (aController isKindOf: OPBormCommunicationController)
+]
+
+{ #category : 'connecting' }
+OPBormActivityController >> canBeTargetFor: aController [
+	^ ((aController isKindOf: OPBormTransitionController) and: [ aController source isKindOf: OPBormStateController ])
+		| ((aController isKindOf: OPBormCommunicationController) and: [ aController source model owner ~= self model owner ])
 ]

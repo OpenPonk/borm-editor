@@ -1,8 +1,5 @@
 "
-I take a BORM model and produce its BormLang string representation.
-
-!! Synchronization
-The inverse operation (taking DSL and parsing it) is provided by BormLangGrammar/BormLangParser
+I serialize a BORM model into its textual domain-specific language (BormLang) representation, serving as the inverse operation to the BormLang parser.
 "
 Class {
 	#name : 'BormLangSerializer',

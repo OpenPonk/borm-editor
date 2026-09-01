@@ -1,3 +1,7 @@
+"
+Simulation GUI presenter for BORM diagrams.
+Extends the base simulation GUI with specific controls for toggling constraints, updating data flow colors, and providing step-by-step execution feedback.
+"
 Class {
 	#name : 'OPBormSimulationGUI',
 	#superclass : 'OPSimulationGUI',
@@ -158,6 +162,7 @@ OPBormSimulationGUI >> getUnusedConstraints [
 
 { #category : 'initialization' }
 OPBormSimulationGUI >> initialize [
+
 	presetSimulation := true.
 	constraints := OrderedCollection new.
 	usedConstraints := OrderedCollection new.

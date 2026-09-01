@@ -1,3 +1,7 @@
+"
+Unit tests for OPBormStateSimulator.
+Verifies the token lifecycle and proper transition stepping originating from a BORM state.
+"
 Class {
 	#name : 'BormStateSimulationTest',
 	#superclass : 'BormSimulationTest',

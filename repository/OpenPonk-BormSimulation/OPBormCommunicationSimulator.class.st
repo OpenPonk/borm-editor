@@ -1,3 +1,7 @@
+"
+Simulator component for BORM communications (edges).
+Manages message and token transfers between elements belonging to different participants.
+"
 Class {
 	#name : 'OPBormCommunicationSimulator',
 	#superclass : 'OPEdgeSimulator',

@@ -1,3 +1,6 @@
+"
+I am the controller for BORM States. I manage diagram interactions and enforce valid connection rules for incoming and outgoing process transitions.
+"
 Class {
 	#name : 'OPBormStateController',
 	#superclass : 'OPBormProcessNodeController',
@@ -6,39 +9,23 @@ Class {
 	#tag : 'Controllers'
 }
 
-{ #category : 'forms' }
-OPBormStateController >> buildEditorForm: aForm [
-
-	super buildEditorForm: aForm.
-	(aForm addCheckbox: 'Initial')
-		state: self model isInitial;
-		whenChangedDo: [ :newValue |
-			self model isInitial: newValue.
-			self modelChanged ].
-	(aForm addCheckbox: 'Final')
-		state: self model isFinal;
-		whenChangedDo: [ :newValue |
-			self model isFinal: newValue.
-			self modelChanged ]
-]
-
-{ #category : 'testing' }
-OPBormStateController >> canBeSourceFor: aController [
-	^ aController isKindOf: OPBormTransitionController
-]
-
-{ #category : 'testing' }
-OPBormStateController >> canBeTargetFor: aController [
-	^ (aController isKindOf: OPBormTransitionController) and: [ aController source isKindOf: OPBormActivityController ]
-]
-
 { #category : 'construction' }
-OPBormStateController >> diagramElementClass [
+OPBormStateController class >> diagramElementClass [
 
 	^ BormStateShape
 ]
 
 { #category : 'accessing' }
-OPBormStateController >> modelClass [
-	^ BormState
+OPBormStateController class >> viewModelClass [
+	^ OPBormStateViewModel
+]
+
+{ #category : 'connecting' }
+OPBormStateController >> canBeSourceFor: aController [
+	^ aController isKindOf: OPBormTransitionController
+]
+
+{ #category : 'connecting' }
+OPBormStateController >> canBeTargetFor: aController [
+	^ (aController isKindOf: OPBormTransitionController) and: [ aController source isKindOf: OPBormActivityController ]
 ]

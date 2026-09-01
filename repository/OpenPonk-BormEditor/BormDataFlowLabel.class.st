@@ -1,3 +1,6 @@
+"
+I am a text label shape specifically designed to display the name of a BORM Data Flow on the diagram canvas.
+"
 Class {
 	#name : 'BormDataFlowLabel',
 	#superclass : 'OPLabel',

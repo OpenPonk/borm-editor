@@ -1,15 +1,16 @@
+"
+Unit tests for OPBormCommunicationSimulator.
+Verifies token transfer logic and interactions between activities or states of different participants.
+"
 Class {
 	#name : 'BormCommunicationSimulationTest',
 	#superclass : 'BormSimulationTest',
 	#instVars : [
-		'activity',
-		'state',
-		'communication',
-		'participant',
 		'participantA',
 		'participantB',
 		'activityA',
-		'activityB'
+		'activityB',
+		'communication'
 	],
 	#category : 'OpenPonk-BormSimulation-Tests',
 	#package : 'OpenPonk-BormSimulation',

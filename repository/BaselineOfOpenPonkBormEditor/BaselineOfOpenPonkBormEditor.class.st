@@ -1,3 +1,6 @@
+"
+Metacello baseline for the OpenPonk BORM editor plugin, defining its package dependencies and load configurations.
+"
 Class {
 	#name : 'BaselineOfOpenPonkBormEditor',
 	#superclass : 'BaselineOf',

@@ -1,3 +1,7 @@
+"
+Simulator component for BORM states.
+Acts as a resting or waiting phase in a participant's lifecycle, managing the accumulation and dispatch of tokens.
+"
 Class {
 	#name : 'OPBormStateSimulator',
 	#superclass : 'OPBormElementSimulator',

@@ -1,3 +1,6 @@
+"
+I am a unit test class verifying the visual rendering, containment logic, and boundary updates (such as initial/final indicators) of BORM State shapes.
+"
 Class {
 	#name : 'OPBormStateShapeTest',
 	#superclass : 'OPAbstractNodeTest',

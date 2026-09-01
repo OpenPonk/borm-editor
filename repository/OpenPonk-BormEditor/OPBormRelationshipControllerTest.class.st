@@ -1,3 +1,6 @@
+"
+I am an abstract base test class verifying the source and target mapping logic for directional BORM relationship controllers (Transitions and Communications).
+"
 Class {
 	#name : 'OPBormRelationshipControllerTest',
 	#superclass : 'OPAbstractDirectionalRelationshipControllerTest',
@@ -11,18 +14,18 @@ OPBormRelationshipControllerTest class >> isAbstract [
 	^ self = OPBormRelationshipControllerTest
 ]
 
-{ #category : 'accessing' }
+{ #category : 'constants' }
 OPBormRelationshipControllerTest >> diagramControllerClass [
 
 	^ OPBormDiagramController
 ]
 
-{ #category : 'accessing' }
+{ #category : 'constants' }
 OPBormRelationshipControllerTest >> diagramModelClass [
 	^ BormORModel
 ]
 
-{ #category : 'running' }
+{ #category : 'initialization' }
 OPBormRelationshipControllerTest >> setUpSourceModel [
 
 	| participant |
@@ -32,7 +35,7 @@ OPBormRelationshipControllerTest >> setUpSourceModel [
 	^ sourceModel := creationTargetController createModelIn: participant
 ]
 
-{ #category : 'running' }
+{ #category : 'initialization' }
 OPBormRelationshipControllerTest >> setUpTargetModel [
 
 	| participant |

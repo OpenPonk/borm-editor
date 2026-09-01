@@ -1,3 +1,7 @@
+"
+Simulator for BORM diagrams.
+Coordinates overall execution flow, manages global stepping, and initializes preset constraint values across the diagram.
+"
 Class {
 	#name : 'OPBormSimulator',
 	#superclass : 'OPDiagramSimulator',
@@ -47,7 +51,7 @@ OPBormSimulator >> presetConstraints: bool [
 	presetConstraintsValue := bool
 ]
 
-{ #category : 'stepping' }
+{ #category : 'initialization' }
 OPBormSimulator >> setDefaultStepping [
 	"sets default stepping settings"
 

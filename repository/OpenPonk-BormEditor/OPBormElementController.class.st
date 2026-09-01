@@ -1,3 +1,6 @@
+"
+I am the abstract base controller for all BORM diagram elements, providing common logic for UI bindings and entity form generation.
+"
 Class {
 	#name : 'OPBormElementController',
 	#superclass : 'OPElementController',
@@ -6,33 +9,8 @@ Class {
 	#tag : 'Controllers'
 }
 
-{ #category : 'forms' }
-OPBormElementController >> buildEditorForm: aForm [
-	super buildEditorForm: aForm.
-	self buildEntityForm: aForm
-]
-
-{ #category : 'ui hooks' }
+{ #category : 'deprecation' }
 OPBormElementController >> buildEntityForm: aForm [
-
-	self flag: 'Displays entry completion in wrong place'.
-
-	(aForm addEntity: 'Entity')
-		displaySymbol: #name;
-		entity: self model entity;
-		whenEntityChanged: [ :e |
-			(e isKindOf: BormEntity) ifTrue: [
-					self model entity: e.
-					self modelChanged ] ];
-		"
-		possibleEntities: [ 
-			self diagramController model project allBormEntities sorted: [ :a :b | 
-					a name < b name ] ]'"
-		selectDialog: [
-			BormEntityListPresenter new
-				addEntryLabel: 'New Entity';
-				itemsBlock: [
-					self diagramController model project allBormEntities sorted: [
-							:a
-							:b | a name < b name ] ] ]
+	self deprecated: 'Use viewModel instead' transformWith: '`@receiver buildEntityForm: `@arg1' -> '`@receiver viewModel buildEntityForm: `@arg1'.
+	^ self viewModel buildEntityForm: aForm
 ]

@@ -1,3 +1,6 @@
+"
+I am the controller for BORM Participants. I manage canvas interactions, connection targeting rules, and handle the rendering hooks for the participant's nested process nodes.
+"
 Class {
 	#name : 'OPBormParticipantController',
 	#superclass : 'OPBormElementController',
@@ -6,35 +9,20 @@ Class {
 	#tag : 'Controllers'
 }
 
-{ #category : 'forms' }
-OPBormParticipantController >> buildEditorForm: aForm [
-
-	super buildEditorForm: aForm.
-	(aForm addDroplist: 'Type')
-		items: #( #Person #System #Organization );
-		displayIcon: [ :type | BormParticipantShape typeIconFor: type ];
-		display: [ :type | type asString ];
-		selectItem: self model type;
-		whenSelectedItemChangedDo: [ :newValue |
-			self model type: newValue.
-			self modelChanged ]
-]
-
-{ #category : 'connecting' }
-OPBormParticipantController >> canBeTargetFor: aController [
-	^ aController isKindOf: OPBormProcessNodeController
-]
-
 { #category : 'construction' }
-OPBormParticipantController >> diagramElementClass [
+OPBormParticipantController class >> diagramElementClass [
 
 	^ BormParticipantShape
 ]
 
 { #category : 'accessing' }
-OPBormParticipantController >> elementsToShowInside [
+OPBormParticipantController class >> viewModelClass [
+	^ OPBormParticipantViewModel
+]
 
-	^ self model nodes , (self model nodes flatCollect: [ :each | each outgoing ])
+{ #category : 'connecting' }
+OPBormParticipantController >> canBeTargetFor: aController [
+	^ aController isKindOf: OPBormProcessNodeController
 ]
 
 { #category : 'construction' }
@@ -47,11 +35,6 @@ OPBormParticipantController >> hookDiagramElement [
 ]
 
 { #category : 'accessing' }
-OPBormParticipantController >> modelClass [
-	^ BormParticipant
-]
-
-{ #category : 'accessing' }
 OPBormParticipantController >> nodeRoassalShapes [
 
 	^ self model nodes
@@ -60,13 +43,6 @@ OPBormParticipantController >> nodeRoassalShapes [
 				  controllerForModel: eachModel
 				  ifFound: #roassalShape ]
 		  thenSelect: #isNotNil
-]
-
-{ #category : 'destruction' }
-OPBormParticipantController >> removeModel [
-
-	self model owner remove: self model.
-	super removeModel
 ]
 
 { #category : 'diagram elements' }

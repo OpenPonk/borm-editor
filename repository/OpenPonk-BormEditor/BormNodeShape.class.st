@@ -1,3 +1,6 @@
+"
+I am the base Roassal shape for BORM process nodes (states and activities). I manage node backgrounds, text wrapping, and optional UI adornments.
+"
 Class {
 	#name : 'BormNodeShape',
 	#superclass : 'BormShape',

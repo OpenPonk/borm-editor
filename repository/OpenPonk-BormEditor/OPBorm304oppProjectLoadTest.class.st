@@ -1,3 +1,6 @@
+"
+I am a backward compatibility test class verifying that BORM projects saved in OpenPonk version 3.0.4 load correctly without data loss.
+"
 Class {
 	#name : 'OPBorm304oppProjectLoadTest',
 	#superclass : 'OPLegacyProjectLoadTest',

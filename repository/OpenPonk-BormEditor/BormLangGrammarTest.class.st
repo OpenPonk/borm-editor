@@ -1,3 +1,6 @@
+"
+I am a unit test class verifying the PetitParser grammar rules for the BormLang textual DSL, testing the correct identification of keywords, structures, and identifiers.
+"
 Class {
 	#name : 'BormLangGrammarTest',
 	#superclass : 'PPCompositeParserTest',

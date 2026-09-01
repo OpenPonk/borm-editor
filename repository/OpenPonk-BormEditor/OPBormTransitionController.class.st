@@ -1,3 +1,6 @@
+"
+I am the controller for BORM Transitions. I manage the interactions and rendering of the directed edges defining the internal process flow of a participant.
+"
 Class {
 	#name : 'OPBormTransitionController',
 	#superclass : 'OPBormRelationshipController',
@@ -6,48 +9,30 @@ Class {
 	#tag : 'Controllers'
 }
 
+{ #category : 'construction' }
+OPBormTransitionController class >> diagramElementClass [
+
+	^ BormTransitionShape
+]
+
+{ #category : 'accessing' }
+OPBormTransitionController class >> viewModelClass [
+	^ OPBormTransitionViewModel
+]
+
 { #category : 'testing' }
 OPBormTransitionController >> canBeTargetForConstraint: aController [
 	^ (super canBeTargetForConstraint: aController)
 		and: [ self model source isKindOf: BormState ]
 ]
 
-{ #category : 'adding' }
+{ #category : 'testing' }
 OPBormTransitionController >> canBeTargetForDataFlow: aDataFlow [
 	^ false
 ]
 
-{ #category : 'construction' }
-OPBormTransitionController >> diagramElementClass [
+{ #category : 'diagram elements' }
+OPBormTransitionController >> intendedModelOfOwningDiagramElement [
 
-	^ BormTransitionShape
-]
-
-{ #category : 'accessing' }
-OPBormTransitionController >> modelClass [
-	^ BormTransition
-]
-
-{ #category : 'hooks' }
-OPBormTransitionController >> modelSource: aModel in: aParentModel [
-
-	(super modelSource: aModel in: aParentModel) ifFalse: [ ^ false ].
-	self modelSource addTransition: self model.
-	^ true
-]
-
-{ #category : 'hooks' }
-OPBormTransitionController >> modelTarget: aModel in: aParentModel [
-
-	(super modelTarget: aModel in: aParentModel) ifFalse: [ ^ false ].
-	self modelTarget addTransition: self model.
-	^ true
-]
-
-{ #category : 'destruction' }
-OPBormTransitionController >> removeModel [
-
-	self model target removeTransition: self model.
-	self model source removeTransition: self model.
-	super removeModel
+	^ self viewModel modelSource owner
 ]

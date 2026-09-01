@@ -1,3 +1,6 @@
+"
+I am an abstract base test class verifying the common interaction, connectivity, and canvas targeting rules shared by BORM process node controllers (States and Activities).
+"
 Class {
 	#name : 'OPBormProcessNodeControllerTest',
 	#superclass : 'OPBormElementControllerTest',

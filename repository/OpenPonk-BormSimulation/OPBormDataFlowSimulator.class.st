@@ -1,3 +1,7 @@
+"
+Simulator component for BORM data flows.
+Manages data token transfers during diagram execution.
+"
 Class {
 	#name : 'OPBormDataFlowSimulator',
 	#superclass : 'OPElementSimulator',

@@ -1,12 +1,15 @@
+"
+I am a navigator tree node representing a folder or collection of semantic BORM entities in the project tree.
+"
 Class {
 	#name : 'OPBormNavigatorEntities',
 	#superclass : 'OPBormNavigatorNode',
-	#category : 'OpenPonk-BormEditor-Adapters',
+	#category : 'OpenPonk-BormEditor-ViewModels',
 	#package : 'OpenPonk-BormEditor',
-	#tag : 'Adapters'
+	#tag : 'ViewModels'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 OPBormNavigatorEntities >> children [
 	^ model project allBormEntities
 ]

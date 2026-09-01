@@ -1,6 +1,5 @@
 "
-I provide couple of examples for BORM.
-See class-side.
+I provide a collection of executable example diagrams (e.g., Pizza Delivery, Traveling Card) demonstrating BORM models within the OpenPonk editor.
 "
 Class {
 	#name : 'OPBormExampleDiagrams',
