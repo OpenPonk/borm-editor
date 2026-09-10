@@ -6,7 +6,8 @@ Class {
 	#superclass : 'OPBoundNode',
 	#instVars : [
 		'innerRoassalShapesBlock',
-		'icon'
+		'icon',
+		'labeled'
 	],
 	#category : 'OpenPonk-BormEditor-DiagramElements',
 	#package : 'OpenPonk-BormEditor',
@@ -54,9 +55,9 @@ BormParticipantShape >> innerRoassalShapesBlock: aBlock [
 
 { #category : 'removing' }
 BormParticipantShape >> removeRender [
-
 	super removeRender.
-	icon := nil
+	icon := nil.
+	labeled := nil
 ]
 
 { #category : 'rendering' }
@@ -73,8 +74,6 @@ BormParticipantShape >> renderBasicShape [
 
 { #category : 'rendering' }
 BormParticipantShape >> renderShapeDetails [
-
-	| labeled |
 	labeled := OPRSLabeled new.
 	labeled color: Color black.
 	labeled location
@@ -85,8 +84,8 @@ BormParticipantShape >> renderShapeDetails [
 	roassalShape @ labeled.
 
 	icon := RSBitmap new
-		        form: self typeIcon;
-		        yourself.
+		form: self typeIcon;
+		yourself.
 	RSLocation new
 		top;
 		right;
@@ -121,8 +120,10 @@ BormParticipantShape >> typeIconFor: aType [
 
 { #category : 'rendering' }
 BormParticipantShape >> updateRenderFromModel [
-
-	(roassalShape propertyAt: #RSLabeled) text: self modelElement name.
+	| label |
+	label := roassalShape propertyAt: #RSLabeled.
+	label text: (self modelElement name ifNil: [ '' ]).
+	labeled location move: label on: roassalShape.
 	icon form: self typeIcon.
 	super updateRenderFromModel.
 	roassalShape signalUpdate

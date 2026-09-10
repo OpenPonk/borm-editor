@@ -39,3 +39,25 @@ OPBormParticipantControllerTest >> creationTargetModelClass [
 OPBormParticipantControllerTest >> modelClass [
 	^ BormParticipant
 ]
+
+{ #category : 'tests' }
+OPBormParticipantControllerTest >> testNameChangeMaintainsLabelLeftPosition [
+	| label initialLeft newLeft |
+	controller createModelIn: diagramController model.
+	diagramController addController: controller.
+	controller
+		createDiagramElement;
+		renderDiagramElement.
+
+	controller model name: 'A'.
+	controller modelChanged.
+	label := controller roassalShape propertyAt: #RSLabeled.
+	initialLeft := label encompassingRectangle left.
+
+	controller model name: 'A Much Longer Participant Name That Expands'.
+	controller modelChanged.
+	label := controller roassalShape propertyAt: #RSLabeled.
+	newLeft := label encompassingRectangle left.
+
+	self assert: (newLeft closeTo: initialLeft absolutePrecision: 0.5)
+]
