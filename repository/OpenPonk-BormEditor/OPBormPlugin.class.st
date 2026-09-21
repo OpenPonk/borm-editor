@@ -9,7 +9,7 @@ Class {
 	#tag : 'ViewModels'
 }
 
-{ #category : 'toolbar' }
+{ #category : 'toolbar menu' }
 OPBormPlugin class >> toolbarMenu: aBuilder [
 
 	<opEditorToolbarMenu: #OPBormPlugin>
@@ -22,7 +22,7 @@ OPBormPlugin class >> toolbarMenu: aBuilder [
 				highlighter: BormLangHighlighter new;
 				modelClass: BormORModel;
 				model: aBuilder model diagramController model;
-				openWithSpec ]
+				open ]
 ]
 
 { #category : 'accessing' }

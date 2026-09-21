@@ -15,13 +15,16 @@ OPBormDiagramController class >> viewModelClass [
 	^ OPBormORViewModel
 ]
 
-{ #category : 'connecting' }
+{ #category : 'user interface' }
 OPBormDiagramController >> addAsTargetFor: aController [
+	self addAsTargetFor: aController onPosition: nil
+]
 
-	super addAsTargetFor: aController.
+{ #category : 'user interface' }
+OPBormDiagramController >> addAsTargetFor: aController onPosition: aPoint [
+	super addAsTargetFor: aController onPosition: aPoint.
 	aController diagramElement translateBy:
-		aController diagramElement width / 2.5
-		@ (aController diagramElement height / 2.2)
+		(aController diagramElement width / 2.5) @ (aController diagramElement height / 2.2)
 ]
 
 { #category : 'connecting' }

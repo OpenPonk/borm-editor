@@ -15,18 +15,9 @@ OPBormStateViewModel class >> modelClass [ ^ BormState
 
 { #category : 'forms' }
 OPBormStateViewModel >> buildEditorForm: aForm [
-
 	super buildEditorForm: aForm.
-	(aForm addCheckbox: 'Initial')
-		state: self model isInitial;
-		whenChangedDo: [ :newValue |
-			self model isInitial: newValue.
-			self modelChanged ].
-	(aForm addCheckbox: 'Final')
-		state: self model isFinal;
-		whenChangedDo: [ :newValue |
-			self model isFinal: newValue.
-			self modelChanged ]
+	aForm bindCheckbox: 'Initial' property: #isInitial.
+	aForm bindCheckbox: 'Final' property: #isFinal
 ]
 
 { #category : 'accessing' }

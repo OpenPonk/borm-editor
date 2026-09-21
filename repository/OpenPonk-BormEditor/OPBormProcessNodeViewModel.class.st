@@ -28,37 +28,27 @@ OPBormProcessNodeViewModel >> bormModels [
 { #category : 'forms' }
 OPBormProcessNodeViewModel >> buildEditorForm: aForm [
 
-	(aForm addText: 'Name')
-		text: self model name;
-		whenTextChangedDo: [ :newValue |
-			self model name: newValue asString.
-			self modelChanged ].
-	
-	(aForm addDroplist: 'Submodel')
-		items: { nil } , self bormModels;
-		display: [ :m | m ifNil: '' ifNotNil: #name ];
-		selectItem: self model submodel;
-		whenSelectedItemChangedDo: [ :newValue |
-			self model submodel: newValue.
-			self modelChanged ].
-	(aForm addDroplist: 'Input Transition Condition')
-		items: (BormNodeSimulationCondition allSubclasses collect: #new);
-		display: [ :type | type nameAsInput ];
-		selectItem: self model inputTransitionSimulationCondition;
-		whenSelectedItemChangedDo: [ :newValue |
-			self model inputTransitionSimulationCondition: newValue ].
-	(aForm addDroplist: 'Input Communication Condition')
-		items: (BormNodeSimulationCondition allSubclasses collect: #new);
-		display: [ :type | type nameAsInput ];
-		selectItem: self model inputCommunicationSimulationCondition;
-		whenSelectedItemChangedDo: [ :newValue |
-			self model inputCommunicationSimulationCondition: newValue ].
-	(aForm addDroplist: 'Output Condition')
-		items: (BormNodeSimulationCondition allSubclasses collect: #new);
-		display: [ :type | type nameAsOutput ];
-		selectItem: self model outputSimulationCondition;
-		whenSelectedItemChangedDo: [ :newValue |
-			self model outputSimulationCondition: newValue ]
+	aForm bindTextInput: 'Name' property: #name.
+	(aForm
+		bindDroplist: 'Submodel'
+		property: #submodel
+		items: { nil } , self bormModels)
+			display: [ :eachSubmodel | eachSubmodel ifNil: [ '' ] ifNotNil: #name ].
+	(aForm
+		bindDroplist: 'Input Transition Condition'
+		property: #inputTransitionSimulationCondition
+		items: (BormNodeSimulationCondition allSubclasses collect: #new))
+			display: [ :eachCondition | eachCondition nameAsInput ].
+	(aForm
+		bindDroplist: 'Input Communication Condition'
+		property: #inputCommunicationSimulationCondition
+		items: (BormNodeSimulationCondition allSubclasses collect: #new))
+			display: [ :eachCondition | eachCondition nameAsInput ].
+	(aForm
+		bindDroplist: 'Output Condition'
+		property: #outputSimulationCondition
+		items: (BormNodeSimulationCondition allSubclasses collect: #new))
+			display: [ :eachCondition | eachCondition nameAsOutput ]
 ]
 
 { #category : 'accessing' }

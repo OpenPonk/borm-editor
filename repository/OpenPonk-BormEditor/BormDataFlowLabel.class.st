@@ -25,3 +25,8 @@ BormDataFlowLabel >> renderShapeDetails [
 		top;
 		stick: roassalShape on: self owningElement roassalShape
 ]
+
+{ #category : 'testing' }
+BormDataFlowLabel >> shouldBePositionableByUser [
+	^ false
+]

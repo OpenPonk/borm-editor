@@ -15,16 +15,14 @@ OPBormParticipantViewModel class >> modelClass [ ^ BormParticipant
 
 { #category : 'forms' }
 OPBormParticipantViewModel >> buildEditorForm: aForm [
-
+	| droplist |
 	super buildEditorForm: aForm.
-	(aForm addDroplist: 'Type')
-		items: #( #Person #System #Organization );
-		displayIcon: [ :type | BormParticipantShape typeIconFor: type ];
-		display: [ :type | type asString ];
-		selectItem: self model type;
-		whenSelectedItemChangedDo: [ :newValue |
-			self model type: newValue.
-			self modelChanged ]
+	droplist := aForm
+		bindDroplist: 'Type'
+		property: #type
+		items: #( #Person #System #Organization ).
+	droplist displayIcon: [ :itemType | BormParticipantShape typeIconFor: itemType ].
+	droplist display: [ :itemType | itemType asString ]
 ]
 
 { #category : 'accessing' }

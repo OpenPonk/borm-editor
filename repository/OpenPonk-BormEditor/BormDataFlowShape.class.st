@@ -53,6 +53,11 @@ BormDataFlowShape >> label [
 	^ self ownedElements first
 ]
 
+{ #category : 'testing' }
+BormDataFlowShape >> movesWithOtherShape [
+	^ true
+]
+
 { #category : 'rendering' }
 BormDataFlowShape >> renderBasicShape [
 
@@ -83,4 +88,14 @@ BormDataFlowShape >> updateRenderFromModel [
 	super updateRenderFromModel.
 	roassalShape width:
 		(self label width max: self icon width) rounded + 6
+]
+
+{ #category : 'rendering' }
+BormDataFlowShape >> updateRenderFromSelf [
+
+	self isRendered ifFalse: [ ^ self ].
+	super updateRenderFromSelf.
+	bounds ifNil: [ ^ self ].
+	(roassalShape propertyAt: OPRSAnchorConstraint ifAbsent: [ nil ])
+		ifNotNil: [ :anchorConstraint | anchorConstraint saveShapePosition ]
 ]

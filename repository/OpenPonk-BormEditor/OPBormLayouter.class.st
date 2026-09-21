@@ -29,16 +29,21 @@ OPBormLayouter >> allEdges [
 
 { #category : 'accessing' }
 OPBormLayouter >> allNodes [
-	^ diagramController controllers
-		select: [ :ctrl | ctrl isKindOf: OPBormParticipantController ]
-		thenCollect: #roassalShape
+
+	^ (diagramController controllers
+		select: [ :eachController | 
+			(eachController respondsTo: #diagramElement) and: [ 
+				(eachController diagramElement isKindOf: OPBoundNode) and: [ 
+					eachController roassalShape isNotNil ] ] ]
+		thenCollect: [ :eachController | eachController roassalShape ]) asOrderedCollection
 ]
 
-{ #category : 'userinterface' }
+{ #category : 'public - layout' }
 OPBormLayouter >> applyLayout: aTwoArgBlock [
-	diagramController model participants
-		do: [ :each | self layoutParticipant: each ].
-	super applyLayout: aTwoArgBlock
+	super applyLayout: [ :nodes131 :edges131 |
+		diagramController model participants
+			do: [ :each131 | self layoutParticipant: each131 ].
+		aTwoArgBlock value: nodes131 value: edges131 ]
 ]
 
 { #category : 'private - collecting' }
@@ -55,7 +60,8 @@ OPBormLayouter >> collectCommunications: participants [
 
 { #category : 'layouts' }
 OPBormLayouter >> defaultLayout [
-	self layoutDiagram: diagramController model
+	self applyLayout: [ :nodes124 :edges124 |
+		self layoutDiagram: diagramController model ]
 ]
 
 { #category : 'processing' }
