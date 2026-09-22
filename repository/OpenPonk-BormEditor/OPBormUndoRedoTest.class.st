@@ -19,14 +19,13 @@ OPBormUndoRedoTest >> setUp [
 	super setUp.
 	project := OPProject new.
 	undoManager := OPUndoManager new.
-	projectController := OPProjectController new.
-	projectController project: project.
+	projectController := OPProjectController forProject: project.
 	projectController instVarNamed: #undoManager put: undoManager
 ]
 
 { #category : 'tests' }
 OPBormUndoRedoTest >> testCommunicationUndoRedoCycle [
-	| activity1 activity2 communication vmRegistry removeCommand |
+	| activity1 activity2 communication removeCommand |
 	activity1 := BormActivity new name: 'A1'.
 	activity2 := BormActivity new name: 'A2'.
 	communication := BormCommunication new name: 'Comm'.
@@ -35,15 +34,12 @@ OPBormUndoRedoTest >> testCommunicationUndoRedoCycle [
 
 	project addModel: activity1.
 	project addModel: activity2.
-	vmRegistry := OPViewModelRegistry forProject: project.
 
 	self assert: (activity1 communications includes: communication).
 	self assert: (activity2 communications includes: communication).
 
 	removeCommand := OPRemoveModelElementCommand
 		model: communication
-		viewModelRegistry: vmRegistry
-		undoManager: undoManager
 		projectController: projectController.
 
 	undoManager execute: removeCommand.

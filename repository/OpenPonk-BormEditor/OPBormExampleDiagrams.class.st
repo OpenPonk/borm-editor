@@ -206,28 +206,6 @@ System "Card Distributor" {
 }' asBorm: 'Traveling Card'
 ]
 
-{ #category : 'menu' }
-OPBormExampleDiagrams class >> menuCommandOn: aBuilder [
-
-	<worldMenu>
-	((aBuilder item: #BORMEditor) icon: OPBormEditorIcons oRModel16Icon)
-		label: 'BORM Editor';
-		order: 225;
-		parent: #MostUsedTools;
-		action: [ self openExampleEmptyModel ];
-		with: [ 
-			(aBuilder item: #BORMExamples)
-				parent: #BORMEditor;
-				label: 'BORM Example Pizza Delivery';
-				icon: OPBormEditorIcons oRModel16Icon;
-				action: [ self openExamplePizzaDelivery ].
-			(aBuilder item: #BORMExamples)
-				parent: #BORMEditor;
-				label: 'BORM Simple Diagram';
-				icon: OPBormEditorIcons oRModel16Icon;
-				action: [ self openExampleDataFlows ] ]
-]
-
 { #category : 'examples' }
 OPBormExampleDiagrams class >> openExampleDataFlows [
 	<example>

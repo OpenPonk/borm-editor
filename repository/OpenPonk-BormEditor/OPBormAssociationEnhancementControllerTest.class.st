@@ -29,27 +29,27 @@ OPBormAssociationEnhancementControllerTest >> creationTargetModelClass [
 
 { #category : 'accessing' }
 OPBormAssociationEnhancementControllerTest >> setUpCreationTargetModel [
-    | sourceParticipant targetParticipant sourceActivity targetActivity creationTargetModel |
-    sourceParticipant := BormParticipant new.
-    diagramController model add: sourceParticipant.
+	| sourceParticipant targetParticipant sourceActivity targetActivity creationTargetModel |
+	sourceParticipant := BormParticipant new.
+	diagramController model add: sourceParticipant.
 
-    targetParticipant := BormParticipant new.
-    diagramController model add: targetParticipant.
+	targetParticipant := BormParticipant new.
+	diagramController model add: targetParticipant.
 
-    sourceActivity := BormActivity new.
-    sourceParticipant add: sourceActivity.
+	sourceActivity := BormActivity new.
+	sourceParticipant add: sourceActivity.
 
-    targetActivity := BormActivity new.
-    targetParticipant add: targetActivity.
+	targetActivity := BormActivity new.
+	targetParticipant add: targetActivity.
 
-    creationTargetModel := self creationTargetModelClass new.
-    creationTargetModel source: sourceActivity.
-    creationTargetModel target: targetActivity.
+	creationTargetModel := self creationTargetModelClass new.
+	creationTargetModel source: sourceActivity.
+	creationTargetModel target: targetActivity.
 
-    diagramController model add: creationTargetModel.
+	diagramController model add: creationTargetModel.
 
-    creationTargetController viewModelRegistry: diagramController viewModelRegistry.
-    creationTargetController model: creationTargetModel.
+	creationTargetController diagramController: diagramController.
+	creationTargetController model: creationTargetModel.
 
-    ^ creationTargetModel
+	^ creationTargetModel
 ]

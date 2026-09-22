@@ -30,6 +30,28 @@ OPBormPlugin >> diagramControllerClass [
 	^ OPBormDiagramController
 ]
 
+{ #category : 'templates' }
+OPBormPlugin >> exampleProjectTemplates [
+	"Answers example project templates for BORM OR diagrams."
+
+	^ { 
+		(OPProjectTemplate
+			named: 'Pizza Delivery'
+			icon: self icon
+			modelFactory: [ OPBormExampleDiagrams examplePizzaDelivery ]
+			isExample: true).
+		(OPProjectTemplate
+			named: 'Traveling Card'
+			icon: self icon
+			modelFactory: [ OPBormExampleDiagrams exampleTravelingCard ]
+			isExample: true).
+		(OPProjectTemplate
+			named: 'Data Flows'
+			icon: self icon
+			modelFactory: [ OPBormExampleDiagrams exampleDataFlows ]
+			isExample: true) }
+]
+
 { #category : 'accessing' }
 OPBormPlugin >> icon [
 	^ OPBormEditorIcons oRModel16Icon

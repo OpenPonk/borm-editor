@@ -15,22 +15,25 @@ Class {
 
 { #category : 'running' }
 OPBormLayouterUndoTest >> setUp [
-	| registry |
+	| projectController |
 	super setUp.
 	model := OPBormExampleDiagrams examplePizzaDelivery.
 	project := OPProject new.
 	project addModel: model.
 	diagram := OPOpenPonkDiagram forModelElement: model.
 	project addDiagram: diagram.
-	registry := OPViewModelRegistry forProject: project.
+
+	undoManager := OPUndoManager new.
+	projectController := OPProjectController forProject: project.
+	projectController instVarNamed: #undoManager put: undoManager.
+
 	diagramController := OPBormDiagramController new.
+	projectController addDiagramController: diagramController.
 	diagramController
 		canvasPresenter: (OPCanvasPresenter new canvas: RSCanvas new; yourself);
 		diagramElement: diagram;
-		viewModelRegistry: registry;
 		model: model.
-	undoManager := OPUndoManager new.
-	diagramController undoManager: undoManager.
+
 	diagramController showAllElements
 ]
 
