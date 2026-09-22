@@ -60,3 +60,25 @@ OPBormUndoRedoTest >> testCommunicationUndoRedoCycle [
 	self deny: (activity1 communications includes: communication).
 	self deny: (activity2 communications includes: communication)
 ]
+
+{ #category : 'tests' }
+OPBormUndoRedoTest >> testDataFlowLabelRemainsTopAlignedAfterSettingText [
+	| canvas flowShape dataFlow label initialYPosition afterTextYPosition |
+	canvas := RSCanvas new extent: 800 @ 600.
+	dataFlow := BormDataFlow new name: ''.
+	flowShape := BormDataFlowShape in: OPNoShape instance forModelElement: dataFlow.
+	flowShape renderBasicShapeIn: canvas.
+	flowShape createOwnedElementsWithoutController.
+	label := flowShape label.
+	label renderIn: canvas.
+
+	initialYPosition := label roassalShape position y.
+	dataFlow name: 'Order Processing Stream'.
+	label updateRenderFromModel.
+	afterTextYPosition := label roassalShape position y.
+
+	"In red phase, this fails because position does not update on text extent change (differs by 8.17 pt)"
+	self
+		assert: (afterTextYPosition - initialYPosition) abs > 5
+		description: 'Label position must automatically adjust when text extent changes'
+]
