@@ -9,6 +9,11 @@ Class {
 	#tag : 'ViewModels'
 }
 
+{ #category : 'accessing' }
+OPBormPlugin class >> repositoryName [
+	^ #'borm-editor'
+]
+
 { #category : 'toolbar menu' }
 OPBormPlugin class >> toolbarMenu: aBuilder [
 
@@ -49,6 +54,11 @@ OPBormPlugin >> exampleProjectTemplates [
 			named: 'Data Flows'
 			icon: self icon
 			modelFactory: [ OPBormExampleDiagrams exampleDataFlows ]
+			isExample: true).
+		(OPProjectTemplate
+			named: 'Loan Approval'
+			icon: self icon
+			modelFactory: [ OPBormExampleDiagrams exampleLoanApproval ]
 			isExample: true) }
 ]
 
