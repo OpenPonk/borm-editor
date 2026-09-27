@@ -5,7 +5,6 @@ Class {
 	#name : 'BormParticipantShape',
 	#superclass : 'OPBoundNode',
 	#instVars : [
-		'innerRoassalShapesBlock',
 		'icon',
 		'labeled'
 	],
@@ -26,12 +25,19 @@ BormParticipantShape class >> typeIconFor: aType [
 	^ nil
 ]
 
+{ #category : 'layout' }
+BormParticipantShape >> adaptBoundsToInnerBounds: anInnerRectangle [
+	"Adapts participant shape extent and position with standard BORM margins."
+	| newBounds |
+	newBounds := anInnerRectangle expandBy: 40 @ 30.
+	self roassalShape
+		extent: newBounds extent;
+		translateTo: newBounds center
+]
+
 { #category : 'interactions' }
 BormParticipantShape >> addSelectionDraggableInteraction [
-
-	roassalShape
-	@ (OPRSSelectionDraggable thatAlsoDragsShapesProvidedByBlock:
-			 innerRoassalShapesBlock)
+	roassalShape @ (OPRSSelectionDraggable thatAlsoDragsShapesProvidedByBlock: [ self innerDraggableRoassalShapes ])
 ]
 
 { #category : 'accessing' }
@@ -40,17 +46,9 @@ BormParticipantShape >> attachedShapes [
 	^ super attachedShapes , { icon }
 ]
 
-{ #category : 'initialization' }
-BormParticipantShape >> initialize [
-
-	super initialize.
-	innerRoassalShapesBlock := [ :allNodes | allNodes ]
-]
-
-{ #category : 'initialization' }
-BormParticipantShape >> innerRoassalShapesBlock: aBlock [
-
-	innerRoassalShapesBlock := aBlock
+{ #category : 'testing' }
+BormParticipantShape >> isContainer [
+	^ true
 ]
 
 { #category : 'removing' }

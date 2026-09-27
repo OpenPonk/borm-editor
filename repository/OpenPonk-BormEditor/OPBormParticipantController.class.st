@@ -24,31 +24,3 @@ OPBormParticipantController class >> viewModelClass [
 OPBormParticipantController >> canBeTargetFor: aController [
 	^ aController isKindOf: OPBormProcessNodeController
 ]
-
-{ #category : 'construction' }
-OPBormParticipantController >> hookDiagramElement [
-
-	super hookDiagramElement.
-
-	self diagramElement innerRoassalShapesBlock: [
-		self nodeRoassalShapes ]
-]
-
-{ #category : 'accessing' }
-OPBormParticipantController >> nodeRoassalShapes [
-
-	^ self model nodes
-		  collect: [ :eachModel | 
-			  self diagramController
-				  controllerForModel: eachModel
-				  ifFound: #roassalShape ]
-		  thenSelect: #isNotNil
-]
-
-{ #category : 'diagram elements' }
-OPBormParticipantController >> unhookDiagramElement [
-
-	super unhookDiagramElement.
-	(self diagramElement ifNotExists: [ ^ self ])
-		innerRoassalShapesBlock: [  ]
-]

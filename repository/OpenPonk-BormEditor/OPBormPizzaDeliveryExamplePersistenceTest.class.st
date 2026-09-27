@@ -12,5 +12,5 @@ Class {
 { #category : 'hooks' }
 OPBormPizzaDeliveryExamplePersistenceTest >> createExampleModel [
 
-	^ OPBormExampleDiagrams examplePizzaDelivery
+	^ OPBormExamples examplePizzaDelivery
 ]

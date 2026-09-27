@@ -11,7 +11,7 @@ Class {
 
 { #category : 'accessing' }
 OPBormLayoutCommand >> defaultMenuItemName [
-	^ 'Default'
+	^ 'Process Flow'
 ]
 
 { #category : 'execution' }

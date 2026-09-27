@@ -12,5 +12,5 @@ Class {
 { #category : 'hooks' }
 OPBormDataFlowsExamplePersistenceTest >> createExampleModel [
 
-	^ OPBormExampleDiagrams exampleDataFlows
+	^ OPBormExamples exampleDataFlows
 ]

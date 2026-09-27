@@ -12,5 +12,5 @@ Class {
 { #category : 'hooks' }
 OPBormLegacyProjectLoadTestGenerator >> model [
 
-	^ OPBormExampleDiagrams examplePizzaDelivery
+	^ OPBormExamples examplePizzaDelivery
 ]

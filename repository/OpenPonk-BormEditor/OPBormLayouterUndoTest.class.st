@@ -17,7 +17,7 @@ Class {
 OPBormLayouterUndoTest >> setUp [
 	| projectController |
 	super setUp.
-	model := OPBormExampleDiagrams examplePizzaDelivery.
+	model := OPBormExamples examplePizzaDelivery.
 	project := OPProject new.
 	project addModel: model.
 	diagram := OPOpenPonkDiagram forModelElement: model.
