@@ -39,27 +39,27 @@ OPBormPlugin >> diagramControllerClass [
 OPBormPlugin >> exampleProjectTemplates [
 	"Answers example project templates for BORM OR diagrams."
 
-	^ { 
-		(OPProjectTemplate
-			named: 'Pizza Delivery'
-			icon: self icon
-			modelFactory: [ OPBormExampleDiagrams examplePizzaDelivery ]
-			isExample: true).
-		(OPProjectTemplate
-			named: 'Traveling Card'
-			icon: self icon
-			modelFactory: [ OPBormExampleDiagrams exampleTravelingCard ]
-			isExample: true).
-		(OPProjectTemplate
-			named: 'Data Flows'
-			icon: self icon
-			modelFactory: [ OPBormExampleDiagrams exampleDataFlows ]
-			isExample: true).
-		(OPProjectTemplate
-			named: 'Loan Approval'
-			icon: self icon
-			modelFactory: [ OPBormExampleDiagrams exampleLoanApproval ]
-			isExample: true) }
+	^ {
+		  (OPProjectTemplate
+			   named: 'Pizza Delivery'
+			   icon: self icon
+			   modelFactory: [ OPBormExamples examplePizzaDelivery ]
+			   isExample: true).
+		  (OPProjectTemplate
+			   named: 'Traveling Card'
+			   icon: self icon
+			   modelFactory: [ OPBormExamples exampleTravelingCard ]
+			   isExample: true).
+		  (OPProjectTemplate
+			   named: 'Data Flows'
+			   icon: self icon
+			   modelFactory: [ OPBormExamples exampleDataFlows ]
+			   isExample: true).
+		  (OPProjectTemplate
+			   named: 'Loan Approval'
+			   icon: self icon
+			   modelFactory: [ OPBormExamples exampleLoanApproval ]
+			   isExample: true) }
 ]
 
 { #category : 'accessing' }
