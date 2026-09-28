@@ -1,3 +1,6 @@
+"
+Verifies transactional undo and redo support for automatic layout commands in BORM diagrams.
+"
 Class {
 	#name : 'OPBormLayouterUndoTest',
 	#superclass : 'TestCase',

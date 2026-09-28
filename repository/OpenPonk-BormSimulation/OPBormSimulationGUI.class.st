@@ -17,12 +17,6 @@ Class {
 	#tag : 'Simulation'
 }
 
-{ #category : 'toolbar' }
-OPBormSimulationGUI class >> toolbarMenu: aBuilder [
-	<opEditorToolbarMenu: #OPBormPlugin>
-	self toolbarMenuItemFor: aBuilder
-]
-
 { #category : 'adding' }
 OPBormSimulationGUI >> addCheckboxForConstraint: aConstraint [
 

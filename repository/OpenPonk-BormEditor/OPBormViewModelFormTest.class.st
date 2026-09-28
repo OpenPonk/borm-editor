@@ -1,3 +1,6 @@
+"
+Tests dynamic property form generation, field bindings, and validation for BORM view models.
+"
 Class {
 	#name : 'OPBormViewModelFormTest',
 	#superclass : 'TestCase',

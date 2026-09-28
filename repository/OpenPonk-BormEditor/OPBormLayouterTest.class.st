@@ -1,3 +1,6 @@
+"
+Tests automatic diagram layout and spatial routing of communication activities in BORM diagrams.
+"
 Class {
 	#name : 'OPBormLayouterTest',
 	#superclass : 'TestCase',

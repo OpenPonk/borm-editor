@@ -1,3 +1,6 @@
+"
+Tests diagram-level controller operations, participant placement, and activity flows in BORM diagrams.
+"
 Class {
 	#name : 'OPBormDiagramControllerTest',
 	#superclass : 'OPAbstractDiagramControllerTest',

@@ -1,3 +1,6 @@
+"
+Verifies the serialization and deserialization roundtrip persistence for BORM process models.
+"
 Class {
 	#name : 'OPBormPluginRoundtripTest',
 	#superclass : 'OPAbstractPluginExampleRoundtripTest',

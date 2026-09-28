@@ -1,3 +1,6 @@
+"
+Verifies the initialization, registration, and shutdown lifecycle of the BORM plugin.
+"
 Class {
 	#name : 'OPBormPluginLifecycleTest',
 	#superclass : 'OPAbstractPluginExampleLifecycleTest',
