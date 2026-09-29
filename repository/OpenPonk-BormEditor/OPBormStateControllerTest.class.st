@@ -1,5 +1,5 @@
 "
-A BormStateControllerTest is a test class for testing the behavior of BormStateController
+I am a unit test class verifying the instantiation, canvas rendering, and transition connection targeting logic of OPBormStateController.
 "
 Class {
 	#name : 'OPBormStateControllerTest',
@@ -9,27 +9,27 @@ Class {
 	#tag : 'Tests'
 }
 
-{ #category : 'accessing' }
+{ #category : 'constants' }
+OPBormStateControllerTest class >> diagramElementClass [
+	^ BormStateShape
+]
+
+{ #category : 'constants' }
 OPBormStateControllerTest >> controllerClass [
 	^ OPBormStateController
 ]
 
-{ #category : 'accessing' }
+{ #category : 'constants' }
 OPBormStateControllerTest >> creationTargetControllerClass [
 	^ OPBormParticipantController
 ]
 
-{ #category : 'accessing' }
+{ #category : 'constants' }
 OPBormStateControllerTest >> creationTargetModelClass [
 	^ BormParticipant
 ]
 
-{ #category : 'accessing' }
-OPBormStateControllerTest >> diagramElementClass [
-	^ BormStateShape
-]
-
-{ #category : 'accessing' }
+{ #category : 'constants' }
 OPBormStateControllerTest >> modelClass [
 	^ BormState
 ]

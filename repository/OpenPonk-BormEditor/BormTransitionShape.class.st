@@ -1,3 +1,6 @@
+"
+I am an edge shape representing a BORM Transition. I inherit association rendering behavior and apply specific directional arrow markers to indicate the process flow.
+"
 Class {
 	#name : 'BormTransitionShape',
 	#superclass : 'BormAssociationShape',

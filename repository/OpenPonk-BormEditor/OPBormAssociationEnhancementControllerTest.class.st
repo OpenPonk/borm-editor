@@ -1,3 +1,6 @@
+"
+I am an abstract base test class verifying the behavior of controllers that manage association adornments (enhancements) like constraints and data flows.
+"
 Class {
 	#name : 'OPBormAssociationEnhancementControllerTest',
 	#superclass : 'OPBormElementControllerTest',
@@ -12,13 +15,13 @@ OPBormAssociationEnhancementControllerTest class >> isAbstract [
 	^ self = OPBormAssociationEnhancementControllerTest
 ]
 
-{ #category : 'accessing' }
+{ #category : 'constants' }
 OPBormAssociationEnhancementControllerTest >> creationTargetControllerClass [
 
 	^ OPBormCommunicationController
 ]
 
-{ #category : 'accessing' }
+{ #category : 'constants' }
 OPBormAssociationEnhancementControllerTest >> creationTargetModelClass [
 
 	^ BormCommunication
@@ -26,10 +29,10 @@ OPBormAssociationEnhancementControllerTest >> creationTargetModelClass [
 
 { #category : 'accessing' }
 OPBormAssociationEnhancementControllerTest >> setUpCreationTargetModel [
-
 	| sourceParticipant targetParticipant sourceActivity targetActivity creationTargetModel |
 	sourceParticipant := BormParticipant new.
 	diagramController model add: sourceParticipant.
+
 	targetParticipant := BormParticipant new.
 	diagramController model add: targetParticipant.
 
@@ -40,12 +43,13 @@ OPBormAssociationEnhancementControllerTest >> setUpCreationTargetModel [
 	targetParticipant add: targetActivity.
 
 	creationTargetModel := self creationTargetModelClass new.
+	creationTargetModel source: sourceActivity.
+	creationTargetModel target: targetActivity.
+
+	diagramController model add: creationTargetModel.
+
+	creationTargetController diagramController: diagramController.
 	creationTargetController model: creationTargetModel.
-	creationTargetController
-		modelSource: sourceActivity
-		in: targetActivity.
-	creationTargetController
-		modelTarget: targetActivity
-		in: targetActivity.
+
 	^ creationTargetModel
 ]

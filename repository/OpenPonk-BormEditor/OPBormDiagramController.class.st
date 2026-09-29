@@ -1,3 +1,6 @@
+"
+I am the primary diagram controller for the BORM editor. I manage the modeling palette, canvas interactions, and targeting rules for creating BORM elements.
+"
 Class {
 	#name : 'OPBormDiagramController',
 	#superclass : 'OPDiagramController',
@@ -6,30 +9,28 @@ Class {
 	#tag : 'Controllers'
 }
 
-{ #category : 'testing' }
+{ #category : 'accessing' }
+OPBormDiagramController class >> viewModelClass [
+
+	^ OPBormORViewModel
+]
+
+{ #category : 'user interface' }
 OPBormDiagramController >> addAsTargetFor: aController [
+	self addAsTargetFor: aController onPosition: nil
+]
 
-	super addAsTargetFor: aController.
+{ #category : 'user interface' }
+OPBormDiagramController >> addAsTargetFor: aController onPosition: aPoint [
+	super addAsTargetFor: aController onPosition: aPoint.
 	aController diagramElement translateBy:
-		aController diagramElement width / 2.5
-		@ (aController diagramElement height / 2.2)
+		(aController diagramElement width / 2.5) @ (aController diagramElement height / 2.2)
 ]
 
-{ #category : 'enumerating' }
-OPBormDiagramController >> allModelElementsWithPossibleController [
-
-	^ self model allEntities flatCollectAsSet: #representations
-]
-
-{ #category : 'testing' }
+{ #category : 'connecting' }
 OPBormDiagramController >> canBeTargetFor: aController [
 	^ (super canBeTargetFor: aController)
 		or: [ aController isMemberOf: OPBormParticipantController ]
-]
-
-{ #category : 'accessing' }
-OPBormDiagramController >> commonModelClassPrefix [
-	^ 'Borm'
 ]
 
 { #category : 'accessing' }
@@ -44,12 +45,6 @@ OPBormDiagramController >> controllerFactory [
 		register: OPBormConstraintController forModel: BormConstraint
 ]
 
-{ #category : 'rebuilding' }
-OPBormDiagramController >> elementsToShowInside [
-
-	^ self model participants
-]
-
 { #category : 'testing' }
 OPBormDiagramController >> hasRedo [
 	self flag: 'Disabled due to RTBitmap canvas issues'.
@@ -62,7 +57,7 @@ OPBormDiagramController >> hasUndo [
 	^ false
 ]
 
-{ #category : 'initialization' }
+{ #category : 'ui interaction' }
 OPBormDiagramController >> initializePalette: aPalette [
 	(aPalette newCreationTool: [ OPBormParticipantController new ])
 		label: 'Participant';

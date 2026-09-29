@@ -1,3 +1,6 @@
+"
+I am an abstract base test class verifying the instantiation, targeting behavior, and rendering setup for BORM diagram controllers.
+"
 Class {
 	#name : 'OPBormElementControllerTest',
 	#superclass : 'OPAbstractElementControllerTest',
@@ -14,23 +17,23 @@ OPBormElementControllerTest class >> isAbstract [
 	^ self = OPBormElementControllerTest
 ]
 
-{ #category : 'accessing' }
+{ #category : 'constants' }
 OPBormElementControllerTest >> creationTargetControllerClass [
 	^ self subclassResponsibility
 ]
 
-{ #category : 'accessing' }
+{ #category : 'constants' }
 OPBormElementControllerTest >> creationTargetModelClass [
 	^ self subclassResponsibility
 ]
 
-{ #category : 'accessing' }
+{ #category : 'constants' }
 OPBormElementControllerTest >> diagramControllerClass [
 
 	^ OPBormDiagramController
 ]
 
-{ #category : 'accessing' }
+{ #category : 'constants' }
 OPBormElementControllerTest >> diagramModelClass [
 	^ BormORModel
 ]

@@ -1,3 +1,6 @@
+"
+I am a testing utility responsible for generating backward-compatibility test payloads specifically for legacy BORM projects.
+"
 Class {
 	#name : 'OPBormLegacyProjectLoadTestGenerator',
 	#superclass : 'OPLegacyProjectLoadTestGenerator',
@@ -9,5 +12,5 @@ Class {
 { #category : 'hooks' }
 OPBormLegacyProjectLoadTestGenerator >> model [
 
-	^ OPBormExampleDiagrams examplePizzaDelivery
+	^ OPBormExamples examplePizzaDelivery
 ]

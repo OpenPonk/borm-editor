@@ -1,3 +1,6 @@
+"
+I render a BORM State as a Roassal bound node. I manage the visual representation, including inner boundary boxes denoting initial or final state statuses.
+"
 Class {
 	#name : 'BormStateShape',
 	#superclass : 'BormNodeShape',
@@ -29,9 +32,7 @@ BormStateShape >> removeRender [
 { #category : 'rendering' }
 BormStateShape >> renderBasicShape [
 
-	^ self shapesFactory newRoundedBox
-		  width: self defaultSize x;
-		  height: self defaultSize y;
+	^ super renderBasicShape
 		  cornerRadius: 5;
 		  yourself
 ]

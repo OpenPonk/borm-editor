@@ -1,5 +1,5 @@
 "
-A BormConstraintControllerTest is a test class for testing the behavior of BormConstraintController
+I am a unit test class verifying the behavior of OPBormConstraintController, checking its ability to attach to and adorn transitions and communications.
 "
 Class {
 	#name : 'OPBormConstraintControllerTest',
@@ -9,18 +9,18 @@ Class {
 	#tag : 'Tests'
 }
 
-{ #category : 'accessing' }
-OPBormConstraintControllerTest >> controllerClass [
-	^ OPBormConstraintController
-]
-
-{ #category : 'accessing' }
-OPBormConstraintControllerTest >> diagramElementClass [
+{ #category : 'constants' }
+OPBormConstraintControllerTest class >> diagramElementClass [
 
 	^ BormConstraintShape
 ]
 
-{ #category : 'accessing' }
+{ #category : 'constants' }
+OPBormConstraintControllerTest >> controllerClass [
+	^ OPBormConstraintController
+]
+
+{ #category : 'constants' }
 OPBormConstraintControllerTest >> modelClass [
 	^ BormConstraint
 ]

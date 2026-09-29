@@ -1,3 +1,6 @@
+"
+I am a unit test class verifying that the BormLang parser correctly maps textual DSL syntax strings into fully instantiated BORM semantic model objects.
+"
 Class {
 	#name : 'BormLangParserTest',
 	#superclass : 'BormLangGrammarTest',

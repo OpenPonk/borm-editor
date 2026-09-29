@@ -1,9 +1,12 @@
+"
+I render a BORM Participant as a Roassal bound node. I manage the participant's boundary, background, inner nested shapes (process nodes), and dynamic type icons.
+"
 Class {
 	#name : 'BormParticipantShape',
 	#superclass : 'OPBoundNode',
 	#instVars : [
-		'innerRoassalShapesBlock',
-		'icon'
+		'icon',
+		'labeled'
 	],
 	#category : 'OpenPonk-BormEditor-DiagramElements',
 	#package : 'OpenPonk-BormEditor',
@@ -22,12 +25,19 @@ BormParticipantShape class >> typeIconFor: aType [
 	^ nil
 ]
 
-{ #category : 'rendering' }
-BormParticipantShape >> addSelectionDraggableInteraction [
+{ #category : 'layout' }
+BormParticipantShape >> adaptBoundsToInnerBounds: anInnerRectangle [
+	"Adapts participant shape extent and position with standard BORM margins."
+	| newBounds |
+	newBounds := anInnerRectangle expandBy: 40 @ 30.
+	self roassalShape
+		extent: newBounds extent;
+		translateTo: newBounds center
+]
 
-	roassalShape
-	@ (OPRSSelectionDraggable thatAlsoDragsShapesProvidedByBlock:
-			 innerRoassalShapesBlock)
+{ #category : 'interactions' }
+BormParticipantShape >> addSelectionDraggableInteraction [
+	roassalShape @ (OPRSSelectionDraggable thatAlsoDragsShapesProvidedByBlock: [ self innerDraggableRoassalShapes ])
 ]
 
 { #category : 'accessing' }
@@ -36,24 +46,16 @@ BormParticipantShape >> attachedShapes [
 	^ super attachedShapes , { icon }
 ]
 
-{ #category : 'initialization' }
-BormParticipantShape >> initialize [
-
-	super initialize.
-	innerRoassalShapesBlock := [ :allNodes | allNodes ]
-]
-
-{ #category : 'initialization' }
-BormParticipantShape >> innerRoassalShapesBlock: aBlock [
-
-	innerRoassalShapesBlock := aBlock
+{ #category : 'testing' }
+BormParticipantShape >> isContainer [
+	^ true
 ]
 
 { #category : 'removing' }
 BormParticipantShape >> removeRender [
-
 	super removeRender.
-	icon := nil
+	icon := nil.
+	labeled := nil
 ]
 
 { #category : 'rendering' }
@@ -70,8 +72,6 @@ BormParticipantShape >> renderBasicShape [
 
 { #category : 'rendering' }
 BormParticipantShape >> renderShapeDetails [
-
-	| labeled |
 	labeled := OPRSLabeled new.
 	labeled color: Color black.
 	labeled location
@@ -82,8 +82,8 @@ BormParticipantShape >> renderShapeDetails [
 	roassalShape @ labeled.
 
 	icon := RSBitmap new
-		        form: self typeIcon;
-		        yourself.
+		form: self typeIcon;
+		yourself.
 	RSLocation new
 		top;
 		right;
@@ -92,16 +92,10 @@ BormParticipantShape >> renderShapeDetails [
 	self canvas add: icon
 ]
 
-{ #category : 'rendering' }
+{ #category : 'interactions' }
 BormParticipantShape >> selectableInteraction [
 
 	^ OPRSSelectable highlightBorderColorBlue
-]
-
-{ #category : 'rendering' }
-BormParticipantShape >> shouldBePositionableByUser [
-
-	^ true
 ]
 
 { #category : 'interactions' }
@@ -124,8 +118,10 @@ BormParticipantShape >> typeIconFor: aType [
 
 { #category : 'rendering' }
 BormParticipantShape >> updateRenderFromModel [
-
-	(roassalShape propertyAt: #RSLabeled) text: self modelElement name.
+	| label |
+	label := roassalShape propertyAt: #RSLabeled.
+	label text: (self modelElement name ifNil: [ '' ]).
+	labeled location move: label on: roassalShape.
 	icon form: self typeIcon.
 	super updateRenderFromModel.
 	roassalShape signalUpdate

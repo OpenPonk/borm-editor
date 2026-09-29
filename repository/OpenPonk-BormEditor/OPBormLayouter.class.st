@@ -1,20 +1,19 @@
 "
-BormBasicLayout provides elementary layouting for BORM ORDiagram.
+I provide elementary automated layouting for BORM Object Relation diagrams. 
 
-1. Each participant is:
-	1.1. layouted with RTTreeLayout
-	1.2. expanded to encompass the layouted tree
-2. All participants are layouted with RTHorizontalLine.
+My layout strategy works in two steps:
+1. Each participant is layouted internally (its process nodes are arranged using a tree layout) and its boundaries are expanded to encompass the layouted tree.
+2. All participants are then arranged side-by-side using a horizontal line layout.
 "
 Class {
 	#name : 'OPBormLayouter',
-	#superclass : 'OPLayouter',
-	#category : 'OpenPonk-BormEditor-Adapters',
+	#superclass : 'OPHierarchicalNodesAndEdgesLayouter',
+	#category : 'OpenPonk-BormEditor-ViewModels',
 	#package : 'OpenPonk-BormEditor',
-	#tag : 'Adapters'
+	#tag : 'ViewModels'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 OPBormLayouter class >> supportedLayoutCommands [
 	^ {OPBormLayoutCommand.
 	OPDominanceTreeLayoutCommand.
@@ -25,37 +24,117 @@ OPBormLayouter class >> supportedLayoutCommands [
 
 { #category : 'accessing' }
 OPBormLayouter >> allEdges [
-	^ #()
+	"Answers all relationship shapes rendered in the diagram."
+
+	| relationshipControllers |
+	relationshipControllers := diagramController controllers select: [ :eachController |
+		eachController isKindOf: OPDirectionalRelationshipController ].
+	^ (relationshipControllers collect: #roassalShape thenSelect: #isNotNil) asGroup
 ]
 
 { #category : 'accessing' }
 OPBormLayouter >> allNodes [
-	^ diagramController controllers
-		select: [ :ctrl | ctrl isKindOf: OPBormParticipantController ]
-		thenCollect: #roassalShape
+	"Answers all rendered node shapes in diagram."
+
+	^ self allRenderedNodeShapes
 ]
 
-{ #category : 'public' }
+{ #category : 'userinterface' }
 OPBormLayouter >> applyLayout: aTwoArgBlock [
-	diagramController model participants
-		do: [ :each | self layoutParticipant: each ].
-	super applyLayout: aTwoArgBlock
+	| allTargetNodes snapshot activeContainers topLevelBoxes commands shownParticipants |
+	allTargetNodes := self allRenderedNodeShapes.
+	snapshot := OPDiagramGeometrySnapshot onNodes: allTargetNodes.
+
+	activeContainers := self containerElementsBottomUp.
+	self layoutContainersHierarchically: activeContainers.
+
+	topLevelBoxes := self sortedTopLevelBoxes: self topLevelNodeShapes.
+
+	RSHorizontalLineLayout new
+		gapSize: 75;
+		on: topLevelBoxes.
+
+	self unsubscribeContainers: activeContainers.
+
+	shownParticipants := diagramController model participants select: [ :eachParticipant |
+		diagramController hasControllerForModel: eachParticipant ].
+	self layoutCommunications: (self collectCommunications: shownParticipants).
+
+	commands := snapshot deltaCommands.
+	self executeLayoutCommands: commands.
+	self updateCanvas
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'private - collecting' }
 OPBormLayouter >> collectCommunications: participants [
+
 	| communications |
 	communications := OrderedCollection new.
-	participants do: [ :p | p nodes select: [ :n | n isKindOf: BormActivity ] thenDo: [ :n | communications addAll: n sent asOrderedCollection ] ].
+	participants do: [ :p |
+			p nodes
+				select: [ :n | n isKindOf: BormActivity ]
+				thenDo: [ :n | communications addAll: n sent ] ].
 	^ communications
 ]
 
-{ #category : 'public' }
-OPBormLayouter >> defaultLayout [
-	self layoutDiagram: diagramController model
+{ #category : 'private' }
+OPBormLayouter >> communicationRanksFor: aCollectionOfParticipantControllers [
+	"Answers a dictionary mapping participant controllers to horizontal rank indices based on communication flows."
+
+	| ranks unrankedRank maxRank |
+	unrankedRank := Float infinity.
+	ranks := Dictionary new.
+	aCollectionOfParticipantControllers do: [ :eachController |
+		| hasInitialNode |
+		hasInitialNode := eachController model nodes anySatisfy: [ :eachNode |
+			(eachNode respondsTo: #isInitial) and: [ eachNode isInitial ] ].
+		ranks at: eachController put: (hasInitialNode ifTrue: [ 0 ] ifFalse: [ unrankedRank ]) ].
+
+	(ranks values allSatisfy: [ :eachRank | eachRank = unrankedRank ]) ifTrue: [
+		| rootController |
+		rootController := aCollectionOfParticipantControllers detectMax: [ :eachController |
+			(eachController model nodes select: #isActivity) sumNumbers: [ :eachActivity |
+				eachActivity sent size ] ].
+		rootController ifNotNil: [ ranks at: rootController put: 0 ] ].
+
+	aCollectionOfParticipantControllers size timesRepeat: [
+		aCollectionOfParticipantControllers do: [ :sourceController |
+			| sourceRank |
+			sourceRank := ranks at: sourceController.
+			sourceRank < unrankedRank ifTrue: [
+				(sourceController model nodes select: #isActivity) do: [ :eachActivity |
+					eachActivity sent do: [ :eachCommunication |
+						| targetModel targetController |
+						targetModel := eachCommunication receiver participant.
+						targetController := aCollectionOfParticipantControllers
+							detect: [ :eachCandidate | eachCandidate model == targetModel ]
+							ifNone: [ nil ].
+						(targetController isNotNil and: [ targetController ~~ sourceController ]) ifTrue: [
+							| currentTargetRank |
+							currentTargetRank := ranks at: targetController.
+							currentTargetRank > (sourceRank + 1) ifTrue: [
+								ranks at: targetController put: sourceRank + 1 ] ] ] ] ] ] ].
+
+	maxRank := (ranks values reject: [ :eachRank | eachRank = unrankedRank ])
+		ifEmpty: [ 0 ]
+		ifNotEmpty: [ :valuesCollection | valuesCollection max ].
+
+	aCollectionOfParticipantControllers do: [ :eachController |
+		(ranks at: eachController) = unrankedRank ifTrue: [
+			maxRank := maxRank + 1.
+			ranks at: eachController put: maxRank ] ].
+
+	^ ranks
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'layouts' }
+OPBormLayouter >> defaultLayout [
+	"Executes default hierarchical layout for BORM diagram."
+
+	self applyLayout: [ :nodes :edges | ]
+]
+
+{ #category : 'processing' }
 OPBormLayouter >> layoutCommunication: aCommunication [
 
 	| roassalShapes rect currentMid targetMid vector |
@@ -82,13 +161,13 @@ OPBormLayouter >> layoutCommunication: aCommunication [
 		(flow propertyAt: OPRSAnchorConstraint) saveShapePosition ]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'processing' }
 OPBormLayouter >> layoutCommunications: communications [
 
 	communications do: [ :c | self layoutCommunication: c ]
 ]
 
-{ #category : 'layouting' }
+{ #category : 'processing' }
 OPBormLayouter >> layoutDiagram: aDiagram [
 
 	| shownParticipants |
@@ -102,7 +181,18 @@ OPBormLayouter >> layoutDiagram: aDiagram [
 	self updateCanvas
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'layouts' }
+OPBormLayouter >> layoutInnerContentOf: aContainerElement shapes: directShapes edges: directEdges [
+	"Arranges inner states and activities of a participant using Sugiyama layout, normalizing coordinates to origin."
+	directShapes ifNotEmpty: [
+		RSSugiyamaLayout new
+			verticalGap: 36;
+			horizontalGap: 36;
+			on: directShapes edges: directEdges.
+		directShapes translateTo: 0 @ 0 ]
+]
+
+{ #category : 'processing' }
 OPBormLayouter >> layoutNode: aNode [
 
 	| roassalShape bounds |
@@ -116,62 +206,27 @@ OPBormLayouter >> layoutNode: aNode [
 	roassalShape extent: bounds extent
 ]
 
-{ #category : 'layouting' }
-OPBormLayouter >> layoutNodesInParticipant: aParticipant [
+{ #category : 'private' }
+OPBormLayouter >> sortedTopLevelBoxes: aCollectionOfShapes [
+	"Answers top level shapes ordered horizontally according to participant communication dependencies."
 
-	| ctrl nodeShapes |
-	ctrl := diagramController controllerForModel: aParticipant.
-	aParticipant nodes do: [ :each | self layoutNode: each ].
-	nodeShapes := ctrl nodeRoassalShapes.
-	RSDominanceTreeLayout new
-		horizontalGap: 30;
-		verticalGap: 30;
-		on: nodeShapes
-]
+	| participantControllers ranks |
+	participantControllers := aCollectionOfShapes
+		collect: [ :eachShape |
+			diagramController controllers
+				detect: [ :eachController | eachController roassalShape == eachShape ]
+				ifNone: [ nil ] ]
+		thenSelect: [ :eachController |
+			eachController isNotNil and: [ eachController isKindOf: OPBormParticipantController ] ].
+	participantControllers ifEmpty: [ ^ aCollectionOfShapes ].
 
-{ #category : 'layouting' }
-OPBormLayouter >> layoutParticipant: aParticipant [
-	self
-		layoutNodesInParticipant: aParticipant;
-		layoutSizeOfParticipant: aParticipant
-]
+	ranks := self communicationRanksFor: participantControllers.
 
-{ #category : 'layouting' }
-OPBormLayouter >> layoutParticipants: participants [
-
-	| controllers participantShapes |
-	controllers := participants collect: [ :each |
-		               diagramController controllerForModel: each ].
-	controllers do: [ :eachParticipantCtrl |
-		eachParticipantCtrl roassalShape
-			when: RSPositionChangedEvent
-			do: [ :event |
-				eachParticipantCtrl nodeRoassalShapes do: [ :each |
-					each translateBy: event newPosition - event oldPosition ] ]
-			for: self ].
-	participantShapes := controllers collect: #roassalShape.
-	RSHorizontalLineLayout new
-		gapSize: 50;
-		on: participantShapes.
-	participantShapes do: [ :each | each announcer unsubscribe: self ]
-]
-
-{ #category : 'layouting' }
-OPBormLayouter >> layoutSizeOfParticipant: aParticipant [
-
-	| ctrl bounds roassalShape innerBounds |
-	ctrl := diagramController controllerForModel: aParticipant.
-	roassalShape := ctrl roassalShape.
-	innerBounds := (RSGroup withAll: ctrl nodeRoassalShapes)
-		               encompassingRectangle.
-	bounds := innerBounds expandBy: 40 @ 30.
-	ctrl roassalShape
-		extent: bounds extent;
-		translateTo: bounds center
-]
-
-{ #category : 'layouting' }
-OPBormLayouter >> layoutSizesOfParticipants [
-	diagramController model participants
-		do: [ :each | self layoutSizeOfParticipant: each ]
+	^ aCollectionOfShapes asOrderedCollection sorted: [ :shapeA :shapeB |
+		| controllerA controllerB rankA rankB |
+		controllerA := diagramController controllers detect: [ :eachController | eachController roassalShape == shapeA ] ifNone: [ nil ].
+		controllerB := diagramController controllers detect: [ :eachController | eachController roassalShape == shapeB ] ifNone: [ nil ].
+		rankA := controllerA ifNotNil: [ ranks at: controllerA ifAbsent: [ Float infinity ] ] ifNil: [ Float infinity ].
+		rankB := controllerB ifNotNil: [ ranks at: controllerB ifAbsent: [ Float infinity ] ] ifNil: [ Float infinity ].
+		rankA < rankB ]
 ]

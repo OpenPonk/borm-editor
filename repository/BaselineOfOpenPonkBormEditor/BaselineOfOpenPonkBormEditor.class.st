@@ -1,3 +1,6 @@
+"
+Metacello baseline for the OpenPonk BORM editor plugin, defining its package dependencies and load configurations.
+"
 Class {
 	#name : 'BaselineOfOpenPonkBormEditor',
 	#superclass : 'BaselineOf',
@@ -12,7 +15,11 @@ BaselineOfOpenPonkBormEditor >> baseline: spec [
 	spec for: #common do: [
 		spec
 			baseline: 'OpenPonkBormModel'
-			with: [ spec repository: 'github://openponk/borm-model:v4.1.x' ].
+			with: [ spec repository: 'github://openponk/borm-model' ].
+		spec baseline: 'OpenPonkSimulation' with: [
+			spec
+				repository: 'github://openponk/simulation';
+				loads: 'plugin' ].
 		spec
 			baseline: 'OpenPonk'
 			with: [ spec repository: 'github://openponk/openponk:v4.1.x' ].
@@ -26,6 +33,11 @@ BaselineOfOpenPonkBormEditor >> baseline: spec [
 		spec
 			package: 'OpenPonk-BormEditor'
 			with: [ spec requires: #( 'PetitParser' 'OpenPonkBormModel' ) ].
-		spec group: 'plugin' with: #( 'OpenPonk-BormEditor' ).
+		spec
+			package: 'OpenPonk-BormSimulation'
+			with: [ spec requires: #( 'OpenPonk-BormEditor' 'OpenPonkSimulation') ].
+		spec group: 'no-simulation-plugin' with: #( 'OpenPonk-BormEditor' ).
+		spec group: 'plugin' with: #( 'OpenPonk-BormSimulation' ).
+		spec group: 'no-simulation' with: #( 'OpenPonk' 'no-simulation-plugin' ).
 		spec group: 'default' with: #( 'OpenPonk' 'plugin' ) ]
 ]

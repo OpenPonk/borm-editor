@@ -1,5 +1,5 @@
 "
-I take parsed Borm DSL and produce instances of Borm Model.
+I extend the BormLang grammar to parse BormLang DSL text and instantiate actual BORM semantic model objects (like participants, activities, and transitions).
 "
 Class {
 	#name : 'BormLangParser',

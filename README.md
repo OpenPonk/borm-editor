@@ -7,7 +7,7 @@ Editor for BORM (http://ccmi.fit.cvut.cz/methodologies/borm/)
 
 ```smalltalk
 Metacello new
-	baseline: 'BormEditor';
+	baseline: 'OpenPonkBormEditor';
 	repository: 'github://openponk/borm-editor/repository';
 	load.
 ```

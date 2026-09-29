@@ -1,3 +1,6 @@
+"
+I am the abstract base controller for elements that adorn or enhance BORM associations, such as constraints and data flows attached to communications or transitions.
+"
 Class {
 	#name : 'OPBormAssociationEnhancementController',
 	#superclass : 'OPBormElementController',
@@ -5,17 +8,3 @@ Class {
 	#package : 'OpenPonk-BormEditor',
 	#tag : 'Controllers'
 }
-
-{ #category : 'construction' }
-OPBormAssociationEnhancementController >> dependingOnElements [
-
-	^ super dependingOnElements , (Set with:
-		   (self model owner ifNil: [
-			    self error: 'There is no owner of ' , self model asString ]))
-]
-
-{ #category : 'diagram elements' }
-OPBormAssociationEnhancementController >> owner [
-
-	^ self diagramController controllerForModel: self model owner
-]

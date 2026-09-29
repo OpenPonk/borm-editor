@@ -1,3 +1,6 @@
+"
+I am a utility factory that creates and styles basic Roassal shapes (such as colored boxes and borders) used in BORM diagram visualizations.
+"
 Class {
 	#name : 'BormShapesFactory',
 	#superclass : 'Object',
@@ -6,17 +9,17 @@ Class {
 	#tag : 'DiagramElements'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 BormShapesFactory >> backgroundColor [
 	^ Color white
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 BormShapesFactory >> borderColor [
 	^ Color black
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'instance creation' }
 BormShapesFactory >> newBox [
 
 	^ RSBox new
@@ -25,7 +28,7 @@ BormShapesFactory >> newBox [
 		  yourself
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'instance creation' }
 BormShapesFactory >> newRoundedBox [
 
 	^ RSBox new
@@ -35,7 +38,7 @@ BormShapesFactory >> newRoundedBox [
 		  yourself
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 BormShapesFactory >> textColor [
 	^ Color black
 ]

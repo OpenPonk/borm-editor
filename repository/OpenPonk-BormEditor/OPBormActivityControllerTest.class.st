@@ -1,5 +1,5 @@
 "
-A BormActivityControllerTest is a test class for testing the behavior of BormActivityController
+I am a unit test class verifying the instantiation, canvas rendering, and valid connection targeting logic of OPBormActivityController.
 "
 Class {
 	#name : 'OPBormActivityControllerTest',
@@ -9,27 +9,27 @@ Class {
 	#tag : 'Tests'
 }
 
-{ #category : 'accessing' }
+{ #category : 'constants' }
+OPBormActivityControllerTest class >> diagramElementClass [
+	^ BormActivityShape
+]
+
+{ #category : 'constants' }
 OPBormActivityControllerTest >> controllerClass [
 	^ OPBormActivityController
 ]
 
-{ #category : 'accessing' }
+{ #category : 'constants' }
 OPBormActivityControllerTest >> creationTargetControllerClass [
 	^ OPBormParticipantController
 ]
 
-{ #category : 'accessing' }
+{ #category : 'constants' }
 OPBormActivityControllerTest >> creationTargetModelClass [
 	^ BormParticipant
 ]
 
-{ #category : 'accessing' }
-OPBormActivityControllerTest >> diagramElementClass [
-	^ BormActivityShape
-]
-
-{ #category : 'accessing' }
+{ #category : 'constants' }
 OPBormActivityControllerTest >> modelClass [
 	^ BormActivity
 ]

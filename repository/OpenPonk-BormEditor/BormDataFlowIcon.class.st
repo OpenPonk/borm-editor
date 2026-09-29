@@ -1,3 +1,6 @@
+"
+I am a small visual Roassal node shape representing a data flow marker, typically attached to a communication edge.
+"
 Class {
 	#name : 'BormDataFlowIcon',
 	#superclass : 'OPNode',

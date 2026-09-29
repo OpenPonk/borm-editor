@@ -1,3 +1,6 @@
+"
+I am the base Roassal shape for BORM process nodes (states and activities). I manage node backgrounds, text wrapping, and optional UI adornments.
+"
 Class {
 	#name : 'BormNodeShape',
 	#superclass : 'BormShape',
@@ -19,6 +22,12 @@ BormNodeShape >> attachedShapes [
 	^ {
 		  plusIcon.
 		  (labeled ifNotNil: [ :l | l labelShape ]) }
+]
+
+{ #category : 'rendering' }
+BormNodeShape >> defaultBackgroundColor [
+
+	^ self shapesFactory backgroundColor
 ]
 
 { #category : 'defaults' }
@@ -50,6 +59,16 @@ BormNodeShape >> removeRender [
 	super removeRender.
 	plusIcon := nil.
 	labeled := nil
+]
+
+{ #category : 'rendering' }
+BormNodeShape >> renderBasicShape [
+
+	^ self shapesFactory newRoundedBox
+		  width: self defaultSize x;
+		  height: self defaultSize y;
+		  color: self defaultBackgroundColor;
+		  yourself
 ]
 
 { #category : 'rendering' }
@@ -99,12 +118,6 @@ BormNodeShape >> shapesFactory [
 ]
 
 { #category : 'interactions' }
-BormNodeShape >> shouldBePositionableByUser [
-
-	^ true
-]
-
-{ #category : 'interactions' }
 BormNodeShape >> shouldBeResizableByUser [
 
 	^ true
@@ -142,8 +155,9 @@ BormNodeShape >> updateText [
 		wrapMaxWidth: self wrapMaxWidth;
 		text: self modelElement name.
 
-	labeled labelShape height > roassalShape height ifTrue: [ 
-		roassalShape height: labeled labelShape height + 10 ]
+	labeled labelShape height > roassalShape height ifTrue: [
+			roassalShape height:
+				labeled labelShape height + (self textPadding * 2) ]
 ]
 
 { #category : 'hooks' }

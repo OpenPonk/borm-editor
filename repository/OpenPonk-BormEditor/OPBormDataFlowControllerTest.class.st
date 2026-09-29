@@ -1,30 +1,26 @@
 "
-A BormDataFlowControllerTest is a test class for testing the behavior of BormDataFlowController
+I am a unit test class verifying the behavior of OPBormDataFlowController, checking its capability to visually represent and attach to communication edges.
 "
 Class {
 	#name : 'OPBormDataFlowControllerTest',
 	#superclass : 'OPBormAssociationEnhancementControllerTest',
-	#instVars : [
-		'communication',
-		'communicationController'
-	],
 	#category : 'OpenPonk-BormEditor-Tests',
 	#package : 'OpenPonk-BormEditor',
 	#tag : 'Tests'
 }
 
-{ #category : 'accessing' }
-OPBormDataFlowControllerTest >> controllerClass [
-	^ OPBormDataFlowController
-]
-
-{ #category : 'accessing' }
-OPBormDataFlowControllerTest >> diagramElementClass [
+{ #category : 'constants' }
+OPBormDataFlowControllerTest class >> diagramElementClass [
 
 	^ BormDataFlowShape
 ]
 
-{ #category : 'accessing' }
+{ #category : 'constants' }
+OPBormDataFlowControllerTest >> controllerClass [
+	^ OPBormDataFlowController
+]
+
+{ #category : 'constants' }
 OPBormDataFlowControllerTest >> modelClass [
 	^ BormDataFlow
 ]

@@ -1,3 +1,6 @@
+"
+I am the controller for BORM Communications. I manage diagram interactions and connection rules for inter-participant communication edges, including data flow attachments.
+"
 Class {
 	#name : 'OPBormCommunicationController',
 	#superclass : 'OPBormRelationshipController',
@@ -6,47 +9,24 @@ Class {
 	#tag : 'Controllers'
 }
 
-{ #category : 'testing' }
-OPBormCommunicationController >> canBeTargetForDataFlow: aController [
-	^ true
-]
-
 { #category : 'construction' }
-OPBormCommunicationController >> diagramElementClass [
+OPBormCommunicationController class >> diagramElementClass [
 
 	^ BormCommunicationShape
 ]
 
 { #category : 'accessing' }
-OPBormCommunicationController >> elementsToShowInside [
-
-	^ super elementsToShowInside , self model dataFlows
+OPBormCommunicationController class >> viewModelClass [
+	^ OPBormCommunicationViewModel
 ]
 
-{ #category : 'accessing' }
-OPBormCommunicationController >> modelClass [
-	^ BormCommunication
-]
-
-{ #category : 'accessing' }
-OPBormCommunicationController >> modelSource: aModel in: aParentModel [
-
-	(super modelSource: aModel in: aParentModel) ifFalse: [ ^ false ].
-	self modelSource send: self model.
+{ #category : 'testing' }
+OPBormCommunicationController >> canBeTargetForDataFlow: aController [
 	^ true
 ]
 
-{ #category : 'accessing' }
-OPBormCommunicationController >> modelTarget: aModel in: aParentModel [
+{ #category : 'diagram elements' }
+OPBormCommunicationController >> intendedModelOfOwningDiagramElement [
 
-	(super modelTarget: aModel in: aParentModel) ifFalse: [ ^ false ].
-	self modelTarget receive: self model.
-	^ true
-]
-
-{ #category : 'destruction' }
-OPBormCommunicationController >> removeModel [
-	self model target removeCommunication: self model.
-	self model source removeCommunication: self model.
-	super removeModel
+	^ self diagramController model
 ]

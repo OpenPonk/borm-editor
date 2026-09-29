@@ -1,3 +1,6 @@
+"
+I am a Spec presenter acting as a textual DSL editor for BORM models. I provide a synchronized text area where users can write BormLang code, and I automatically update the visual diagram upon changes.
+"
 Class {
 	#name : 'OPBormLangEditor',
 	#superclass : 'SpPresenter',
@@ -12,7 +15,7 @@ Class {
 	#tag : 'Extensions'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'layout' }
 OPBormLangEditor class >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
@@ -31,7 +34,7 @@ OPBormLangEditor >> bormDiagram: aBormDiagram [
 	self modelChanged
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'initialization' }
 OPBormLangEditor >> connectPresenters [
 	textModel widget announcer when: RubTextAccepted send: #textModelChanged to: self.
 ]
@@ -43,7 +46,7 @@ OPBormLangEditor >> initialize [
 	locked := false
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'initialization' }
 OPBormLangEditor >> initializePresenters [
 	textModel := self newRubScrolledText
 ]

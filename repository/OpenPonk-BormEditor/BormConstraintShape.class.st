@@ -1,3 +1,6 @@
+"
+I am an edge label shape representing a BORM Constraint. I attach to transitions or communications and display the condition text.
+"
 Class {
 	#name : 'BormConstraintShape',
 	#superclass : 'OPEdgeLabel',
@@ -40,20 +43,14 @@ BormConstraintShape >> defaultMinDistance [
 	^ 10
 ]
 
-{ #category : 'rendering' }
+{ #category : 'accessing' }
 BormConstraintShape >> defaultText [
 
 	^ self modelElement name ifEmpty: [ 'condition' ]
 ]
 
-{ #category : 'adding' }
+{ #category : 'interactions' }
 BormConstraintShape >> selectableInteraction [
 
 	^ OPRSSelectable highlightColorBlue
-]
-
-{ #category : 'adding' }
-BormConstraintShape >> shouldBePositionableByUser [
-
-	^ true
 ]
