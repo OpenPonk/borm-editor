@@ -86,8 +86,7 @@ BormDataFlowShape >> selectableInteraction [
 BormDataFlowShape >> updateRenderFromModel [
 
 	super updateRenderFromModel.
-	roassalShape width:
-		(self label width max: self icon width) rounded + 6
+	roassalShape width: (self label width max: self icon width) + 6
 ]
 
 { #category : 'rendering' }
