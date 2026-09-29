@@ -15,17 +15,17 @@ BaselineOfOpenPonkBormEditor >> baseline: spec [
 	spec for: #common do: [
 		spec
 			baseline: 'OpenPonkBormModel'
-			with: [ spec repository: 'github://openponk/borm-model' ].
+			with: [ spec repository: 'github://openponk/borm-model:v5.0.0' ].
 		spec baseline: 'OpenPonkSimulation' with: [
 			spec
-				repository: 'github://openponk/simulation';
+				repository: 'github://openponk/simulation:v5.0.0';
 				loads: 'plugin' ].
 		spec
 			baseline: 'OpenPonk'
-			with: [ spec repository: 'github://openponk/openponk:v4.1.x' ].
+			with: [ spec repository: 'github://openponk/openponk:v5.0.0' ].
 		spec baseline: 'PetitParser' with: [
 			spec
-				repository: 'github://moosetechnology/PetitParser:v3.0.x';
+				repository: 'github://moosetechnology/PetitParser:v3.0.0';
 				loads:
 					#( 'Core' 'Tests' 'Examples' 'Islands' 'Analyzer' 'Preprocessor'
 					   'Indent' 'Extension' 'TestsExtension' 'Parser' ) ].
