@@ -87,18 +87,19 @@ OPBormLayouterTest >> testCyclicParticipantLayoutIsIdempotentWithoutDrift [
 
 { #category : 'tests' }
 OPBormLayouterTest >> testParticipantEncompassesInnerNodesAfterDefaultLayout [
+
 	| layouter participantControllers |
 	layouter := OPBormLayouter new diagramController: diagramController.
 	layouter defaultLayout.
 	participantControllers := diagramController controllers select: [ :eachController |
-		eachController isKindOf: OPBormParticipantController ].
-	self assert: participantControllers isNotEmpty.
+		                          eachController isKindOf: OPBormParticipantController ].
+	self denyEmpty: participantControllers.
 	participantControllers do: [ :eachParticipantController |
-		| participantShape innerShapes |
-		participantShape := eachParticipantController roassalShape.
-		innerShapes := eachParticipantController diagramElement innerNodeRoassalShapes.
-		innerShapes do: [ :eachInnerShape |
-			self assert: (participantShape encompassingRectangle containsRect: eachInnerShape encompassingRectangle) ] ]
+			| participantShape innerShapes |
+			participantShape := eachParticipantController roassalShape.
+			innerShapes := eachParticipantController diagramElement innerNodeRoassalShapes.
+			innerShapes do: [ :eachInnerShape |
+				self assert: (participantShape encompassingRectangle containsRect: eachInnerShape encompassingRectangle) ] ]
 ]
 
 { #category : 'tests' }

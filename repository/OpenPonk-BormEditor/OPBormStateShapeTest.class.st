@@ -56,12 +56,13 @@ OPBormStateShapeTest >> testFinalShape [
 
 { #category : 'tests' }
 OPBormStateShapeTest >> testRemove [
+
 	shape modelElement: BormState new.
-	self assert: canvas nodes isEmpty.
+	self assertEmpty: canvas nodes.
 	shape renderBasicShapeIn: canvas.
-	self assert: canvas nodes isNotEmpty.
+	self denyEmpty: canvas nodes.
 	shape remove.
-	self assert: canvas nodes isEmpty.
+	self assertEmpty: canvas nodes
 ]
 
 { #category : 'tests' }
@@ -70,9 +71,9 @@ OPBormStateShapeTest >> testRemove1 [
 	shape modelElement: (BormState new
 			 beInitial;
 			 beFinal).
-	self assert: canvas nodes isEmpty.
+	self assertEmpty: canvas nodes.
 	shape renderBasicShapeIn: canvas.
-	self assert: canvas nodes isNotEmpty.
+	self denyEmpty: canvas nodes.
 	shape remove.
-	self assert: canvas nodes isEmpty
+	self assertEmpty: canvas nodes
 ]

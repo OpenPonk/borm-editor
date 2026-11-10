@@ -13,7 +13,7 @@ Class {
 OPBormConstraintViewModel class >> modelClass [ ^ BormConstraint
 ]
 
-{ #category : 'private' }
+{ #category : 'removing' }
 OPBormConstraintViewModel >> basicRemoveModel [
 
 	self assert: self model owner constraint = self model.
@@ -24,7 +24,7 @@ OPBormConstraintViewModel >> basicRemoveModel [
 OPBormConstraintViewModel >> icon [ ^ OPBormEditorIcons constraint16Icon
 ]
 
-{ #category : 'construction' }
+{ #category : 'registering' }
 OPBormConstraintViewModel >> registerModelIn: aParentModel [
 
 	aParentModel constraint: self model

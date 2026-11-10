@@ -57,11 +57,14 @@ OPBormLayouterUndoTest >> testDefaultLayoutIsUndoable [
 	boundElements := (diagramController controllers
 		select: [ :eachController | eachController diagramElement isKindOf: OPBoundNode ]
 		thenCollect: #diagramElement) asSet.
+	self denyEmpty: boundElements.
 
 	initialPositions := Dictionary new.
 	boundElements do: [ :eachElement |
-		eachElement roassalShape ifNotNil: [ :eachShape |
-			initialPositions at: eachElement put: eachShape position copy ] ].
+		| eachShape |
+		eachShape := eachElement roassalShape.
+		self assert: eachShape isNotNil.
+		initialPositions at: eachElement put: eachShape position copy ].
 
 	layouter defaultLayout.
 
@@ -70,6 +73,8 @@ OPBormLayouterUndoTest >> testDefaultLayoutIsUndoable [
 	diagramController undo.
 
 	boundElements do: [ :eachElement |
-		eachElement roassalShape ifNotNil: [ :eachShape |
-			self assert: eachShape position equals: (initialPositions at: eachElement) ] ]
+		| eachShape |
+		eachShape := eachElement roassalShape.
+		self assert: eachShape isNotNil.
+		self assert: eachShape position equals: (initialPositions at: eachElement) ]
 ]

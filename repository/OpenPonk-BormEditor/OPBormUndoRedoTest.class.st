@@ -25,6 +25,7 @@ OPBormUndoRedoTest >> setUp [
 
 { #category : 'tests' }
 OPBormUndoRedoTest >> testCommunicationUndoRedoCycle [
+
 	| activity1 activity2 communication removeCommand |
 	activity1 := BormActivity new name: 'A1'.
 	activity2 := BormActivity new name: 'A2'.
@@ -34,27 +35,26 @@ OPBormUndoRedoTest >> testCommunicationUndoRedoCycle [
 
 	project addModel: activity1.
 	project addModel: activity2.
+	self assertCollection: activity1 communications includesAll: { communication }.
+	self assertCollection: activity2 communications includesAll: { communication }.
 
-	self assert: (activity1 communications includes: communication).
-	self assert: (activity2 communications includes: communication).
-
-	removeCommand := OPRemoveModelElementCommand
-		model: communication
-		projectController: projectController.
+	removeCommand := OPRemoveModelElementCommand model: communication projectController: projectController.
 
 	undoManager execute: removeCommand.
-	self deny: (activity1 communications includes: communication).
-	self deny: (activity2 communications includes: communication).
+	self denyCollection: activity1 communications includesAny: { communication }.
+	self denyCollection: activity2 communications includesAny: { communication }.
 
 	undoManager undo.
-	self assert: (activity1 communications includes: communication)
+	self
+		assert: (activity1 communications includes: communication)
 		description: 'Communication must be restored in sender activity upon undo'.
-	self assert: (activity2 communications includes: communication)
+	self
+		assert: (activity2 communications includes: communication)
 		description: 'Communication must be restored in receiver activity upon undo'.
 
 	undoManager redo.
-	self deny: (activity1 communications includes: communication).
-	self deny: (activity2 communications includes: communication)
+	self denyCollection: activity1 communications includesAny: { communication }.
+	self denyCollection: activity2 communications includesAny: { communication }
 ]
 
 { #category : 'tests' }

@@ -163,8 +163,9 @@ BormLangParserTest >> testParticipantType1 [
 
 { #category : 'tests' }
 BormLangParserTest >> testParticipants [
+
 	super testParticipants.
-	self assert: result isEmpty
+	self assertEmpty: result
 ]
 
 { #category : 'tests' }
