@@ -34,10 +34,16 @@ BaselineOfOpenPonkBormEditor >> baseline: spec [
 			package: 'OpenPonk-BormEditor'
 			with: [ spec requires: #( 'PetitParser' 'OpenPonkBormModel' ) ].
 		spec
+			package: 'OpenPonk-BormEditor-Tests'
+			with: [ spec requires: #( 'OpenPonk-BormEditor' ) ].
+		spec
 			package: 'OpenPonk-BormSimulation'
-			with: [ spec requires: #( 'OpenPonk-BormEditor' 'OpenPonkSimulation') ].
-		spec group: 'no-simulation-plugin' with: #( 'OpenPonk-BormEditor' ).
-		spec group: 'plugin' with: #( 'OpenPonk-BormSimulation' ).
+			with: [ spec requires: #( 'OpenPonk-BormEditor' 'OpenPonkSimulation' ) ].
+		spec
+			package: 'OpenPonk-BormSimulation-Tests'
+			with: [ spec requires: #( 'OpenPonk-BormSimulation' 'OpenPonk-BormEditor-Tests' ) ].
+		spec group: 'no-simulation-plugin' with: #( 'OpenPonk-BormEditor' 'OpenPonk-BormEditor-Tests' ).
+		spec group: 'plugin' with: #( 'OpenPonk-BormEditor' 'OpenPonk-BormEditor-Tests' 'OpenPonk-BormSimulation' 'OpenPonk-BormSimulation-Tests' ).
 		spec group: 'no-simulation' with: #( 'OpenPonk' 'no-simulation-plugin' ).
 		spec group: 'default' with: #( 'OpenPonk' 'plugin' ) ]
 ]

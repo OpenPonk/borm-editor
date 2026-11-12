@@ -1,0 +1,34 @@
+"
+I am an abstract base test class verifying the visual refresh and diagram embedding behavior of BORM container controllers, such as Participants.
+"
+Class {
+	#name : 'OPBormContainerControllerTest',
+	#superclass : 'OPBormElementControllerTest',
+	#category : 'OpenPonk-BormEditor-Tests-Controllers',
+	#package : 'OpenPonk-BormEditor-Tests',
+	#tag : 'Controllers'
+}
+
+{ #category : 'testing' }
+OPBormContainerControllerTest class >> isAbstract [
+	"Override to true if a TestCase subclass is Abstract and should not have
+	TestCase instances built from it"
+
+	^ self = OPBormContainerControllerTest
+]
+
+{ #category : 'tests' }
+OPBormContainerControllerTest >> testFigureRefresh [
+
+	| text |
+	controller createModelIn: diagramController model.
+	diagramController addController: controller.
+	controller
+		createDiagramElement;
+		renderDiagramElement.
+	self assert: (controller roassalShape propertyAt: #RSLabeled) text equals: ''.
+	controller model name: 'new name'.
+	controller modelChanged.
+	text := (controller roassalShape propertyAt: #RSLabeled) text.
+	self assert: ((text last: 8) = 'new name' or: [ (text first: 8) = 'new name' ])
+]
