@@ -26,8 +26,9 @@ OPBormDiagramControllerTest >> modelClass [
 
 { #category : 'tests' }
 OPBormDiagramControllerTest >> testControllerFactory [
-	self assert: controller controllerFactory isNotNil.
-	self assert: (controller controllerFactory isKindOf: OPControllerFactory)
+
+	self deny: controller controllerFactory identicalTo: nil.
+	self assert: controller controllerFactory class equals: OPControllerFactory
 ]
 
 { #category : 'tests' }

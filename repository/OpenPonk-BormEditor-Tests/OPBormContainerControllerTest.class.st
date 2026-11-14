@@ -30,5 +30,7 @@ OPBormContainerControllerTest >> testFigureRefresh [
 	controller model name: 'new name'.
 	controller modelChanged.
 	text := (controller roassalShape propertyAt: #RSLabeled) text.
-	self assert: ((text last: 8) = 'new name' or: [ (text first: 8) = 'new name' ])
+	self
+		assert: ((text last: 8) = 'new name' or: [ (text first: 8) = 'new name' ])
+		description: 'Rendered label text should include updated participant name'
 ]

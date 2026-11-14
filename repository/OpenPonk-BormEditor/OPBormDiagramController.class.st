@@ -45,18 +45,6 @@ OPBormDiagramController >> controllerFactory [
 		register: OPBormConstraintController forModel: BormConstraint
 ]
 
-{ #category : 'testing' }
-OPBormDiagramController >> hasRedo [
-	self flag: 'Disabled due to RTBitmap canvas issues'.
-	^ false
-]
-
-{ #category : 'testing' }
-OPBormDiagramController >> hasUndo [
-	self flag: 'Disabled due to RTBitmap canvas issues'.
-	^ false
-]
-
 { #category : 'ui interaction' }
 OPBormDiagramController >> initializePalette: aPalette [
 	(aPalette newCreationTool: [ OPBormParticipantController new ])
@@ -83,41 +71,6 @@ OPBormDiagramController >> initializePalette: aPalette [
 	(aPalette newCreationTool: [ OPBormConstraintController new ])
 		label: 'Constraint';
 		icon: OPBormEditorIcons constraint16Icon
-]
-
-{ #category : 'initialization' }
-OPBormDiagramController >> initializePaletteWithShortcuts: aPalette [
-	(aPalette newCreationTool: [ OPBormParticipantController new ])
-		label: 'Participant';
-		icon: OPBormEditorIcons participant16Icon;
-		shortcut: $q asShortcut.
-	aPalette newSeparator.
-	(aPalette newCreationTool: [ OPBormStateController new ])
-		label: 'State';
-		icon: OPBormEditorIcons state16Icon;
-		shortcut: $s asShortcut.
-	(aPalette newCreationTool: [ OPBormActivityController new ])
-		label: 'Activity';
-		icon: OPBormEditorIcons activity16Icon;
-		shortcut: $a asShortcut.
-	aPalette newSeparator.
-	(aPalette newConnectionCreationTool: [ OPBormTransitionController new ])
-		label: 'Transition';
-		icon: OPBormEditorIcons transition16Icon;
-		shortcut: $t asShortcut.
-	(aPalette newConnectionCreationTool: [ OPBormCommunicationController new ])
-		label: 'Communication';
-		icon: OPBormEditorIcons communication16Icon;
-		shortcut: $c asShortcut.
-	aPalette newSeparator.
-	(aPalette newCreationTool: [ OPBormDataFlowController new ])
-		label: 'Data Flow';
-		icon: OPBormEditorIcons dataFlow16Icon;
-		shortcut: $f asShortcut.
-	(aPalette newCreationTool: [ OPBormConstraintController new ])
-		label: 'Constraint';
-		icon: OPBormEditorIcons constraint16Icon;
-		shortcut: $r asShortcut
 ]
 
 { #category : 'userinterface' }

@@ -43,11 +43,6 @@ BormNodeShape >> initialize [
 ]
 
 { #category : 'accessing' }
-BormNodeShape >> plusIcon [
-	^ plusIcon
-]
-
-{ #category : 'accessing' }
 BormNodeShape >> plusIconAction: aBlock [
 
 	plusIconAction := aBlock

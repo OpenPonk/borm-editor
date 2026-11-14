@@ -52,29 +52,30 @@ OPBormLayouterUndoTest >> tearDown [
 
 { #category : 'tests' }
 OPBormLayouterUndoTest >> testDefaultLayoutIsUndoable [
+
 	| layouter boundElements initialPositions |
 	layouter := OPBormLayouter new diagramController: diagramController.
 	boundElements := (diagramController controllers
-		select: [ :eachController | eachController diagramElement isKindOf: OPBoundNode ]
-		thenCollect: #diagramElement) asSet.
+		                  select: [ :eachController | eachController diagramElement isKindOf: OPBoundNode ]
+		                  thenCollect: #diagramElement) asSet.
 	self denyEmpty: boundElements.
 
 	initialPositions := Dictionary new.
 	boundElements do: [ :eachElement |
-		| eachShape |
-		eachShape := eachElement roassalShape.
-		self assert: eachShape isNotNil.
-		initialPositions at: eachElement put: eachShape position copy ].
+			| eachShape |
+			eachShape := eachElement roassalShape.
+			self deny: eachShape identicalTo: nil.
+			initialPositions at: eachElement put: eachShape position copy ].
 
 	layouter defaultLayout.
 
-	self assert: undoManager canUndo.
+	self assert: undoManager canUndo description: 'Default layout must push an undoable command onto undoManager'.
 
 	diagramController undo.
 
 	boundElements do: [ :eachElement |
-		| eachShape |
-		eachShape := eachElement roassalShape.
-		self assert: eachShape isNotNil.
-		self assert: eachShape position equals: (initialPositions at: eachElement) ]
+			| eachShape |
+			eachShape := eachElement roassalShape.
+			self deny: eachShape identicalTo: nil.
+			self assert: eachShape position equals: (initialPositions at: eachElement) ]
 ]

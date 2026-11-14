@@ -8,9 +8,3 @@ Class {
 	#package : 'OpenPonk-BormEditor',
 	#tag : 'Controllers'
 }
-
-{ #category : 'deprecation' }
-OPBormElementController >> buildEntityForm: aForm [
-	self deprecated: 'Use viewModel instead' transformWith: '`@receiver buildEntityForm: `@arg1' -> '`@receiver viewModel buildEntityForm: `@arg1'.
-	^ self viewModel buildEntityForm: aForm
-]

@@ -35,22 +35,24 @@ BormLangParserTest >> testCommunication [
 
 { #category : 'tests' }
 BormLangParserTest >> testCommunication1 [
+
 	super testCommunication1.
 	self assert: result receiver equals: 'Org::a'.
 	self assert: result dataFlows size equals: 1.
 	self assert: result dataFlows first name equals: 'x'.
-	self assert: result dataFlows first isInput
+	self assert: result dataFlows first type equals: BormDataFlow inputType
 ]
 
 { #category : 'tests' }
 BormLangParserTest >> testCommunication2 [
+
 	super testCommunication2.
 	self assert: result receiver equals: 'Org::a'.
 	self assert: result dataFlows size equals: 2.
 	self assert: result dataFlows first name equals: 'x'.
-	self assert: result dataFlows first isInput.
+	self assert: result dataFlows first type equals: BormDataFlow inputType.
 	self assert: result dataFlows second name equals: 'y'.
-	self assert: result dataFlows second isOutput
+	self assert: result dataFlows second type equals: BormDataFlow outputType
 ]
 
 { #category : 'tests' }
@@ -198,34 +200,38 @@ BormLangParserTest >> testParticipants3 [
 
 { #category : 'tests' }
 BormLangParserTest >> testState [
+
 	super testState.
 	self assert: result name equals: 'hello'.
-	self deny: result isInitial.
-	self deny: result isFinal
+	self deny: result isInitial description: 'Regular state must not be initial'.
+	self deny: result isFinal description: 'Regular state must not be final'
 ]
 
 { #category : 'tests' }
 BormLangParserTest >> testState1 [
+
 	super testState1.
 	self assert: result name equals: 'hello'.
-	self assert: result isInitial.
-	self deny: result isFinal
+	self assert: result isInitial description: 'Initial state must be marked initial'.
+	self deny: result isFinal description: 'Initial state must not be final'
 ]
 
 { #category : 'tests' }
 BormLangParserTest >> testState2 [
+
 	super testState2.
 	self assert: result name equals: 'hello'.
-	self deny: result isInitial.
-	self assert: result isFinal
+	self deny: result isInitial description: 'Final state must not be initial'.
+	self assert: result isFinal description: 'Final state must be marked final'
 ]
 
 { #category : 'tests' }
 BormLangParserTest >> testState3 [
+
 	super testState3.
 	self assert: result name equals: 'hello'.
-	self assert: result isInitial.
-	self assert: result isFinal
+	self assert: result isInitial description: 'Initial and final state must be marked initial'.
+	self assert: result isFinal description: 'Initial and final state must be marked final'
 ]
 
 { #category : 'tests' }

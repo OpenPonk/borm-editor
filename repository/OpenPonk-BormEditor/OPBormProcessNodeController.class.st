@@ -9,12 +9,6 @@ Class {
 	#tag : 'Controllers'
 }
 
-{ #category : 'deprecation' }
-OPBormProcessNodeController >> bormModels [
-	self deprecated: 'Use viewModel instead' transformWith: '`@receiver bormModels' -> '`@receiver viewModel bormModels'.
-	^ self viewModel bormModels
-]
-
 { #category : 'connecting' }
 OPBormProcessNodeController >> canBeSourceFor: aController [
 	^ self subclassResponsibility

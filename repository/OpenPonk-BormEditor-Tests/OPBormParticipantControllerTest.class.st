@@ -42,6 +42,7 @@ OPBormParticipantControllerTest >> modelClass [
 
 { #category : 'tests' }
 OPBormParticipantControllerTest >> testNameChangeMaintainsLabelLeftPosition [
+
 	| label initialLeft newLeft |
 	controller createModelIn: diagramController model.
 	diagramController addController: controller.
@@ -59,5 +60,5 @@ OPBormParticipantControllerTest >> testNameChangeMaintainsLabelLeftPosition [
 	label := controller roassalShape propertyAt: #RSLabeled.
 	newLeft := label encompassingRectangle left.
 
-	self assert: (newLeft closeTo: initialLeft absolutePrecision: 0.5)
+	self assert: newLeft asFloat closeTo: initialLeft asFloat precision: 0.5
 ]

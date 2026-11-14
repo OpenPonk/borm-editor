@@ -1,14 +1,14 @@
 "
-I define and parse grammar of BORM Lang.
+Define and parse the grammar of BORM Lang.
 
 !! Synchronization
-The inverse operation (taking model and producing DSL) is provided by BormLangExporter (or BormLangSerializer).
+The inverse operation (taking a model and producing DSL text) is provided by BormLangSerializer.
 
 !! Example
 
-Also see BormDiagramExamples for some examples.
+Also see OPBormExamples for additional examples.
 [[[
-'Person ""Customer"" {
+('Person ""Customer"" {
     initial state ""wants pizza""
         go to ""order"" if ""hungry""
     
@@ -27,7 +27,7 @@ Also see BormDiagramExamples for some examples.
 System ""Operator"" {
     activity ""accepts order""
 }
-' asBorm open
+' asBorm: 'Pizza Delivery') open
 ]]]
 "
 Class {
@@ -99,11 +99,6 @@ BormLangGrammar >> name [
 BormLangGrammar >> namePair [
 	^ (name , ((space , 'as' asParser , space , name) ==> [ :arr | arr fourth ]) optional)
 		==> [ :arr | arr first -> (arr second ifNil: [ arr first ]) ]
-]
-
-{ #category : 'accessing' }
-BormLangGrammar >> newLine [
-	^ Character cr asParser plus
 ]
 
 { #category : 'accessing' }

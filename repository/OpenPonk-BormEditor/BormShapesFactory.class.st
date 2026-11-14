@@ -37,8 +37,3 @@ BormShapesFactory >> newRoundedBox [
 		  cornerRadius: 20;
 		  yourself
 ]
-
-{ #category : 'accessing' }
-BormShapesFactory >> textColor [
-	^ Color black
-]

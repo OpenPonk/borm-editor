@@ -46,12 +46,13 @@ OPBormLayouterTest >> tearDown [
 
 { #category : 'tests' }
 OPBormLayouterTest >> testAnchoredElementsExcludedFromTopLevelBoxes [
-	| layouter topLevelBoxes |
+
+	| layouter topLevelBoxes anchoredBoxes |
 	layouter := OPBormLayouter new diagramController: diagramController.
 	topLevelBoxes := layouter topLevelNodeShapes.
-	self assert: (topLevelBoxes noneSatisfy: [ :eachShape |
-		(eachShape hasProperty: OPRSAnchorConstraint) or: [
-			eachShape model owningElement isEdge ] ])
+	anchoredBoxes := topLevelBoxes select: [ :eachShape |
+		                 (eachShape hasProperty: OPRSAnchorConstraint) or: [ eachShape model owningElement isEdge ] ].
+	self assertEmpty: anchoredBoxes
 ]
 
 { #category : 'tests' }
@@ -99,7 +100,9 @@ OPBormLayouterTest >> testParticipantEncompassesInnerNodesAfterDefaultLayout [
 			participantShape := eachParticipantController roassalShape.
 			innerShapes := eachParticipantController diagramElement innerNodeRoassalShapes.
 			innerShapes do: [ :eachInnerShape |
-				self assert: (participantShape encompassingRectangle containsRect: eachInnerShape encompassingRectangle) ] ]
+					self
+						assert: (participantShape encompassingRectangle containsRect: eachInnerShape encompassingRectangle)
+						description: 'Participant shape must encompass every inner node shape' ] ]
 ]
 
 { #category : 'tests' }
