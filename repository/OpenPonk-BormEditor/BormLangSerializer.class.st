@@ -13,8 +13,9 @@ Class {
 }
 
 { #category : 'public-exporting' }
-BormLangSerializer class >> export: aDiagram [
-	^ self new diagram: aDiagram
+BormLangSerializer class >> export: aModel [
+
+	^ self new export: aModel
 ]
 
 { #category : 'converting' }

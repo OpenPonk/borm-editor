@@ -121,6 +121,81 @@ BormLangParserTest >> testNode2 [
 ]
 
 { #category : 'tests' }
+BormLangParserTest >> testParseStatementsEmptyInput [
+
+	| parsedModel |
+	parsedModel := BormLangParser new parseStatements: ''.
+	self assert: parsedModel class identicalTo: BormORModel.
+	self assertEmpty: parsedModel participants
+]
+
+{ #category : 'tests' }
+BormLangParserTest >> testParseStatementsInvalidSyntaxReturnsFailure [
+
+	| failure |
+	failure := BormLangParser new parseStatements: 'Person "Customer" {
+	unknownStatement
+}'.
+	self assert: failure isPetitFailure description: 'Invalid BormLang syntax must return a PetitParser failure'.
+	self assert: failure position > 0 description: 'Failure position must advance past the valid prefix'
+]
+
+{ #category : 'tests' }
+BormLangParserTest >> testParseStatementsMissingCommunicationTargetSignalsKeyNotFound [
+
+	self
+		should: [
+				BormLangParser new parseStatements: 'Person "Customer" {
+	activity "Order"
+		talk to "Missing::target"
+}' ]
+		raise: KeyNotFound
+]
+
+{ #category : 'tests' }
+BormLangParserTest >> testParseStatementsValidMultiParticipantModel [
+
+	| parsedModel customerParticipant operatorParticipant startState orderActivity doneState acceptActivity |
+	parsedModel := BormLangParser new parseStatements: 'Person "Customer" {
+	initial state "Start"
+		go to "order" if "hungry"
+
+	activity "Order" as "order"
+		talk to "Operator::accept"
+		go to "Done"
+
+	final state "Done"
+}
+
+System "Operator" {
+	activity "Accept" as "accept"
+		send "bill" to "Customer::order" and receive "payment"
+}'.
+
+	self assert: parsedModel class identicalTo: BormORModel.
+	self assert: (parsedModel participants collect: #name as: Array) equals: #( 'Customer' 'Operator' ).
+	customerParticipant := parsedModel @ 'Customer'.
+	operatorParticipant := parsedModel @ 'Operator'.
+	self assert: customerParticipant type equals: #Person.
+	self assert: operatorParticipant type equals: #System.
+
+	startState := parsedModel @ 'Customer::Start'.
+	orderActivity := parsedModel @ 'Customer::Order'.
+	doneState := parsedModel @ 'Customer::Done'.
+	acceptActivity := parsedModel @ 'Operator::Accept'.
+	self assert: startState isInitial description: 'Start state must be marked initial'.
+	self assert: doneState isFinal description: 'Done state must be marked final'.
+	self assert: startState outgoing first target identicalTo: orderActivity.
+	self assert: startState outgoing first constraint name equals: 'hungry'.
+	self assert: orderActivity sent first receiver identicalTo: acceptActivity.
+	self assertEmpty: orderActivity sent first dataFlows.
+	self assert: acceptActivity sent first receiver identicalTo: orderActivity.
+	self assert: acceptActivity sent first dataFlows size equals: 2.
+	self assert: acceptActivity sent first dataFlows first type equals: BormDataFlow inputType.
+	self assert: acceptActivity sent first dataFlows second type equals: BormDataFlow outputType
+]
+
+{ #category : 'tests' }
 BormLangParserTest >> testParticipant [
 	super testParticipant.
 	self assert: result type equals: BormParticipantType Person.
@@ -196,6 +271,47 @@ BormLangParserTest >> testParticipants3 [
 	self assert: result first nodes first outgoing first target equals: result first nodes second.
 	self assert: result second nodes size equals: 2.
 	self assert: result second nodes first outgoing first target equals: result second nodes second
+]
+
+{ #category : 'tests' }
+BormLangParserTest >> testReplaceModelWithEmptyStatementsClearsElements [
+
+	| targetModel emptyParsedModel |
+	targetModel := BormORModel named: 'Cleared Model'.
+	targetModel add: (BormParticipant named: 'Temporary').
+	emptyParsedModel := BormLangParser new parseStatements: ''.
+
+	self parserInstance replaceModel: targetModel withStatements: emptyParsedModel.
+
+	self assert: targetModel name equals: 'Cleared Model'.
+	self assertEmpty: targetModel elements
+]
+
+{ #category : 'tests' }
+BormLangParserTest >> testReplaceModelWithStatementsReplacesElementsPreservingModelIdentityAndName [
+
+	| targetModel oldParticipant parsedModel newParticipants |
+	targetModel := BormORModel named: 'Existing Model'.
+	oldParticipant := BormParticipant named: 'Legacy'.
+	targetModel add: oldParticipant.
+	parsedModel := BormLangParser new parseStatements: 'Organization "Shop" {
+	activity "Process" as "process"
+		send "order" to "Warehouse::fulfill"
+}
+
+System "Warehouse" {
+	activity "Fulfill" as "fulfill"
+}'.
+
+	self parserInstance replaceModel: targetModel withStatements: parsedModel.
+
+	self assert: targetModel name equals: 'Existing Model'.
+	newParticipants := targetModel participants.
+	self assert: newParticipants size equals: 2.
+	self assert: (newParticipants collect: #name as: Array) equals: #( 'Shop' 'Warehouse' ).
+	self denyCollection: newParticipants includesAny: { oldParticipant }.
+	newParticipants do: [ :each | self assert: each owner identicalTo: targetModel ].
+	self assert: (targetModel @ 'Shop::Process') sent first receiver identicalTo: targetModel @ 'Warehouse::Fulfill'
 ]
 
 { #category : 'tests' }
