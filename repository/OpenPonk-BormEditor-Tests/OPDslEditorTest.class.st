@@ -336,3 +336,38 @@ OPDslEditorTest >> testUpdateModelReplacesElementsAndAnnouncesContentReplaced [
 	self assert: announcedEvents first model identicalTo: initialModel.
 	self assertCollection: (self colorsAt: 1 in: dslEditor editor text) includesAll: { Color blue }
 ]
+
+{ #category : 'tests' }
+OPDslEditorTest >> testUpdateModelReusesConfiguredParserAcrossRepeatedCommunicationEdits [
+
+	| configuredParser parseExpectation |
+	dslEditor := self newConfiguredEditor.
+	configuredParser := dslEditor parser.
+	parseExpectation := (configuredParser stub parseStatements: Any) willCallOriginalMethod.
+
+	dslEditor editor text: 'Person "Customer" {
+	activity "Order"
+		talk to "Operator::accept"
+}
+System "Operator" {
+	activity "Accept" as "accept"
+}'.
+	dslEditor updateModel.
+
+	self assert: (dslEditor model participants collect: #name as: Array) equals: #( 'Customer' 'Operator' ).
+	self assert: (dslEditor model @ 'Customer::Order') sent first receiver identicalTo: dslEditor model @ 'Operator::Accept'.
+
+	dslEditor editor text: 'Organization "Bank" {
+	activity "Verify"
+		send "check" to "Registry::log" and receive "ok"
+}
+System "Registry" {
+	activity "Log" as "log"
+}'.
+	dslEditor updateModel.
+
+	self assert: dslEditor parser identicalTo: configuredParser.
+	self assert: parseExpectation usageCount equals: 2.
+	self assert: (dslEditor model participants collect: #name as: Array) equals: #( 'Bank' 'Registry' ).
+	self assert: (dslEditor model @ 'Bank::Verify') sent first receiver identicalTo: dslEditor model @ 'Registry::Log'
+]

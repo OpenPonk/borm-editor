@@ -4,9 +4,6 @@ I serialize a BORM model into its textual domain-specific language (BormLang) re
 Class {
 	#name : 'BormLangSerializer',
 	#superclass : 'Object',
-	#instVars : [
-		'diagram'
-	],
 	#category : 'OpenPonk-BormEditor-Dsl',
 	#package : 'OpenPonk-BormEditor',
 	#tag : 'Dsl'

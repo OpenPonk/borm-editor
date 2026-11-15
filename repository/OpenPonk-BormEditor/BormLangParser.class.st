@@ -44,21 +44,20 @@ BormLangParser >> constraint [
 
 { #category : 'accessing' }
 BormLangParser >> diagram [
-	^ super diagram
-		==> [ :arr | 
-			| d |
-			d := BormORModel new.
-			d addAll: arr.
 
-			incompleteCommunications
-				do: [ :each | 
-					| n splitName |
-					splitName := (each receiver splitOn: '::').
-					n := (participantsLookup at: splitName first) at: splitName second.
-					n receive: each.
-					each receiver: n ].
+	^ super diagram ==> [ :arr |
+		  | model |
+		  model := BormORModel new.
+		  model addAll: arr.
 
-			d ]
+		  incompleteCommunications select: [ :each | arr includes: each sender owner ] thenDo: [ :each |
+				  | receiverNode splitName |
+				  splitName := each receiver splitOn: '::'.
+				  receiverNode := (participantsLookup at: splitName first) at: splitName second.
+				  receiverNode receive: each.
+				  each receiver: receiverNode ].
+
+		  model ]
 ]
 
 { #category : 'initialization' }
@@ -83,6 +82,13 @@ BormLangParser >> node [
 					n send: each ].
 			incompleteCommunications addAll: comms.
 			n ]
+]
+
+{ #category : 'parsing' }
+BormLangParser >> parseOn: aPPContext [
+
+	self resetCache.
+	^ [ super parseOn: aPPContext ] ensure: [ self resetCache ]
 ]
 
 { #category : 'parsing' }

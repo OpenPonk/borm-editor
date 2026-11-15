@@ -106,8 +106,9 @@ BormLangParserTest >> testDiagram2 [
 
 { #category : 'tests' }
 BormLangParserTest >> testNode [
+
 	super testNode.
-	self assert: result outgoing size equals: 0
+	self assertEmpty: result outgoing
 ]
 
 { #category : 'tests' }
@@ -122,6 +123,68 @@ BormLangParserTest >> testNode2 [
 	super testNode2.
 	self assert: result outgoing size equals: 2.
 	result outgoing do: [ :each | self assert: each source equals: result ]
+]
+
+{ #category : 'tests' }
+BormLangParserTest >> testParseDirectRepeatedCallsOnSameInstanceResetCache [
+
+	| bormParser firstModel secondModel |
+	bormParser := BormLangParser new.
+	firstModel := bormParser parse: 'Person "Src" {
+	activity "Send"
+		talk to "Dst::receive"
+}
+
+System "Dst" {
+	activity "Receive" as "receive"
+}'.
+	self assert: (firstModel @ 'Src::Send') sent first receiver identicalTo: firstModel @ 'Dst::Receive'.
+
+	secondModel := bormParser parse: 'Organization "Client" {
+	activity "Request"
+		send "payload" to "Server::handle"
+}
+
+System "Server" {
+	activity "Handle" as "handle"
+}'.
+	self assert: (secondModel participants collect: #name as: Array) equals: #( 'Client' 'Server' ).
+	self assert: (secondModel @ 'Client::Request') sent first receiver identicalTo: secondModel @ 'Server::Handle'
+]
+
+{ #category : 'tests' }
+BormLangParserTest >> testParseStatementsAfterSyntaxFailureAndKeyNotFoundResetsCache [
+
+	| bormParser failure recoveredFromSyntaxFailure recoveredFromKeyNotFound |
+	bormParser := BormLangParser new.
+	failure := bormParser parseStatements: 'Person "Broken" {
+	activity "Order"
+		talk to "Missing::target"
+		go to "Later"
+	invalidStatement
+}'.
+	self assert: failure isPetitFailure description: 'Incomplete participant syntax must fail parsing'.
+
+	recoveredFromSyntaxFailure := bormParser parseStatements: 'Organization "Clean" {
+	activity "Work"
+}'.
+	self assert: (recoveredFromSyntaxFailure participants collect: #name as: Array) equals: #( 'Clean' ).
+	self assertEmpty: (recoveredFromSyntaxFailure @ 'Clean::Work') outgoing.
+	self assertEmpty: (recoveredFromSyntaxFailure @ 'Clean::Work') sent.
+
+	self
+		should: [
+				bormParser parseStatements: 'Person "Broken" {
+	activity "Order"
+		talk to "Missing::target"
+}' ]
+		raise: KeyNotFound.
+
+	recoveredFromKeyNotFound := bormParser parseStatements: 'System "Recovered" {
+	state "Ready"
+}'.
+	self assert: (recoveredFromKeyNotFound participants collect: #name as: Array) equals: #( 'Recovered' ).
+	self assert: (recoveredFromKeyNotFound @ 'Recovered::Ready') name equals: 'Ready'
 ]
 
 { #category : 'tests' }
@@ -152,6 +215,44 @@ BormLangParserTest >> testParseStatementsMissingCommunicationTargetSignalsKeyNot
 				BormLangParser new parseStatements: 'Person "Customer" {
 	activity "Order"
 		talk to "Missing::target"
+}' ]
+		raise: KeyNotFound
+]
+
+{ #category : 'tests' }
+BormLangParserTest >> testParseStatementsRepeatedCallsOnSameInstanceResetCache [
+
+	| bormParser firstModel emptyModel soloModel |
+	bormParser := BormLangParser new.
+	firstModel := bormParser parseStatements: 'Person "Customer" {
+	activity "Order" as "order"
+		talk to "Operator::accept"
+}
+
+System "Operator" {
+	activity "Accept" as "accept"
+		send "receipt" to "Customer::order" and receive "ack"
+}'.
+	self assert: (firstModel participants collect: #name as: Array) equals: #( 'Customer' 'Operator' ).
+	self assert: (firstModel @ 'Customer::Order') sent first receiver identicalTo: firstModel @ 'Operator::Accept'.
+	self assert: (firstModel @ 'Operator::Accept') sent first receiver identicalTo: firstModel @ 'Customer::Order'.
+
+	emptyModel := bormParser parseStatements: ''.
+	self assert: emptyModel class identicalTo: BormORModel.
+	self assertEmpty: emptyModel participants.
+
+	soloModel := bormParser parseStatements: 'Organization "Solo" {
+	activity "Work"
+}'.
+	self assert: (soloModel participants collect: #name as: Array) equals: #( 'Solo' ).
+	self assertEmpty: (soloModel @ 'Solo::Work') sent.
+	self assertEmpty: (soloModel @ 'Solo::Work') received.
+
+	self
+		should: [
+				bormParser parseStatements: 'Person "Customer" {
+	activity "Order"
+		talk to "Operator::accept"
 }' ]
 		raise: KeyNotFound
 ]

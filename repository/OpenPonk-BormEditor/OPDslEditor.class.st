@@ -268,7 +268,7 @@ OPDslEditor >> updateModel [
 	model ifNil: [ model := self newModel ].
 	text := editor text asText.
 	text makeAllColor: self theme textColor.
-	statements := self parser class new parseStatements: text asString.
+	statements := self parser parseStatements: text asString.
 	statements isPetitFailure
 		ifTrue: [
 				text ifNotEmpty: [
