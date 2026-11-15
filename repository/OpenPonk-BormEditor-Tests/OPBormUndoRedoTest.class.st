@@ -45,12 +45,8 @@ OPBormUndoRedoTest >> testCommunicationUndoRedoCycle [
 	self denyCollection: activity2 communications includesAny: { communication }.
 
 	undoManager undo.
-	self
-		assert: (activity1 communications includes: communication)
-		description: 'Communication must be restored in sender activity upon undo'.
-	self
-		assert: (activity2 communications includes: communication)
-		description: 'Communication must be restored in receiver activity upon undo'.
+	self assertCollection: activity1 communications includesAll: { communication }.
+	self assertCollection: activity2 communications includesAll: { communication }.
 
 	undoManager redo.
 	self denyCollection: activity1 communications includesAny: { communication }.

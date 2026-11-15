@@ -33,11 +33,13 @@ OPBormDslEditorCommand >> defaultMenuItemName [
 { #category : 'execution' }
 OPBormDslEditorCommand >> execute [
 	"Opens the BORM DSL editor on the active domain model."
-	OPDslEditor new
-		parser: BormLangParser new;
-		exporter: BormLangSerializer new;
-		highlighter: BormLangHighlighter new;
-		modelClass: BormORModel;
-		model: self model;
-		open
+
+	^ OPDslEditor new
+		  parser: BormLangParser new;
+		  exporter: BormLangSerializer new;
+		  highlighter: BormLangHighlighter new;
+		  modelClass: BormORModel;
+		  model: self model;
+		  updateFromModel;
+		  open
 ]

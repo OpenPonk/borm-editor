@@ -28,9 +28,10 @@ BormLangParserTest >> testActivity [
 
 { #category : 'tests' }
 BormLangParserTest >> testCommunication [
+
 	super testCommunication.
 	self assert: result receiver equals: 'Org::a'.
-	self assert: result dataFlows size equals: 0
+	self assertEmpty: result dataFlows
 ]
 
 { #category : 'tests' }
@@ -57,8 +58,9 @@ BormLangParserTest >> testCommunication2 [
 
 { #category : 'tests' }
 BormLangParserTest >> testConstraint [
+
 	super testConstraint.
-	self assert: result equals: nil
+	self assert: result identicalTo: nil
 ]
 
 { #category : 'tests' }
@@ -69,20 +71,22 @@ BormLangParserTest >> testConstraint1 [
 
 { #category : 'tests' }
 BormLangParserTest >> testDiagram [
+
 	super testDiagram.
 
 	self assert: result participants size equals: 2.
 	self assert: (result @ 'Src::a') sent size equals: 1.
-	self assert: (result @ 'Src::a') received size equals: 0.
-	self assert: (result @ 'Dst::a') sent size equals: 0.
+	self assertEmpty: (result @ 'Src::a') received.
+	self assertEmpty: (result @ 'Dst::a') sent.
 	self assert: (result @ 'Dst::a') received size equals: 1.
-	
-	self assert: (result @ 'Src::a') sent first sender equals: (result @ 'Src::a').
-	self assert: (result @ 'Src::a') sent first receiver equals: (result @ 'Dst::a').
+
+	self assert: (result @ 'Src::a') sent first sender identicalTo: result @ 'Src::a'.
+	self assert: (result @ 'Src::a') sent first receiver identicalTo: result @ 'Dst::a'
 ]
 
 { #category : 'tests' }
 BormLangParserTest >> testDiagram2 [
+
 	super testDiagram2.
 
 	self assert: result participants size equals: 2.
@@ -91,12 +95,12 @@ BormLangParserTest >> testDiagram2 [
 	self assert: (result @ 'Dst::a') sent size equals: 1.
 	self assert: (result @ 'Dst::a') received size equals: 1.
 
-	self assert: (result @ 'Src::a') sent first sender equals: result @ 'Src::a'.
-	self assert: (result @ 'Src::a') sent first receiver equals: result @ 'Dst::a'.
-	self assert: (result @ 'Src::a') sent first dataFlows size equals: 0.
+	self assert: (result @ 'Src::a') sent first sender identicalTo: result @ 'Src::a'.
+	self assert: (result @ 'Src::a') sent first receiver identicalTo: result @ 'Dst::a'.
+	self assertEmpty: (result @ 'Src::a') sent first dataFlows.
 
-	self assert: (result @ 'Src::a') received first sender equals: result @ 'Dst::a'.
-	self assert: (result @ 'Src::a') received first receiver equals: result @ 'Src::a'.
+	self assert: (result @ 'Src::a') received first sender identicalTo: result @ 'Dst::a'.
+	self assert: (result @ 'Src::a') received first receiver identicalTo: result @ 'Src::a'.
 	self assert: (result @ 'Src::a') received first dataFlows size equals: 2
 ]
 
@@ -197,10 +201,11 @@ System "Operator" {
 
 { #category : 'tests' }
 BormLangParserTest >> testParticipant [
+
 	super testParticipant.
 	self assert: result type equals: BormParticipantType Person.
 	self assert: result name equals: 'Customer'.
-	self assert: result nodes size equals: 0
+	self assertEmpty: result nodes
 ]
 
 { #category : 'tests' }
@@ -221,9 +226,10 @@ BormLangParserTest >> testParticipant2 [
 
 { #category : 'tests' }
 BormLangParserTest >> testParticipant3 [
+
 	super testParticipant3.
 	self assert: result nodes size equals: 2.
-	self assert: result nodes first outgoing first target equals: result nodes second
+	self assert: result nodes first outgoing first target identicalTo: result nodes second
 ]
 
 { #category : 'tests' }
