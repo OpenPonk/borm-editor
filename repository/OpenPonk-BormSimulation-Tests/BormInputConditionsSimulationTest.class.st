@@ -27,12 +27,6 @@ Class {
 	#tag : 'Simulation'
 }
 
-{ #category : 'running' }
-BormInputConditionsSimulationTest >> controllerClass [
-
-	^ OPBormSimulator
-]
-
 { #category : 'tests' }
 BormInputConditionsSimulationTest >> endStateValueForGiven: constraintAValue b: constraintBValue c: constraintCValue numberOfSteps: numberOfSteps [
 
@@ -102,6 +96,12 @@ BormInputConditionsSimulationTest >> exampleModel [
 	^ model
 ]
 
+{ #category : 'running' }
+BormInputConditionsSimulationTest >> simulatorClass [
+
+	^ OPBormSimulator
+]
+
 { #category : 'tests' }
 BormInputConditionsSimulationTest >> testAllCommunicationFalse [
 
@@ -119,13 +119,12 @@ BormInputConditionsSimulationTest >> testAllCommunicationFalse [
 { #category : 'tests' }
 BormInputConditionsSimulationTest >> testAllFalse [
 
-	activityA inputTransitionSimulationCondition:
-		BormNodeAllNeighborSimulationCondition new.
+	activityA inputTransitionSimulationCondition: BormNodeAllNeighborSimulationCondition new.
 	self
 		assert: (self
 				 endStateValueForGiven: true
-				 b: false
-				 c: true
+				 b: true
+				 c: false
 				 numberOfSteps: 3)
 		equals: 0
 ]
@@ -140,6 +139,34 @@ BormInputConditionsSimulationTest >> testAllTwo [
 				 endStateValueForGiven: true
 				 b: true
 				 c: true
+				 numberOfSteps: 3)
+		equals: 1
+]
+
+{ #category : 'tests' }
+BormInputConditionsSimulationTest >> testAnyCommunicationFalse [
+
+	activityA inputTransitionSimulationCondition: BormNodeNoneNeighborSimulationCondition new.
+	activityA inputCommunicationSimulationCondition: BormNodeAnyNeighborSimulationCondition new.
+	self
+		assert: (self
+				 endStateValueForGiven: true
+				 b: false
+				 c: true
+				 numberOfSteps: 3)
+		equals: 0
+]
+
+{ #category : 'tests' }
+BormInputConditionsSimulationTest >> testAnyCommunicationTrue [
+
+	activityA inputTransitionSimulationCondition: BormNodeNoneNeighborSimulationCondition new.
+	activityA inputCommunicationSimulationCondition: BormNodeAnyNeighborSimulationCondition new.
+	self
+		assert: (self
+				 endStateValueForGiven: false
+				 b: true
+				 c: false
 				 numberOfSteps: 3)
 		equals: 1
 ]

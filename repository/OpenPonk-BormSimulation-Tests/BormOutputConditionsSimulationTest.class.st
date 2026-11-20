@@ -20,12 +20,6 @@ Class {
 }
 
 { #category : 'running' }
-BormOutputConditionsSimulationTest >> controllerClass [
-
-	^ OPBormSimulator
-]
-
-{ #category : 'running' }
 BormOutputConditionsSimulationTest >> exampleModel [
 
 	model := self emptyModel.
@@ -57,11 +51,16 @@ BormOutputConditionsSimulationTest >> exampleModel [
 ]
 
 { #category : 'running' }
+BormOutputConditionsSimulationTest >> simulatorClass [
+
+	^ OPBormSimulator
+]
+
+{ #category : 'tests' }
 BormOutputConditionsSimulationTest >> testConstraintStepAllSimulationFalse [
 
 	| stateSimulator activitySimulatorB activitySimulatorA constraintSimulatorA constraintSimulatorB |
-	state outputSimulationCondition:
-		BormNodeAllNeighborSimulationCondition new.
+	state outputSimulationCondition: BormNodeAllNeighborSimulationCondition new.
 	stateSimulator := simulator simulatorOf: state.
 	activitySimulatorA := simulator simulatorOf: activityA.
 	activitySimulatorB := simulator simulatorOf: activityB.
@@ -78,12 +77,11 @@ BormOutputConditionsSimulationTest >> testConstraintStepAllSimulationFalse [
 	self assert: activitySimulatorB tokenCount equals: 0
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 BormOutputConditionsSimulationTest >> testConstraintStepAllSimulationTrue [
 
 	| stateSimulator activitySimulatorB activitySimulatorA constraintSimulatorA constraintSimulatorB |
-	state outputSimulationCondition:
-		BormNodeAllNeighborSimulationCondition new.
+	state outputSimulationCondition: BormNodeAllNeighborSimulationCondition new.
 	stateSimulator := simulator simulatorOf: state.
 	activitySimulatorA := simulator simulatorOf: activityA.
 	activitySimulatorB := simulator simulatorOf: activityB.
@@ -100,12 +98,29 @@ BormOutputConditionsSimulationTest >> testConstraintStepAllSimulationTrue [
 	self assert: activitySimulatorB tokenCount equals: 1
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
+BormOutputConditionsSimulationTest >> testConstraintStepAnySimulationFalse [
+
+	| stateSimulator activitySimulatorA activitySimulatorB constraintSimulatorA constraintSimulatorB |
+	state outputSimulationCondition: BormNodeAnyNeighborSimulationCondition new.
+	stateSimulator := simulator simulatorOf: state.
+	activitySimulatorA := simulator simulatorOf: activityA.
+	activitySimulatorB := simulator simulatorOf: activityB.
+	constraintSimulatorA := simulator simulatorOf: constraintA.
+	constraintSimulatorB := simulator simulatorOf: constraintB.
+	constraintSimulatorA value: false.
+	constraintSimulatorB value: false.
+	simulator step.
+	self assert: stateSimulator tokenCount equals: 1.
+	self assert: activitySimulatorA tokenCount equals: 0.
+	self assert: activitySimulatorB tokenCount equals: 0
+]
+
+{ #category : 'tests' }
 BormOutputConditionsSimulationTest >> testConstraintStepAnySimulationTrue [
 
 	| stateSimulator activitySimulatorB activitySimulatorA constraintSimulatorA constraintSimulatorB |
-	state outputSimulationCondition:
-		BormNodeAnyNeighborSimulationCondition new.
+	state outputSimulationCondition: BormNodeAnyNeighborSimulationCondition new.
 	stateSimulator := simulator simulatorOf: state.
 	activitySimulatorA := simulator simulatorOf: activityA.
 	activitySimulatorB := simulator simulatorOf: activityB.
@@ -122,12 +137,28 @@ BormOutputConditionsSimulationTest >> testConstraintStepAnySimulationTrue [
 	self assert: activitySimulatorB tokenCount equals: 1
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
+BormOutputConditionsSimulationTest >> testConstraintStepAnySimulationWithUnconstrainedEdge [
+
+	| stateSimulator activitySimulatorA activitySimulatorB constraintSimulatorB |
+	state outputSimulationCondition: BormNodeAnyNeighborSimulationCondition new.
+	transitionA constraint: nil.
+	stateSimulator := simulator simulatorOf: state.
+	activitySimulatorA := simulator simulatorOf: activityA.
+	activitySimulatorB := simulator simulatorOf: activityB.
+	constraintSimulatorB := simulator simulatorOf: constraintB.
+	constraintSimulatorB value: false.
+	simulator step.
+	self assert: stateSimulator tokenCount equals: 0.
+	self assert: activitySimulatorA tokenCount equals: 1.
+	self assert: activitySimulatorB tokenCount equals: 0
+]
+
+{ #category : 'tests' }
 BormOutputConditionsSimulationTest >> testConstraintStepNoneSimulationTrue [
 
 	| stateSimulator activitySimulatorB activitySimulatorA constraintSimulatorA constraintSimulatorB |
-	state outputSimulationCondition:
-		BormNodeNoneNeighborSimulationCondition new.
+	state outputSimulationCondition: BormNodeNoneNeighborSimulationCondition new.
 	stateSimulator := simulator simulatorOf: state.
 	activitySimulatorA := simulator simulatorOf: activityA.
 	activitySimulatorB := simulator simulatorOf: activityB.
@@ -144,7 +175,7 @@ BormOutputConditionsSimulationTest >> testConstraintStepNoneSimulationTrue [
 	self assert: activitySimulatorB tokenCount equals: 1
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 BormOutputConditionsSimulationTest >> testTransitionConstraintStepSimulationTrue [
 
 	| stateSimulator activitySimulatorB activitySimulatorA constraintSimulatorA constraintSimulatorB |

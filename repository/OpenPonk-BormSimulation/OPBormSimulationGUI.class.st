@@ -20,39 +20,24 @@ Class {
 { #category : 'adding' }
 OPBormSimulationGUI >> addCheckboxForConstraint: aConstraint [
 
-	| buttonPair button |
+	| checkbox |
 	usedConstraints add: aConstraint.
+	checkbox := self newCheckBox
+		            label: aConstraint second model name;
+		            state: aConstraint second value;
+		            yourself.
+	checkbox
+		whenActivatedDo: [ self updateConstraints ];
+		whenDeactivatedDo: [ self updateConstraints ].
 	checkboxes add: {
-			self newCheckBox.
+			checkbox.
 			aConstraint second }.
-	self connectPresenters.
-	buttonPair := checkboxes at: count.
-	button := buttonPair first.
 	count := count + 1.
-	button label: aConstraint second model name.
-	button state: buttonPair second value.
-	self layout add: button at: self calculateButtonPosition
+	self layout add: checkbox atPoint: self calculateButtonPosition
 ]
 
 { #category : 'adding' }
 OPBormSimulationGUI >> addConstraintCheckboxes [
-
-	| toBeAdded last continueButton |
-	last := ''.
-	toBeAdded := self getUnusedConstraints.
-
-	toBeAdded do: [ :constraint |
-		self addCheckboxForConstraint: constraint.
-		self addLabelIfNeededForConstraint: constraint last: last.
-		last := constraint first model name ].
-
-	continueButton := self createContinueButton.
-	self layoutContinueButton: continueButton.
-	self adjustWindowSize
-]
-
-{ #category : 'adding' }
-OPBormSimulationGUI >> addConstraintCheckboxess [
 
 	| toBeAdded last continueButton |
 	last := ''.
@@ -75,16 +60,17 @@ OPBormSimulationGUI >> addLabelIfNeededForConstraint: aConstraint last: aLast [
 	aConstraint first model name = aLast ifTrue: [ ^ self ].
 	label := self newLabel.
 	label label: aConstraint first model name.
-	self layout add: label at: self calculateLabelPosition
+	self layout add: label atPoint: self calculateLabelPosition
 ]
 
 { #category : 'positioning' }
 OPBormSimulationGUI >> adjustWindowSize [
 
-	self window extent: 360
-		@
-			(buttons size + 1 * self class buttonHeight
-			 + (constraints size * 30) + 10)
+	self withWindowDo: [ :win |
+			| rowCount height |
+			rowCount := buttons size + 1.
+			height := rowCount * self class buttonHeight + (constraints size * 30) + 10.
+			win resize: 360 @ height ]
 ]
 
 { #category : 'private - hooks' }
@@ -122,14 +108,13 @@ OPBormSimulationGUI >> calculateLabelPosition [
     ^ 1 @ (count + (self buttonItems size / 2) asInteger)
 ]
 
-{ #category : 'initialization' }
-OPBormSimulationGUI >> connectPresenters [
+{ #category : 'private - updating' }
+OPBormSimulationGUI >> colorForElement: anElement controller: aController [
 
-	checkboxes ifNotNil: [
-		checkboxes do: [ :each |
-			each first whenActivatedDo: [ self updateConstraints ] ].
-		checkboxes do: [ :each |
-			each first whenDeactivatedDo: [ self updateConstraints ] ] ]
+	anElement isSteppable ifTrue: [ ^ Color green ].
+	anElement tokenCount > 0 ifFalse: [ ^ aController diagramElement defaultBackgroundColor ].
+	(anElement outgoing isEmpty and: [ anElement inputCondition ]) ifTrue: [ ^ Color pink ].
+	^ Color lightOrange lighter
 ]
 
 { #category : 'adding' }
@@ -142,13 +127,6 @@ OPBormSimulationGUI >> createContinueButton [
 ]
 
 { #category : 'enumerating' }
-OPBormSimulationGUI >> filterConstraints [
-
-	^ diagramSimulator elements select: [ :each |
-		  each class name = 'OPBormConstraintSimulator' ]
-]
-
-{ #category : 'enumerating' }
 OPBormSimulationGUI >> getUnusedConstraints [
 
 	^ constraints reject: [ :each | usedConstraints includes: each ]
@@ -157,19 +135,18 @@ OPBormSimulationGUI >> getUnusedConstraints [
 { #category : 'initialization' }
 OPBormSimulationGUI >> initialize [
 
+	super initialize.
 	presetSimulation := true.
 	constraints := OrderedCollection new.
 	usedConstraints := OrderedCollection new.
 	checkboxes := OrderedCollection new.
-	count := 1.
-	super initialize
+	count := 1
 ]
 
 { #category : 'adding' }
 OPBormSimulationGUI >> layoutContinueButton: aButton [
-    self layout
-        add: aButton
-        at: 1 @ (count + 1 + (self buttonItems size + 1 / 2) asInteger)
+
+	self layout add: aButton atPoint: 1 @ (count + 1 + (self buttonItems size + 1 / 2) asInteger)
 ]
 
 { #category : 'private - hooks' }
@@ -205,6 +182,16 @@ OPBormSimulationGUI >> openConstraintMenu [
 	constraintWindow open
 ]
 
+{ #category : 'private - accessing' }
+OPBormSimulationGUI >> renderedControllerForModel: aModel ifPresent: aBlock [
+
+	| controller |
+	controller := self diagramController controllerForModel: aModel ifNone: [ ^ self ].
+	controller diagramElement exists ifFalse: [ ^ self ].
+	controller roassalShape ifNil: [ ^ self ].
+	aBlock value: controller
+]
+
 { #category : 'private - hooks' }
 OPBormSimulationGUI >> simulatorClass [
 	^ OPBormSimulator
@@ -213,28 +200,20 @@ OPBormSimulationGUI >> simulatorClass [
 { #category : 'updating' }
 OPBormSimulationGUI >> updateColors [
 
-	diagramSimulator elements do: [ :each |
-		| controller |
-		each class name = 'OPBormDataFlowSimulator' ifTrue: [
-			controller := self diagramController controllerForModel: each model.
-			controller roassalShape color: Color transparent ] ].
+	| steppableElements |
+	diagramSimulator elements select: [ :each | each isKindOf: OPBormDataFlowSimulator ] thenDo: [ :each |
+			self renderedControllerForModel: each model ifPresent: [ :controller |
+					controller roassalShape
+						color: Color transparent;
+						signalUpdate ] ].
+	steppableElements := OrderedCollection new.
 	diagramSimulator simulableElements do: [ :each |
-		| controller color |
-		controller := self diagramController controllerForModel: each model.
-		color := each isSteppable
-			         ifTrue: [
-				         self updateDataFlowColors: each.
-				         Color green ]
-			         ifFalse: [
-				         each tokenCount > 0
-					         ifTrue: [
-						         (each outgoing isEmpty and: [ each inputCondition ])
-							         ifTrue: [ Color pink ]
-							         ifFalse: [ Color lightOrange lighter ] ]
-					         ifFalse: [
-					         controller diagramElement defaultBackgroundColor ] ].
-		controller roassalShape color: color.
-		controller roassalShape signalUpdate ]
+			each isSteppable ifTrue: [ steppableElements add: each ].
+			self renderedControllerForModel: each model ifPresent: [ :controller |
+					controller roassalShape
+						color: (self colorForElement: each controller: controller);
+						signalUpdate ] ].
+	steppableElements do: [ :each | self updateDataFlowColors: each ]
 ]
 
 { #category : 'updating' }
@@ -245,19 +224,17 @@ OPBormSimulationGUI >> updateConstraintMenu [
 	toBeStopped := false.
 
 	diagramSimulator simulableElements do: [ :each |
-		each outputCondition ifFalse: [
-			each inputCondition ifTrue: [
-				each outgoing do: [ :edge |
-					edge model constraint ifNotNil: [
-						constraintSimulator := diagramSimulator simulatorOf:
-							                       edge model constraint.
-						(constraints includes: {
-								 each.
-								 constraintSimulator }) ifFalse: [
-							toBeStopped := true.
-							constraints add: {
-									each.
-									constraintSimulator } ] ] ] ] ] ].
+			(each tokenCount > 0 and: [ each outputCondition not and: [ each inputCondition ] ]) ifTrue: [
+					each outgoing do: [ :edge |
+							edge model constraint ifNotNil: [ :eachConstraint |
+									| pair |
+									constraintSimulator := diagramSimulator simulatorOf: eachConstraint.
+									pair := {
+										        each.
+										        constraintSimulator }.
+									(constraints includes: pair) ifFalse: [
+											toBeStopped := true.
+											constraints add: pair ] ] ] ] ].
 	toBeStopped ifFalse: [ ^ self ].
 	self addConstraintCheckboxes.
 	diagramSimulator stop
@@ -273,19 +250,15 @@ OPBormSimulationGUI >> updateConstraints [
 { #category : 'updating' }
 OPBormSimulationGUI >> updateDataFlowColors: aModel [
 
-	| dataFlowController targetController |
-	aModel outgoing
-		select: [ :eachEntity |
-		eachEntity isKindOf: OPBormCommunicationSimulator ]
-		thenDo: [ :each |
-			each model dataFlows ifNotNil: [
-				targetController := self diagramController controllerForModel:
-					                    each target model.
-				targetController roassalShape color: Color yellow.
-				targetController roassalShape signalUpdate.
-				each model dataFlows do: [ :dataFlow |
-					dataFlowController := self diagramController controllerForModel:
-						                      dataFlow.
-					dataFlowController roassalShape color: Color yellow.
-					dataFlowController roassalShape signalUpdate ] ] ]
+	aModel outgoing select: [ :eachEntity | eachEntity isKindOf: OPBormCommunicationSimulator ] thenDo: [ :each |
+			each model dataFlows ifNotEmpty: [ :dataFlows |
+					self renderedControllerForModel: each target model ifPresent: [ :targetController |
+							targetController roassalShape
+								color: Color yellow;
+								signalUpdate ].
+					dataFlows do: [ :dataFlow |
+							self renderedControllerForModel: dataFlow ifPresent: [ :dataFlowController |
+									dataFlowController roassalShape
+										color: Color yellow;
+										signalUpdate ] ] ] ]
 ]

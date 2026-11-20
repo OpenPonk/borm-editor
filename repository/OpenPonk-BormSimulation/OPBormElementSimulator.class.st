@@ -26,8 +26,7 @@ OPBormElementSimulator >> baseCondition [
 { #category : 'accessing' }
 OPBormElementSimulator >> communicationTokenCount [
 
-	^ (self tokens select: [ :token |
-		   token type = 'OPBormCommunicationSimulator' ]) size
+	^ self tokens count: [ :token | token type = 'OPBormCommunicationSimulator' ]
 ]
 
 { #category : 'enumerating' }
@@ -86,38 +85,21 @@ OPBormElementSimulator >> isSteppable [
 ]
 
 { #category : 'testing' }
-OPBormElementSimulator >> openConstraintMenu [
-
-	| constraintWindow constraints constraintSimulator |
-	constraints := OrderedCollection new.
-	constraintWindow := OPBormConstraintMenuGUI new.
-	self outgoing do: [ :each |
-		each model constraint ifNotNil: [
-			constraintSimulator := diagramSimulator simulatorOf: each model constraint.
-			constraints add: constraintSimulator
-				 ] ] .
-	constraintWindow setConstraints: constraints.
-	constraintWindow open
-]
-
-{ #category : 'testing' }
 OPBormElementSimulator >> outputCondition [
 
 	| constraintSimulator |
 	model outputSimulationCondition nameAsOutput = 'Any' ifTrue: [
-		self outgoing do: [ :each |
-			each model constraint ifNotNil: [
-				constraintSimulator := self diagramSimulator simulatorOf:
-					                       each model constraint.
-				constraintSimulator value ifTrue: [ ^ self baseCondition ] ] ].
-		^ false ].
+			self outgoing do: [ :each |
+					each model constraint ifNil: [ ^ self baseCondition ] ifNotNil: [ :eachConstraint |
+							constraintSimulator := self diagramSimulator simulatorOf: eachConstraint.
+							constraintSimulator value ifTrue: [ ^ self baseCondition ] ] ].
+			^ false ].
 	model outputSimulationCondition nameAsOutput = 'All' ifTrue: [
-		self outgoing do: [ :each |
-			each model constraint ifNotNil: [
-				constraintSimulator := self diagramSimulator simulatorOf:
-					                       each model constraint.
-				constraintSimulator value ifFalse: [ ^ false ] ] ].
-		^ self baseCondition ].
+			self outgoing do: [ :each |
+					each model constraint ifNotNil: [ :eachConstraint |
+							constraintSimulator := self diagramSimulator simulatorOf: eachConstraint.
+							constraintSimulator value ifFalse: [ ^ false ] ] ].
+			^ self baseCondition ].
 	^ self baseCondition
 ]
 
@@ -161,6 +143,5 @@ OPBormElementSimulator >> setDefaultStepping [
 { #category : 'accessing' }
 OPBormElementSimulator >> transitionTokenCount [
 
-	^ (self tokens select: [ :token |
-		   token type = 'OPBormTransitionSimulator' ]) size
+	^ self tokens count: [ :token | token type = 'OPBormTransitionSimulator' ]
 ]

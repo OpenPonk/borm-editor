@@ -17,12 +17,6 @@ Class {
 }
 
 { #category : 'running' }
-BormTransitionSimulationTest >> controllerClass [
-
-	^ OPBormSimulator
-]
-
-{ #category : 'running' }
 BormTransitionSimulationTest >> exampleModel [
 
 	model := self emptyModel.
@@ -38,6 +32,21 @@ BormTransitionSimulationTest >> exampleModel [
 	participantA add: stateB.
 
 	^ model
+]
+
+{ #category : 'running' }
+BormTransitionSimulationTest >> simulatorClass [
+
+	^ OPBormSimulator
+]
+
+{ #category : 'tests' }
+BormTransitionSimulationTest >> testTransitionSimulatorIsNeitherSimulableNorSteppable [
+
+	| transitionSimulator |
+	transitionSimulator := simulator simulatorOf: transition.
+	self deny: transitionSimulator isSimulable description: 'Transition simulator must not be simulable'.
+	self deny: transitionSimulator isSteppable description: 'Transition simulator must not be steppable'
 ]
 
 { #category : 'tests' }

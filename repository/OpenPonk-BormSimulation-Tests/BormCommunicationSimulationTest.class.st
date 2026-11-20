@@ -18,12 +18,6 @@ Class {
 }
 
 { #category : 'running' }
-BormCommunicationSimulationTest >> controllerClass [
-
-	^ OPBormSimulator
-]
-
-{ #category : 'running' }
 BormCommunicationSimulationTest >> exampleModel [
 
 	model := self emptyModel.
@@ -43,6 +37,26 @@ BormCommunicationSimulationTest >> exampleModel [
 	activityA send: communication.
 	activityB receive: communication.
 	^ model
+]
+
+{ #category : 'running' }
+BormCommunicationSimulationTest >> simulatorClass [
+
+	^ OPBormSimulator
+]
+
+{ #category : 'tests' }
+BormCommunicationSimulationTest >> testCommunicationAndDataFlowSimulatorsAreNotSimulableOrSteppable [
+
+	| dataFlow localSimulator communicationSimulator dataFlowSimulator |
+	dataFlow := self emptyDataFlow.
+	communication addDataFlow: dataFlow.
+	localSimulator := self simulatorClass model: model.
+	communicationSimulator := localSimulator simulatorOf: communication.
+	dataFlowSimulator := localSimulator simulatorOf: dataFlow.
+	self deny: communicationSimulator isSimulable description: 'Communication simulator must not be simulable'.
+	self deny: communicationSimulator isSteppable description: 'Communication simulator must not be steppable'.
+	self deny: dataFlowSimulator isSimulable description: 'Data flow simulator must not be simulable'
 ]
 
 { #category : 'tests' }

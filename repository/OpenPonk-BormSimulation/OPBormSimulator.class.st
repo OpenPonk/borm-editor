@@ -5,9 +5,6 @@ Coordinates overall execution flow, manages global stepping, and initializes pre
 Class {
 	#name : 'OPBormSimulator',
 	#superclass : 'OPDiagramSimulator',
-	#instVars : [
-		'presetConstraintsValue'
-	],
 	#category : 'OpenPonk-BormSimulation-Simulation',
 	#package : 'OpenPonk-BormSimulation',
 	#tag : 'Simulation'
@@ -26,29 +23,11 @@ OPBormSimulator class >> initialClassMapping [
 		yourself
 ]
 
-{ #category : 'initialization' }
-OPBormSimulator >> initialize [
-
-	presetConstraintsValue := false.
-	super initialize
-]
-
 { #category : 'private - creation' }
 OPBormSimulator >> loadItems [
 
 	super loadItems.
 	self simulableElements do: [ :each | each addInitialTokens ]
-]
-
-{ #category : 'accessing' }
-OPBormSimulator >> presetConstraints [
-	^ presetConstraintsValue
-]
-
-{ #category : 'accessing' }
-OPBormSimulator >> presetConstraints: bool [
-
-	presetConstraintsValue := bool
 ]
 
 { #category : 'initialization' }

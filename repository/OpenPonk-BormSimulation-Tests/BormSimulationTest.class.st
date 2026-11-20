@@ -20,12 +20,6 @@ BormSimulationTest class >> isAbstract [
 ]
 
 { #category : 'running' }
-BormSimulationTest >> controllerClass [
-
-	^ self subclassResponsibility
-]
-
-{ #category : 'running' }
 BormSimulationTest >> exampleModel [
 
 	^ self subclassResponsibility
@@ -36,5 +30,11 @@ BormSimulationTest >> setUp [
 
 	super setUp.
 	model := self exampleModel.
-	simulator := self controllerClass model: model
+	simulator := self simulatorClass model: model
+]
+
+{ #category : 'running' }
+BormSimulationTest >> simulatorClass [
+
+	^ self subclassResponsibility
 ]

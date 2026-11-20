@@ -7,8 +7,6 @@ Class {
 	#superclass : 'SpPresenter',
 	#instVars : [
 		'constraints',
-		'buttons',
-		'label',
 		'diagramSimulator',
 		'checkboxes'
 	],
@@ -30,9 +28,9 @@ OPBormConstraintMenuGUI >> connectPresenters [
 { #category : 'initialization' }
 OPBormConstraintMenuGUI >> initialize [
 
+	super initialize.
 	constraints := OrderedCollection new.
-	checkboxes := OrderedCollection new.
-	super initialize
+	checkboxes := OrderedCollection new
 ]
 
 { #category : 'initialization' }
@@ -64,73 +62,44 @@ OPBormConstraintMenuGUI >> isOpen [
 ]
 
 { #category : 'initialization' }
-OPBormConstraintMenuGUI >> setConstraints: modelConstraints [
-
-	| count button buttonPair |
-	constraints := modelConstraints.
-	count := 1.
-	constraints do: [ :each |
-		buttons add: {
-				self newCheckBox.
-				each }.
-		buttonPair := buttons at: count.
-		button := buttonPair first.
-		count := count + 1.
-		label := self newLabel.
-		button label: each model name.
-		button state: buttonPair second value.
-		button extent: 200 @ 30.
-		self layout add: button expand: false].
-	self connectPresenters
-]
-
-{ #category : 'initialization' }
 OPBormConstraintMenuGUI >> setDiagramConstraints [
 
-	| count button buttonPair constraintSimulator last tmp |
-	count := 1.
+	| count last |
 	diagramSimulator simulableElements do: [ :each |
-		each outgoing do: [ :edge |
-			edge model constraint ifNotNil: [
-				constraintSimulator := diagramSimulator simulatorOf:
-					                       edge model constraint.
-				(constraints includes: {
-						 each.
-						 constraintSimulator }) ifFalse: [
-					constraints add: {
-							each.
-							constraintSimulator } ] ] ] ].
+			each outgoing do: [ :edge |
+					edge model constraint ifNotNil: [ :eachConstraint |
+							| pair |
+							pair := {
+								        each.
+								        (diagramSimulator simulatorOf: eachConstraint) }.
+							(constraints includes: pair) ifFalse: [ constraints add: pair ] ] ] ].
+	count := 1.
 	last := nil.
 	constraints do: [ :constraint |
-		checkboxes add: {
-				self newCheckBox.
-				constraint second }.
-		buttonPair := checkboxes at: count.
-		button := buttonPair first.
-		count := count + 1.
-		button label: constraint second model name.
-		button state: buttonPair second value.
-
-		self layout add: button at: 2 @ count.
-
-		self connectPresenters.
-		last = constraint first model name ifFalse: [
-			last := constraint first model name.
-			tmp := self newLabel.
-			tmp label: constraint first model name.
-			self layout add: tmp at: 1 @ count ] ]
+			| checkbox |
+			checkbox := self newCheckBox
+				            label: constraint second model name;
+				            state: constraint second value;
+				            yourself.
+			checkboxes add: {
+					checkbox.
+					constraint second }.
+			count := count + 1.
+			self layout add: checkbox atPoint: 2 @ count.
+			last = constraint first model name ifFalse: [
+					| nodeLabel |
+					last := constraint first model name.
+					nodeLabel := self newLabel
+						             label: last;
+						             yourself.
+					self layout add: nodeLabel atPoint: 1 @ count ] ].
+	self connectPresenters
 ]
 
 { #category : 'initialization' }
 OPBormConstraintMenuGUI >> setDiagramSimulator: aDiagramSimulator [
 
 	diagramSimulator := aDiagramSimulator
-]
-
-{ #category : 'private - hooks' }
-OPBormConstraintMenuGUI >> simulatorClass [
-
-	^ OPBormSimulator
 ]
 
 { #category : 'initialization' }

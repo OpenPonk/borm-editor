@@ -18,12 +18,6 @@ Class {
 }
 
 { #category : 'running' }
-BormConstraintCommunicationSimulationTest >> controllerClass [
-
-	^ OPBormSimulator
-]
-
-{ #category : 'running' }
 BormConstraintCommunicationSimulationTest >> exampleModel [
 
 	model := self emptyModel.
@@ -47,6 +41,12 @@ BormConstraintCommunicationSimulationTest >> exampleModel [
 	activityB receive: communication.
 
 	^ model
+]
+
+{ #category : 'running' }
+BormConstraintCommunicationSimulationTest >> simulatorClass [
+
+	^ OPBormSimulator
 ]
 
 { #category : 'tests' }

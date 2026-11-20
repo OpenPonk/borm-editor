@@ -17,12 +17,6 @@ Class {
 }
 
 { #category : 'running' }
-BormConstraintTransitionSimulationTest >> controllerClass [
-
-	^ OPBormSimulator
-]
-
-{ #category : 'running' }
 BormConstraintTransitionSimulationTest >> exampleModel [
 
 	model := self emptyModel.
@@ -42,6 +36,12 @@ BormConstraintTransitionSimulationTest >> exampleModel [
 	transition constraint: constraint.
 
 	^ model
+]
+
+{ #category : 'running' }
+BormConstraintTransitionSimulationTest >> simulatorClass [
+
+	^ OPBormSimulator
 ]
 
 { #category : 'tests' }
