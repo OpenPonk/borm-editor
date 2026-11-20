@@ -3,7 +3,7 @@ Headless tests for the BORM simulation GUI presenter, constraint configuration m
 "
 Class {
 	#name : 'OPBormSimulationGUITest',
-	#superclass : 'TestCase',
+	#superclass : 'OPAbstractUITest',
 	#instVars : [
 		'openWindowsBefore',
 		'model',

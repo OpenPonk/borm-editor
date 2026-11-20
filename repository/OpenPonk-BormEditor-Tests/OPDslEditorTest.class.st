@@ -3,7 +3,7 @@ Unit tests for the textual BORM DSL editor presenter, covering Spec 2 layout and
 "
 Class {
 	#name : 'OPDslEditorTest',
-	#superclass : 'TestCase',
+	#superclass : 'OPAbstractUITest',
 	#instVars : [
 		'dslEditor',
 		'existingWindows',
