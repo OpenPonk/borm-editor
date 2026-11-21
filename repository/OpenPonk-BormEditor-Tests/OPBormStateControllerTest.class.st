@@ -33,3 +33,24 @@ OPBormStateControllerTest >> creationTargetModelClass [
 OPBormStateControllerTest >> modelClass [
 	^ BormState
 ]
+
+{ #category : 'tests' }
+OPBormStateControllerTest >> testCanBeTargetForTransitionFromActivityOnly [
+
+	| transitionFromActivity transitionFromState communication |
+	transitionFromActivity := OPBormTransitionController new
+		                          source: OPBormActivityController new;
+		                          yourself.
+	transitionFromState := OPBormTransitionController new
+		                       source: OPBormStateController new;
+		                       yourself.
+	communication := OPBormCommunicationController new
+		                 source: OPBormActivityController new;
+		                 yourself.
+
+	self
+		assert: (controller canBeTargetFor: transitionFromActivity)
+		description: 'State controller must accept transition from activity'.
+	self deny: (controller canBeTargetFor: transitionFromState) description: 'State controller must reject transition from state'.
+	self deny: (controller canBeTargetFor: communication) description: 'State controller must reject communication'
+]

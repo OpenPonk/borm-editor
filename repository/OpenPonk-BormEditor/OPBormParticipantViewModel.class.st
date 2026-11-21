@@ -36,7 +36,7 @@ OPBormParticipantViewModel >> essentialChildrenModels [
 
 	| nodes |
 	nodes := self model nodes.
-	^ nodes asArray , nodes flatCollectAsSet: [ :each | each transitions ]
+	^ nodes asArray , (nodes flatCollectAsSet: [ :each | each transitions ]) asArray
 ]
 
 { #category : 'accessing' }

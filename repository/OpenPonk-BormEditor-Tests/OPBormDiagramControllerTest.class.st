@@ -33,8 +33,24 @@ OPBormDiagramControllerTest >> testControllerFactory [
 
 { #category : 'tests' }
 OPBormDiagramControllerTest >> testInitializePalette [
-	| palette |
+
+	| palette entries expectedToolClasses |
 	palette := OPPalette new.
 	controller initializePalette: palette.
-	self denyCollection: palette items hasSameElements: #()
+	entries := palette items select: [ :eachItem | eachItem class == OPPaletteEntry ].
+	expectedToolClasses := {
+		                       ('Participant' -> OPBormParticipantController).
+		                       ('State' -> OPBormStateController).
+		                       ('Activity' -> OPBormActivityController).
+		                       ('Transition' -> OPBormTransitionController).
+		                       ('Communication' -> OPBormCommunicationController).
+		                       ('Data Flow' -> OPBormDataFlowController).
+		                       ('Constraint' -> OPBormConstraintController) }.
+	self assert: (entries collect: #label as: Array) equals: { 'Select' } , (expectedToolClasses collect: #key).
+	expectedToolClasses do: [ :eachPair |
+			| entry createdController |
+			entry := entries detect: [ :eachEntry | eachEntry label = eachPair key ].
+			entry performAction.
+			createdController := palette selectedTool instVarNamed: #controller.
+			self assert: createdController class identicalTo: eachPair value ]
 ]

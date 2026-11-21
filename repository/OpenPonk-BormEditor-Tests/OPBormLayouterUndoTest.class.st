@@ -40,14 +40,55 @@ OPBormLayouterUndoTest >> setUp [
 	diagramController showAllElements
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'running' }
 OPBormLayouterUndoTest >> tearDown [
+
 	undoManager := nil.
 	diagramController := nil.
 	diagram := nil.
 	model := nil.
 	project := nil.
 	super tearDown
+]
+
+{ #category : 'tests' }
+OPBormLayouterUndoTest >> testCyclicTreeLayoutIsUndoableToInitialPositions [
+
+	| cyclicModel cyclicProject cyclicDiagram cyclicUndoManager projectController cyclicDiagramController layouter boundElements initialPositions |
+	cyclicModel := OPBormExamples exampleTravelingCard.
+	cyclicProject := OPProject new.
+	cyclicProject addModel: cyclicModel.
+	cyclicDiagram := OPOpenPonkDiagram forModelElement: cyclicModel.
+	cyclicProject addDiagram: cyclicDiagram.
+	cyclicUndoManager := OPUndoManager new.
+	projectController := OPProjectController forProject: cyclicProject.
+	projectController instVarNamed: #undoManager put: cyclicUndoManager.
+	cyclicDiagramController := OPBormDiagramController new.
+	projectController addDiagramController: cyclicDiagramController.
+	cyclicDiagramController
+		canvasPresenter: (OPCanvasPresenter new
+				 canvas: RSCanvas new;
+				 yourself);
+		diagramElement: cyclicDiagram;
+		model: cyclicModel.
+	cyclicDiagramController showAllElements.
+
+	layouter := OPBormLayouter new diagramController: cyclicDiagramController.
+	boundElements := (cyclicDiagramController controllers
+		                  select: [ :eachController | eachController diagramElement isKindOf: OPBoundNode ]
+		                  thenCollect: #diagramElement) asSet.
+	self denyEmpty: boundElements.
+
+	initialPositions := Dictionary new.
+	boundElements do: [ :eachElement | initialPositions at: eachElement put: eachElement roassalShape position copy ].
+
+	layouter treeLayout.
+
+	self assert: cyclicUndoManager canUndo description: 'Cyclic tree layout fallback must push an undoable command onto undoManager'.
+
+	cyclicDiagramController undo.
+
+	boundElements do: [ :eachElement | self assert: eachElement roassalShape position equals: (initialPositions at: eachElement) ]
 ]
 
 { #category : 'tests' }

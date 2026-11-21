@@ -58,3 +58,29 @@ OPBormTransitionControllerTest >> targetControllerClass [
 OPBormTransitionControllerTest >> targetModelClass [
 	^ BormActivity
 ]
+
+{ #category : 'tests' }
+OPBormTransitionControllerTest >> testCanBeTargetForConstraintAndDataFlow [
+
+	| state activity transitionFromState transitionFromActivity constraintController dataFlowController |
+	state := BormState named: 'S1'.
+	activity := BormActivity named: 'A1'.
+	transitionFromState := BormTransition from: state to: activity.
+	transitionFromActivity := BormTransition from: activity to: state.
+	constraintController := OPBormConstraintController new.
+	dataFlowController := OPBormDataFlowController new.
+
+	controller model: transitionFromState.
+	self
+		assert: (constraintController canVisitTarget: controller)
+		description: 'Transition from state without constraint must accept constraint'.
+	self deny: (dataFlowController canVisitTarget: controller) description: 'Transition must reject data flow'.
+
+	transitionFromState constraint: (BormConstraint named: 'Existing').
+	self
+		deny: (constraintController canVisitTarget: controller)
+		description: 'Transition that already has a constraint must reject another constraint'.
+
+	controller model: transitionFromActivity.
+	self deny: (constraintController canVisitTarget: controller) description: 'Transition from activity must reject constraint'
+]

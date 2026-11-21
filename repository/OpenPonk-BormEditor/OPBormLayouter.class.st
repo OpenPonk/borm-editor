@@ -8,6 +8,9 @@ My layout strategy works in two steps:
 Class {
 	#name : 'OPBormLayouter',
 	#superclass : 'OPHierarchicalNodesAndEdgesLayouter',
+	#instVars : [
+		'activeSnapshot'
+	],
 	#category : 'OpenPonk-BormEditor-ViewModels',
 	#package : 'OpenPonk-BormEditor',
 	#tag : 'ViewModels'
@@ -41,28 +44,26 @@ OPBormLayouter >> allNodes [
 
 { #category : 'userinterface' }
 OPBormLayouter >> applyLayout: aTwoArgBlock [
-	| allTargetNodes snapshot activeContainers topLevelBoxes commands shownParticipants |
+
+	| allTargetNodes snapshot activeContainers topLevelBoxes topLevelEdges |
+	activeSnapshot ifNotNil: [
+			topLevelBoxes := self topLevelNodeShapes.
+			topLevelEdges := self participantEdgesFor: topLevelBoxes.
+			aTwoArgBlock value: topLevelBoxes value: topLevelEdges.
+			^ self finalizeLayoutWithSnapshot: activeSnapshot ].
+
 	allTargetNodes := self allRenderedNodeShapes.
 	snapshot := OPDiagramGeometrySnapshot onNodes: allTargetNodes.
-
+	activeSnapshot := snapshot.
 	activeContainers := self containerElementsBottomUp.
-	self layoutContainersHierarchically: activeContainers.
-
-	topLevelBoxes := self sortedTopLevelBoxes: self topLevelNodeShapes.
-
-	RSHorizontalLineLayout new
-		gapSize: 75;
-		on: topLevelBoxes.
-
-	self unsubscribeContainers: activeContainers.
-
-	shownParticipants := diagramController model participants select: [ :eachParticipant |
-		diagramController hasControllerForModel: eachParticipant ].
-	self layoutCommunications: (self collectCommunications: shownParticipants).
-
-	commands := snapshot deltaCommands.
-	self executeLayoutCommands: commands.
-	self updateCanvas
+	[
+		self layoutContainersHierarchically: activeContainers.
+		topLevelBoxes := self topLevelNodeShapes.
+		topLevelEdges := self participantEdgesFor: topLevelBoxes.
+		aTwoArgBlock value: topLevelBoxes value: topLevelEdges.
+		self finalizeLayoutWithSnapshot: snapshot ] ensure: [
+			self unsubscribeContainers: activeContainers.
+			activeSnapshot := nil ]
 ]
 
 { #category : 'private - collecting' }
@@ -131,7 +132,23 @@ OPBormLayouter >> communicationRanksFor: aCollectionOfParticipantControllers [
 OPBormLayouter >> defaultLayout [
 	"Executes default hierarchical layout for BORM diagram."
 
-	self applyLayout: [ :nodes :edges | ]
+	self applyLayout: [ :boxes :edges |
+			RSHorizontalLineLayout new
+				gapSize: 75;
+				on: (self sortedTopLevelBoxes: boxes) ]
+]
+
+{ #category : 'private' }
+OPBormLayouter >> finalizeLayoutWithSnapshot: aSnapshot [
+
+	| shownParticipants commands |
+	self unsubscribeContainers: self containerElementsBottomUp.
+	shownParticipants := diagramController model participants select: [ :eachParticipant |
+		                     diagramController hasControllerForModel: eachParticipant ].
+	self layoutCommunications: (self collectCommunications: shownParticipants).
+	commands := aSnapshot deltaCommands.
+	self executeLayoutCommands: commands.
+	self updateCanvas
 ]
 
 { #category : 'processing' }
@@ -167,20 +184,6 @@ OPBormLayouter >> layoutCommunications: communications [
 	communications do: [ :c | self layoutCommunication: c ]
 ]
 
-{ #category : 'processing' }
-OPBormLayouter >> layoutDiagram: aDiagram [
-
-	| shownParticipants |
-	shownParticipants := aDiagram participants select: [ :each | 
-		                     diagramController hasControllerForModel: each ].
-	shownParticipants do: [ :each | self layoutParticipant: each ].
-	self layoutParticipants: shownParticipants.
-	self updateCanvas.
-	self layoutCommunications:
-		(self collectCommunications: shownParticipants).
-	self updateCanvas
-]
-
 { #category : 'layouts' }
 OPBormLayouter >> layoutInnerContentOf: aContainerElement shapes: directShapes edges: directEdges [
 	"Arranges inner states and activities of a participant using Sugiyama layout, normalizing coordinates to origin."
@@ -192,18 +195,32 @@ OPBormLayouter >> layoutInnerContentOf: aContainerElement shapes: directShapes e
 		directShapes translateTo: 0 @ 0 ]
 ]
 
-{ #category : 'processing' }
-OPBormLayouter >> layoutNode: aNode [
+{ #category : 'private' }
+OPBormLayouter >> participantEdgesFor: aCollectionOfShapes [
+	"Answers top-level edges including derived participant-to-participant communication edges."
 
-	| roassalShape bounds |
-	roassalShape := (diagramController
-		                 controllerForModel: aNode
-		                 ifNone: [ ^ self ]) roassalShape.
-	bounds := roassalShape encompassingRectangle.
-	bounds := bounds merge:
-		          (roassalShape propertyAt: #RSLabeled)
-			          encompassingRectangle.
-	roassalShape extent: bounds extent
+	| shapeByParticipantModel seenPairs edges |
+	edges := OrderedCollection withAll: (self innerEdgesFor: aCollectionOfShapes).
+	shapeByParticipantModel := IdentityDictionary new.
+	diagramController controllers do: [ :eachController |
+			((eachController isKindOf: OPBormParticipantController) and: [ aCollectionOfShapes includes: eachController roassalShape ])
+				ifTrue: [ shapeByParticipantModel at: eachController model put: eachController roassalShape ] ].
+	seenPairs := Set new.
+	shapeByParticipantModel keysAndValuesDo: [ :sourceParticipant :sourceShape |
+			sourceParticipant nodes select: #isActivity thenDo: [ :eachActivity |
+					eachActivity sent do: [ :eachCommunication |
+							| targetParticipant |
+							targetParticipant := eachCommunication receiver participant.
+							shapeByParticipantModel at: targetParticipant ifPresent: [ :targetShape |
+									| pair |
+									pair := sourceShape -> targetShape.
+									(sourceShape ~~ targetShape and: [ (seenPairs includes: pair) not ]) ifTrue: [
+											seenPairs add: pair.
+											edges add: (RSLine new
+													 from: sourceShape;
+													 to: targetShape;
+													 yourself) ] ] ] ] ].
+	^ edges asGroup
 ]
 
 { #category : 'private' }

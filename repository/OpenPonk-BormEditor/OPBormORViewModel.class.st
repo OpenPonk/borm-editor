@@ -30,9 +30,8 @@ OPBormORViewModel >> essentialChildrenModels [
 
 	| participants |
 	participants := self model participants.
-	^ participants asArray , (participants flatCollectAsSet: [ :each |
-		   each nodes flatCollectAsSet: [ :eachNode |
-			   eachNode communications ] ])
+	^ participants asArray
+	  , (participants flatCollectAsSet: [ :each | each nodes flatCollectAsSet: [ :eachNode | eachNode communications ] ]) asArray
 ]
 
 { #category : 'accessing' }

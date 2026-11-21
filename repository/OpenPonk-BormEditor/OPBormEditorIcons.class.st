@@ -198,28 +198,6 @@ VquFWq2GQqHADw8P+Pz8hMvlgqIocLvdNEgC39zccLFYhCzLmJmZIZvNBiLqK4H/AGLEf54Z
 ]
 
 { #category : 'accessing - icons' }
-OPBormEditorIcons class >> entity16Icon [
-
-	^ Form fromBinaryStream: self entity16IconContents base64Decoded asByteArray readStream
-]
-
-{ #category : 'private - contents' }
-OPBormEditorIcons class >> entity16IconContents [
-	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/16/entity16.png"
-	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA
-CXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AcdDjUsULRhLwAAAddJREFUOMulk0FrE0EU
-x/8BYUjcQywWA1URTx6CVz1F9CRioeClXQh7E+lNQSFQes1X8OZN+iH6HRQ2l1LamLhsKpmm
-TQeyO5uZ+XuYJCLWCHbgwTAz7/fm/d97JZK4yro233Q6HbbbbWitlzoIIdBqtVCv10sAAJKI
-45hRFFFKSaUULy4Ux2PF83PFszPF0cjb6alimko2mxHjOCZJDwjDkFJKkqQx5GRCjseklOTg
-hEwSstcju13y+Jj8nkiGYUiSPgWtNYQQsBbQGhgMJHr9BGYKGAs4C9yq3UMQVEEHVCpikepC
-AxIoCm97e5+xu/sWKyurmGu8s/MRjScbIAHnLhGRBKZToJgC1gK12m3s7/dQTP25NUCee+e/
-AoyZPbbAaDTE9vYGHAE64P2HT6hUbvwbYGYAIcp49Pi518EBjgJ57u/sUoDxEcrlAOvrb6C1
-F7YogGwGcPYSAODJ8wjDYYqtrQeg8/AXL9+h0XgNa5ak4Jx3fvb0Fe7eeQg9q4ougGr1PrT2
-Gv0BEMLXlQxAAjdX13A9WEOW+W/nGRZ7rYFJ5vvmt1ZuNiMmieTJD8U0VUwSxX5fsftN8ehI
-8fBQ8eBA8ctXyc3NX61cmk/j/w5T6arj/BO7031tDWM5IAAAAABJRU5ErkJggg=='
-]
-
-{ #category : 'accessing - icons' }
 OPBormEditorIcons class >> initialIcon [
 
 	^ Form fromBinaryStream: self initialIconContents base64Decoded asByteArray readStream
@@ -371,25 +349,6 @@ EPoYreddYbTGVwrvSs37Lw8zdNRSDQy+VnwUt/jkRI3fuwcpDw5jCpFSSq9QkVKYsMDu+jOv
 3jyVL3sy8zyj05i9MDc10f9y8hSxnGZgw3G0Uniql8j5Y1fh2yqjdjNbuZXK4DDlgbWUavVN
 QbF0UnsX22s5wBKQrJuQtBuSNGOSVkyadHAux/N8/CDEDwqYsIApFAmLfU+aYvSo7we9ibxk
 on4LMDxxUbrMRGEAAAAASUVORK5CYII='
-]
-
-{ #category : 'accessing - icons' }
-OPBormEditorIcons class >> settingsIcon [
-
-	^ Form fromBinaryStream: self settingsIconContents base64Decoded asByteArray readStream
-]
-
-{ #category : 'private - contents' }
-OPBormEditorIcons class >> settingsIconContents [
-	"Private - Method generated with the content of the file File @ /home/peter/prog/dynacase/git/borm-editor/icons/settings.png"
-	^ 'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlw
-SFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoA
-AAEdSURBVEiJ1ZYxbgJBDEWfUYQo6KgokSjpKSK6HCASNTkBHQXnoCVVDpAiDRVtKq4QQYO4
-AxLRpMCgwbuzsaLMSlhysd7v/9f2jjUSQiCnNbKyewVEZCoiwfj03wSAR2fszwJ9Z6xoIYSr
-AwJ8ACvgGegAC+AEBOMnfddR7Epz5YbTCEwMyXcJsXWLmZQKAG3g4CD8zQ9A+8Ibz2AGdCu6
-uQNe1XcVuK5ynS2qYAwcE1/1BrQibEtjZdgjME7NYAjsTcI2JjciW4PdA8PkkDVxbpKWFhNh
-lwY7t5jsq6K+FpFpyA9RMQOgmSj0BRiJyFqfn4BeAttUrvebFpHpoNW3KmpZdhX/+6ZEYOPJ
-9Z6DL2esYF6BT2esYHL3t4of1ezMdo7TPcYAAAAASUVORK5CYII='
 ]
 
 { #category : 'accessing - icons' }

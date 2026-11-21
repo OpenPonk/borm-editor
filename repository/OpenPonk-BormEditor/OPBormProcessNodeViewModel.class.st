@@ -3,7 +3,7 @@ I am the abstract base ViewModel for BORM process nodes. I connect the semantic 
 "
 Class {
 	#name : 'OPBormProcessNodeViewModel',
-	#superclass : 'OPBormElementViewModel',
+	#superclass : 'OPModelObjectViewModel',
 	#category : 'OpenPonk-BormEditor-ViewModels',
 	#package : 'OpenPonk-BormEditor',
 	#tag : 'ViewModels'

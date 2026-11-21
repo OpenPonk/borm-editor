@@ -62,3 +62,30 @@ OPBormParticipantControllerTest >> testNameChangeMaintainsLabelLeftPosition [
 
 	self assert: newLeft asFloat closeTo: initialLeft asFloat precision: 0.5
 ]
+
+{ #category : 'tests' }
+OPBormParticipantControllerTest >> testNilNameRendersEmptyLabelAndDraggableInteractionIncludesInnerNodes [
+
+	| stateController draggableInteraction draggedShapes |
+	controller createModelIn: diagramController model.
+	diagramController addController: controller.
+	controller
+		createDiagramElement;
+		renderDiagramElement.
+
+	controller model name: nil.
+	controller modelChanged.
+	self assert: (controller roassalShape propertyAt: #RSLabeled) text equals: ''.
+
+	stateController := OPBormStateController new.
+	stateController diagramController: diagramController.
+	stateController createModelIn: controller model.
+	diagramController addController: stateController.
+	stateController
+		createDiagramElement;
+		renderDiagramElement.
+
+	draggableInteraction := controller roassalShape propertyAt: OPRSSelectionDraggable.
+	draggedShapes := draggableInteraction shapesToDragInside: controller roassalShape.
+	self assertCollection: draggedShapes includesAll: { stateController roassalShape }
+]
