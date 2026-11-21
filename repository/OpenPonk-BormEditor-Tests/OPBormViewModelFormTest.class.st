@@ -32,6 +32,30 @@ OPBormViewModelFormTest >> tearDown [
 ]
 
 { #category : 'tests' }
+OPBormViewModelFormTest >> testCommunicationViewModelChildrenModelsIncludesConstraintAndDataFlowsWithoutDuplicates [
+
+	| senderActivity receiverActivity communication dataFlow constraint communicationViewModel children |
+	senderActivity := BormActivity named: 'Order'.
+	receiverActivity := BormActivity named: 'Receive'.
+	communication := BormCommunication named: 'OrderComm'.
+	senderActivity send: communication.
+	receiverActivity receive: communication.
+	dataFlow := BormDataFlow named: 'OrderData'.
+	constraint := BormConstraint named: 'ValidOrder'.
+	communication
+		add: dataFlow;
+		constraint: constraint.
+
+	communicationViewModel := registry viewModelFor: communication.
+	children := communicationViewModel childrenModels.
+
+	self assert: children size equals: 2.
+	self assertCollection: children hasSameElements: {
+			constraint.
+			dataFlow }
+]
+
+{ #category : 'tests' }
 OPBormViewModelFormTest >> testDataFlowViewModelBindsType [
 
 	| dataFlow viewModel form |
@@ -99,7 +123,7 @@ OPBormViewModelFormTest >> testFormDroplistDisplayAndIconBlocks [
 ]
 
 { #category : 'tests' }
-OPBormViewModelFormTest >> testORViewModelEssentialChildrenModelsIncludesParticipantsAndCommunications [
+OPBormViewModelFormTest >> testORViewModelChildrenModelsAndAllChildrenModels [
 
 	| senderParticipant receiverParticipant senderActivity receiverActivity communication viewModel |
 	senderParticipant := BormParticipant named: 'Customer'.
@@ -117,14 +141,19 @@ OPBormViewModelFormTest >> testORViewModelEssentialChildrenModelsIncludesPartici
 
 	viewModel := registry viewModelFor: orModel.
 
-	self assertCollection: viewModel essentialChildrenModels hasSameElements: {
+	self assertCollection: viewModel childrenModels hasSameElements: {
+			senderParticipant.
+			receiverParticipant }.
+	self assertCollection: viewModel allChildrenModels hasSameElements: {
 			senderParticipant.
 			receiverParticipant.
+			senderActivity.
+			receiverActivity.
 			communication }
 ]
 
 { #category : 'tests' }
-OPBormViewModelFormTest >> testParticipantEssentialChildrenModelsIncludesNodesAndTransitions [
+OPBormViewModelFormTest >> testParticipantChildrenModelsAndAllChildrenModels [
 
 	| participant state activity transition viewModel |
 	participant := BormParticipant named: 'Customer'.
@@ -140,7 +169,10 @@ OPBormViewModelFormTest >> testParticipantEssentialChildrenModelsIncludesNodesAn
 
 	viewModel := registry viewModelFor: participant.
 
-	self assertCollection: viewModel essentialChildrenModels hasSameElements: {
+	self assertCollection: viewModel childrenModels hasSameElements: {
+			state.
+			activity }.
+	self assertCollection: viewModel allChildrenModels hasSameElements: {
 			state.
 			activity.
 			transition }
@@ -237,6 +269,21 @@ OPBormViewModelFormTest >> testStateViewModelBindsInitialAndFinal [
 	form viewModel: viewModel.
 	viewModel buildEditorForm: form.
 	self assertCollection: (form bindings collect: #selector) includesAll: #( #isInitial #isFinal )
+]
+
+{ #category : 'tests' }
+OPBormViewModelFormTest >> testTransitionViewModelChildrenModelsIncludesConstraint [
+
+	| state activity transition constraint transitionViewModel |
+	state := BormState named: 'Start'.
+	activity := BormActivity named: 'Order'.
+	transition := BormTransition from: state to: activity.
+	constraint := BormConstraint named: 'Guard'.
+	transition constraint: constraint.
+
+	transitionViewModel := registry viewModelFor: transition.
+
+	self assertCollection: transitionViewModel childrenModels hasSameElements: { constraint }
 ]
 
 { #category : 'tests' }

@@ -30,7 +30,7 @@ OPBormCommunicationViewModel >> basicRemoveModel [
 ]
 
 { #category : 'accessing' }
-OPBormCommunicationViewModel >> essentialChildrenModels [
+OPBormCommunicationViewModel >> childrenModels [
 
 	^ self model constraints asArray , self model dataFlows asArray
 ]

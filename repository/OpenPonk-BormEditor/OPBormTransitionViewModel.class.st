@@ -30,7 +30,7 @@ OPBormTransitionViewModel >> basicRemoveModel [
 ]
 
 { #category : 'accessing' }
-OPBormTransitionViewModel >> essentialChildrenModels [
+OPBormTransitionViewModel >> childrenModels [
 
 	^ self model constraints asArray
 ]

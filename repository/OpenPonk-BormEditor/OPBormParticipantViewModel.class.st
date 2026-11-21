@@ -32,13 +32,5 @@ OPBormParticipantViewModel >> childrenModels [
 ]
 
 { #category : 'accessing' }
-OPBormParticipantViewModel >> essentialChildrenModels [
-
-	| nodes |
-	nodes := self model nodes.
-	^ nodes asArray , (nodes flatCollectAsSet: [ :each | each transitions ]) asArray
-]
-
-{ #category : 'accessing' }
 OPBormParticipantViewModel >> icon [ ^ BormParticipantShape typeIconFor: self model type
 ]

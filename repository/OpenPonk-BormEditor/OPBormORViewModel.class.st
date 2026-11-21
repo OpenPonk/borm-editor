@@ -1,5 +1,5 @@
 "
-I am the ViewModel for the root BORM Object Relation Model. I manage the mapping between the top-level semantic model and its UI representation, identifying essential children like participants.
+View model for the root BORM Object Relation model, mapping top-level participants and metadata to workbench views and diagram controllers.
 "
 Class {
 	#name : 'OPBormORViewModel',
@@ -23,15 +23,6 @@ OPBormORViewModel class >> modelClass [ ^ BormORModel
 OPBormORViewModel >> childrenModels [
 
 	^ self model participants
-]
-
-{ #category : 'accessing' }
-OPBormORViewModel >> essentialChildrenModels [
-
-	| participants |
-	participants := self model participants.
-	^ participants asArray
-	  , (participants flatCollectAsSet: [ :each | each nodes flatCollectAsSet: [ :eachNode | eachNode communications ] ]) asArray
 ]
 
 { #category : 'accessing' }
