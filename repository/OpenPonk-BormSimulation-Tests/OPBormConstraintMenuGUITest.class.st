@@ -151,3 +151,21 @@ OPBormConstraintMenuGUITest >> testInheritsSimulationConfigurationAndShowsEmptyS
 			self assert: configurationGui defaultLayout class identicalTo: SpBoxLayout.
 			self assert: configurationGui defaultLayout children first label equals: 'No constraints in this diagram.' ]
 ]
+
+{ #category : 'tests' }
+OPBormConstraintMenuGUITest >> testRebindingDiagramSimulatorRebuildsConstraintPresenters [
+
+	configurationGui := OPBormConstraintMenuGUI on: (OPBormSimulator model: OPBormExamples exampleDataFlows).
+	self deny: configurationGui hasConfigurableItems description: 'DataFlows example must have no constraints'.
+
+	configurationGui diagramSimulator: (OPBormSimulator model: OPBormExamples exampleLoanApproval).
+	self assert: configurationGui hasConfigurableItems description: 'Rebinding to Loan Approval simulator must populate constraints'.
+	self
+		assert: (configurationGui constraintCheckboxes collect: #label as: Array)
+		equals: #( 'approved -> signs loan contract' 'rejected -> reviews rejection reason' ).
+	self assert: configurationGui defaultLayout children first identicalTo: configurationGui descriptionLabel.
+
+	configurationGui diagramSimulator: nil.
+	self deny: configurationGui hasConfigurableItems description: 'Rebinding to nil simulator must clear constraint entries'.
+	self assert: configurationGui defaultLayout children first label equals: 'No constraints in this diagram.'
+]

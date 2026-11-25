@@ -259,6 +259,8 @@ OPBormSimulationGUITest >> testSimulationCommandActivationAndExecution [
 	editor instVarNamed: #diagramController put: diagramController.
 	toolContext := CmdSimpleToolContext for: editor.
 	command := OPBormSimulationCommand new.
+	self assert: command defaultMenuItemName equals: 'Simulation'.
+	self assert: command defaultMenuIconName equals: #glamorousSpawn.
 	command
 		readParametersFromContext: toolContext;
 		prepareFullExecutionInContext: toolContext;
@@ -268,6 +270,63 @@ OPBormSimulationGUITest >> testSimulationCommandActivationAndExecution [
 		                 detect: [ :eachGui | eachGui isOpen and: [ eachGui diagramController == diagramController ] ]
 		                 ifNone: [ self fail: 'Executing OPBormSimulationCommand must open OPBormSimulationGUI' ].
 	self assert: simulationGui diagramModel identicalTo: model
+]
+
+{ #category : 'tests' }
+OPBormSimulationGUITest >> testStepAllOpensSidebarWhenInitiallyBlockedByConstraints [
+
+	| blockedModel participant startState endState constrainedTransition gateConstraint project diagram projectController blockedController stepAllButton |
+	blockedModel := BormORModel named: 'Initially Blocked'.
+	participant := BormParticipant named: 'Actor'.
+	startState := (BormState named: 'Start')
+		              beInitial;
+		              yourself.
+	endState := (BormState named: 'End')
+		            beFinal;
+		            yourself.
+	constrainedTransition := BormTransition from: startState to: endState.
+	gateConstraint := BormConstraint named: 'Gate'.
+	constrainedTransition constraint: gateConstraint.
+	blockedModel add: participant.
+	participant addAll: {
+			startState.
+			endState.
+			constrainedTransition }.
+
+	project := OPProject named: 'Initially Blocked Test'.
+	project addModel: blockedModel.
+	diagram := OPOpenPonkDiagram forModelElement: blockedModel.
+	project addDiagram: diagram.
+	projectController := OPProjectController forProject: project.
+	blockedController := OPBormDiagramController new.
+	projectController addDiagramController: blockedController.
+	blockedController
+		editor: editor;
+		canvasPresenter: (OPCanvasPresenter new
+				 canvas: RSCanvas new;
+				 yourself);
+		diagramElement: diagram;
+		model: blockedModel.
+	blockedController showAllElements.
+
+	simulationGui := OPBormSimulationGUI diagramController: blockedController.
+	self deny: simulationGui isConfigurationVisible description: 'Sidebar must start collapsed even when initial state is blocked'.
+	self deny: simulationGui diagramSimulator isSteppable description: 'Initially blocked simulator must not be steppable'.
+
+	stepAllButton := simulationGui buttons detect: [ :eachButton | eachButton label = 'Step all' ].
+	stepAllButton performAction.
+	self
+		assert: simulationGui isConfigurationVisible
+		description: 'Clicking Step all while blocked at step 0 must open constraints sidebar'.
+	self
+		assert: (simulationGui configurationPresenter groupHeaderLabels collect: #label as: Array)
+		equals: #( 'Start (Actor) [waiting]' ).
+	self assert: (simulationGui configurationPresenter constraintCheckboxes collect: #label as: Array) equals: #( 'Gate -> End' ).
+
+	simulationGui configurationPresenter constraintCheckboxes first state: true.
+	stepAllButton performAction.
+	self assert: (simulationGui diagramSimulator simulatorOf: startState) tokenCount equals: 0.
+	self assert: (simulationGui diagramSimulator simulatorOf: endState) tokenCount equals: 1
 ]
 
 { #category : 'tests' }
