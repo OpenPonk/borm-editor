@@ -21,3 +21,9 @@ OPBormCommunicationSimulator >> isSteppable [
 
 	^ false
 ]
+
+{ #category : 'accessing' }
+OPBormCommunicationSimulator >> transferKind [
+
+	^ #message
+]

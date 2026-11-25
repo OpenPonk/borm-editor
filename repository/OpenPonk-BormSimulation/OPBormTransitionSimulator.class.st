@@ -20,3 +20,9 @@ OPBormTransitionSimulator >> isSimulable [
 OPBormTransitionSimulator >> isSteppable [
 	^ false
 ]
+
+{ #category : 'accessing' }
+OPBormTransitionSimulator >> transferKind [
+
+	^ #token
+]

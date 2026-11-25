@@ -330,6 +330,55 @@ OPBormSimulationGUITest >> testStepAllOpensSidebarWhenInitiallyBlockedByConstrai
 ]
 
 { #category : 'tests' }
+OPBormSimulationGUITest >> testStepRecordsTransitionsAndCommunicationsExcludingBlockedConstraints [
+
+	| steppedEvents startNode activityA waitingNode endNode altEndNode activityB bEndNode toActivityA toWaiting toEnd commAB toBEnd constraintASim |
+	waitingNode := model @ 'ParticipantA::Waiting'.
+	waitingNode outputSimulationCondition: BormNodeAnyNeighborSimulationCondition new.
+	diagramController showAllElements.
+	simulationGui := OPBormSimulationGUI diagramController: diagramController.
+	steppedEvents := OrderedCollection new.
+	simulationGui diagramSimulator when: OPSimulatorStepped do: [ :event | steppedEvents add: event ] for: self.
+
+	startNode := model @ 'ParticipantA::Start'.
+	activityA := model @ 'ParticipantA::ActivityA'.
+	endNode := model @ 'ParticipantA::End'.
+	altEndNode := model @ 'ParticipantA::AltEnd'.
+	activityB := model @ 'ParticipantB::ActivityB'.
+	bEndNode := model @ 'ParticipantB::BEnd'.
+	toActivityA := (simulationGui diagramSimulator simulatorOf: startNode) outgoing first model.
+	toWaiting := ((simulationGui diagramSimulator simulatorOf: activityA) outgoing detect: [ :each |
+		              each target model == waitingNode ]) model.
+	commAB := ((simulationGui diagramSimulator simulatorOf: activityA) outgoing detect: [ :each | each target model == activityB ])
+		          model.
+	toEnd := ((simulationGui diagramSimulator simulatorOf: waitingNode) outgoing detect: [ :each | each target model == endNode ])
+		         model.
+	toBEnd := (simulationGui diagramSimulator simulatorOf: activityB) outgoing first model.
+
+	simulationGui session step.
+	self
+		assert: steppedEvents first transfers
+		equals: { (OPSimulationTransfer source: startNode edge: toActivityA target: activityA) }.
+
+	simulationGui session step.
+	self assertCollection: steppedEvents second transfers hasSameElements: {
+			(OPSimulationTransfer source: activityA edge: toWaiting target: waitingNode).
+			((OPSimulationTransfer source: activityA edge: commAB target: activityB)
+				 kind: #message;
+				 yourself) }.
+
+	constraintASim := simulationGui diagramSimulator simulatorOf: constraintA.
+	constraintASim value: true.
+	simulationGui session step.
+	self assertCollection: steppedEvents third transfers hasSameElements: {
+			(OPSimulationTransfer source: waitingNode edge: toEnd target: endNode).
+			(OPSimulationTransfer source: activityB edge: toBEnd target: bEndNode) }.
+	self
+		deny: (steppedEvents third transfers anySatisfy: [ :each | each targetModel == altEndNode ])
+		description: 'Blocked branch with unmet constraint must not emit a transfer'
+]
+
+{ #category : 'tests' }
 OPBormSimulationGUITest >> testUnmetConstraintPausesPlaybackOpensSidebarAndAllowsContinuing [
 
 	| checkboxes waitingSimulator endSimulator altEndSimulator bEndSimulator stepAllButton resetButton stoppedSemaphore |

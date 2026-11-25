@@ -12,6 +12,12 @@ Class {
 	#tag : 'Simulation'
 }
 
+{ #category : 'private - hooks' }
+OPBormSimulationGUI >> afterStepVisualsUpdated [
+
+	self handleUnmetConstraintsAfterStep
+]
+
 { #category : 'configuration' }
 OPBormSimulationGUI >> buildConfigurationPresenter [
 
@@ -28,13 +34,6 @@ OPBormSimulationGUI >> buttonItems [
 		  (self newStepButtonLabeled: 'Step all' help: 'Step all elements once' action: [ self stepAll ]).
 		  self newResetButton.
 		  (self newConfigureButtonLabeled: 'Constraints' help: 'Toggle constraint conditions sidebar') }
-]
-
-{ #category : 'private - updating' }
-OPBormSimulationGUI >> connectSessionCallbacks [
-
-	super connectSessionCallbacks.
-	session onStepped: [ :event | self handleSimulatorStepped: event ]
 ]
 
 { #category : 'private - updating' }
@@ -56,13 +55,6 @@ OPBormSimulationGUI >> handleSimulatorReset: aResetEvent [
 
 	blockedElementSimulators removeAll.
 	super handleSimulatorReset: aResetEvent
-]
-
-{ #category : 'private - updating' }
-OPBormSimulationGUI >> handleSimulatorStepped: anEvent [
-
-	self updateSimulationVisuals.
-	self handleUnmetConstraintsAfterStep
 ]
 
 { #category : 'private - updating' }

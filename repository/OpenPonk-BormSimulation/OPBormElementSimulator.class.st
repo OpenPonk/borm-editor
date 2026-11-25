@@ -132,16 +132,18 @@ OPBormElementSimulator >> process [
 
 	| constraintSimulator token |
 	self outgoing do: [ :each |
-		token := self tokens anyOne copy.
-		token type: each class asString.
-		each model constraint
-			ifNil: [ each target addToken: token ]
-			ifNotNil: [
-				constraintSimulator := self diagramSimulator simulatorOf:
-					                       each model constraint.
-				(constraintSimulator value or: [
-					 self model outputSimulationCondition nameAsOutput = 'None' ])
-					ifTrue: [ each target addToken: token ] ] ].
+			| shouldDeliver |
+			token := self tokens anyOne copy.
+			token type: each class asString.
+			shouldDeliver := each model constraint ifNil: [ true ] ifNotNil: [
+					                 constraintSimulator := self diagramSimulator simulatorOf: each model constraint.
+					                 constraintSimulator value or: [ self model outputSimulationCondition nameAsOutput = 'None' ] ].
+			shouldDeliver ifTrue: [
+					each target addToken: token.
+					diagramSimulator ifNotNil: [
+							diagramSimulator recordTransfer: ((OPSimulationTransfer source: self model edge: each model target: each target model)
+									 kind: each transferKind;
+									 yourself) ] ] ].
 	self removeAllTokens
 ]
 
