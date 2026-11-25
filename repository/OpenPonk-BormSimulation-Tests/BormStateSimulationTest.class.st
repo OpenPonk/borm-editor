@@ -59,6 +59,51 @@ BormStateSimulationTest >> testInitialStateWithIncomingTransitionReceivesInitial
 ]
 
 { #category : 'tests' }
+BormStateSimulationTest >> testLoadStateClearsTokensAndRestoresInitialTokens [
+
+	| loopModel participant initialState secondState sourceActivity sinkState forwardTransition backwardTransition activityTransition loopSimulator resetEvents |
+	loopModel := self emptyModel.
+	participant := self emptyParticipant.
+	initialState := self emptyState
+		                beInitial;
+		                yourself.
+	secondState := self emptyState.
+	sourceActivity := self emptyActivity.
+	sinkState := self emptyState.
+	forwardTransition := self emptyTransition.
+	backwardTransition := self emptyTransition.
+	activityTransition := self emptyTransition.
+	forwardTransition from: initialState to: secondState.
+	backwardTransition from: secondState to: initialState.
+	activityTransition from: sourceActivity to: sinkState.
+	loopModel add: participant.
+	participant addAll: {
+			initialState.
+			secondState.
+			sourceActivity.
+			sinkState.
+			forwardTransition.
+			backwardTransition.
+			activityTransition }.
+	loopSimulator := self simulatorClass model: loopModel.
+	resetEvents := OrderedCollection new.
+	loopSimulator when: OPSimulatorReset do: [ :event | resetEvents add: event ] for: self.
+
+	loopSimulator step.
+	self assert: (loopSimulator simulatorOf: initialState) tokenCount equals: 0.
+	self assert: (loopSimulator simulatorOf: secondState) tokenCount equals: 1.
+	self assert: (loopSimulator simulatorOf: sourceActivity) tokenCount equals: 0.
+	self assert: (loopSimulator simulatorOf: sinkState) tokenCount equals: 1.
+
+	loopSimulator reset.
+	self assert: resetEvents size equals: 1.
+	self assert: (loopSimulator simulatorOf: initialState) tokenCount equals: 1.
+	self assert: (loopSimulator simulatorOf: secondState) tokenCount equals: 0.
+	self assert: (loopSimulator simulatorOf: sourceActivity) tokenCount equals: 1.
+	self assert: (loopSimulator simulatorOf: sinkState) tokenCount equals: 0
+]
+
+{ #category : 'tests' }
 BormStateSimulationTest >> testPrintOnIncludesTokenCount [
 
 	| stateSimulatorA |

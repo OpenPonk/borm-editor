@@ -68,8 +68,10 @@ OPBormExamples class >> exampleDataFlows [
 
 { #category : 'examples' }
 OPBormExamples class >> exampleLoanApproval [
+
 	<script: 'self exampleLoanApproval inspect'>
-	^ 'Person "Applicant" {
+	| model |
+	model := 'Person "Applicant" {
 	initial state "wants a loan"
 		go to "submit application"
 
@@ -107,7 +109,9 @@ Person "Loan Officer" {
 		go to "final"
 
 	final state "evaluation complete" as "final"
-}' asBorm: 'Loan Approval'
+}' asBorm: 'Loan Approval'.
+	model @ 'Applicant::waiting for decision' outputSimulationCondition: BormNodeAnyNeighborSimulationCondition new.
+	^ model
 ]
 
 { #category : 'samples' }

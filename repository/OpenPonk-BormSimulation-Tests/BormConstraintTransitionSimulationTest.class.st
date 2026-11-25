@@ -45,6 +45,56 @@ BormConstraintTransitionSimulationTest >> simulatorClass [
 ]
 
 { #category : 'tests' }
+BormConstraintTransitionSimulationTest >> testBlockedByConstraintsRespectsOutputConditionModesAndFinalNodes [
+
+	| stateSimulatorA stateSimulatorB constraintSimulator |
+	stateSimulatorA := simulator simulatorOf: stateA.
+	stateSimulatorB := simulator simulatorOf: stateB.
+	constraintSimulator := simulator simulatorOf: constraint.
+
+	self assert: stateSimulatorA isBlockedByConstraints description: 'Node with token and unmet All constraint must report blocked'.
+	self assertCollection: simulator blockedByConstraintElements hasSameElements: { stateSimulatorA }.
+	self deny: stateSimulatorB isBlockedByConstraints description: 'Node without tokens must not report blocked'.
+
+	stateA outputSimulationCondition: BormNodeAnyNeighborSimulationCondition new.
+	self
+		assert: stateSimulatorA isBlockedByConstraints
+		description: 'Node with token and all Any constraints unmet must report blocked'.
+
+	stateA outputSimulationCondition: BormNodeNoneNeighborSimulationCondition new.
+	self
+		deny: stateSimulatorA isBlockedByConstraints
+		description: 'Node with None output condition must not report blocked by constraints'.
+
+	stateA outputSimulationCondition: BormNodeAllNeighborSimulationCondition new.
+	constraintSimulator value: true.
+	self deny: stateSimulatorA isBlockedByConstraints description: 'Node with satisfied constraints must not report blocked'.
+	self assertEmpty: simulator blockedByConstraintElements.
+
+	simulator step.
+	self deny: stateSimulatorB isBlockedByConstraints description: 'Final node without outgoing edges must not report blocked'
+]
+
+{ #category : 'tests' }
+BormConstraintTransitionSimulationTest >> testResetPreservesManualConstraintValuesAndRestoresTokens [
+
+	| stateSimulatorA stateSimulatorB constraintSimulator |
+	stateSimulatorA := simulator simulatorOf: stateA.
+	stateSimulatorB := simulator simulatorOf: stateB.
+	constraintSimulator := simulator simulatorOf: constraint.
+	constraintSimulator value: true.
+
+	simulator step.
+	self assert: stateSimulatorA tokenCount equals: 0.
+	self assert: stateSimulatorB tokenCount equals: 1.
+
+	simulator reset.
+	self assert: stateSimulatorA tokenCount equals: 1.
+	self assert: stateSimulatorB tokenCount equals: 0.
+	self assert: constraintSimulator value description: 'Reset must preserve manually configured constraint values'
+]
+
+{ #category : 'tests' }
 BormConstraintTransitionSimulationTest >> testTransitionConstraintStepSimulationFalse [
 
 	| stateSimulatorA stateSimulatorB constraintSimulator |

@@ -73,6 +73,13 @@ OPBormElementSimulator >> inputTransitionCondition [
 ]
 
 { #category : 'testing' }
+OPBormElementSimulator >> isBlockedByConstraints [
+
+	^ self baseCondition and: [
+		  self inputCondition and: [ self outputCondition not and: [ self unmetConstraintSimulators isNotEmpty ] ] ]
+]
+
+{ #category : 'testing' }
 OPBormElementSimulator >> isSimulable [
 
 	^ true
@@ -82,6 +89,15 @@ OPBormElementSimulator >> isSimulable [
 OPBormElementSimulator >> isSteppable [
 
 	^ self inputCondition and: [ self outputCondition ]
+]
+
+{ #category : 'actions' }
+OPBormElementSimulator >> loadState [
+
+	super loadState.
+	self
+		removeAllTokens;
+		addInitialTokens
 ]
 
 { #category : 'testing' }
@@ -144,4 +160,17 @@ OPBormElementSimulator >> setDefaultStepping [
 OPBormElementSimulator >> transitionTokenCount [
 
 	^ self tokens count: [ :token | token type = 'OPBormTransitionSimulator' ]
+]
+
+{ #category : 'testing' }
+OPBormElementSimulator >> unmetConstraintSimulators [
+
+	| unmet |
+	unmet := OrderedCollection new.
+	self outgoing do: [ :eachEdge |
+			eachEdge model constraint ifNotNil: [ :eachConstraint |
+					| constraintSimulator |
+					constraintSimulator := self diagramSimulator simulatorOf: eachConstraint.
+					constraintSimulator value ifFalse: [ unmet add: constraintSimulator ] ] ].
+	^ unmet
 ]

@@ -117,6 +117,7 @@ OPBormSimulationGUITest >> setUp [
 OPBormSimulationGUITest >> tearDown [
 
 	(simulationGui isNotNil and: [ simulationGui isOpen ]) ifTrue: [ simulationGui close ].
+	OPSimulationRegistry default closeAll.
 	self currentWorld submorphs
 		select: [ :eachMorph | eachMorph isSystemWindow and: [ (openWindowsBefore includes: eachMorph) not ] ]
 		thenDo: [ :eachWindow | eachWindow delete ].
@@ -132,75 +133,119 @@ OPBormSimulationGUITest >> tearDown [
 ]
 
 { #category : 'tests' }
-OPBormSimulationGUITest >> testAdjustWindowSizeWithoutOpenWindowIsSafe [
-
-	| unopenedGui |
-	unopenedGui := OPBormSimulationGUI new.
-	unopenedGui adjustWindowSize.
-	self deny: unopenedGui isOpen description: 'Unopened simulation GUI must remain closed'
-]
-
-{ #category : 'tests' }
 OPBormSimulationGUITest >> testButtonItemsAndDeterministicActions [
 
-	| buttonItems buttonsByLabel startSimulator activityASimulator |
+	| buttonsByLabel startSimulator activityASimulator playPauseButton stepAllButton |
 	diagramController showAllElements.
 	simulationGui := OPBormSimulationGUI diagramController: diagramController.
+	simulationGui session uiDispatcher: [ :aBlock | aBlock value ].
 	self assert: simulationGui simulatorClass identicalTo: OPBormSimulator.
+	self assert: simulationGui hasConfiguration description: 'BORM simulation GUI must declare configuration sidebar support'.
+	self assert: (simulationGui buttons collect: #label as: Array) equals: #( 'Play' 'Step all' 'Reset' 'Constraints' ).
 
-	buttonItems := simulationGui buttonItems.
-	self assert: (buttonItems collect: #label as: Array) equals: #( 'Pause' 'Play' 'Step all' 'Set constraints' ).
-
-	buttonsByLabel := (buttonItems collect: [ :eachButton | eachButton label -> eachButton ]) asDictionary.
+	buttonsByLabel := (simulationGui buttons collect: [ :eachButton | eachButton label -> eachButton ]) asDictionary.
 	startSimulator := simulationGui diagramSimulator simulatorOf: model @ 'ParticipantA::Start'.
 	activityASimulator := simulationGui diagramSimulator simulatorOf: model @ 'ParticipantA::ActivityA'.
 
 	self assert: startSimulator tokenCount equals: 1.
 	self assert: activityASimulator tokenCount equals: 0.
 
-	(buttonsByLabel at: 'Step all') performAction.
+	stepAllButton := buttonsByLabel at: 'Step all'.
+	stepAllButton performAction.
 	self assert: startSimulator tokenCount equals: 0.
 	self assert: activityASimulator tokenCount equals: 1.
 
-	(buttonsByLabel at: 'Pause') performAction.
-	self
-		deny: (simulationGui diagramSimulator instVarNamed: #shouldRun)
-		description: 'Pause button must stop simulation running flag'
+	(buttonsByLabel at: 'Reset') performAction.
+	self assert: startSimulator tokenCount equals: 1.
+	self assert: activityASimulator tokenCount equals: 0.
+
+	playPauseButton := buttonsByLabel at: 'Play'.
+	simulationGui session delay: 5000.
+	playPauseButton performAction.
+	self assert: simulationGui session isRunning description: 'Clicking Play must start running simulation'.
+	self assert: playPauseButton label equals: 'Pause'.
+	self deny: stepAllButton isEnabled description: 'Step all button must be disabled while running'.
+
+	playPauseButton performAction.
+	self deny: simulationGui session isRunning description: 'Clicking Pause must stop simulation'.
+	self assert: playPauseButton label equals: 'Play'.
+	self assert: stepAllButton isEnabled description: 'Step all button must re-enable after pausing'
 ]
 
 { #category : 'tests' }
-OPBormSimulationGUITest >> testOpenConstraintMenuPresetsConstraintsAndSuppressesInlineMenu [
+OPBormSimulationGUITest >> testConstraintsSidebarTogglesDisplaysEmptyStateAndUpdatesLiveHighlights [
 
-	| setConstraintsButton constraintMenu checkboxPairs constraintSimulatorA constraintSimulatorB |
+	| constraintsButton waitingController checkboxes emptyModel emptyProject emptyDiagram emptyProjectController emptyController emptyGui |
 	diagramController showAllElements.
+	waitingController := diagramController controllerForModel: model @ 'ParticipantA::Waiting'.
 	simulationGui := OPBormSimulationGUI diagramController: diagramController.
+	self deny: simulationGui isConfigurationVisible description: 'Constraints sidebar must start collapsed'.
+	self assert: simulationGui layout class identicalTo: SpBoxLayout.
 
-	setConstraintsButton := simulationGui buttonItems detect: [ :eachButton | eachButton label = 'Set constraints' ].
-	setConstraintsButton performAction.
+	constraintsButton := simulationGui buttons detect: [ :eachButton | eachButton label = 'Constraints' ].
+	constraintsButton performAction.
+	self assert: simulationGui isConfigurationVisible description: 'Clicking Constraints must open right sidebar'.
+	self assert: simulationGui layout class identicalTo: SpPanedLayout.
+	self assert: simulationGui configurationPresenter class identicalTo: OPBormConstraintMenuGUI.
 
-	constraintMenu := OPBormConstraintMenuGUI allInstances
-		                  detect: [ :eachMenu | eachMenu isOpen ]
-		                  ifNone: [ self fail: 'Clicking Set constraints must open OPBormConstraintMenuGUI' ].
-	self assert: constraintMenu isOpen description: 'Constraint menu must report open while window is open'.
-	self assert: constraintMenu window title equals: 'Constraint Menu'.
-
-	checkboxPairs := constraintMenu instVarNamed: #checkboxes.
-	self assert: checkboxPairs size equals: 2.
-
-	constraintSimulatorA := simulationGui diagramSimulator simulatorOf: constraintA.
-	constraintSimulatorB := simulationGui diagramSimulator simulatorOf: constraintB.
-	checkboxPairs do: [ :eachPair | eachPair first state: true ].
-	self assert: constraintSimulatorA value description: 'Activating checkbox must set constraint A to true'.
-	self assert: constraintSimulatorB value description: 'Activating checkbox must set constraint B to true'.
-
-	(checkboxPairs detect: [ :eachPair | eachPair second == constraintSimulatorA ]) first state: false.
-	self deny: constraintSimulatorA value description: 'Deactivating checkbox must set constraint A back to false'.
+	checkboxes := simulationGui configurationPresenter constraintCheckboxes.
+	self assert: (checkboxes collect: #label as: Array) equals: #( 'ConstraintA -> End' 'ConstraintB -> AltEnd' ).
 
 	simulationGui diagramSimulator
 		step;
 		step.
-	self assertEmpty: (simulationGui instVarNamed: #constraints).
-	constraintMenu window close
+	self assert: waitingController roassalShape color equals: Color lightOrange lighter.
+
+	checkboxes do: [ :eachCheckbox | eachCheckbox state: true ].
+	self assert: waitingController roassalShape color equals: Color green.
+
+	constraintsButton performAction.
+	self deny: simulationGui isConfigurationVisible description: 'Clicking Constraints again must collapse sidebar'.
+
+	emptyModel := OPBormExamples exampleDataFlows.
+	emptyProject := OPProject named: 'Empty Constraints Test'.
+	emptyProject addModel: emptyModel.
+	emptyDiagram := OPOpenPonkDiagram forModelElement: emptyModel.
+	emptyProject addDiagram: emptyDiagram.
+	emptyProjectController := OPProjectController forProject: emptyProject.
+	emptyController := OPBormDiagramController new.
+	emptyProjectController addDiagramController: emptyController.
+	emptyController
+		editor: editor;
+		canvasPresenter: (OPCanvasPresenter new
+				 canvas: RSCanvas new;
+				 yourself);
+		diagramElement: emptyDiagram;
+		model: emptyModel.
+	emptyGui := OPBormSimulationGUI diagramController: emptyController.
+	[
+		emptyGui showConfiguration.
+		self assert: emptyGui isConfigurationVisible description: 'Sidebar must open cleanly even when diagram has no constraints'.
+		self
+			deny: emptyGui configurationPresenter hasConfigurableItems
+			description: 'Constraint-free diagram must show empty state in sidebar' ] ensure: [ emptyGui close ]
+]
+
+{ #category : 'tests' }
+OPBormSimulationGUITest >> testLoanApprovalExampleSimulatesSingleChosenBranchWithAnyCondition [
+
+	| loanModel loanSimulator approvedSimulator rejectedSimulator |
+	loanModel := OPBormExamples exampleLoanApproval.
+	self
+		assert: (loanModel @ 'Applicant::waiting for decision') outputSimulationCondition class
+		identicalTo: BormNodeAnyNeighborSimulationCondition.
+
+	loanSimulator := OPBormSimulator model: loanModel.
+	approvedSimulator := loanSimulator elements detect: [ :each |
+		                     (each isKindOf: OPBormConstraintSimulator) and: [ each model name = 'approved' ] ].
+	rejectedSimulator := loanSimulator elements detect: [ :each |
+		                     (each isKindOf: OPBormConstraintSimulator) and: [ each model name = 'rejected' ] ].
+	approvedSimulator value: true.
+	rejectedSimulator value: false.
+
+	6 timesRepeat: [ loanSimulator step ].
+	self assert: (loanSimulator simulatorOf: loanModel @ 'Applicant::loan active') tokenCount equals: 1.
+	self assert: (loanSimulator simulatorOf: loanModel @ 'Applicant::loan rejected') tokenCount equals: 0
 ]
 
 { #category : 'tests' }
@@ -226,149 +271,58 @@ OPBormSimulationGUITest >> testSimulationCommandActivationAndExecution [
 ]
 
 { #category : 'tests' }
-OPBormSimulationGUITest >> testUpdateColorsHighlightsAllNodeStatesAndDataFlowsDeterministically [
+OPBormSimulationGUITest >> testUnmetConstraintPausesPlaybackOpensSidebarAndAllowsContinuing [
 
-	| startController activityAController waitingController endController altEndController activityBController bEndController dataFlowController |
-	diagramController showAllElements.
-	startController := diagramController controllerForModel: model @ 'ParticipantA::Start'.
-	activityAController := diagramController controllerForModel: model @ 'ParticipantA::ActivityA'.
-	waitingController := diagramController controllerForModel: model @ 'ParticipantA::Waiting'.
-	endController := diagramController controllerForModel: model @ 'ParticipantA::End'.
-	altEndController := diagramController controllerForModel: model @ 'ParticipantA::AltEnd'.
-	activityBController := diagramController controllerForModel: model @ 'ParticipantB::ActivityB'.
-	bEndController := diagramController controllerForModel: model @ 'ParticipantB::BEnd'.
-	dataFlowController := diagramController controllerForModel: dataFlow.
-
-	simulationGui := OPBormSimulationGUI diagramController: diagramController.
-	self assert: startController roassalShape color equals: Color green.
-	self assert: activityAController roassalShape color equals: activityAController diagramElement defaultBackgroundColor.
-	self assert: dataFlowController roassalShape color equals: Color transparent.
-
-	simulationGui diagramSimulator step.
-	self assert: startController roassalShape color equals: startController diagramElement defaultBackgroundColor.
-	self assert: activityAController roassalShape color equals: Color green.
-	self assert: dataFlowController roassalShape color equals: Color yellow.
-	self assert: activityBController roassalShape color equals: Color yellow.
-
-	simulationGui diagramSimulator step.
-	self assert: dataFlowController roassalShape color equals: Color transparent.
-	self assert: waitingController roassalShape color equals: Color lightOrange lighter.
-	self assert: activityBController roassalShape color equals: Color green.
-
-	(simulationGui diagramSimulator simulatorOf: constraintA) value: true.
-	(simulationGui diagramSimulator simulatorOf: constraintB) value: true.
-	simulationGui diagramSimulator step.
-	self assert: endController roassalShape color equals: Color pink.
-	self assert: altEndController roassalShape color equals: Color pink.
-	self assert: bEndController roassalShape color equals: Color pink
-]
-
-{ #category : 'tests' }
-OPBormSimulationGUITest >> testUpdateColorsIgnoresHiddenAndUnrenderedElements [
-
-	| activityAController dataFlowController |
-	simulationGui := OPBormSimulationGUI diagramController: diagramController.
-	simulationGui diagramSimulator step.
-	self assert: (simulationGui diagramSimulator simulatorOf: model @ 'ParticipantA::ActivityA') tokenCount equals: 1.
-
-	diagramController showAllElements.
-	activityAController := diagramController controllerForModel: model @ 'ParticipantA::ActivityA'.
-	dataFlowController := diagramController controllerForModel: dataFlow.
-	activityAController removeRender.
-	dataFlowController removeRender.
-
-	simulationGui updateColors.
-	self assert: activityAController roassalShape identicalTo: nil.
-	self assert: dataFlowController roassalShape identicalTo: nil
-]
-
-{ #category : 'tests' }
-OPBormSimulationGUITest >> testUpdateConstraintMenuAddsCheckboxesOnceAndSyncsValues [
-
-	| initialExtent checkboxPairs constraintSimulatorA constraintSimulatorB layoutPresenters labels continueButtons |
+	| checkboxes waitingSimulator endSimulator altEndSimulator bEndSimulator stepAllButton resetButton stoppedSemaphore |
 	diagramController showAllElements.
 	simulationGui := OPBormSimulationGUI diagramController: diagramController.
-	initialExtent := simulationGui window window extent.
+	simulationGui session uiDispatcher: [ :aBlock | aBlock value ].
+	waitingSimulator := simulationGui diagramSimulator simulatorOf: model @ 'ParticipantA::Waiting'.
+	endSimulator := simulationGui diagramSimulator simulatorOf: model @ 'ParticipantA::End'.
+	altEndSimulator := simulationGui diagramSimulator simulatorOf: model @ 'ParticipantA::AltEnd'.
+	bEndSimulator := simulationGui diagramSimulator simulatorOf: model @ 'ParticipantB::BEnd'.
+	stepAllButton := simulationGui buttons detect: [ :eachButton | eachButton label = 'Step all' ].
+	resetButton := simulationGui buttons detect: [ :eachButton | eachButton label = 'Reset' ].
 
+	stoppedSemaphore := Semaphore new.
 	simulationGui diagramSimulator
-		step;
-		step.
-
-	checkboxPairs := simulationGui instVarNamed: #checkboxes.
-	self assert: checkboxPairs size equals: 2.
-	self assert: (simulationGui instVarNamed: #usedConstraints) size equals: 2.
+		delay: 1;
+		when: OPSimulatorStoppedRun do: [ stoppedSemaphore signal ] for: self.
+	simulationGui session play.
 	self
-		deny: (simulationGui diagramSimulator instVarNamed: #shouldRun)
-		description: 'Encountering unmet constraints must pause the simulation'.
+		deny: (stoppedSemaphore waitTimeoutSeconds: 3)
+		description: 'Encountering an unmet constraint during Play must pause playback'.
+	self deny: simulationGui session isRunning description: 'Session must be paused when unmet constraint is encountered'.
+	self assert: simulationGui isConfigurationVisible description: 'Encountering unmet constraint must open configuration sidebar'.
+	self assert: waitingSimulator tokenCount equals: 1.
 	self
-		assert: simulationGui window window extent y > initialExtent y
-		description: 'Adding constraint checkboxes must enlarge the simulation window height'.
+		assert: (simulationGui configurationPresenter groupHeaderLabels collect: #label as: Array)
+		equals: #( 'Waiting (ParticipantA) [waiting]' ).
 
-	layoutPresenters := simulationGui layout children keys.
-	labels := layoutPresenters select: [ :eachPresenter | eachPresenter isKindOf: SpLabelPresenter ].
-	self assert: labels size equals: 1.
-	self assert: labels first label equals: 'Waiting'.
+	stepAllButton performAction.
+	self assert: bEndSimulator tokenCount equals: 1.
+	self assert: waitingSimulator tokenCount equals: 1.
 
-	continueButtons := layoutPresenters select: [ :eachPresenter |
-		                   (eachPresenter isKindOf: SpButtonPresenter) and: [ eachPresenter label = 'Continue' ] ].
-	self assert: continueButtons size equals: 1.
+	checkboxes := simulationGui configurationPresenter constraintCheckboxes.
+	checkboxes do: [ :eachCheckbox | eachCheckbox state: true ].
+	stepAllButton performAction.
+	self assert: waitingSimulator tokenCount equals: 0.
+	self assert: endSimulator tokenCount equals: 1.
+	self assert: altEndSimulator tokenCount equals: 1.
 
-	constraintSimulatorA := simulationGui diagramSimulator simulatorOf: constraintA.
-	constraintSimulatorB := simulationGui diagramSimulator simulatorOf: constraintB.
-	checkboxPairs do: [ :eachPair | eachPair first state: true ].
-	self assert: constraintSimulatorA value description: 'Activating inline checkbox must enable constraint A'.
-	self assert: constraintSimulatorB value description: 'Activating inline checkbox must enable constraint B'.
+	resetButton performAction.
+	self assert: (simulationGui diagramSimulator simulatorOf: model @ 'ParticipantA::Start') tokenCount equals: 1.
+	self
+		assert: (simulationGui diagramSimulator simulatorOf: constraintA) value
+		description: 'Reset must preserve manual constraint values'.
 
-	(checkboxPairs detect: [ :eachPair | eachPair second == constraintSimulatorA ]) first state: false.
-	self deny: constraintSimulatorA value description: 'Deactivating inline checkbox must disable constraint A'
-]
-
-{ #category : 'tests' }
-OPBormSimulationGUITest >> testUpdateConstraintMenuIgnoresEmptySourceNode [
-
-	| simpleModel participant startState endState constrainedTransition simpleConstraint project diagram projectController plugin |
-	simpleModel := BormORModel named: 'Single Constraint'.
-	participant := BormParticipant named: 'Participant'.
-	startState := (BormState named: 'Start')
-		              beInitial;
-		              yourself.
-	endState := (BormState named: 'End')
-		            beFinal;
-		            yourself.
-	constrainedTransition := BormTransition from: startState to: endState.
-	simpleConstraint := BormConstraint named: 'AlwaysTrue'.
-	constrainedTransition constraint: simpleConstraint.
-	simpleModel add: participant.
-	participant addAll: {
-			startState.
-			endState.
-			constrainedTransition }.
-
-	project := OPProject named: 'Empty Source Node Test'.
-	project addModel: simpleModel.
-	diagram := OPOpenPonkDiagram forModelElement: simpleModel.
-	project addDiagram: diagram.
-	projectController := OPProjectController forProject: project.
-	plugin := OPPluginRegistry default plugins detect: [ :eachPlugin | eachPlugin isKindOf: OPBormPlugin ].
-	editor := OPEditor on: plugin.
-	diagramController := OPBormDiagramController new.
-	projectController addDiagramController: diagramController.
-	diagramController
-		editor: editor;
-		canvasPresenter: (OPCanvasPresenter new
-				 canvas: RSCanvas new;
-				 yourself);
-		diagramElement: diagram;
-		model: simpleModel.
-	diagramController showAllElements.
-
-	simulationGui := OPBormSimulationGUI diagramController: diagramController.
-	(simulationGui diagramSimulator simulatorOf: simpleConstraint) value: true.
-	simulationGui diagramSimulator step.
-
-	self assert: (simulationGui diagramSimulator simulatorOf: startState) tokenCount equals: 0.
-	self assert: (simulationGui diagramSimulator simulatorOf: endState) tokenCount equals: 1.
-	self assertEmpty: (simulationGui instVarNamed: #constraints)
+	checkboxes first state: false.
+	simulationGui hideConfiguration.
+	stepAllButton performAction.
+	stepAllButton performAction.
+	self
+		assert: simulationGui isConfigurationVisible
+		description: 'After Reset, hitting an unmet constraint must reopen configuration sidebar'
 ]
 
 { #category : 'tests' }
@@ -384,4 +338,78 @@ OPBormSimulationGUITest >> testUpdateDataFlowColorsDoesNotHighlightTargetWithout
 	simulationGui diagramSimulator step.
 
 	self assert: activityBController roassalShape color equals: activityBController diagramElement defaultBackgroundColor
+]
+
+{ #category : 'tests' }
+OPBormSimulationGUITest >> testUpdateSimulationVisualsIgnoresHiddenAndUnrenderedElements [
+
+	| activityAController dataFlowController |
+	simulationGui := OPBormSimulationGUI diagramController: diagramController.
+	simulationGui diagramSimulator step.
+	self assert: (simulationGui diagramSimulator simulatorOf: model @ 'ParticipantA::ActivityA') tokenCount equals: 1.
+
+	diagramController showAllElements.
+	activityAController := diagramController controllerForModel: model @ 'ParticipantA::ActivityA'.
+	dataFlowController := diagramController controllerForModel: dataFlow.
+	activityAController removeRender.
+	dataFlowController removeRender.
+
+	simulationGui updateSimulationVisuals.
+	self assert: activityAController roassalShape identicalTo: nil.
+	self assert: dataFlowController roassalShape identicalTo: nil
+]
+
+{ #category : 'tests' }
+OPBormSimulationGUITest >> testUpdateSimulationVisualsPreservesCustomColorsAndRestoresOnResetReloadAndClose [
+
+	| startController activityAController waitingController endController altEndController activityBController bEndController dataFlowController customStartColor customDataFlowColor |
+	diagramController showAllElements.
+	startController := diagramController controllerForModel: model @ 'ParticipantA::Start'.
+	activityAController := diagramController controllerForModel: model @ 'ParticipantA::ActivityA'.
+	waitingController := diagramController controllerForModel: model @ 'ParticipantA::Waiting'.
+	endController := diagramController controllerForModel: model @ 'ParticipantA::End'.
+	altEndController := diagramController controllerForModel: model @ 'ParticipantA::AltEnd'.
+	activityBController := diagramController controllerForModel: model @ 'ParticipantB::ActivityB'.
+	bEndController := diagramController controllerForModel: model @ 'ParticipantB::BEnd'.
+	dataFlowController := diagramController controllerForModel: dataFlow.
+
+	customStartColor := Color cyan.
+	customDataFlowColor := Color veryLightGray.
+	startController roassalShape color: customStartColor.
+	dataFlowController roassalShape color: customDataFlowColor.
+
+	simulationGui := OPBormSimulationGUI diagramController: diagramController.
+	self assert: startController roassalShape color equals: Color green.
+	self assert: activityAController roassalShape color equals: activityAController diagramElement defaultBackgroundColor.
+	self assert: dataFlowController roassalShape color equals: customDataFlowColor.
+
+	simulationGui diagramSimulator step.
+	self assert: startController roassalShape color equals: customStartColor.
+	self assert: activityAController roassalShape color equals: Color green.
+	self assert: dataFlowController roassalShape color equals: Color yellow.
+	self assert: activityBController roassalShape color equals: Color yellow.
+
+	simulationGui diagramSimulator step.
+	self assert: dataFlowController roassalShape color equals: customDataFlowColor.
+	self assert: waitingController roassalShape color equals: Color lightOrange lighter.
+	self assert: activityBController roassalShape color equals: Color green.
+
+	(simulationGui diagramSimulator simulatorOf: constraintA) value: true.
+	(simulationGui diagramSimulator simulatorOf: constraintB) value: true.
+	simulationGui diagramSimulator step.
+	self assert: endController roassalShape color equals: Color pink.
+	self assert: altEndController roassalShape color equals: Color pink.
+	self assert: bEndController roassalShape color equals: Color pink.
+
+	simulationGui session reset.
+	self assert: endController roassalShape color equals: endController diagramElement defaultBackgroundColor.
+	self assert: startController roassalShape color equals: Color green.
+
+	simulationGui reloadController.
+	self assert: startController roassalShape color equals: Color green.
+	self assert: dataFlowController roassalShape color equals: customDataFlowColor.
+
+	simulationGui close.
+	self assert: startController roassalShape color equals: customStartColor.
+	self assert: dataFlowController roassalShape color equals: customDataFlowColor
 ]

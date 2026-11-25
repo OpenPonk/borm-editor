@@ -23,6 +23,12 @@ OPBormSimulator class >> initialClassMapping [
 		yourself
 ]
 
+{ #category : 'accessing' }
+OPBormSimulator >> blockedByConstraintElements [
+
+	^ self simulableElements select: [ :eachElement | eachElement isBlockedByConstraints ]
+]
+
 { #category : 'private - creation' }
 OPBormSimulator >> loadItems [
 
