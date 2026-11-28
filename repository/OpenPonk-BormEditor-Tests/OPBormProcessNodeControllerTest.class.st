@@ -18,6 +18,40 @@ OPBormProcessNodeControllerTest class >> isAbstract [
 ]
 
 { #category : 'tests' }
+OPBormProcessNodeControllerTest >> testPlusIconClickAfterUnhookDoesNotOpenSubmodelEditor [
+
+	| submodel openedModel mockWorkbench mockEditor participantController plusIcon |
+	submodel := BormORModel named: 'Submodel'.
+	openedModel := nil.
+	mockWorkbench := Mock new.
+	(mockWorkbench stub openEditorOn: submodel) will: [ openedModel := submodel ].
+	mockEditor := Mock new.
+	mockEditor stub workbench willReturn: mockWorkbench.
+	diagramController editor: mockEditor.
+
+	participantController := OPBormParticipantController new.
+	participantController diagramController: diagramController.
+	participantController createModelIn: diagramController model.
+	diagramController addController: participantController.
+	participantController
+		createDiagramElement;
+		renderDiagramElement.
+
+	controller createModelIn: participantController model.
+	controller model submodel: submodel.
+	diagramController addController: controller.
+	controller
+		createDiagramElement;
+		renderDiagramElement.
+
+	plusIcon := controller diagramElement instVarNamed: #plusIcon.
+	controller unhookDiagramElement.
+	plusIcon announce: RSMouseLeftClick new.
+
+	self assert: openedModel identicalTo: nil
+]
+
+{ #category : 'tests' }
 OPBormProcessNodeControllerTest >> testPlusIconClickOpensSubmodelEditor [
 
 	| submodel openedModel mockWorkbench mockEditor participantController plusIcon |

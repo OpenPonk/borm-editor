@@ -182,14 +182,12 @@ OPBormConstraintMenuGUI >> descriptorForSource: aSourceSimulator edge: anEdgeSim
 { #category : 'private - formatting' }
 OPBormConstraintMenuGUI >> displayNameForConstraint: aConstraint [
 
-	aConstraint ifNil: [ ^ '(unnamed constraint)' ].
 	^ (self trimmedNameOrNil: aConstraint name) ifNil: [ '(unnamed constraint)' ]
 ]
 
 { #category : 'private - formatting' }
 OPBormConstraintMenuGUI >> displayNameForNode: aNode [
 
-	aNode ifNil: [ ^ '(unnamed node)' ].
 	(self trimmedNameOrNil: aNode name) ifNotNil: [ :trimmedName | ^ trimmedName ].
 	aNode isState ifTrue: [ ^ '(unnamed state)' ].
 	aNode isActivity ifTrue: [ ^ '(unnamed activity)' ].
@@ -200,7 +198,6 @@ OPBormConstraintMenuGUI >> displayNameForNode: aNode [
 OPBormConstraintMenuGUI >> displayNameForTarget: aTargetSimulator relativeTo: aSourceSimulator [
 
 	| targetName sourceParticipant targetParticipant |
-	aTargetSimulator ifNil: [ ^ '(unnamed node)' ].
 	targetName := self displayNameForNode: aTargetSimulator model.
 	sourceParticipant := self participantNameForNode: aSourceSimulator model.
 	targetParticipant := self participantNameForNode: aTargetSimulator model.
@@ -265,7 +262,6 @@ OPBormConstraintMenuGUI >> onConstraintChanged: aBlock [
 OPBormConstraintMenuGUI >> participantNameForNode: aNode [
 
 	| nodeParticipant |
-	aNode ifNil: [ ^ '' ].
 	nodeParticipant := aNode participant.
 	(nodeParticipant isKindOf: BormParticipant) ifFalse: [ ^ '' ].
 	^ (self trimmedNameOrNil: nodeParticipant name) ifNil: [ '' ]

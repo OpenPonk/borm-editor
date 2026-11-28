@@ -173,6 +173,20 @@ OPBormSimulationGUITest >> testButtonItemsAndDeterministicActions [
 ]
 
 { #category : 'tests' }
+OPBormSimulationGUITest >> testClosedAndUnopenedGuiActionsAndVisualUpdatesAreSafe [
+
+	| unopenedGui |
+	unopenedGui := OPBormSimulationGUI new.
+	unopenedGui stepAll.
+	unopenedGui updateSimulationVisuals.
+	unopenedGui handleSimulatorStepped: (OPSimulatorStepped simulator: nil transfers: #(  )).
+	self deny: unopenedGui isOpen description: 'Unopened BORM simulation GUI must remain closed after no-op actions'.
+	self
+		deny: unopenedGui isConfigurationVisible
+		description: 'No-op actions on unopened BORM simulation GUI must not open configuration sidebar'
+]
+
+{ #category : 'tests' }
 OPBormSimulationGUITest >> testConstraintsSidebarTogglesDisplaysEmptyStateAndUpdatesLiveHighlights [
 
 	| constraintsButton waitingController checkboxes emptyModel emptyProject emptyDiagram emptyProjectController emptyController emptyGui |

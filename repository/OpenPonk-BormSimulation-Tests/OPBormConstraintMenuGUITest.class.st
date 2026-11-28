@@ -76,7 +76,7 @@ OPBormConstraintMenuGUITest >> testCheckboxSyncsConstraintSimulatorInvokesCallba
 { #category : 'tests' }
 OPBormConstraintMenuGUITest >> testDeterministicOrderingReadableLabelsAndUnnamedFallbacks [
 
-	| loanSimulator customModel participantA participantB unnamedStateA unnamedStateB namedActivity receiverActivity unnamedTarget transitionA transitionB communication unnamedConstraintA unnamedConstraintB commConstraint |
+	| loanSimulator customModel participantA participantB blankParticipant unnamedStateA unnamedStateB namedActivity receiverActivity unnamedTarget blankParticipantActivity blankParticipantTarget transitionA transitionB transitionC communication unnamedConstraintA unnamedConstraintB unnamedConstraintC commConstraint |
 	loanSimulator := OPBormSimulator model: OPBormExamples exampleLoanApproval.
 	configurationGui := OPBormConstraintMenuGUI on: loanSimulator.
 	self assert: configurationGui hasConfigurableItems description: 'Loan Approval example must have configurable constraints'.
@@ -89,6 +89,7 @@ OPBormConstraintMenuGUITest >> testDeterministicOrderingReadableLabelsAndUnnamed
 	customModel := BormORModel named: 'Fallbacks'.
 	participantA := BormParticipant named: 'SenderParticipant'.
 	participantB := BormParticipant named: 'ReceiverParticipant'.
+	blankParticipant := BormParticipant named: '   '.
 	unnamedStateA := BormState new.
 	unnamedStateB := BormState new
 		                 name: nil;
@@ -96,17 +97,23 @@ OPBormConstraintMenuGUITest >> testDeterministicOrderingReadableLabelsAndUnnamed
 	namedActivity := BormActivity named: 'Dispatch'.
 	unnamedTarget := BormActivity new.
 	receiverActivity := BormActivity named: 'Receive'.
+	blankParticipantActivity := BormActivity named: 'SilentStep'.
+	blankParticipantTarget := BormActivity named: 'SilentDone'.
 	transitionA := BormTransition from: unnamedStateA to: unnamedTarget.
 	transitionB := BormTransition from: unnamedStateB to: namedActivity.
+	transitionC := BormTransition from: blankParticipantActivity to: blankParticipantTarget.
 	unnamedConstraintA := BormConstraint named: '   '.
 	unnamedConstraintB := BormConstraint new
 		                      name: nil;
 		                      yourself.
+	unnamedConstraintC := BormConstraint named: 'Ready'.
 	transitionA constraint: unnamedConstraintA.
 	transitionB constraint: unnamedConstraintB.
+	transitionC constraint: unnamedConstraintC.
 	customModel addAll: {
 			participantA.
-			participantB }.
+			participantB.
+			blankParticipant }.
 	participantA addAll: {
 			unnamedStateA.
 			unnamedTarget.
@@ -116,20 +123,25 @@ OPBormConstraintMenuGUITest >> testDeterministicOrderingReadableLabelsAndUnnamed
 			unnamedStateB.
 			transitionB }.
 	participantB add: receiverActivity.
+	blankParticipant addAll: {
+			blankParticipantActivity.
+			blankParticipantTarget.
+			transitionC }.
 	communication := BormFactory communicationFrom: namedActivity to: receiverActivity.
 	commConstraint := BormConstraint named: 'Allowed'.
 	communication constraint: commConstraint.
 
 	configurationGui := OPBormConstraintMenuGUI on: (OPBormSimulator model: customModel).
-	self assert: configurationGui groupHeaderLabels size equals: 3.
+	self assert: configurationGui groupHeaderLabels size equals: 4.
 	self
 		assert: (configurationGui groupHeaderLabels collect: #label as: Array)
 		equals: #( '(unnamed state) [waiting]' '(unnamed state) (SenderParticipant) [waiting]'
-		   'Dispatch (SenderParticipant)' ).
+			   'Dispatch (SenderParticipant)' 'SilentStep [waiting]' ).
 	self
 		assert: (configurationGui constraintCheckboxes collect: #label as: Array)
 		equals:
-		#( '(unnamed constraint) -> Dispatch' '(unnamed constraint) -> (unnamed activity)' 'Allowed -> Receive (ReceiverParticipant)' )
+			#( '(unnamed constraint) -> Dispatch' '(unnamed constraint) -> (unnamed activity)' 'Allowed -> Receive (ReceiverParticipant)'
+			   'Ready -> SilentDone' )
 ]
 
 { #category : 'tests' }

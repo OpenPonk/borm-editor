@@ -95,6 +95,5 @@ BormDataFlowShape >> updateRenderFromSelf [
 	self isRendered ifFalse: [ ^ self ].
 	super updateRenderFromSelf.
 	bounds ifNil: [ ^ self ].
-	(roassalShape propertyAt: OPRSAnchorConstraint ifAbsent: [ nil ])
-		ifNotNil: [ :anchorConstraint | anchorConstraint saveShapePosition ]
+	roassalShape propertyAt: OPRSAnchorConstraint ifPresent: [ :anchorConstraint | anchorConstraint saveShapePosition ]
 ]

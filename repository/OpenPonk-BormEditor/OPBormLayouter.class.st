@@ -224,26 +224,29 @@ OPBormLayouter >> participantEdgesFor: aCollectionOfShapes [
 ]
 
 { #category : 'private' }
+OPBormLayouter >> rankOfShape: aShape in: aRanksByShape [
+
+	^ aRanksByShape at: aShape ifAbsent: [ Float infinity ]
+]
+
+{ #category : 'private' }
 OPBormLayouter >> sortedTopLevelBoxes: aCollectionOfShapes [
 	"Answers top level shapes ordered horizontally according to participant communication dependencies."
 
-	| participantControllers ranks |
+	| participantControllers ranks ranksByShape |
 	participantControllers := aCollectionOfShapes
-		collect: [ :eachShape |
-			diagramController controllers
-				detect: [ :eachController | eachController roassalShape == eachShape ]
-				ifNone: [ nil ] ]
-		thenSelect: [ :eachController |
-			eachController isNotNil and: [ eachController isKindOf: OPBormParticipantController ] ].
+		                          collect: [ :eachShape |
+			                          diagramController controllers
+				                          detect: [ :eachController | eachController roassalShape == eachShape ]
+				                          ifNone: [ nil ] ]
+		                          thenSelect: [ :eachController |
+		                          eachController isNotNil and: [ eachController isKindOf: OPBormParticipantController ] ].
 	participantControllers ifEmpty: [ ^ aCollectionOfShapes ].
 
 	ranks := self communicationRanksFor: participantControllers.
+	ranksByShape := IdentityDictionary new.
+	ranks keysAndValuesDo: [ :eachController :eachRank | ranksByShape at: eachController roassalShape put: eachRank ].
 
 	^ aCollectionOfShapes asOrderedCollection sorted: [ :shapeA :shapeB |
-		| controllerA controllerB rankA rankB |
-		controllerA := diagramController controllers detect: [ :eachController | eachController roassalShape == shapeA ] ifNone: [ nil ].
-		controllerB := diagramController controllers detect: [ :eachController | eachController roassalShape == shapeB ] ifNone: [ nil ].
-		rankA := controllerA ifNotNil: [ ranks at: controllerA ifAbsent: [ Float infinity ] ] ifNil: [ Float infinity ].
-		rankB := controllerB ifNotNil: [ ranks at: controllerB ifAbsent: [ Float infinity ] ] ifNil: [ Float infinity ].
-		rankA < rankB ]
+		  (self rankOfShape: shapeA in: ranksByShape) < (self rankOfShape: shapeB in: ranksByShape) ]
 ]

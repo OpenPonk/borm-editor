@@ -40,5 +40,5 @@ OPBormProcessNodeController >> unhookDiagramElement [
 
 	super unhookDiagramElement.
 
-	(self diagramElement ifNotExists: [ ^ self ]) plusIconAction: [  ]
+	(self diagramElement ifNotExists: [ ^ self ]) plusIconAction: nil
 ]

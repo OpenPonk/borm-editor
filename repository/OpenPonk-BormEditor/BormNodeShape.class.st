@@ -35,13 +35,6 @@ BormNodeShape >> defaultSize [
 	^ 150 @ 60
 ]
 
-{ #category : 'initialization' }
-BormNodeShape >> initialize [
-
-	super initialize.
-	plusIconAction := [  ]
-]
-
 { #category : 'accessing' }
 BormNodeShape >> plusIconAction: aBlock [
 
@@ -71,8 +64,7 @@ BormNodeShape >> renderShapeDetails [
 
 	labeled := OPRSLabeled new.
 	labeled color: Color black.
-	labeled shapeBuilder wrapStrategy:
-		(RSWrapStrategy new wrapMaxWidth: self wrapMaxWidth).
+	labeled shapeBuilder wrapStrategy: (RSWrapStrategy new wrapMaxWidth: self wrapMaxWidth).
 	labeled location
 		inner;
 		center;
@@ -80,19 +72,14 @@ BormNodeShape >> renderShapeDetails [
 		offset: self textOffset.
 	roassalShape @ labeled.
 
-
 	self roassalShape
 		when: RSExtentChangedEvent
-		do: [ :event |
-			(event newExtent x closeTo: wrappedForWidth absolutePrecision: 0.99)
-				ifFalse: [ self updateText ] ]
+		do: [ :event | (event newExtent x closeTo: wrappedForWidth absolutePrecision: 0.99) ifFalse: [ self updateText ] ]
 		for: self.
 
 	plusIcon := RSBitmap new
 		            form: (self iconNamed: #add);
-		            when: RSMouseLeftClick
-		            do: plusIconAction
-		            for: plusIconAction receiver;
+		            when: RSMouseLeftClick do: [ plusIconAction ifNotNil: [ plusIconAction value ] ] for: self;
 		            yourself.
 	RSLocation new
 		right;
